@@ -17,7 +17,7 @@ namespace Grupp_31_SystemUtveckling
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            Console.WriteLine("fuck you vicktor");
+            Console.WriteLine("His skin is dark, his lips are bigger, you guessed it right he's a ...");
         }
 
         /// <summary>
