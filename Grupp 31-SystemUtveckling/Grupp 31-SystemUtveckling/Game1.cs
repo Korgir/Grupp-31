@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace Grupp_31_SystemUtveckling
 {
@@ -16,6 +17,7 @@ namespace Grupp_31_SystemUtveckling
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            Console.WriteLine("fuck you vicktor");
         }
 
         /// <summary>
