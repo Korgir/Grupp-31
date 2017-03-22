@@ -46,6 +46,14 @@ namespace Grupp_31_SystemUtveckling
             }
         }
 
+        public void changePos(Vector2 newPos)
+        {
+            pos = newPos;
+            moving = false;
+            objRec.X = (int)pos.X;
+            objRec.Y = (int)pos.Y;
+        }
+
         public Vector2 getPos()
         {
             return pos;

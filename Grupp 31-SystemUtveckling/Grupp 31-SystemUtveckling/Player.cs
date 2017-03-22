@@ -17,18 +17,54 @@ namespace Grupp_31_SystemUtveckling
             this.game = game;
         }
 
-        private void ChangeDirection(Vector2 dir)
+        //behöver fixas
+        //private void ChangeDirection(Vector2 dir)
+        //{
+
+        //    Vector2 newDestination = pos + dir * 50.0f;
+        //    check if we cna move in the desired direction, if not, do nothing
+        //    if (!game.getTileATPositoon(newDestination).Wall)
+        //    {
+        //        direction = dir;
+        //        destination = newDestination;
+        //        moving = true;
+        //    }
+
+        //}
+
+        public void Update(GameTime gameTime)
         {
+            //if we're not already moving, pick a new direciton and check if 
+            //we can move in that direction
+            //otherwise, move toward the destination
+            if (!moving)
+            {
+                if (Keyboard.GetState().IsKeyDown(Keys.Left))
+                {
+                    ChangeDirection(new Vector2(-1, 0));
+                    rotation = MathHelper.ToRadians(-180);
+                }
+                if (Keyboard.GetState().IsKeyDown(Keys.Right))
+                {
+                    ChangeDirection(new Vector2(1, 0));
+                    rotation = MathHelper.ToRadians(0);
+                }
+                if (Keyboard.GetState().IsKeyDown(Keys.Up))
+                {
+                    ChangeDirection(new Vector2(0, -1));
+                    rotation = MathHelper.ToRadians(-90);
+                }
+                if (Keyboard.GetState().IsKeyDown(Keys.Down))
+                {
+                    ChangeDirection(new Vector2(0, 1));
+                    rotation = MathHelper.ToRadians(-270);
+                }
+            }
+            else
+            {
+                move(gameTime);
 
-            Vector2 newDestination = pos + dir * 50.0f;
-            //check if we cna move in the desired direction, if not, do nothing
-            //if (!game.getTileATPositoon(newDestination).Wall)
-            //{
-            //    direction = dir;
-            //    destination = newDestination;
-            //    moving = true;
-            //}
-
+            }
         }
     }
 }
