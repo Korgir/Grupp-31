@@ -14,6 +14,7 @@ namespace Grupp_31_SystemUtveckling
         public Vector2 position;
 
         public bool alive;
+        public bool playerControlled;
 
         public int health, maxHealth;
         public int speed;
@@ -23,11 +24,12 @@ namespace Grupp_31_SystemUtveckling
         public int mana, maxMana;
         public int manaRegeneration;
         public int hitChance;
+        public int action;
         // To Do - Add List<Spell> Spells when the class is implemented
 
         public enum DamageType { Physical=0, Magical=1 };
 
-        public Character(Texture2D texture, Vector2 position, int health, int speed, int armor, 
+        public Character(Texture2D texture, Vector2 position, bool playerControlled, int health, int speed, int armor, 
             int physicalDamageMin, int physicalDamageMax, int magicAmplification, int mana, 
             int manaRegeneration, int hitChance)
         {
@@ -35,6 +37,7 @@ namespace Grupp_31_SystemUtveckling
             this.position = position;
 
             this.alive = true;
+            this.playerControlled = playerControlled;
 
             this.health = health;
             this.maxHealth = health;
@@ -46,6 +49,7 @@ namespace Grupp_31_SystemUtveckling
             this.maxMana = mana;
             this.manaRegeneration = manaRegeneration;
             this.hitChance = hitChance;
+            this.action = 0;
         }
 
         public void OnNewTurn()
