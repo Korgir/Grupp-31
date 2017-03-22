@@ -18,22 +18,23 @@ namespace Grupp_31_SystemUtveckling
         }
 
         //behöver fixas
-        //private void ChangeDirection(Vector2 dir)
-        //{
+        private void ChangeDirection(Vector2 dir)
+        {
 
-        //    Vector2 newDestination = pos + dir * 50.0f;
-        //    check if we cna move in the desired direction, if not, do nothing
-        //    if (!game.getTileATPositoon(newDestination).Wall)
-        //    {
-        //        direction = dir;
-        //        destination = newDestination;
-        //        moving = true;
-        //    }
+            Vector2 newDestination = pos + dir * 50.0f;
+            //check if we cna move in the desired direction, if not, do nothing
+            //if (!game.getTileATPositoon(newDestination).Wall)
+            //{
+            //    direction = dir;
+            //    destination = newDestination;
+            //    moving = true;
+            //}
 
-        //}
+        }
 
         public void Update(GameTime gameTime)
         {
+<<<<<<< HEAD
             ////if we're not already moving, pick a new direciton and check if 
             ////we can move in that direction
             ////otherwise, move toward the destination
@@ -64,6 +65,38 @@ namespace Grupp_31_SystemUtveckling
             //else
             //{
             //    move(gameTime);
+=======
+            //if we're not already moving, pick a new direciton and check if 
+            //we can move in that direction
+            //otherwise, move toward the destination
+            if (!moving)
+            {
+                Console.WriteLine("test");
+                if (KeyMouseReader.KeyPressed(Microsoft.Xna.Framework.Input.Keys.Left))
+                {
+                    ChangeDirection(new Vector2(-1, 0));
+                    rotation = MathHelper.ToRadians(-180);
+                }
+                if (KeyMouseReader.KeyPressed(Microsoft.Xna.Framework.Input.Keys.Right))
+                {
+                    ChangeDirection(new Vector2(1, 0));
+                    rotation = MathHelper.ToRadians(0);
+                }
+                if (KeyMouseReader.KeyPressed(Microsoft.Xna.Framework.Input.Keys.Up))
+                {
+                    ChangeDirection(new Vector2(0, -1));
+                    rotation = MathHelper.ToRadians(-90);
+                }
+                if (KeyMouseReader.KeyPressed(Microsoft.Xna.Framework.Input.Keys.Down))
+                {
+                    ChangeDirection(new Vector2(0, 1));
+                    rotation = MathHelper.ToRadians(-270);
+                }
+            }
+            else
+            {
+                move(gameTime);
+>>>>>>> origin/master
 
             //}
         }
