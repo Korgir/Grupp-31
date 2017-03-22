@@ -28,6 +28,7 @@ namespace Grupp_31_SystemUtveckling
             this.pos = pos;
             this.sprRec = sprRec;
             this.objRec = objRec;
+            
 
         }
 

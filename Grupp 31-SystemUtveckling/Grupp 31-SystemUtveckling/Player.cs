@@ -39,6 +39,7 @@ namespace Grupp_31_SystemUtveckling
             //otherwise, move toward the destination
             if (!moving)
             {
+                Console.WriteLine("test");
                 if (Keyboard.GetState().IsKeyDown(Keys.Left))
                 {
                     ChangeDirection(new Vector2(-1, 0));
