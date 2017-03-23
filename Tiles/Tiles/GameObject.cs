@@ -14,10 +14,12 @@ namespace Tiles
     {
         protected Vector2 position;
         protected Texture2D texture;
+        
         public GameObject(Texture2D texture, Vector2 position)
         {
             this.texture = texture;
             this.position = position;
+            
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)

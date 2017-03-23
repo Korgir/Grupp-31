@@ -13,6 +13,7 @@ namespace Tiles
         Texture2D wallTileTex;
         Texture2D floorTileTex;
         Texture2D ballTex;
+        Texture2D playerTexture;
         Tile[,] tiles;
         Ball ball;
         List<string> strings = new List<string>();
@@ -36,6 +37,7 @@ namespace Tiles
             wallTileTex = Content.Load<Texture2D>("walltile");
             floorTileTex = Content.Load<Texture2D>("floortile");
             ballTex = Content.Load<Texture2D>("ball");
+            playerTexture = Content.Load<Texture2D>("CharacterSpriteSheet");
             
 
             StreamReader sr = new StreamReader("map.txt");
@@ -60,7 +62,7 @@ namespace Tiles
                     else if (strings[j][i] == 'b')
                     {
                         tiles[i, j] = new Tile(floorTileTex, new Vector2(floorTileTex.Width * i, floorTileTex.Height * j), false);
-                        ball = new Ball(ballTex, new Vector2(floorTileTex.Width * i, floorTileTex.Height * j), this);
+                        ball = new Ball(playerTexture, new Vector2(floorTileTex.Width * i, floorTileTex.Height * j), this);
                     }
                 }
             }
@@ -97,7 +99,7 @@ namespace Tiles
             {
                 t.Draw(spriteBatch);
             }
-            spriteBatch.Draw(ballTex, new Vector2(150, 150), Color.White);
+            spriteBatch.Draw(playerTexture, new Vector2(150, 150), new Rectangle(32, 0, 32, 32), Color.White);
 
             spriteBatch.End();
 
