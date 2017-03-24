@@ -15,6 +15,9 @@ namespace Grupp_31_SystemUtveckling
         Game1 game;
 
         Random rand;
+
+        //Vector2 direction;
+        //Vector2 destination;
         
         protected Rectangle enemyRec;
 
@@ -22,6 +25,7 @@ namespace Grupp_31_SystemUtveckling
         {
             this.enemyRec = new Rectangle((int)pos.X, (int)pos.Y, tex.Width / 4, tex.Height);
             rand = new Random();
+            this.game = game;
         }
 
         //private void ChangeDirection(Vector2 dir)
@@ -41,14 +45,20 @@ namespace Grupp_31_SystemUtveckling
             enemyRec = new Rectangle((int)pos.X, (int)pos.Y, tex.Width / 4, tex.Height);
 
             int randX = rand.Next(1, 4);
-            int randY = rand.Next(1, 4);
+            int randY = rand.Next(-1, -4);
 
+            //if (!game.GetTileAtPosition(newDestination).Wall)
+            //{
+            //    ChangeDirection(new Vector2(randX, 0));
+            //}
+
+            //ChangeDirection(new Vector2(randX, 0));
         }
 
         ////Komma på nåt bra namn. Ska inte vara här.
         //public void Engage()
         //{
-        //    if (enemyRec.X - playerRec.X == 0))
+        //    if (enemyRec.X - playerRec.X =< 0))
         //    {
         //        Console.WriteLine("Combat");
         //    }
