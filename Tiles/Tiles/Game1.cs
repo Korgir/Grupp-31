@@ -95,12 +95,22 @@ namespace Tiles
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
 
-            foreach (Tile t in tiles)
+            for(int i = 0; i < strings.Count; i++)
             {
-                t.Draw(spriteBatch);
+                for(int j = 0; j < strings[i].Length; j++)
+                {
+                    if (strings[i][j] == '-')
+                        spriteBatch.Draw(floorTileTex, new Vector2(50 * j, 50 * i), Color.White);
+                    else if (strings[i][j] == 'w')
+                        spriteBatch.Draw(wallTileTex, new Vector2(50 * j, 50 * i), Color.White);
+                    else if(strings[i][j] == 'b')
+                    {
+                        spriteBatch.Draw(floorTileTex, new Vector2(50 * j, 50 * i), Color.White);
+                        spriteBatch.Draw(playerTexture, new Vector2(55 * j, 55 * i), Color.White);
+                    }
+                }
             }
-            spriteBatch.Draw(playerTexture, new Vector2(150, 150), new Rectangle(32, 0, 32, 32), Color.White);
-
+          
             spriteBatch.End();
 
             base.Draw(gameTime);
