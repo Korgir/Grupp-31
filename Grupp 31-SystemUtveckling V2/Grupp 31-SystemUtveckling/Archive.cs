@@ -23,7 +23,7 @@ namespace Grupp_31_SystemUtveckling
             textureDictionary["resourceBarFilling"] = Content.Load<Texture2D>("resourceBarFilling");
             textureDictionary["Tile"] = Content.Load<Texture2D>("grassTex");
             textureDictionary["warriorCombat"] = Content.Load<Texture2D>("playerCombatTest");
-            textureDictionary["PlayerPlaceholder"] = Content.Load<Texture2D>("Tile");
+            textureDictionary["PlayerPlaceholder"] = Content.Load<Texture2D>("cool bild transparent");
             
             fontDictionary["defaultFont"] = Content.Load<SpriteFont>("font");
         }
