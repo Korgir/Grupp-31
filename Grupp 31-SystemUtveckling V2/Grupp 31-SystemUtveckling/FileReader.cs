@@ -19,6 +19,8 @@ namespace Grupp_31_SystemUtveckling
         Game1 game;
         int playerPosX;
         int playerPosY;
+        int doorPosX;
+        int doorPosY;
         string fileName;
 
         public FileReader(Game1 game, Player player, Texture2D tileTex, string fileName)
@@ -56,9 +58,26 @@ namespace Grupp_31_SystemUtveckling
                         playerPosX = tileTex.Width * i;
                         playerPosY = tileTex.Height * j;
                     }
+
+                    if (strings[j][i] == 'd')
+                    {
+                        tiles[i, j] = new Tile(tileTex, new Vector2(tileTex.Width * i, tileTex.Height * j), false);
+                        doorPosX = tileTex.Width * i;
+                        doorPosY = tileTex.Height * j;
+                    }
                 }
             }
         }
+
+        public void ZoneSwitch()
+        {
+            if(doorPosX == player.pos.X & doorPosY == player.pos.Y)
+            {
+                //fileName = ("map2");
+                Console.WriteLine("zone switch");
+            }
+        }
+            
 
         public int getPlayerPosX()
         {
