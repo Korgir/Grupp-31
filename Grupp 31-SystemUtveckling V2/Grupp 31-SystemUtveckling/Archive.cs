@@ -21,9 +21,10 @@ namespace Grupp_31_SystemUtveckling
             textureDictionary["owlbearCombat"] = Content.Load<Texture2D>("enemyCombatTest");
             textureDictionary["resourceBarFrame"] = Content.Load<Texture2D>("resourceBarFrame");
             textureDictionary["resourceBarFilling"] = Content.Load<Texture2D>("resourceBarFilling");
-            textureDictionary["Tile"] = Content.Load<Texture2D>("Tile");
+            textureDictionary["Tile"] = Content.Load<Texture2D>("grassTex");
             textureDictionary["warriorCombat"] = Content.Load<Texture2D>("playerCombatTest");
-
+            textureDictionary["PlayerPlaceholder"] = Content.Load<Texture2D>("Tile");
+            
             fontDictionary["defaultFont"] = Content.Load<SpriteFont>("font");
         }
     }

@@ -36,11 +36,11 @@ namespace Grupp_31_SystemUtveckling
             char1.Add(new Character(Archive.textureDictionary["warriorCombat"], new Vector2(50, 200), true, 100, 3, 5, 10, 10, 10, 100, 5, 100)); // Safe to remove. Only for testing purpose
             char2.Add(new Character(Archive.textureDictionary["owlbearCombat"], new Vector2(400, 200), false, 100, 3, 5, 10, 10, 10, 100, 5, 100)); // Safe to remove. Only for testing purpose
             combat = new Combat(char1, char2); // Safe to remove. Only for testing purpose
-            fileReader = new FileReader(this, player, tileTex);
+            fileReader = new FileReader(this, player, tileTex, "map");
             fileReader.ReadMapFile();
             int posX = fileReader.getPlayerPosX();
             int posY = fileReader.getPlayerPosY();
-            player = new Player(Archive.textureDictionary["warriorCombat"], new Vector2(posX,posY), fileReader);
+            player = new Player(Archive.textureDictionary["PlayerPlaceholder"], new Vector2(posX,posY), fileReader);
 
         }
 

@@ -19,19 +19,21 @@ namespace Grupp_31_SystemUtveckling
         Game1 game;
         int playerPosX;
         int playerPosY;
+        string fileName;
 
-        public FileReader(Game1 game, Player player, Texture2D tileTex)
+        public FileReader(Game1 game, Player player, Texture2D tileTex, string fileName)
         {
             this.game = game;
             this.player = player;
             this.tileTex = tileTex;
+            this.fileName = fileName;
 
         }
 
 
         public void ReadMapFile()
         {
-            StreamReader sr = new StreamReader("map.txt");
+            StreamReader sr = new StreamReader(fileName + ".txt");
             while (!sr.EndOfStream)
             {
                 strings.Add(sr.ReadLine());
