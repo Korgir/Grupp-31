@@ -1,0 +1,61 @@
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\Content\enemyCombatTest.xnb
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\Content\font.xnb
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\Content\playerCombatTest.xnb
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\Content\resourceBarFilling.xnb
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\Content\resourceBarFrame.xnb
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\Grupp 31-SystemUtveckling.exe
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\Grupp 31-SystemUtveckling.pdb
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\MonoGame.Framework.dll
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.dll
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.XInput.dll
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\MonoGame.Framework.xml
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.xml
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.XInput.xml
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\obj\x86\Debug\Grupp 31-SystemUtveckling.exe
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\obj\x86\Debug\Grupp 31-SystemUtveckling.pdb
+C:\Users\Datorlabbet\Desktop\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\Content\Tile.xnb
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\obj\x86\Debug\Grupp 31-SystemUtveckling.exe
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\obj\x86\Debug\Grupp 31-SystemUtveckling.pdb
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\Content\enemyCombatTest.xnb
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\Content\font.xnb
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\Content\playerCombatTest.xnb
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\Content\resourceBarFilling.xnb
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\Content\resourceBarFrame.xnb
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\Content\Tile.xnb
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\Grupp 31-SystemUtveckling.exe
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\Grupp 31-SystemUtveckling.pdb
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\MonoGame.Framework.dll
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.dll
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.XInput.dll
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\MonoGame.Framework.xml
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.xml
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.XInput.xml
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+F:\Monster Dungeon Crawler v1 2017-03-24\Monster Dungeon Grupp 31\Monster Dungeon Grupp 31\Grupp 31-SystemUtveckling\Grupp 31-SystemUtveckling\obj\x86\Debug\Grupp 31-SystemUtveckling.csprojResolveAssemblyReference.cache
