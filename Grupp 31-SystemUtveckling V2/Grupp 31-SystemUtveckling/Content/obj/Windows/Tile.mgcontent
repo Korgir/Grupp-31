@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>F:/Monster Dungeon Crawler v1 2017-03-24/Monster Dungeon Grupp 31/Monster Dungeon Grupp 31/Grupp 31-SystemUtveckling/Grupp 31-SystemUtveckling/Content/Tile.png</SourceFile>
-  <SourceTime>2017-03-24T10:48:16+01:00</SourceTime>
-  <DestFile>F:/Monster Dungeon Crawler v1 2017-03-24/Monster Dungeon Grupp 31/Monster Dungeon Grupp 31/Grupp 31-SystemUtveckling/Grupp 31-SystemUtveckling/Content/bin/Windows/Tile.xnb</DestFile>
-  <DestTime>2017-03-27T10:11:50+02:00</DestTime>
+  <SourceFile>E:/GitHub/Grupp-31/Grupp 31-SystemUtveckling V2/Grupp 31-SystemUtveckling/Content/Tile.png</SourceFile>
+  <SourceTime>2017-03-27T10:28:42.3190723+02:00</SourceTime>
+  <DestFile>E:/GitHub/Grupp-31/Grupp 31-SystemUtveckling V2/Grupp 31-SystemUtveckling/Content/bin/Windows/Tile.xnb</DestFile>
+  <DestTime>2017-03-27T14:15:47.4573856+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T08:36:08+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

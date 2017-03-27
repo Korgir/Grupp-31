@@ -11,11 +11,11 @@ namespace Grupp_31_SystemUtveckling
 {
     class Player : Entity
     {
-        Game1 game;
+        FileReader fileReader;
 
-        public Player(Texture2D tex, Vector2 pos, Game1 game): base(tex, pos, new Rectangle(0, 0, tex.Width / 4, tex.Height), new Rectangle((int)pos.X, (int)pos.Y, tex.Width / 4, tex.Height))
+        public Player(Texture2D tex, Vector2 pos, FileReader fileReader) : base(tex, pos, new Rectangle(0, 0, tex.Width / 4, tex.Height), new Rectangle((int)pos.X, (int)pos.Y, tex.Width / 4, tex.Height))
         {
-            this.game = game;
+            this.fileReader = fileReader;
         }
 
         //behöver fixas
@@ -24,7 +24,7 @@ namespace Grupp_31_SystemUtveckling
 
             Vector2 newDestination = pos + dir * 50.0f;
             //check if we cna move in the desired direction, if not, do nothing
-            if (!game.GetTileAtPosition(newDestination).Wall)
+            if (!fileReader.GetTileAtPosition(newDestination).Wall)
             {
                 direction = dir;
                 destination = newDestination;

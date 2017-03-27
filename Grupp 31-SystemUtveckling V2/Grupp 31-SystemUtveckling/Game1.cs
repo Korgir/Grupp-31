@@ -11,14 +11,14 @@ namespace Grupp_31_SystemUtveckling
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
+        Player player;
         List<Character> char1;// Safe to remove. Only for testing purpose
         List<Character> char2;// Safe to remove. Only for testing purpose
         Combat combat;// Safe to remove. Only for testing purpose
         Tile[,] tiles;
         List<string> strings = new List<string>();
         Texture2D tileTex;
-        Player player;
+        FileReader fileReader;
 
         public Game1()
         {
@@ -36,36 +36,15 @@ namespace Grupp_31_SystemUtveckling
             char1.Add(new Character(Archive.textureDictionary["warriorCombat"], new Vector2(50, 200), true, 100, 3, 5, 10, 10, 10, 100, 5, 100)); // Safe to remove. Only for testing purpose
             char2.Add(new Character(Archive.textureDictionary["owlbearCombat"], new Vector2(400, 200), false, 100, 3, 5, 10, 10, 10, 100, 5, 100)); // Safe to remove. Only for testing purpose
             combat = new Combat(char1, char2); // Safe to remove. Only for testing purpose
+            fileReader = new FileReader(this, player, tileTex);
+            fileReader.ReadMapFile();
+            int posX = fileReader.getPlayerPosX();
+            int posY = fileReader.getPlayerPosY();
+            player = new Player(Archive.textureDictionary["warriorCombat"], new Vector2(posX,posY), fileReader);
 
-            StreamReader sr = new StreamReader("map.txt");
-            while (!sr.EndOfStream)
-            {
-                strings.Add(sr.ReadLine());
-            }
-            sr.Close();
-            tiles = new Tile[strings[0].Length, strings.Count];
-            for (int i = 0; i < tiles.GetLength(0); i++)
-            {
-                for (int j = 0; j < tiles.GetLength(1); j++)
-                {
-                    if (strings[j][i] == 'w')
-                    {
-                        tiles[i, j] = new Tile(tileTex, new Vector2(tileTex.Width * i, tileTex.Height * j), false);
-                    }
-
-                    if (strings[j][i] == 'p')
-                    {
-                        player = new Player(Archive.textureDictionary["warriorCombat"], new Vector2(tileTex.Width * i, tileTex.Height * j), this);
-                        tiles[i, j] = new Tile(tileTex, new Vector2(tileTex.Width * i, tileTex.Height * j), true);
-                    }
-                }
-            }
         }
 
-        public Tile GetTileAtPosition(Vector2 vec)
-        {
-            return tiles[(int)vec.X / 50, (int)vec.Y / 50];
-        }
+        
 
         protected override void LoadContent()
         {
@@ -93,10 +72,7 @@ namespace Grupp_31_SystemUtveckling
 
             spriteBatch.Begin();
 
-            foreach (Tile t in tiles)
-            {
-                t.Draw(spriteBatch);
-            }
+            fileReader.Draw(spriteBatch);
 
             player.Draw(spriteBatch);
 
