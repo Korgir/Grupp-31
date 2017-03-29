@@ -16,6 +16,7 @@ namespace Grupp_31_SystemUtveckling
         public bool alive;
         public bool playerControlled;
 
+        public string name;
         public int health, maxHealth;
         public int speed;
         public int armor;
@@ -25,11 +26,12 @@ namespace Grupp_31_SystemUtveckling
         public int manaRegeneration;
         public int hitChance;
         public int action;
-        // To Do - Add List<Spell> Spells when the class is implemented
+        // To Do - Add List<Spell> spells when the class is implemented
+        // To Do - Add List<Item> equippedItems when class is implemented
 
         public enum DamageType { Physical=0, Magical=1 };
 
-        public Character(Texture2D texture, Vector2 position, bool playerControlled, int health, int speed, int armor, 
+        public Character(Texture2D texture, Vector2 position, bool playerControlled, string name,int health, int speed, int armor, 
             int physicalDamageMin, int physicalDamageMax, int magicAmplification, int mana, 
             int manaRegeneration, int hitChance)
         {
@@ -39,6 +41,7 @@ namespace Grupp_31_SystemUtveckling
             this.alive = true;
             this.playerControlled = playerControlled;
 
+            this.name = name;
             this.health = health;
             this.maxHealth = health;
             this.speed = speed;
@@ -87,6 +90,7 @@ namespace Grupp_31_SystemUtveckling
                 return false;
             }
 
+            Console.WriteLine(name + " takes " + totalDamage + " points of damage."); // Text Combat
             health -= totalDamage;
             if (health <= 0)
             {
@@ -100,8 +104,23 @@ namespace Grupp_31_SystemUtveckling
             return false;
         }
 
+        public void AttackTarget(Character target)
+        {
+            if (Archive.randomizer.Next(1, 100) < hitChance)
+            {
+                // To Do - For each item equipped run item.OnAttack()
+                int damage = Archive.randomizer.Next(physicalDamageMin, physicalDamageMax);
+                target.Damage(damage, DamageType.Physical);
+            }
+            else
+            {
+                Console.WriteLine(name + " misses the attack."); // Text Combat
+            }
+        }
+
         public bool Kill()
         {
+            Console.WriteLine(name + " has died."); // Text Combat
             if (!alive)
             {
                 return false;
@@ -115,7 +134,14 @@ namespace Grupp_31_SystemUtveckling
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, null, Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
+            if (alive)
+            {
+                spriteBatch.Draw(texture, position, null, Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
+            }
+            else
+            {
+                spriteBatch.Draw(texture, position, null, Color.Red, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
+            }
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Grupp_31_SystemUtveckling
     {
         public static Dictionary<string, Texture2D> textureDictionary = new Dictionary<string, Texture2D>();
         public static Dictionary<string, SpriteFont> fontDictionary = new Dictionary<string, SpriteFont>();
+        public static Random randomizer = new Random();
 
         public static void Initialize(ContentManager Content)
         {

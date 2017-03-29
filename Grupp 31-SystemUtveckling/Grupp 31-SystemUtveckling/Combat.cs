@@ -28,7 +28,7 @@ namespace Grupp_31_SystemUtveckling
             allCharacters.AddRange(team1);
             allCharacters.AddRange(team2);
             initiativeOrder = new List<Character>();
-
+            
             this.currentTurn = 0;
             this.currentState = CombatState.ChoseAction;
         }
@@ -58,8 +58,7 @@ namespace Grupp_31_SystemUtveckling
                         currentTurn++;
                     }
                 }
-
-                if (!initiativeOrder[currentTurn].playerControlled)
+                else if (!initiativeOrder[currentTurn].playerControlled)
                 {
                     // AI decide action
                     initiativeOrder[currentTurn].action = 1;
@@ -77,24 +76,30 @@ namespace Grupp_31_SystemUtveckling
         {
             if (currentTurn < initiativeOrder.Count)
             {
-                if (initiativeOrder[currentTurn].action == 1)
+                Character actingCharacter = initiativeOrder[currentTurn];
+                if (!actingCharacter.alive)
                 {
-                    if (team1.Contains(initiativeOrder[currentTurn]))
+                    actingCharacter.action = 0;
+                }
+
+                if (actingCharacter.action == 1)
+                {
+                    if (team1.Contains(actingCharacter))
                     {
                         foreach (Character enemy in team2)
                         {
-                            enemy.Damage(5, Character.DamageType.Magical);
+                            actingCharacter.AttackTarget(enemy);
                         }
                     }
 
-                    if (team2.Contains(initiativeOrder[currentTurn]))
+                    if (team2.Contains(actingCharacter))
                     {
                         foreach (Character enemy in team1)
                         {
-                            enemy.Damage(5, Character.DamageType.Magical);
+                            actingCharacter.AttackTarget(enemy);
                         }
                     }
-                    initiativeOrder[currentTurn].action = 0;
+                    actingCharacter.action = 0;
                 }
                 currentTurn++;
             }
@@ -169,7 +174,7 @@ namespace Grupp_31_SystemUtveckling
             foreach (Character c in allCharacters)
             {
                 c.Draw(spriteBatch);
-                spriteBatch.DrawString(Archive.fontDictionary["defaultFont"], "HP: " + c.health, new Vector2(0, offsettingString), Color.Yellow);
+                spriteBatch.DrawString(Archive.fontDictionary["defaultFont"], "[" + c.name + "] HP: " + c.health + "; Alive: " + c.alive, new Vector2(0, offsettingString), Color.Yellow);
                 offsettingString += 16;
             }
         }

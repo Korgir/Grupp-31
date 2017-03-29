@@ -28,8 +28,8 @@ namespace Grupp_31_SystemUtveckling
 
             base.Initialize();
 
-            char1.Add(new Character(Archive.textureDictionary["warriorCombat"], new Vector2(50, 200), true, 100, 3, 5, 10, 10, 10, 100, 5, 100)); // Safe to remove. Only for testing purpose
-            char2.Add(new Character(Archive.textureDictionary["owlbearCombat"], new Vector2(400, 200), false, 100, 3, 5, 10, 10, 10, 100, 5, 100)); // Safe to remove. Only for testing purpose
+            char1.Add(new Character(Archive.textureDictionary["warriorCombat"], new Vector2(50, 200), true, "Warrior", 100, 4, 4, 6, 15, 10, 100, 5, 70)); // Safe to remove. Only for testing purpose
+            char2.Add(new Character(Archive.textureDictionary["owlbearCombat"], new Vector2(400, 200), false, "Owlbear", 100, 3, 5, 3, 12, 10, 100, 5, 80)); // Safe to remove. Only for testing purpose
             combat = new Combat(char1, char2); // Safe to remove. Only for testing purpose
         }
         
