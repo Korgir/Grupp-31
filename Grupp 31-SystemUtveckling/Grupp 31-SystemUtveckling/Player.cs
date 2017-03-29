@@ -33,7 +33,7 @@ namespace Grupp_31_SystemUtveckling
 
         }
 
-        public void setMap(Map map)
+        public void SetMap(Map map)
         {
             this.map = map;
         }

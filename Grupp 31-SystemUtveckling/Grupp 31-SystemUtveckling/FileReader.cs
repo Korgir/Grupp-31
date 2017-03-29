@@ -59,10 +59,10 @@ namespace Grupp_31_SystemUtveckling
 
                     if (strings[j][i] == 'p')
                     {
-                        player = new Player(Archive.textureDictionary["PlayerPlaceholder"], new Vector2(tileTex.Width * i, tileTex.Height * j));
+                        player = new Player(Archive.textureDictionary["playerPlaceholder"], new Vector2(tileTex.Width * i, tileTex.Height * j));
                         tiles[i, j] = new Tile(tileTex, new Vector2(tileTex.Width * i, tileTex.Height * j), true);
                         map.setPlayer(player);
-                        player.setMap(map);
+                        player.SetMap(map);
 
                     }
                     

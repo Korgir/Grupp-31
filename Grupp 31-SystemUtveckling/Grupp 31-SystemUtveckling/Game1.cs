@@ -14,9 +14,7 @@ namespace Grupp_31_SystemUtveckling
         List<Character> char1;// Safe to remove. Only for testing purpose
         List<Character> char2;// Safe to remove. Only for testing purpose
         Combat combat;// Safe to remove. Only for testing purpose
-        //Tile[,] tiles;
         List<string> strings = new List<string>();
-        Texture2D tileTex;
         FileReader fileReader;
         Map map;
         String fileName;
@@ -33,11 +31,12 @@ namespace Grupp_31_SystemUtveckling
             char2 = new List<Character>();// Safe to remove. Only for testing purpose
 
             base.Initialize();
-            tileTex = Archive.textureDictionary["Tile"];
-            char1.Add(new Character(Archive.textureDictionary["warriorCombat"], new Vector2(50, 200), true, 100, 3, 5, 10, 10, 10, 100, 5, 100)); // Safe to remove. Only for testing purpose
-            char2.Add(new Character(Archive.textureDictionary["owlbearCombat"], new Vector2(400, 200), false, 100, 3, 5, 10, 10, 10, 100, 5, 100)); // Safe to remove. Only for testing purpose
+            char1.Add(new Character(Archive.textureDictionary["warriorCombat"], new Vector2(50, 200), 
+                true, "Warrior", 100, 4, 4, 6, 15, 10, 100, 5, 70)); // Safe to remove. Only for testing purpose
+            char2.Add(new Character(Archive.textureDictionary["owlbearCombat"], new Vector2(400, 200), 
+                false, "Owlbear", 100, 3, 5, 3, 12, 10, 100, 5, 80)); // Safe to remove. Only for testing purpose
             combat = new Combat(char1, char2); // Safe to remove. Only for testing purpose
-            fileReader = new FileReader(this, tileTex);
+            fileReader = new FileReader(this, Archive.textureDictionary["tile"]);
             fileName = "map";
             map = fileReader.ReadMapFile(fileName);
 
