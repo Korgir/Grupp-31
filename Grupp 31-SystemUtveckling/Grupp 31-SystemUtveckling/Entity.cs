@@ -28,9 +28,8 @@ namespace Grupp_31_SystemUtveckling
             this.pos = pos;
             this.sprRec = sprRec;
             this.objRec = objRec;
+            
 
-            destination = pos;
-            direction = Vector2.Zero;
         }
 
         public void move(GameTime gameTime)

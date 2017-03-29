@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,11 @@ namespace Grupp_31_SystemUtveckling
 {
     class Player : Entity
     {
-        Game1 game;
+        Map map;
 
-        public Player(Texture2D tex, Vector2 pos): base(tex, pos, new Rectangle(0, 0, tex.Width / 4, tex.Height), new Rectangle((int)pos.X, (int)pos.Y, tex.Width / 4, tex.Height))
+        public Player(Texture2D tex, Vector2 pos) : 
+            base(tex, pos, new Rectangle(0, 0, tex.Width / 4, tex.Height), new Rectangle((int)pos.X, (int)pos.Y, tex.Width / 4, tex.Height))
         {
-            this.game = game;
         }
 
         //behöver fixas
@@ -23,14 +24,21 @@ namespace Grupp_31_SystemUtveckling
 
             Vector2 newDestination = pos + dir * 50.0f;
             //check if we cna move in the desired direction, if not, do nothing
-            //if (!game.getTileATPositoon(newDestination).Wall)
-            //{
-            //    direction = dir;
-            //    destination = newDestination;
-            //    moving = true;
-            //}
+            if (!map.GetTileAtPosition(newDestination).Wall)
+            {
+                direction = dir;
+                destination = newDestination;
+                moving = true;
+            }
 
         }
+
+        public void setMap(Map map)
+        {
+            this.map = map;
+        }
+
+
 
         public void Update(GameTime gameTime)
         {
@@ -40,22 +48,22 @@ namespace Grupp_31_SystemUtveckling
             if (!moving)
             {
                 Console.WriteLine("test");
-                if (KeyMouseReader.KeyPressed(Microsoft.Xna.Framework.Input.Keys.Left))
+                if (KeyMouseReader.KeyPressed(Keys.Left))
                 {
                     ChangeDirection(new Vector2(-1, 0));
                     rotation = MathHelper.ToRadians(-180);
                 }
-                if (KeyMouseReader.KeyPressed(Microsoft.Xna.Framework.Input.Keys.Right))
+                if (KeyMouseReader.KeyPressed(Keys.Right))
                 {
                     ChangeDirection(new Vector2(1, 0));
                     rotation = MathHelper.ToRadians(0);
                 }
-                if (KeyMouseReader.KeyPressed(Microsoft.Xna.Framework.Input.Keys.Up))
+                if (KeyMouseReader.KeyPressed(Keys.Up))
                 {
                     ChangeDirection(new Vector2(0, -1));
                     rotation = MathHelper.ToRadians(-90);
                 }
-                if (KeyMouseReader.KeyPressed(Microsoft.Xna.Framework.Input.Keys.Down))
+                if (KeyMouseReader.KeyPressed(Keys.Down))
                 {
                     ChangeDirection(new Vector2(0, 1));
                     rotation = MathHelper.ToRadians(-270);
