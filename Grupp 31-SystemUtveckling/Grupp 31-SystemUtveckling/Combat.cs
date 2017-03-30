@@ -18,7 +18,8 @@ namespace Grupp_31_SystemUtveckling
         protected int currentTurn;
         protected CombatState currentState;
 
-        public enum CombatState { ChoseAction, PlayActions }
+        public enum CombatState { ChoseAction, PlayActions, SelectUnit }
+        public enum ActionType { NoAction = -1, PassTurn = 0, BasicAttack = 1, CastSpell = 2, UseItem = 3 }
 
         public Combat(List<Character> team1, List<Character> team2)
         {
@@ -35,14 +36,17 @@ namespace Grupp_31_SystemUtveckling
 
         public void Update(GameTime gameTime)
         {
-            if (currentState == CombatState.ChoseAction)
+            switch (currentState)
             {
-                ChoseActionState();
-            }
-
-            if (currentState == CombatState.PlayActions)
-            {
-                PlayActionState();
+                case (CombatState.ChoseAction):
+                    ChoseActionState();
+                    break;
+                case (CombatState.PlayActions):
+                    PlayActionState();
+                    break;
+                case (CombatState.SelectUnit):
+                    SelectUnitState();
+                    break;
             }
         }
 
@@ -51,17 +55,27 @@ namespace Grupp_31_SystemUtveckling
             SetInitiativeOrder();
             if (currentTurn < initiativeOrder.Count)
             {
-                if (initiativeOrder[currentTurn].playerControlled)
+                Character actingCharacter = initiativeOrder[currentTurn];
+                if (actingCharacter.action != (int)ActionType.NoAction)
                 {
-                    if (ChoseAction(initiativeOrder[currentTurn]))
+                    currentTurn++;
+                }
+                else if (actingCharacter.playerControlled)
+                {
+                    if (ChoseAction(actingCharacter))
                     {
+                        if (actingCharacter.action == (int)ActionType.BasicAttack)
+                        {
+                            currentState = CombatState.SelectUnit;
+                            return;
+                        }
                         currentTurn++;
                     }
                 }
-                else if (!initiativeOrder[currentTurn].playerControlled)
+                else if (!actingCharacter.playerControlled)
                 {
                     // AI decide action
-                    initiativeOrder[currentTurn].action = 1;
+                    actingCharacter.action = (int)ActionType.BasicAttack;
                     currentTurn++;
                 }
             }
@@ -79,10 +93,10 @@ namespace Grupp_31_SystemUtveckling
                 Character actingCharacter = initiativeOrder[currentTurn];
                 if (!actingCharacter.alive)
                 {
-                    actingCharacter.action = 0;
+                    actingCharacter.action = (int)ActionType.PassTurn;
                 }
 
-                if (actingCharacter.action == 1)
+                if (actingCharacter.action == (int)ActionType.BasicAttack)
                 {
                     if (team1.Contains(actingCharacter))
                     {
@@ -99,7 +113,7 @@ namespace Grupp_31_SystemUtveckling
                             actingCharacter.AttackTarget(enemy);
                         }
                     }
-                    actingCharacter.action = 0;
+                    actingCharacter.action = (int)ActionType.NoAction;
                 }
                 currentTurn++;
             }
@@ -110,26 +124,30 @@ namespace Grupp_31_SystemUtveckling
             }
         }
 
+        protected void SelectUnitState()
+        {
+        }
+
         protected bool ChoseAction(Character actor)
         {
             if (KeyMouseReader.KeyPressed(Keys.D1))
             {
-                actor.action = 1;
+                actor.action = (int)ActionType.BasicAttack;
                 return true;
             }
             if (KeyMouseReader.KeyPressed(Keys.D2))
             {
-                actor.action = 2;
+                actor.action = (int)ActionType.CastSpell;
                 return true;
             }
             if (KeyMouseReader.KeyPressed(Keys.D3))
             {
-                actor.action = 3;
+                actor.action = (int)ActionType.UseItem;
                 return true;
             }
             if (KeyMouseReader.KeyPressed(Keys.D4))
             {
-                actor.action = 0;
+                actor.action = (int)ActionType.PassTurn;
                 return true;
             }
 

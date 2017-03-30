@@ -11,6 +11,9 @@ namespace Grupp_31_SystemUtveckling
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        enum GameState { Menus = 0, World = 1, Combat = 2 };
+
+        GameState currentGameState;
         List<Character> char1;// Safe to remove. Only for testing purpose
         List<Character> char2;// Safe to remove. Only for testing purpose
         Combat combat;// Safe to remove. Only for testing purpose
@@ -33,21 +36,23 @@ namespace Grupp_31_SystemUtveckling
         
         protected override void Initialize()
         {
+            currentGameState = GameState.Combat;
+
             char1 = new List<Character>();// Safe to remove. Only for testing purpose
             char2 = new List<Character>();// Safe to remove. Only for testing purpose
 
             base.Initialize();
             char1.Add(new Character(Archive.textureDictionary["warriorCombat"], new Vector2(50, 200), 
                 true, "Warrior", 100, 4, 4, 6, 15, 10, 100, 5, 70)); // Safe to remove. Only for testing purpose
-            char2.Add(new Character(Archive.textureDictionary["owlbearCombat"], new Vector2(400, 200), 
+            char2.Add(new Character(Archive.textureDictionary["owlbearCombat"], new Vector2(400, 200),
+                false, "Owlbear", 100, 3, 5, 3, 12, 10, 100, 5, 80)); // Safe to remove. Only for testing purpose
+            char2.Add(new Character(Archive.textureDictionary["owlbearCombat"], new Vector2(450, 300),
                 false, "Owlbear", 100, 3, 5, 3, 12, 10, 100, 5, 80)); // Safe to remove. Only for testing purpose
             combat = new Combat(char1, char2); // Safe to remove. Only for testing purpose
             fileReader = new FileReader(this);
             fileName = "map";
             map = fileReader.ReadMapFile(fileName);
         }
-
-        
 
         protected override void LoadContent()
         {
@@ -64,14 +69,24 @@ namespace Grupp_31_SystemUtveckling
                 this.Exit();
             }
 
-            map.Update(gameTime);            
-            fileName = map.ZoneSwitch();
-            if(fileName != null)
+            switch (currentGameState)
             {
-                map = fileReader.ReadMapFile(fileName);
-            }
+                case (GameState.Menus):
+                    break;
 
-            combat.Update(gameTime);// Safe to remove. Only for testing purpose
+                case (GameState.World):
+                    map.Update(gameTime);
+                    fileName = map.ZoneSwitch();
+                    if (fileName != null)
+                    {
+                        map = fileReader.ReadMapFile(fileName);
+                    }
+                    break;
+
+                case (GameState.Combat):
+                    combat.Update(gameTime);// Safe to remove. Only for testing purpose
+                    break;
+            }
 
             base.Update(gameTime);
         }
@@ -81,12 +96,20 @@ namespace Grupp_31_SystemUtveckling
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
+            
+            switch (currentGameState)
+            {
+                case (GameState.Menus):
+                    break;
 
-            map.Draw(spriteBatch);
+                case (GameState.World):
+                    map.Draw(spriteBatch);
+                    break;
 
-            map.Draw(spriteBatch);
-
-            //combat.Draw(spriteBatch);// Safe to remove. Only for testing purpose
+                case (GameState.Combat):
+                    combat.Draw(spriteBatch);// Safe to remove. Only for testing purpose
+                    break;
+            }
 
             spriteBatch.End();
 
