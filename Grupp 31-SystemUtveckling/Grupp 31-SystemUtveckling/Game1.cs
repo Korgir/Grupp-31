@@ -17,12 +17,18 @@ namespace Grupp_31_SystemUtveckling
         List<string> strings = new List<string>();
         FileReader fileReader;
         Map map;
-        String fileName;
+        string fileName;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            IsMouseVisible = true;
+            graphics.PreferredBackBufferWidth = 1920;
+            graphics.PreferredBackBufferHeight = 1080;
+            //graphics.IsFullScreen = true;
+            graphics.ApplyChanges();
         }
         
         protected override void Initialize()
@@ -36,12 +42,9 @@ namespace Grupp_31_SystemUtveckling
             char2.Add(new Character(Archive.textureDictionary["owlbearCombat"], new Vector2(400, 200), 
                 false, "Owlbear", 100, 3, 5, 3, 12, 10, 100, 5, 80)); // Safe to remove. Only for testing purpose
             combat = new Combat(char1, char2); // Safe to remove. Only for testing purpose
-            fileReader = new FileReader(this, Archive.textureDictionary["tile"]);
+            fileReader = new FileReader(this);
             fileName = "map";
             map = fileReader.ReadMapFile(fileName);
-
-            
-
         }
 
         
@@ -51,12 +54,15 @@ namespace Grupp_31_SystemUtveckling
             Archive.Initialize(Content);
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            
         }
         
         protected override void Update(GameTime gameTime)
         {
             KeyMouseReader.Update();
+            if (KeyMouseReader.KeyPressed(Keys.Escape))
+            {
+                this.Exit();
+            }
 
             map.Update(gameTime);            
             fileName = map.ZoneSwitch();

@@ -10,59 +10,55 @@ namespace Grupp_31_SystemUtveckling
 {
     class Entity
     {
-        public Texture2D tex;
-        public Vector2 pos;
+        public Texture2D texture;
+        public Vector2 position;
         protected float rotation;
         protected Vector2 destination;
         protected Vector2 direction;
         protected float speed = 250.0f;
         protected bool moving = false;
 
-        protected Rectangle sprRec;
-        protected Rectangle objRec;
+        protected Rectangle spriteRectangle;
+        protected Rectangle objectRectangle;
 
-
-        public Entity(Texture2D tex, Vector2 pos, Rectangle sprRec, Rectangle objRec)
+        public Entity(Texture2D texture, Vector2 position, Rectangle spriteRectangle, Rectangle objectRectangle)
         {
-            this.tex = tex;
-            this.pos = pos;
-            this.sprRec = sprRec;
-            this.objRec = objRec;
-            
-
+            this.texture = texture;
+            this.position = position;
+            this.spriteRectangle = spriteRectangle;
+            this.objectRectangle = objectRectangle;
         }
 
         public void move(GameTime gameTime)
         {
-            pos += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            objRec.X = (int)pos.X;
-            objRec.Y = (int)pos.Y;
-            if (Vector2.Distance(pos, destination) < 1)
+            position += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            objectRectangle.X = (int)position.X;
+            objectRectangle.Y = (int)position.Y;
+            if (Vector2.Distance(position, destination) < 1)
             {
-                pos = destination;
-                objRec.X = (int)pos.X;
-                objRec.Y = (int)pos.Y;
+                position = destination;
+                objectRectangle.X = (int)position.X;
+                objectRectangle.Y = (int)position.Y;
                 moving = false;
-
             }
         }
 
         public void changePos(Vector2 newPos)
         {
-            pos = newPos;
+            position = newPos;
             moving = false;
-            objRec.X = (int)pos.X;
-            objRec.Y = (int)pos.Y;
+            objectRectangle.X = (int)position.X;
+            objectRectangle.Y = (int)position.Y;
         }
 
-        public Vector2 getPos()
+        public Vector2 GetPos()
         {
-            return pos;
+            return position;
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(tex, pos, Color.White);
+            spriteBatch.Draw(texture, position, Color.White);
         }
     }
 }

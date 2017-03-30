@@ -14,6 +14,7 @@ namespace Grupp_31_SystemUtveckling
     {
         protected Vector2 position;
         public Texture2D texture;
+
         public GameObject(Texture2D texture, Vector2 position)
         {
             this.texture = texture;

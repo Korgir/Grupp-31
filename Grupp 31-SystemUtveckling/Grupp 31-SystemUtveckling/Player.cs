@@ -22,7 +22,7 @@ namespace Grupp_31_SystemUtveckling
         private void ChangeDirection(Vector2 dir)
         {
 
-            Vector2 newDestination = pos + dir * 50.0f;
+            Vector2 newDestination = position + dir * 50.0f;
             //check if we cna move in the desired direction, if not, do nothing
             if (!map.GetTileAtPosition(newDestination).Wall)
             {

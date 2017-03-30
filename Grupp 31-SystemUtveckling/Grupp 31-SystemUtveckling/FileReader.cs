@@ -14,69 +14,60 @@ namespace Grupp_31_SystemUtveckling
     {
         Tile[,] tiles;
         List<string> strings = new List<string>();
-        Texture2D tileTex;
         Game1 game;
         string fileName;
 
-        public FileReader(Game1 game, Texture2D tileTex )
+        public FileReader(Game1 game)
         {
             this.game = game;
-            this.tileTex = tileTex;
-
         }
-
 
         public Map ReadMapFile(string fileName)
         {
-            StreamReader sr = new StreamReader(fileName + ".txt");
+            StreamReader streamReader = new StreamReader(fileName + ".txt");
             Player player;
             Map map = new Map();
-            while (!sr.EndOfStream)
+            while (!streamReader.EndOfStream)
             {
-                strings.Add(sr.ReadLine());
+                strings.Add(streamReader.ReadLine());
             }
-            sr.Close();
-            Tile[,] tiles = new Tile[strings[0].Length, strings.Count];
+            streamReader.Close();
+
+            tiles = new Tile[strings[0].Length, strings.Count];
             for (int i = 0; i < tiles.GetLength(0); i++)
             {
                 for (int j = 0; j < tiles.GetLength(1); j++)
                 {
                     if (strings[j][i] == 'w')
                     {
-                        tiles[i, j] = new Tile(tileTex, new Vector2(tileTex.Width * i, tileTex.Height * j), false);
+                        Texture2D tileTexture = Archive.textureDictionary["tile"];
+                        tiles[i, j] = new Tile(tileTexture, new Vector2(tileTexture.Width * i, tileTexture.Height * j), false);
                     }
-                   
 
                     if (strings[j][i] == 'd')
                     {
-                        tiles[i, j] = new Tile(tileTex, new Vector2(tileTex.Width * i, tileTex.Height * j), false);
-                        int doorPosX = tileTex.Width * i;
-                        int doorPosY = tileTex.Height * j;
+                        Texture2D tileTexture = Archive.textureDictionary["tileDoor"];
+                        tiles[i, j] = new Tile(tileTexture, new Vector2(tileTexture.Width * i, tileTexture.Height * j), false);
+                        int doorPosX = tileTexture.Width * i;
+                        int doorPosY = tileTexture.Height * j;
                         map.setDoorPostX(doorPosX);
                         map.setDoorPosY(doorPosY);
-                        
                     }
 
                     if (strings[j][i] == 'p')
                     {
-                        player = new Player(Archive.textureDictionary["playerPlaceholder"], new Vector2(tileTex.Width * i, tileTex.Height * j));
-                        tiles[i, j] = new Tile(tileTex, new Vector2(tileTex.Width * i, tileTex.Height * j), true);
+                        Texture2D tileTexture = Archive.textureDictionary["tile"];
+                        player = new Player(Archive.textureDictionary["playerPlaceholder"], new Vector2(tileTexture.Width * i, tileTexture.Height * j));
+                        tiles[i, j] = new Tile(tileTexture, new Vector2(tileTexture.Width * i, tileTexture.Height * j), true);
                         map.setPlayer(player);
                         player.SetMap(map);
 
                     }
-                    
                 }
             }
+
             map.SetTiles(tiles);
             return map;
         }
-
-
-        
-
-        
-
-        
     }
 }

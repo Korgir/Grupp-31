@@ -21,7 +21,6 @@ namespace Grupp_31_SystemUtveckling
         public Tile(Texture2D texture, Vector2 position, bool wall) : base(texture, position)
         {
             this.wall = wall;
-
         }
     }
 }

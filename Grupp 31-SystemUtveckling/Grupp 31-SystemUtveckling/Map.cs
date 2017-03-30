@@ -22,7 +22,7 @@ namespace Grupp_31_SystemUtveckling
 
         public string ZoneSwitch()
         {
-             if (doorPosX == player.pos.X && doorPosY == player.pos.Y)
+             if (doorPosX == player.position.X && doorPosY == player.position.Y)
             {
                 string fileName = ("map1");
                 //Console.WriteLine("zone switch");
@@ -35,7 +35,6 @@ namespace Grupp_31_SystemUtveckling
         public void setPlayer(Player player)
         {
             this.player = player;
-
         }
 
         public void setDoorPosY(int doorPosY)

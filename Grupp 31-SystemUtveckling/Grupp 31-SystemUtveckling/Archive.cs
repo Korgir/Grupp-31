@@ -24,6 +24,7 @@ namespace Grupp_31_SystemUtveckling
             textureDictionary["resourceBarFrame"] = Content.Load<Texture2D>("resourceBarFrame");
             textureDictionary["resourceBarFilling"] = Content.Load<Texture2D>("resourceBarFilling");
             textureDictionary["tile"] = Content.Load<Texture2D>("Tile");
+            textureDictionary["tileDoor"] = Content.Load<Texture2D>("TileDoor");
             textureDictionary["warriorCombat"] = Content.Load<Texture2D>("playerCombatTest");
 
             fontDictionary["defaultFont"] = Content.Load<SpriteFont>("font");
