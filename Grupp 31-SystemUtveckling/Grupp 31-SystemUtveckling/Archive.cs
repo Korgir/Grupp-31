@@ -19,6 +19,7 @@ namespace Grupp_31_SystemUtveckling
             // Order alphabetically
             // textureDictionary["name"] = Content.Load<Texture2D>("name_in_content_manager");
             // ex. textureDictionary["tile_stone"] = Content.Load<Texture2D>("Tiles\tile_stone");
+            textureDictionary["uiCombat"] = Content.Load<Texture2D>("combatUITemplate");
             textureDictionary["owlbearCombat"] = Content.Load<Texture2D>("enemyCombatTest");
             textureDictionary["playerPlaceholder"] = Content.Load<Texture2D>("cool bild transparent");
             textureDictionary["resourceBarFrame"] = Content.Load<Texture2D>("resourceBarFrame");

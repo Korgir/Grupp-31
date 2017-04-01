@@ -10,8 +10,9 @@ namespace Grupp_31_SystemUtveckling
 {
     class Character
     {
-        protected Texture2D texture;
+        public Texture2D texture;
         public Vector2 position;
+        public Rectangle hitbox;
 
         public bool alive;
         public bool playerControlled;
@@ -26,7 +27,8 @@ namespace Grupp_31_SystemUtveckling
         public int manaRegeneration;
         public int hitChance;
         public int action;
-        // To Do - Add List<Spell> spells when the class is implemented
+        public int spellToCast;
+        public List<Spell> spells;
         // To Do - Add List<Item> equippedItems when class is implemented
 
         public enum DamageType { Physical=0, Magical=1 };
@@ -37,6 +39,7 @@ namespace Grupp_31_SystemUtveckling
         {
             this.texture = texture;
             this.position = position;
+            this.hitbox = new Rectangle((int)position.X - texture.Width/2, (int)position.Y - texture.Height / 2, texture.Width, texture.Height);
 
             this.alive = true;
             this.playerControlled = playerControlled;
@@ -48,11 +51,18 @@ namespace Grupp_31_SystemUtveckling
             this.armor = armor;
             this.physicalDamageMin = physicalDamageMin;
             this.physicalDamageMax = physicalDamageMax;
+            this.magicAmplification = magicAmplification;
             this.mana = mana;
             this.maxMana = mana;
             this.manaRegeneration = manaRegeneration;
             this.hitChance = hitChance;
-            this.action = 0;
+
+            this.action = -1;
+            this.spellToCast = -1;
+
+            spells = new List<Spell>();
+            spells.Add(new Spells.SpellStab(this, null));
+            spells.Add(new Spells.SpellFireball(this, null));
         }
 
         public void OnNewTurn()
@@ -104,20 +114,6 @@ namespace Grupp_31_SystemUtveckling
             return false;
         }
 
-        public void AttackTarget(Character target)
-        {
-            if (Archive.randomizer.Next(1, 100) < hitChance)
-            {
-                // To Do - For each item equipped run item.OnAttack()
-                int damage = Archive.randomizer.Next(physicalDamageMin, physicalDamageMax);
-                target.Damage(damage, DamageType.Physical);
-            }
-            else
-            {
-                Console.WriteLine(name + " misses the attack."); // Text Combat
-            }
-        }
-
         public bool Kill()
         {
             Console.WriteLine(name + " has died."); // Text Combat
@@ -136,11 +132,11 @@ namespace Grupp_31_SystemUtveckling
         {
             if (alive)
             {
-                spriteBatch.Draw(texture, position, null, Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
+                spriteBatch.Draw(texture, position, null, Color.White, 0.0f, new Vector2(texture.Width/2, texture.Height/2), 1.0f, SpriteEffects.None, 0);
             }
             else
             {
-                spriteBatch.Draw(texture, position, null, Color.Red, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
+                spriteBatch.Draw(texture, position, null, Color.Red, 0.0f, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, SpriteEffects.None, 0);
             }
         }
     }

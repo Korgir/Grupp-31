@@ -8,11 +8,11 @@ namespace Grupp_31_SystemUtveckling
 {
     abstract class TargetSpell : Spell
     {
-        public Character Target { get; private set; }
+        public Character target;
 
         public TargetSpell(Character caster, Character target) : base(caster)
         {
-            this.Target = target;
+            this.target = target;
         }
 
         public abstract void OnHit();

@@ -42,11 +42,11 @@ namespace Grupp_31_SystemUtveckling
             char2 = new List<Character>();// Safe to remove. Only for testing purpose
 
             base.Initialize();
-            char1.Add(new Character(Archive.textureDictionary["warriorCombat"], new Vector2(50, 200), 
+            char1.Add(new Character(Archive.textureDictionary["warriorCombat"], new Vector2(500, 500), 
                 true, "Warrior", 100, 4, 4, 6, 15, 10, 100, 5, 70)); // Safe to remove. Only for testing purpose
-            char2.Add(new Character(Archive.textureDictionary["owlbearCombat"], new Vector2(400, 200),
+            char2.Add(new Character(Archive.textureDictionary["owlbearCombat"], new Vector2(1420, 400),
                 false, "Owlbear", 100, 3, 5, 3, 12, 10, 100, 5, 80)); // Safe to remove. Only for testing purpose
-            char2.Add(new Character(Archive.textureDictionary["owlbearCombat"], new Vector2(450, 300),
+            char2.Add(new Character(Archive.textureDictionary["owlbearCombat"], new Vector2(1470, 600),
                 false, "Owlbear", 100, 3, 5, 3, 12, 10, 100, 5, 80)); // Safe to remove. Only for testing purpose
             combat = new Combat(char1, char2); // Safe to remove. Only for testing purpose
             fileReader = new FileReader(this);
