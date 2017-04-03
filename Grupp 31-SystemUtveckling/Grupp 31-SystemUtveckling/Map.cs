@@ -32,17 +32,17 @@ namespace Grupp_31_SystemUtveckling
             return null;
         }
 
-        public void setPlayer(Player player)
+        public void SetPlayer(Player player)
         {
             this.player = player;
         }
 
-        public void setDoorPosY(int doorPosY)
+        public void SetDoorPosY(int doorPosY)
         {
             this.doorPosY = doorPosY;
         }
 
-        public void setDoorPostX(int doorPosX)
+        public void SetDoorPostX(int doorPosX)
         {
             this.doorPosX = doorPosX;
         }

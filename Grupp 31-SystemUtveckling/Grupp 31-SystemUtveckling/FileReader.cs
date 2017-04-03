@@ -50,8 +50,8 @@ namespace Grupp_31_SystemUtveckling
                         tiles[i, j] = new Tile(tileTexture, new Vector2(tileTexture.Width * i, tileTexture.Height * j), false);
                         int doorPosX = tileTexture.Width * i;
                         int doorPosY = tileTexture.Height * j;
-                        map.setDoorPostX(doorPosX);
-                        map.setDoorPosY(doorPosY);
+                        map.SetDoorPostX(doorPosX);
+                        map.SetDoorPosY(doorPosY);
                     }
 
                     if (strings[j][i] == 'p')
@@ -59,7 +59,7 @@ namespace Grupp_31_SystemUtveckling
                         Texture2D tileTexture = Archive.textureDictionary["tile"];
                         player = new Player(Archive.textureDictionary["playerPlaceholder"], new Vector2(tileTexture.Width * i, tileTexture.Height * j));
                         tiles[i, j] = new Tile(tileTexture, new Vector2(tileTexture.Width * i, tileTexture.Height * j), true);
-                        map.setPlayer(player);
+                        map.SetPlayer(player);
                         player.SetMap(map);
 
                     }

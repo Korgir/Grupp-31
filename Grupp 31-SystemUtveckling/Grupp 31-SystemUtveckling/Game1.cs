@@ -36,7 +36,7 @@ namespace Grupp_31_SystemUtveckling
         
         protected override void Initialize()
         {
-            currentGameState = GameState.Combat;
+            currentGameState = GameState.World;
 
             char1 = new List<Character>();// Safe to remove. Only for testing purpose
             char2 = new List<Character>();// Safe to remove. Only for testing purpose

@@ -29,7 +29,7 @@ namespace Grupp_31_SystemUtveckling
             this.objectRectangle = objectRectangle;
         }
 
-        public void move(GameTime gameTime)
+        public void Move(GameTime gameTime)
         {
             position += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             objectRectangle.X = (int)position.X;
@@ -43,7 +43,7 @@ namespace Grupp_31_SystemUtveckling
             }
         }
 
-        public void changePos(Vector2 newPos)
+        public void ChangePos(Vector2 newPos)
         {
             position = newPos;
             moving = false;

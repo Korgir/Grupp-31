@@ -21,7 +21,6 @@ namespace Grupp_31_SystemUtveckling
         //behöver fixas
         private void ChangeDirection(Vector2 dir)
         {
-
             Vector2 newDestination = position + dir * 50.0f;
             //check if we cna move in the desired direction, if not, do nothing
             if (!map.GetTileAtPosition(newDestination).Wall)
@@ -30,15 +29,12 @@ namespace Grupp_31_SystemUtveckling
                 destination = newDestination;
                 moving = true;
             }
-
         }
 
         public void SetMap(Map map)
         {
             this.map = map;
         }
-
-
 
         public void Update(GameTime gameTime)
         {
@@ -71,7 +67,7 @@ namespace Grupp_31_SystemUtveckling
             }
             else
             {
-                move(gameTime);
+                Move(gameTime);
             }
         }
     }
