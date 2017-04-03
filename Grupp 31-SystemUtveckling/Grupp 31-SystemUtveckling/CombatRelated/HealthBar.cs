@@ -18,7 +18,7 @@ namespace Grupp_31_SystemUtveckling
 
             float percentageHealth = (float)character.health / (float)character.maxHealth;
             int offset = 10;
-            Vector2 position = character.position - new Vector2(0, character.texture.Height / 2 + frame.Height / 2 + offset);
+            Vector2 position = character.Position - new Vector2(0, character.texture.Height / 2 + frame.Height / 2 + offset);
 
             Rectangle visibleHealth = new Rectangle(0, 0, (int)(filling.Width * percentageHealth), filling.Height);
             spriteBatch.Draw(frame, position, null, Color.White, 0.0f, new Vector2(frame.Width / 2, frame.Height / 2), 1.0f, SpriteEffects.None, 0);

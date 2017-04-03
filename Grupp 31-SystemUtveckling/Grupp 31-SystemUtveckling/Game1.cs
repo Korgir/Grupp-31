@@ -30,24 +30,25 @@ namespace Grupp_31_SystemUtveckling
             IsMouseVisible = true;
             graphics.PreferredBackBufferWidth = 1920;
             graphics.PreferredBackBufferHeight = 1080;
-            //graphics.IsFullScreen = true;
+            graphics.IsFullScreen = true;
             graphics.ApplyChanges();
         }
         
         protected override void Initialize()
         {
-            currentGameState = GameState.World;
+            currentGameState = GameState.Combat;
 
-            char1 = new List<Character>();// Safe to remove. Only for testing purpose
-            char2 = new List<Character>();// Safe to remove. Only for testing purpose
+            char1 = new List<Character>(); // Safe to remove. Only for testing purpose
+            char2 = new List<Character>(); // Safe to remove. Only for testing purpose
 
             base.Initialize();
-            char1.Add(new Character(Archive.textureDictionary["warriorCombat"], new Vector2(500, 500), 
+            char1.Add(new Character(Archive.textureDictionary["warriorCombat"], Vector2.Zero,
                 true, "Warrior", 100, 4, 4, 6, 15, 10, 100, 5, 70)); // Safe to remove. Only for testing purpose
-            char2.Add(new Character(Archive.textureDictionary["owlbearCombat"], new Vector2(1420, 400),
+            for (int i = 3; i > 0; i--)
+            {
+                char2.Add(new Character(Archive.textureDictionary["owlbearCombat"], Vector2.Zero,
                 false, "Owlbear", 100, 3, 5, 3, 12, 10, 100, 5, 80)); // Safe to remove. Only for testing purpose
-            char2.Add(new Character(Archive.textureDictionary["owlbearCombat"], new Vector2(1470, 600),
-                false, "Owlbear", 100, 3, 5, 3, 12, 10, 100, 5, 80)); // Safe to remove. Only for testing purpose
+            }
             combat = new Combat(char1, char2); // Safe to remove. Only for testing purpose
             fileReader = new FileReader(this);
             fileName = "map";
@@ -67,6 +68,11 @@ namespace Grupp_31_SystemUtveckling
             if (KeyMouseReader.KeyPressed(Keys.Escape))
             {
                 this.Exit();
+            }
+            if (KeyMouseReader.KeyPressed(Keys.F11))
+            {
+                graphics.IsFullScreen = !graphics.IsFullScreen;
+                graphics.ApplyChanges();
             }
 
             switch (currentGameState)

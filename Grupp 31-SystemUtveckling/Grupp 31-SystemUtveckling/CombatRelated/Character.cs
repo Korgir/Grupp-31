@@ -11,7 +11,7 @@ namespace Grupp_31_SystemUtveckling
     class Character
     {
         public Texture2D texture;
-        public Vector2 position;
+        protected Vector2 position;
         public Rectangle hitbox;
 
         public bool alive;
@@ -31,6 +31,17 @@ namespace Grupp_31_SystemUtveckling
         public List<Spell> spells;
         // To Do - Add List<Item> equippedItems when class is implemented
 
+        public Vector2 Position
+        {
+            get { return this.position; }
+            set
+            {
+                this.position = value;
+                this.hitbox = new Rectangle((int)position.X - texture.Width / 2, 
+                    (int)position.Y - texture.Height / 2, texture.Width, texture.Height);
+            }
+        }
+
         public enum DamageType { Physical=0, Magical=1 };
 
         public Character(Texture2D texture, Vector2 position, bool playerControlled, string name,int health, int speed, int armor, 
@@ -39,7 +50,8 @@ namespace Grupp_31_SystemUtveckling
         {
             this.texture = texture;
             this.position = position;
-            this.hitbox = new Rectangle((int)position.X - texture.Width/2, (int)position.Y - texture.Height / 2, texture.Width, texture.Height);
+            this.hitbox = new Rectangle((int)position.X - texture.Width / 2, (int)position.Y - texture.Height / 2, 
+                texture.Width, texture.Height);
 
             this.alive = true;
             this.playerControlled = playerControlled;
@@ -132,11 +144,13 @@ namespace Grupp_31_SystemUtveckling
         {
             if (alive)
             {
-                spriteBatch.Draw(texture, position, null, Color.White, 0.0f, new Vector2(texture.Width/2, texture.Height/2), 1.0f, SpriteEffects.None, 0);
+                spriteBatch.Draw(texture, position, null, Color.White, 0.0f, 
+                    new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, SpriteEffects.None, 0);
             }
             else
             {
-                spriteBatch.Draw(texture, position, null, Color.Red, 0.0f, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, SpriteEffects.None, 0);
+                spriteBatch.Draw(texture, position, null, Color.Red, 0.0f, 
+                    new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, SpriteEffects.None, 0);
             }
         }
     }

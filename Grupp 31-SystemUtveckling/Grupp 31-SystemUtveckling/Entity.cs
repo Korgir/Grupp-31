@@ -21,12 +21,16 @@ namespace Grupp_31_SystemUtveckling
         protected Rectangle spriteRectangle;
         protected Rectangle objectRectangle;
 
+        public List<Character> team;
+
         public Entity(Texture2D texture, Vector2 position, Rectangle spriteRectangle, Rectangle objectRectangle)
         {
             this.texture = texture;
             this.position = position;
             this.spriteRectangle = spriteRectangle;
             this.objectRectangle = objectRectangle;
+
+            this.team = new List<Character>();
         }
 
         public void Move(GameTime gameTime)
@@ -49,11 +53,6 @@ namespace Grupp_31_SystemUtveckling
             moving = false;
             objectRectangle.X = (int)position.X;
             objectRectangle.Y = (int)position.Y;
-        }
-
-        public Vector2 GetPos()
-        {
-            return position;
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)

@@ -19,6 +19,9 @@ namespace Grupp_31_SystemUtveckling
         protected int currentTurn;
         protected CombatState currentState;
 
+        protected List<Vector2> positionsTeam1;
+        protected List<Vector2> positionsTeam2;
+
         protected Character selectingCharacter;
         protected Spell selectingSpell;
 
@@ -35,9 +38,33 @@ namespace Grupp_31_SystemUtveckling
             allCharacters.AddRange(team1);
             allCharacters.AddRange(team2);
             initiativeOrder = new List<Character>();
-            
+            positionsTeam1 = new List<Vector2>();
+            positionsTeam2 = new List<Vector2>();
+
             this.currentTurn = 0;
             this.currentState = CombatState.ChoseAction;
+
+            SetCharacterPositions();
+        }
+
+        protected void SetCharacterPositions()
+        {
+            int horizontalGrowth = 50;
+            int verticalGrowth = 100;
+            int startHeight = 500;
+
+            int charactersAmount = team1.Count();
+            for (int i = 0; i < charactersAmount; i++)
+            {
+                Vector2 startPoint = new Vector2(500, startHeight - 50 * charactersAmount);
+                team1[i].Position = startPoint + new Vector2(horizontalGrowth * i + Archive.randomizer.Next(-100, 100), verticalGrowth * i);
+            }
+            charactersAmount = team2.Count();
+            for (int i = 0; i < charactersAmount; i++)
+            {
+                Vector2 startPoint = new Vector2(1420, startHeight - 50 * charactersAmount);
+                team2[i].Position = startPoint + new Vector2(-horizontalGrowth * i + Archive.randomizer.Next(-100, 100), verticalGrowth * i);
+            }
         }
 
         public void Update(GameTime gameTime)
