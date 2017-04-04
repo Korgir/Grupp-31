@@ -8,11 +8,15 @@ namespace Grupp_31_SystemUtveckling
 {
     abstract class TargetSpell : Spell
     {
-        public Character target;
+        public enum TargetTeam { Both = 0, Friendly = 1, Enemy = 2 };
 
-        public TargetSpell(Character caster, Character target) : base(caster)
+        public Character target;
+        public TargetTeam targetTeam;
+
+        public TargetSpell(Character caster, Character target, TargetTeam targetTeam) : base(caster)
         {
             this.target = target;
+            this.targetTeam = targetTeam;
         }
 
         public abstract void OnHit();

@@ -207,14 +207,51 @@ namespace Grupp_31_SystemUtveckling
 
         protected void SelectUnitState()
         {
+            TargetSpell spellToChange = (TargetSpell)selectingSpell;
+            Character previousCharacter = null;
+            Color outlineColor = Color.Yellow;
+
             foreach (Character c in allCharacters)
             {
+                if (team1.Contains(c))
+                {
+                    if (spellToChange.targetTeam == TargetSpell.TargetTeam.Enemy)
+                    {
+                        c.outlineColor = Color.Red;
+                    }
+                }
+                else
+                {
+                    c.outlineColor = Color.Yellow;
+                }
+
+                if (c.hitbox.Contains(KeyMouseReader.mousePosition))
+                {
+                    if (previousCharacter != null)
+                    {
+                        previousCharacter.drawOutline = false;
+                    }
+                    c.drawOutline = true;
+                }
+                else
+                {
+                    c.drawOutline = false;
+                }
+                previousCharacter = c;
+
                 if (c.hitbox.Contains(KeyMouseReader.mousePosition) && KeyMouseReader.LeftClick())
                 {
-                    TargetSpell spellToChange = (TargetSpell)selectingSpell;
-                    spellToChange.target = c;
+                    if (team2.Contains(c))
+                    {
+                        if (spellToChange.targetTeam == TargetSpell.TargetTeam.Enemy)
+                        {
+                            spellToChange.target = c;
 
-                    currentState = CombatState.ChoseAction;
+                            c.drawOutline = false;
+
+                            currentState = CombatState.ChoseAction;
+                        }
+                    }
                 }
             }
         }

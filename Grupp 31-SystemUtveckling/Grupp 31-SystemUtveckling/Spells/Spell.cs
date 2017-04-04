@@ -10,11 +10,11 @@ namespace Grupp_31_SystemUtveckling
     {
         private int manaCost;
 
-        public Character caster { get; private set; }
+        public Character Caster { get; private set; }
 
         public Spell(Character caster)
         {
-            this.caster = caster;
+            this.Caster = caster;
         }
 
         public abstract void CastSpell();

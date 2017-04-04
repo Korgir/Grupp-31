@@ -12,7 +12,8 @@ namespace Grupp_31_SystemUtveckling.Spells
         private int damageMax = 15;
         private int damagePerMagicAmplification = 10;
 
-        public SpellFireball(Character caster, Character target) : base(caster, target)
+        public SpellFireball(Character caster, Character target, TargetTeam targetTeam) 
+            : base(caster, target, targetTeam)
         {
         }
 
@@ -25,7 +26,7 @@ namespace Grupp_31_SystemUtveckling.Spells
         public override void OnHit()
         {
             int damage = Archive.randomizer.Next(damageMin, damageMax) 
-                + caster.magicAmplification * damagePerMagicAmplification;
+                + Caster.magicAmplification * damagePerMagicAmplification;
             target.Damage(damage, Character.DamageType.Magical);
         }
     }

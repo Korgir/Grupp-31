@@ -11,6 +11,7 @@ namespace Grupp_31_SystemUtveckling
     class Character
     {
         public Texture2D texture;
+        public Texture2D textureOutline;
         protected Vector2 position;
         public Rectangle hitbox;
 
@@ -31,6 +32,9 @@ namespace Grupp_31_SystemUtveckling
         public List<Spell> spells;
         // To Do - Add List<Item> equippedItems when class is implemented
 
+        public bool drawOutline;
+        public Color outlineColor;
+
         public Vector2 Position
         {
             get { return this.position; }
@@ -44,11 +48,12 @@ namespace Grupp_31_SystemUtveckling
 
         public enum DamageType { Physical=0, Magical=1 };
 
-        public Character(Texture2D texture, Vector2 position, bool playerControlled, string name,int health, int speed, int armor, 
+        public Character(Texture2D texture, Texture2D textureOutline, Vector2 position, bool playerControlled, string name,int health, int speed, int armor, 
             int physicalDamageMin, int physicalDamageMax, int magicAmplification, int mana, 
             int manaRegeneration, int hitChance)
         {
             this.texture = texture;
+            this.textureOutline = textureOutline;
             this.position = position;
             this.hitbox = new Rectangle((int)position.X - texture.Width / 2, (int)position.Y - texture.Height / 2, 
                 texture.Width, texture.Height);
@@ -73,8 +78,11 @@ namespace Grupp_31_SystemUtveckling
             this.spellToCast = -1;
 
             spells = new List<Spell>();
-            spells.Add(new Spells.SpellStab(this, null));
-            spells.Add(new Spells.SpellFireball(this, null));
+            spells.Add(new Spells.SpellStab(this, null, TargetSpell.TargetTeam.Enemy));
+            spells.Add(new Spells.SpellFireball(this, null, TargetSpell.TargetTeam.Enemy));
+
+            this.drawOutline = false;
+            this.outlineColor = Color.White;
         }
 
         public void OnNewTurn()
@@ -142,6 +150,12 @@ namespace Grupp_31_SystemUtveckling
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            if (drawOutline)
+            {
+                spriteBatch.Draw(textureOutline, position, null, outlineColor, 0.0f,
+                    new Vector2(textureOutline.Width / 2, textureOutline.Height / 2), 1.0f, SpriteEffects.None, 0);
+            }
+
             if (alive)
             {
                 spriteBatch.Draw(texture, position, null, Color.White, 0.0f, 
