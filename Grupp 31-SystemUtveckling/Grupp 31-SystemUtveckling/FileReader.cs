@@ -24,7 +24,7 @@ namespace Grupp_31_SystemUtveckling
 
         public Map ReadMapFile(string fileName)
         {
-            StreamReader streamReader = new StreamReader(fileName + ".txt");
+            StreamReader streamReader = new StreamReader("Content\\Maps\\" + fileName + ".txt");
             Player player;
             Map map = new Map();
             while (!streamReader.EndOfStream)

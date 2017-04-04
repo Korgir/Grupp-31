@@ -30,7 +30,7 @@ namespace Grupp_31_SystemUtveckling
             IsMouseVisible = true;
             graphics.PreferredBackBufferWidth = 1920;
             graphics.PreferredBackBufferHeight = 1080;
-            graphics.IsFullScreen = true;
+            graphics.IsFullScreen = false;
             graphics.ApplyChanges();
         }
         
