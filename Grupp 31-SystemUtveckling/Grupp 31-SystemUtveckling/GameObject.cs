@@ -12,7 +12,7 @@ namespace Grupp_31_SystemUtveckling
 {
     public class GameObject
     {
-        protected Vector2 position;
+        public Vector2 position;
         public Texture2D texture;
 
         public GameObject(Texture2D texture, Vector2 position)

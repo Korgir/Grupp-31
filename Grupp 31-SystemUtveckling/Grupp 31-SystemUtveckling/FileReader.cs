@@ -12,7 +12,7 @@ namespace Grupp_31_SystemUtveckling
 {
     class FileReader
     {
-        Tile[,] tiles;
+        Tile[,] tileArray;
         List<string> strings = new List<string>();
         Game1 game;
         string fileName;
@@ -33,21 +33,21 @@ namespace Grupp_31_SystemUtveckling
             }
             streamReader.Close();
 
-            tiles = new Tile[strings[0].Length, strings.Count];
-            for (int i = 0; i < tiles.GetLength(0); i++)
+            tileArray = new Tile[strings[0].Length, strings.Count];
+            for (int i = 0; i < tileArray.GetLength(0); i++)
             {
-                for (int j = 0; j < tiles.GetLength(1); j++)
+                for (int j = 0; j < tileArray.GetLength(1); j++)
                 {
                     if (strings[j][i] == 'w')
                     {
                         Texture2D tileTexture = Archive.textureDictionary["tile"];
-                        tiles[i, j] = new Tile(tileTexture, new Vector2(tileTexture.Width * i, tileTexture.Height * j), false);
+                        tileArray[i, j] = new Tile(tileTexture, new Vector2(tileTexture.Width * i, tileTexture.Height * j), false);
                     }
 
                     if (strings[j][i] == 'd')
                     {
                         Texture2D tileTexture = Archive.textureDictionary["tileDoor"];
-                        tiles[i, j] = new Tile(tileTexture, new Vector2(tileTexture.Width * i, tileTexture.Height * j), false);
+                        tileArray[i, j] = new Tile(tileTexture, new Vector2(tileTexture.Width * i, tileTexture.Height * j), false);
                         int doorPosX = tileTexture.Width * i;
                         int doorPosY = tileTexture.Height * j;
                         map.SetDoorPostX(doorPosX);
@@ -58,7 +58,7 @@ namespace Grupp_31_SystemUtveckling
                     {
                         Texture2D tileTexture = Archive.textureDictionary["tile"];
                         player = new Player(Archive.textureDictionary["playerPlaceholder"], new Vector2(tileTexture.Width * i, tileTexture.Height * j));
-                        tiles[i, j] = new Tile(tileTexture, new Vector2(tileTexture.Width * i, tileTexture.Height * j), true);
+                        tileArray[i, j] = new Tile(tileTexture, new Vector2(tileTexture.Width * i, tileTexture.Height * j), true);
                         map.SetPlayer(player);
                         player.SetMap(map);
 
@@ -66,8 +66,45 @@ namespace Grupp_31_SystemUtveckling
                 }
             }
 
-            map.SetTiles(tiles);
+            map.SetTiles(tileArray);
             return map;
         }
+
+        //public Map readMap(string mapname)
+        //{
+        //    StreamReader sr = new StreamReader(mapname + ".txt");
+        //    Map map = new Map();
+
+        //    while (!sr.EndOfStream)
+        //    {
+        //        string mapValue = sr.ReadLine();
+        //        string[] stringArray = mapValue.Split(';');
+
+        //        switch (stringArray[0])
+        //        {
+        //            case "tile":
+        //                int xPos = Int32.Parse(stringArray[2]);
+        //                int yPos = Int32.Parse(stringArray[3]);
+        //                Texture2D Tex = Archive.textureDictionary[stringArray[1]];
+        //                bool canWalk = bool.Parse(stringArray[4]);
+        //                tileArray[xPos / 32, yPos / 32] = new Tile(Tex, new Vector2(xPos, yPos), canWalk);
+
+        //                break;
+        //            case "item":
+
+        //                break;
+
+        //            case "player":
+
+        //                break;
+        //        }
+
+        //    }
+        //    sr.Close();
+        //        map.SetTiles(tileArray);
+        //        return map;
+        //}
+
+
     }
 }

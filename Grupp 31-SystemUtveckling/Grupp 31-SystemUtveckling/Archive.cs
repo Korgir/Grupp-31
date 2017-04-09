@@ -25,10 +25,16 @@ namespace Grupp_31_SystemUtveckling
             textureDictionary["playerPlaceholder"] = Content.Load<Texture2D>("cool bild transparent");
             textureDictionary["resourceBarFrame"] = Content.Load<Texture2D>("resourceBarFrame");
             textureDictionary["resourceBarFilling"] = Content.Load<Texture2D>("resourceBarFilling");
-            textureDictionary["tile"] = Content.Load<Texture2D>("Tile");
+            textureDictionary["tile"] = Content.Load<Texture2D>("TilePlaceHolder");
             textureDictionary["tileDoor"] = Content.Load<Texture2D>("TileDoor");
+            textureDictionary["tilegrass"] = Content.Load<Texture2D>("grassTex");
             textureDictionary["warriorCombat"] = Content.Load<Texture2D>("Enemies\\playerCombatTest");
             textureDictionary["warriorCombatOutline"] = Content.Load<Texture2D>("Enemies\\Outline\\playerCombatTestOutline");
+            textureDictionary["WalkTilePlaceholder"] = Content.Load<Texture2D>("T");
+            textureDictionary["WallTIlePlaceholder"] = Content.Load<Texture2D>("W");
+            textureDictionary["SavePlaceholder"] = Content.Load<Texture2D>("Save");
+            textureDictionary["tilegrass"] = Content.Load<Texture2D>("grassTex");
+            textureDictionary["EditorTile"] = Content.Load<Texture2D>("TilePlaceHolder2");
 
             fontDictionary["defaultFont"] = Content.Load<SpriteFont>("font");
         }

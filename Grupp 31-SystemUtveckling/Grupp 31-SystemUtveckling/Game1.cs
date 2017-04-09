@@ -11,7 +11,7 @@ namespace Grupp_31_SystemUtveckling
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        enum GameState { Menus = 0, World = 1, Combat = 2 };
+        enum GameState { Menus = 0, World = 1, Combat = 2, WorldEditor = 3};
 
         GameState currentGameState;
         List<Character> char1;// Safe to remove. Only for testing purpose
@@ -20,10 +20,12 @@ namespace Grupp_31_SystemUtveckling
         List<string> strings = new List<string>();
         FileReader fileReader;
         Map map;
+        MapEditor mapEditor;
         string fileName;
 
         public Game1()
         {
+            Console.WriteLine("con");
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
@@ -36,11 +38,13 @@ namespace Grupp_31_SystemUtveckling
         
         protected override void Initialize()
         {
-            currentGameState = GameState.Combat;
+            Console.WriteLine("init");
+            Archive.Initialize(Content);
+            currentGameState = GameState.WorldEditor;
 
             char1 = new List<Character>(); // Safe to remove. Only for testing purpose
             char2 = new List<Character>(); // Safe to remove. Only for testing purpose
-
+            mapEditor = new MapEditor();
             base.Initialize();
             char1.Add(new Character(Archive.textureDictionary["warriorCombat"], Archive.textureDictionary["warriorCombatOutline"], 
                 Vector2.Zero, true, "Warrior", 100, 4, 4, 6, 15, 10, 100, 5, 70)); // Safe to remove. Only for testing purpose
@@ -57,7 +61,8 @@ namespace Grupp_31_SystemUtveckling
 
         protected override void LoadContent()
         {
-            Archive.Initialize(Content);
+            Console.WriteLine("load");
+            
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
         }
@@ -85,12 +90,16 @@ namespace Grupp_31_SystemUtveckling
                     fileName = map.ZoneSwitch();
                     if (fileName != null)
                     {
-                        map = fileReader.ReadMapFile(fileName);
+                        map = fileReader.ReadMapFile(fileName);                     
                     }
                     break;
 
                 case (GameState.Combat):
                     combat.Update(gameTime);// Safe to remove. Only for testing purpose
+                    break;
+
+                case (GameState.WorldEditor):
+                    mapEditor.Update();
                     break;
             }
 
@@ -114,6 +123,10 @@ namespace Grupp_31_SystemUtveckling
 
                 case (GameState.Combat):
                     combat.Draw(spriteBatch);// Safe to remove. Only for testing purpose
+                    break;
+
+                case (GameState.WorldEditor):
+                    mapEditor.Draw(spriteBatch);
                     break;
             }
 
