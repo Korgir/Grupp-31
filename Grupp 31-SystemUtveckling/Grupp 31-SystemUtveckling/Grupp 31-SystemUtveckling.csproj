@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Archive.cs" />
+    <Compile Include="Button.cs" />
     <Compile Include="CombatRelated\Character.cs" />
     <Compile Include="CombatRelated\Combat.cs" />
     <Compile Include="CombatRelated\HealthBar.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Spells\SpellFireball.cs" />
     <Compile Include="Spells\SpellStab.cs" />
     <Compile Include="Spells\TargetSpell.cs" />
+    <Compile Include="StartMenu.cs" />
     <Compile Include="Tile.cs" />
   </ItemGroup>
   <ItemGroup>

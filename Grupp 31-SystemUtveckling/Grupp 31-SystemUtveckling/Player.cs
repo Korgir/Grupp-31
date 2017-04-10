@@ -23,11 +23,14 @@ namespace Grupp_31_SystemUtveckling
         {
             Vector2 newDestination = position + dir * 50.0f;
             //check if we cna move in the desired direction, if not, do nothing
-            if (!map.GetTileAtPosition(newDestination).Wall)
+            if (map.GetTileAtPosition(newDestination) != null)
             {
-                direction = dir;
-                destination = newDestination;
-                moving = true;
+                if (!map.GetTileAtPosition(newDestination).Wall)
+                {
+                    direction = dir;
+                    destination = newDestination;
+                    moving = true;
+                }
             }
         }
 

@@ -59,7 +59,18 @@ namespace Grupp_31_SystemUtveckling
 
         public Tile GetTileAtPosition(Vector2 vec)
         {
-            return tiles[(int)vec.X / 50, (int)vec.Y / 50];
+            int indexPositionX = (int)vec.X / 50;
+            int indexPositionY = (int)vec.Y / 50;
+
+            if (indexPositionX >= 0 && indexPositionX < tiles.GetLength(0))
+            {
+                if (indexPositionY >= 0 && indexPositionY < tiles.GetLength(1))
+                {
+                    return tiles[indexPositionX, indexPositionY];
+                }
+            }
+
+            return null;
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)

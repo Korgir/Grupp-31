@@ -11,9 +11,10 @@ namespace Grupp_31_SystemUtveckling
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        enum GameState { Menus = 0, World = 1, Combat = 2, WorldEditor = 3};
+        public enum GameState { Menus = 0, World = 1, Combat = 2, WorldEditor = 3};
 
-        GameState currentGameState;
+        public GameState currentGameState;
+        StartMenu startMenu;
         List<Character> char1;// Safe to remove. Only for testing purpose
         List<Character> char2;// Safe to remove. Only for testing purpose
         Combat combat;// Safe to remove. Only for testing purpose
@@ -40,8 +41,10 @@ namespace Grupp_31_SystemUtveckling
         {
             Console.WriteLine("init");
             Archive.Initialize(Content);
-            currentGameState = GameState.WorldEditor;
+            currentGameState = GameState.Menus;
 
+            startMenu = new StartMenu(Archive.textureDictionary["tile"], Archive.textureDictionary["tile"], 
+                Archive.textureDictionary["tile"], Archive.fontDictionary["defaultFont"], this, GraphicsDevice);
             char1 = new List<Character>(); // Safe to remove. Only for testing purpose
             char2 = new List<Character>(); // Safe to remove. Only for testing purpose
             mapEditor = new MapEditor();
@@ -83,6 +86,7 @@ namespace Grupp_31_SystemUtveckling
             switch (currentGameState)
             {
                 case (GameState.Menus):
+                    startMenu.Update();
                     break;
 
                 case (GameState.World):
@@ -115,6 +119,7 @@ namespace Grupp_31_SystemUtveckling
             switch (currentGameState)
             {
                 case (GameState.Menus):
+                    startMenu.Draw(spriteBatch);
                     break;
 
                 case (GameState.World):
