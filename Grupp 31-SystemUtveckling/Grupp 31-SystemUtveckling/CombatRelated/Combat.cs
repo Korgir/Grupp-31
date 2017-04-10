@@ -12,6 +12,7 @@ namespace Grupp_31_SystemUtveckling
     class Combat
     {
         public bool active;
+        public Texture2D scenaryTexture;
         protected List<Character> allCharacters;
         protected List<Character> team1;
         protected List<Character> team2;
@@ -32,6 +33,7 @@ namespace Grupp_31_SystemUtveckling
         public Combat(List<Character> team1, List<Character> team2)
         {
             active = true;
+            this.scenaryTexture = Archive.textureDictionary["combatScenary"];
             this.team1 = team1;
             this.team2 = team2;
             allCharacters = new List<Character>();
@@ -347,6 +349,7 @@ namespace Grupp_31_SystemUtveckling
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            spriteBatch.Draw(scenaryTexture, Vector2.Zero, Color.White);
             int offsettingString = 80; // Remove later only test
             spriteBatch.DrawString(Archive.fontDictionary["defaultFont"], "Press 1 for normal attack and 2 for fireball attack.", new Vector2(0, 64), Color.Purple);
             spriteBatch.DrawString(Archive.fontDictionary["defaultFont"], "Active: " + active +  "; State: " + currentState, new Vector2(0, offsettingString), Color.Red);

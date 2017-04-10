@@ -21,7 +21,7 @@ namespace Grupp_31_SystemUtveckling
         //behöver fixas
         private void ChangeDirection(Vector2 dir)
         {
-            Vector2 newDestination = position + dir * 50.0f;
+            Vector2 newDestination = position + dir * Archive.tileSize;
             //check if we cna move in the desired direction, if not, do nothing
             if (map.GetTileAtPosition(newDestination) != null)
             {

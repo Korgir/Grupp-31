@@ -63,6 +63,8 @@ namespace Grupp_31_SystemUtveckling
                     {
                         Texture2D tileTexture = Archive.textureDictionary["tile"];
                         player = new Player(Archive.textureDictionary["playerPlaceholder"], new Vector2(tileTexture.Width * i, tileTexture.Height * j));
+                        player.team.Add(new Character(Archive.textureDictionary["warriorCombat"], Archive.textureDictionary["warriorCombatOutline"],
+                            Vector2.Zero, true, "Warrior", 100, 4, 4, 6, 15, 10, 100, 5, 70));
                         tileArray[i, j] = new Tile(tileTexture, new Vector2(tileTexture.Width * i, tileTexture.Height * j), true);
                         map.SetPlayer(player);
                         player.SetMap(map);
@@ -73,11 +75,11 @@ namespace Grupp_31_SystemUtveckling
                     {
                         Texture2D tileTexture = Archive.textureDictionary["tile"];
                         enemy = new Enemy(Archive.textureDictionary["playerPlaceholder"], new Vector2(tileTexture.Width * i, tileTexture.Height * j));
+                        enemy.team.Add(new Character(Archive.textureDictionary["owlbearCombat"], Archive.textureDictionary["owlbearCombatOutline"],
+                            Vector2.Zero, false, "Owlbear", 100, 3, 5, 3, 12, 10, 100, 5, 80));
                         tileArray[i, j] = new Tile(tileTexture, new Vector2(tileTexture.Width * i, tileTexture.Height * j), false);
                         map.SetEnemy(enemy);
                         enemy.SetMap(map);
-
-
                     }
                 }
             }
@@ -86,11 +88,11 @@ namespace Grupp_31_SystemUtveckling
             return map;
         }
 
-        public bool EngageCombatBool()
+        public bool EngageCombatBool(ref Combat combat)
         {
-            if (entity.EngageCombat(player, enemy) == true)
+            if (entity.EngageCombat(player, enemy) && enemy.IsTeamAlive())
             {
-
+                combat = new Combat(player.team, enemy.team);
                 return true;
             }
             return false;

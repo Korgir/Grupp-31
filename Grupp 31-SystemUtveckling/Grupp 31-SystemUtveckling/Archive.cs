@@ -13,6 +13,7 @@ namespace Grupp_31_SystemUtveckling
         public static Dictionary<string, Texture2D> textureDictionary = new Dictionary<string, Texture2D>();
         public static Dictionary<string, SpriteFont> fontDictionary = new Dictionary<string, SpriteFont>();
         public static Random randomizer = new Random();
+        public static int tileSize = 32;
 
         public static void Initialize(ContentManager Content)
         {
@@ -23,14 +24,14 @@ namespace Grupp_31_SystemUtveckling
             textureDictionary["menuBackground"] = Content.Load<Texture2D>("menuBackground");
             textureDictionary["menuHeader"] = Content.Load<Texture2D>("menuHeader");
             textureDictionary["button"] = Content.Load<Texture2D>("button");
+            textureDictionary["combatScenary"] = Content.Load<Texture2D>("combatScenary");
             textureDictionary["owlbearCombat"] = Content.Load<Texture2D>("Enemies\\enemyCombatTest");
             textureDictionary["owlbearCombatOutline"] = Content.Load<Texture2D>("Enemies\\Outline\\enemyCombatTestOutline");
-            textureDictionary["playerPlaceholder"] = Content.Load<Texture2D>("cool bild transparent");
+            textureDictionary["playerPlaceholder"] = Content.Load<Texture2D>("cool bild transparent fixed");
             textureDictionary["resourceBarFrame"] = Content.Load<Texture2D>("resourceBarFrame");
             textureDictionary["resourceBarFilling"] = Content.Load<Texture2D>("resourceBarFilling");
             textureDictionary["tile"] = Content.Load<Texture2D>("TilePlaceHolder");
             textureDictionary["tileDoor"] = Content.Load<Texture2D>("TileDoor");
-            textureDictionary["tilegrass"] = Content.Load<Texture2D>("grassTex");
             textureDictionary["warriorCombat"] = Content.Load<Texture2D>("Enemies\\playerCombatTest");
             textureDictionary["warriorCombatOutline"] = Content.Load<Texture2D>("Enemies\\Outline\\playerCombatTestOutline");
             textureDictionary["WalkTilePlaceholder"] = Content.Load<Texture2D>("T");

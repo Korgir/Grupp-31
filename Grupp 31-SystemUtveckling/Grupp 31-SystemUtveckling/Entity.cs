@@ -15,7 +15,7 @@ namespace Grupp_31_SystemUtveckling
         protected float rotation;
         protected Vector2 destination;
         protected Vector2 direction;
-        protected float speed = 250.0f;
+        protected float speed = 200.0f;
         protected bool moving = false;
 
         protected Rectangle spriteRectangle;
@@ -38,7 +38,7 @@ namespace Grupp_31_SystemUtveckling
             position += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             objectRectangle.X = (int)position.X;
             objectRectangle.Y = (int)position.Y;
-            if (Vector2.Distance(position, destination) < 1)
+            if (Vector2.Distance(position, destination) < 2)
             {
                 position = destination;
                 objectRectangle.X = (int)position.X;
@@ -55,10 +55,27 @@ namespace Grupp_31_SystemUtveckling
             objectRectangle.Y = (int)position.Y;
         }
 
+        public bool IsTeamAlive()
+        {
+            int aliveCharactersCount = team.Count;
+            foreach (Character c in team)
+            {
+                if (!c.alive)
+                {
+                    aliveCharactersCount--;
+                }
+            }
+            if (aliveCharactersCount > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public bool EngageCombat(Player player, Enemy enemy)
         {
-            int distanceX = (int)(enemy.position.X - (int)player.position.X) / 32;
-            int distanceY = (int)(enemy.position.Y - (int)player.position.Y) / 32;
+            int distanceX = (int)(enemy.position.X - (int)player.position.X) / Archive.tileSize;
+            int distanceY = (int)(enemy.position.Y - (int)player.position.Y) / Archive.tileSize;
             if (distanceX <= 2 && distanceX >= -2 && distanceY <= 2 && distanceY >= -2)
             {
                 return true;

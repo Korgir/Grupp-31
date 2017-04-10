@@ -66,8 +66,8 @@ namespace Grupp_31_SystemUtveckling
 
         public Tile GetTileAtPosition(Vector2 vec)
         {
-            int indexPositionX = (int)vec.X / 50;
-            int indexPositionY = (int)vec.Y / 50;
+            int indexPositionX = (int)vec.X / Archive.tileSize;
+            int indexPositionY = (int)vec.Y / Archive.tileSize;
 
             if (indexPositionX >= 0 && indexPositionX < tiles.GetLength(0))
             {

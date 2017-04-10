@@ -15,9 +15,9 @@ namespace Grupp_31_SystemUtveckling
 
         public GameState currentGameState;
         StartMenu startMenu;
-        List<Character> char1;// Safe to remove. Only for testing purpose
-        List<Character> char2;// Safe to remove. Only for testing purpose
-        Combat combat;// Safe to remove. Only for testing purpose
+        //List<Character> char1;// Safe to remove. Only for testing purpose
+        //List<Character> char2;// Safe to remove. Only for testing purpose
+        Combat combat;
         List<string> strings = new List<string>();
         FileReader fileReader;
         Map map;
@@ -39,24 +39,17 @@ namespace Grupp_31_SystemUtveckling
         
         protected override void Initialize()
         {
+            base.Initialize();
             Console.WriteLine("init");
-            Archive.Initialize(Content);
-            currentGameState = GameState.Combat;
+            
+            currentGameState = GameState.Menus;
 
             startMenu = new StartMenu(Archive.textureDictionary["menuBackground"], Archive.textureDictionary["menuHeader"], 
                 Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], this, GraphicsDevice);
-            char1 = new List<Character>(); // Safe to remove. Only for testing purpose
-            char2 = new List<Character>(); // Safe to remove. Only for testing purpose
+
+            combat = new Combat(new List<Character>(), new List<Character>());
+
             mapEditor = new MapEditor();
-            base.Initialize();
-            char1.Add(new Character(Archive.textureDictionary["warriorCombat"], Archive.textureDictionary["warriorCombatOutline"], 
-                Vector2.Zero, true, "Warrior", 100, 4, 4, 6, 15, 10, 100, 5, 70)); // Safe to remove. Only for testing purpose
-            for (int i = 3; i > 0; i--)
-            {
-                char2.Add(new Character(Archive.textureDictionary["owlbearCombat"], Archive.textureDictionary["owlbearCombatOutline"],
-                    Vector2.Zero, false, "Owlbear", 100, 3, 5, 3, 12, 10, 100, 5, 80)); // Safe to remove. Only for testing purpose
-            }
-            combat = new Combat(char1, char2); // Safe to remove. Only for testing purpose
             fileReader = new FileReader(this);
             fileName = "map";
             map = fileReader.ReadMapFile(fileName);
@@ -65,8 +58,7 @@ namespace Grupp_31_SystemUtveckling
         protected override void LoadContent()
         {
             Console.WriteLine("load");
-            
-
+            Archive.Initialize(Content);
             spriteBatch = new SpriteBatch(GraphicsDevice);
         }
         
@@ -97,14 +89,18 @@ namespace Grupp_31_SystemUtveckling
                         map = fileReader.ReadMapFile(fileName);                     
                     }
 
-                    if (fileReader.EngageCombatBool() == true)
+                    if (fileReader.EngageCombatBool(ref combat) == true)
                     {
                         currentGameState = GameState.Combat;
                     }
                     break;
 
                 case (GameState.Combat):
-                    combat.Update(gameTime);// Safe to remove. Only for testing purpose
+                    combat.Update(gameTime);
+                    if (!combat.active)
+                    {
+                        currentGameState = GameState.World;
+                    }
                     break;
 
                 case (GameState.WorldEditor):
@@ -132,7 +128,7 @@ namespace Grupp_31_SystemUtveckling
                     break;
 
                 case (GameState.Combat):
-                    combat.Draw(spriteBatch);// Safe to remove. Only for testing purpose
+                    combat.Draw(spriteBatch);
                     break;
 
                 case (GameState.WorldEditor):
