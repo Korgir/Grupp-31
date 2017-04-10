@@ -16,10 +16,13 @@ namespace Grupp_31_SystemUtveckling
 
         public static void Initialize(ContentManager Content)
         {
-            // Order alphabetically
+            // Order alphabetically Kappa
             // textureDictionary["name"] = Content.Load<Texture2D>("name_in_content_manager");
             // ex. textureDictionary["tile_stone"] = Content.Load<Texture2D>("Tiles\tile_stone");
             textureDictionary["uiCombat"] = Content.Load<Texture2D>("combatUITemplate");
+            textureDictionary["menuBackground"] = Content.Load<Texture2D>("menuBackground");
+            textureDictionary["menuHeader"] = Content.Load<Texture2D>("menuHeader");
+            textureDictionary["button"] = Content.Load<Texture2D>("button");
             textureDictionary["owlbearCombat"] = Content.Load<Texture2D>("Enemies\\enemyCombatTest");
             textureDictionary["owlbearCombatOutline"] = Content.Load<Texture2D>("Enemies\\Outline\\enemyCombatTestOutline");
             textureDictionary["playerPlaceholder"] = Content.Load<Texture2D>("cool bild transparent");

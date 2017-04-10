@@ -32,11 +32,11 @@ namespace Grupp_31_SystemUtveckling
             buttonHeight = 75;
             headerPosition = new Vector2(graphicsDevice.Viewport.Width / 2 - (headerTexture.Width / 2), 300);
             buttonList = new List<Button>();
-            buttonList.Add(new Button(new Rectangle(graphicsDevice.Viewport.Width / 2 - (buttonWidth / 2), 350, 
+            buttonList.Add(new Button(new Rectangle(graphicsDevice.Viewport.Width / 2 - (buttonWidth / 2), 450, 
                 buttonWidth, buttonHeight), buttonTexture, font, "Play"));
-            buttonList.Add(new Button(new Rectangle(graphicsDevice.Viewport.Width / 2 - (buttonWidth / 2), 450,
-                buttonWidth, buttonHeight), buttonTexture, font, "Editor"));
             buttonList.Add(new Button(new Rectangle(graphicsDevice.Viewport.Width / 2 - (buttonWidth / 2), 550,
+                buttonWidth, buttonHeight), buttonTexture, font, "Editor"));
+            buttonList.Add(new Button(new Rectangle(graphicsDevice.Viewport.Width / 2 - (buttonWidth / 2), 650,
                 buttonWidth, buttonHeight), buttonTexture, font, "Quit"));
         }
 

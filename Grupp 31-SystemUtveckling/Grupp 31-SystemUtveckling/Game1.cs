@@ -41,10 +41,10 @@ namespace Grupp_31_SystemUtveckling
         {
             Console.WriteLine("init");
             Archive.Initialize(Content);
-            currentGameState = GameState.Menus;
+            currentGameState = GameState.Combat;
 
-            startMenu = new StartMenu(Archive.textureDictionary["tile"], Archive.textureDictionary["tile"], 
-                Archive.textureDictionary["tile"], Archive.fontDictionary["defaultFont"], this, GraphicsDevice);
+            startMenu = new StartMenu(Archive.textureDictionary["menuBackground"], Archive.textureDictionary["menuHeader"], 
+                Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], this, GraphicsDevice);
             char1 = new List<Character>(); // Safe to remove. Only for testing purpose
             char2 = new List<Character>(); // Safe to remove. Only for testing purpose
             mapEditor = new MapEditor();
