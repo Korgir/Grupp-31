@@ -23,12 +23,12 @@ namespace Grupp_31_SystemUtveckling
 
         public List<Character> team;
 
-        public Entity(Texture2D texture, Vector2 position, Rectangle spriteRectangle, Rectangle objectRectangle)
+        public Entity(Texture2D texture, Vector2 position/*, Rectangle spriteRectangle, Rectangle objectRectangle*/)
         {
             this.texture = texture;
             this.position = position;
-            this.spriteRectangle = spriteRectangle;
-            this.objectRectangle = objectRectangle;
+            //this.spriteRectangle = spriteRectangle;
+            //this.objectRectangle = objectRectangle;
 
             this.team = new List<Character>();
         }
@@ -53,6 +53,17 @@ namespace Grupp_31_SystemUtveckling
             moving = false;
             objectRectangle.X = (int)position.X;
             objectRectangle.Y = (int)position.Y;
+        }
+
+        public bool EngageCombat(Player player, Enemy enemy)
+        {
+            int distanceX = (int)(enemy.position.X - (int)player.position.X) / 32;
+            int distanceY = (int)(enemy.position.Y - (int)player.position.Y) / 32;
+            if (distanceX <= 2 && distanceX >= -2 && distanceY <= 2 && distanceY >= -2)
+            {
+                return true;
+            }
+            return false;
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)

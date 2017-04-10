@@ -14,6 +14,7 @@ namespace Grupp_31_SystemUtveckling
         Tile[,] tiles;
         int doorPosY;
         int doorPosX;
+        Enemy enemy;
 
         public Map()
         {
@@ -35,6 +36,12 @@ namespace Grupp_31_SystemUtveckling
         public void SetPlayer(Player player)
         {
             this.player = player;
+        }
+
+        public void SetEnemy(Enemy enemy)
+        {
+            this.enemy = enemy;
+
         }
 
         public void SetDoorPosY(int doorPosY)
@@ -81,6 +88,7 @@ namespace Grupp_31_SystemUtveckling
             }
 
             player.Draw(spriteBatch);
+            enemy.Draw(spriteBatch);
         }
     }
 }

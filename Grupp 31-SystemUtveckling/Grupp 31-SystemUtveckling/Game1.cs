@@ -96,6 +96,11 @@ namespace Grupp_31_SystemUtveckling
                     {
                         map = fileReader.ReadMapFile(fileName);                     
                     }
+
+                    if (fileReader.EngageCombatBool() == true)
+                    {
+                        currentGameState = GameState.Combat;
+                    }
                     break;
 
                 case (GameState.Combat):

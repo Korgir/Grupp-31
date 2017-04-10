@@ -14,7 +14,7 @@ namespace Grupp_31_SystemUtveckling
         Map map;
 
         public Player(Texture2D tex, Vector2 pos) : 
-            base(tex, pos, new Rectangle(0, 0, tex.Width / 4, tex.Height), new Rectangle((int)pos.X, (int)pos.Y, tex.Width / 4, tex.Height))
+            base(tex, pos/*, new Rectangle(0, 0, tex.Width / 4, tex.Height), new Rectangle((int)pos.X, (int)pos.Y, tex.Width / 4, tex.Height)*/)
         {
         }
 

@@ -16,16 +16,21 @@ namespace Grupp_31_SystemUtveckling
         List<string> strings = new List<string>();
         Game1 game;
         string fileName;
+        Entity entity;
+        Texture2D texPH;
+        Vector2 posPH;
+        Player player;
+        Enemy enemy;
 
         public FileReader(Game1 game)
         {
             this.game = game;
+            entity = new Entity(texPH, posPH);
         }
 
         public Map ReadMapFile(string fileName)
         {
-            StreamReader streamReader = new StreamReader("Content\\Maps\\" + fileName + ".txt");
-            Player player;
+            StreamReader streamReader = new StreamReader("Content\\Maps\\" + fileName + ".txt");            
             Map map = new Map();
             while (!streamReader.EndOfStream)
             {
@@ -63,11 +68,32 @@ namespace Grupp_31_SystemUtveckling
                         player.SetMap(map);
 
                     }
+
+                    if (strings[j][i] == 'e')
+                    {
+                        Texture2D tileTexture = Archive.textureDictionary["tile"];
+                        enemy = new Enemy(Archive.textureDictionary["playerPlaceholder"], new Vector2(tileTexture.Width * i, tileTexture.Height * j));
+                        tileArray[i, j] = new Tile(tileTexture, new Vector2(tileTexture.Width * i, tileTexture.Height * j), false);
+                        map.SetEnemy(enemy);
+                        enemy.SetMap(map);
+
+
+                    }
                 }
             }
 
             map.SetTiles(tileArray);
             return map;
+        }
+
+        public bool EngageCombatBool()
+        {
+            if (entity.EngageCombat(player, enemy) == true)
+            {
+
+                return true;
+            }
+            return false;
         }
 
         //public Map readMap(string mapname)

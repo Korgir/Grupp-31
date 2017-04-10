@@ -14,16 +14,21 @@ namespace Grupp_31_SystemUtveckling
         //Enemy ska röra sig i ett mönster. Man ska gå in i combat när Player går inom en viss radius från Enemy.
 
         Game1 game;
-
+        Map map;
         Random rand;
 
         protected Rectangle enemyRec;
 
-        public Enemy(Texture2D texture, Vector2 position, Rectangle sprRec, Rectangle objRec) : base(texture, position, sprRec, objRec)
+        public Enemy(Texture2D texture, Vector2 position/*, Rectangle sprRec, Rectangle objRec*/) : base(texture, position/*, sprRec, objRec*/)
         {
             this.enemyRec = new Rectangle((int)position.X, (int)position.Y, texture.Width / 4, texture.Height);
             rand = new Random();
             this.game = game;
+        }
+
+        public void SetMap(Map map)
+        {
+            this.map = map;
         }
 
         //private void ChangeDirection(Vector2 dir)
@@ -47,15 +52,5 @@ namespace Grupp_31_SystemUtveckling
 
         }
 
-        //Komma på nåt bra namn. Ska inte vara här.
-        public void EngageCombat()
-        {
-            
-            //if (player-- > enemy)
-            //{
-            //    //change to GameState.Combat if requriments are met
-                
-            //}
-        }
     }
 }
