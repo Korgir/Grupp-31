@@ -17,10 +17,17 @@ namespace Grupp_31_SystemUtveckling
         Rectangle TRec;
         Rectangle WRec;
         Rectangle SRec;
+        Rectangle WalkTile1Rec;
+        Rectangle WalkTile2Rec;
 
         Vector2 Tpos;
         Vector2 Wpos;
         Vector2 Spos;
+        Vector2 WalkTile1pos;
+        Vector2 WalkTile2pos;
+
+        Texture2D WalkTileTex;
+        Texture2D WallTileTex;
 
         public MapEditor()
         {
@@ -29,9 +36,15 @@ namespace Grupp_31_SystemUtveckling
             TRec = new Rectangle(1512, 50, 100, 100);
             WRec = new Rectangle(1512, 250, 100, 100);
             SRec = new Rectangle(1512, 450, 100, 100);
+            WalkTile1Rec = new Rectangle(32, 864, 32, 32);
+            WalkTile2Rec = new Rectangle(32, 928, 32, 32);
             Tpos = new Vector2(1512, 50);
             Wpos = new Vector2(1512, 250);
             Spos = new Vector2(1512, 450);
+            WalkTile1pos = new Vector2(32, 864);
+            WalkTile2pos = new Vector2(32, 928);
+            WalkTileTex = Archive.textureDictionary["tile"];
+            WallTileTex = Archive.textureDictionary["tileDoor"];
 
             for (int i = 0; i < tileArray.GetLength(0); i++)
             {
@@ -84,6 +97,16 @@ namespace Grupp_31_SystemUtveckling
                 SaveMap();
             }
 
+            if(KeyMouseReader.LeftClick() && keyMouseRec.Intersects(WalkTile1Rec))
+            {
+                WalkTileTex = Archive.textureDictionary["EditorTile"];
+            }
+
+            if (KeyMouseReader.LeftClick() && keyMouseRec.Intersects(WalkTile2Rec))
+            {
+                WalkTileTex = Archive.textureDictionary["tile"];
+            }
+
             if (KeyMouseReader.LeftClick())
             {
                 int XValue = (int)(mousePos.X / 32f);
@@ -97,9 +120,9 @@ namespace Grupp_31_SystemUtveckling
                         if (i == XValue && j == YValue)
                         {
                             if (selectedTileType == 0)
-                                tileArray[i, j] = new Tile(Archive.textureDictionary["tileDoor"], new Vector2(i * 32, j * 32), false);
+                                tileArray[i, j] = new Tile(WallTileTex, new Vector2(i * 32, j * 32), true);
                             if (selectedTileType == 1)
-                                tileArray[i, j] = new Tile(Archive.textureDictionary["tile"], new Vector2(i * 32, j * 32), true);
+                                tileArray[i, j] = new Tile(WalkTileTex, new Vector2(i * 32, j * 32), false);
                         }
                     }
                 }
@@ -112,12 +135,19 @@ namespace Grupp_31_SystemUtveckling
             spriteBatch.Draw(Archive.textureDictionary["WalkTilePlaceholder"], Tpos, Color.White);
             spriteBatch.Draw(Archive.textureDictionary["WallTIlePlaceholder"], Wpos, Color.White);
             spriteBatch.Draw(Archive.textureDictionary["SavePlaceholder"], Spos, Color.White);
+            spriteBatch.Draw(Archive.textureDictionary["EditorTile"], WalkTile1pos, Color.White);
+            spriteBatch.Draw(Archive.textureDictionary["tile"], WalkTile2pos, Color.White);
             for (int i = 0; i < tileArray.GetLength(0); i++)
             {
                 //antal element i andra dimensionen
                 for (int j = 0; j < tileArray.GetLength(1); j++)
                     tileArray[i, j].Draw(spriteBatch);
             }
+
+        }
+
+        public void TileKeyBinds()
+        {
 
         }
     }
