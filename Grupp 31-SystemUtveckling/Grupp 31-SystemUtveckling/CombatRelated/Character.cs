@@ -163,7 +163,7 @@ namespace Grupp_31_SystemUtveckling
             }
             else
             {
-                spriteBatch.Draw(texture, position, null, Color.Red, 0.0f, 
+                spriteBatch.Draw(texture, position, null, Color.Red, 0.0f,
                     new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, SpriteEffects.None, 0);
             }
         }

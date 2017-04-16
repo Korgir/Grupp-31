@@ -38,8 +38,7 @@ static class KeyMouseReader
     {
         return mouseState.ScrollWheelValue < oldMouseState.ScrollWheelValue;
     }
-
-    //Should be called at beginning of Update in Game
+    
     public static void Update()
     {
         oldKeyState = keyState;

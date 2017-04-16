@@ -47,22 +47,22 @@ namespace Grupp_31_SystemUtveckling
             if (!moving)
             {
                 Console.WriteLine("test");
-                if (KeyMouseReader.KeyPressed(Keys.Left))
+                if (KeyMouseReader.KeyDown(Keys.Left))
                 {
                     ChangeDirection(new Vector2(-1, 0));
                     rotation = MathHelper.ToRadians(-180);
                 }
-                if (KeyMouseReader.KeyPressed(Keys.Right))
+                if (KeyMouseReader.KeyDown(Keys.Right))
                 {
                     ChangeDirection(new Vector2(1, 0));
                     rotation = MathHelper.ToRadians(0);
                 }
-                if (KeyMouseReader.KeyPressed(Keys.Up))
+                if (KeyMouseReader.KeyDown(Keys.Up))
                 {
                     ChangeDirection(new Vector2(0, -1));
                     rotation = MathHelper.ToRadians(-90);
                 }
-                if (KeyMouseReader.KeyPressed(Keys.Down))
+                if (KeyMouseReader.KeyDown(Keys.Down))
                 {
                     ChangeDirection(new Vector2(0, 1));
                     rotation = MathHelper.ToRadians(-270);

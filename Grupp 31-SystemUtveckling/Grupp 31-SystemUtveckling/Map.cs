@@ -89,6 +89,8 @@ namespace Grupp_31_SystemUtveckling
 
             player.Draw(spriteBatch);
             enemy.Draw(spriteBatch);
+
+            spriteBatch.Draw(Archive.textureDictionary["uiWorld"], Vector2.Zero, Color.White);
         }
     }
 }
