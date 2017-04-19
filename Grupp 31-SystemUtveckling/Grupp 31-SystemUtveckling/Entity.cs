@@ -15,7 +15,7 @@ namespace Grupp_31_SystemUtveckling
         protected float rotation;
         protected Vector2 destination;
         protected Vector2 direction;
-        protected float speed = 200.0f;
+        protected float speed = 100.0f;
         protected bool moving = false;
 
         protected Rectangle spriteRectangle;

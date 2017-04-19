@@ -12,10 +12,17 @@ namespace Grupp_31_SystemUtveckling
     class Player : Entity
     {
         Map map;
+        Animation animation;
 
         public Player(Texture2D tex, Vector2 pos) : 
             base(tex, pos/*, new Rectangle(0, 0, tex.Width / 4, tex.Height), new Rectangle((int)pos.X, (int)pos.Y, tex.Width / 4, tex.Height)*/)
         {
+            this.animation = new Animation(tex, 3, 4, 0.25f);
+            this.animation.AddAnimationLoop("walk_down", new Point(0, 0), new Point(2, 0));
+            this.animation.AddAnimationLoop("walk_right", new Point(0, 1), new Point(2, 1));
+            this.animation.AddAnimationLoop("walk_left", new Point(0, 2), new Point(2, 2));
+            this.animation.AddAnimationLoop("walk_up", new Point(0, 3), new Point(2, 3));
+            this.animation.ChangeAnimationLoop("walk_down");
         }
 
         //behöver fixas
@@ -49,29 +56,39 @@ namespace Grupp_31_SystemUtveckling
                 Console.WriteLine("test");
                 if (KeyMouseReader.KeyDown(Keys.Left))
                 {
+                    this.animation.ChangeAnimationLoop("walk_left");
                     ChangeDirection(new Vector2(-1, 0));
                     rotation = MathHelper.ToRadians(-180);
                 }
                 if (KeyMouseReader.KeyDown(Keys.Right))
                 {
+                    this.animation.ChangeAnimationLoop("walk_right");
                     ChangeDirection(new Vector2(1, 0));
                     rotation = MathHelper.ToRadians(0);
                 }
                 if (KeyMouseReader.KeyDown(Keys.Up))
                 {
+                    this.animation.ChangeAnimationLoop("walk_up");
                     ChangeDirection(new Vector2(0, -1));
                     rotation = MathHelper.ToRadians(-90);
                 }
                 if (KeyMouseReader.KeyDown(Keys.Down))
                 {
+                    this.animation.ChangeAnimationLoop("walk_down");
                     ChangeDirection(new Vector2(0, 1));
                     rotation = MathHelper.ToRadians(-270);
                 }
             }
             else
             {
+                animation.Update(gameTime);
                 Move(gameTime);
             }
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            animation.Draw(spriteBatch, this.position);
         }
     }
 }

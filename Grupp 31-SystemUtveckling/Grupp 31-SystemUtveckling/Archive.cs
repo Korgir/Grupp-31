@@ -25,9 +25,9 @@ namespace Grupp_31_SystemUtveckling
             textureDictionary["EditorTile"] = Content.Load<Texture2D>("TilePlaceHolder2");
             textureDictionary["menuBackground"] = Content.Load<Texture2D>("menuBackground");
             textureDictionary["menuHeader"] = Content.Load<Texture2D>("menuHeader");
-            textureDictionary["owlbearCombat"] = Content.Load<Texture2D>("Enemies\\enemyCombatTest");
-            textureDictionary["owlbearCombatOutline"] = Content.Load<Texture2D>("Enemies\\Outline\\enemyCombatTestOutline");
-            textureDictionary["playerPlaceholder"] = Content.Load<Texture2D>("cool bild transparent fixed");
+            textureDictionary["owlbearCombat"] = Content.Load<Texture2D>("Enemies\\daggerShadowBeastCombat");
+            textureDictionary["owlbearCombatOutline"] = Content.Load<Texture2D>("Enemies\\Outline\\daggerShadowBeastCombatOutline");
+            textureDictionary["playerPlaceholder"] = Content.Load<Texture2D>("CharacterSpriteSheet");
             textureDictionary["resourceBarFilling"] = Content.Load<Texture2D>("resourceBarFilling");
             textureDictionary["resourceBarFrame"] = Content.Load<Texture2D>("resourceBarFrame");
             textureDictionary["SavePlaceholder"] = Content.Load<Texture2D>("Save");
@@ -38,8 +38,8 @@ namespace Grupp_31_SystemUtveckling
             textureDictionary["uiWorld"] = Content.Load<Texture2D>("UIBasePlaceholder");
             textureDictionary["WallTIlePlaceholder"] = Content.Load<Texture2D>("W");
             textureDictionary["WalkTilePlaceholder"] = Content.Load<Texture2D>("T");
-            textureDictionary["warriorCombat"] = Content.Load<Texture2D>("Enemies\\playerCombatTest");
-            textureDictionary["warriorCombatOutline"] = Content.Load<Texture2D>("Enemies\\Outline\\playerCombatTestOutline");
+            textureDictionary["warriorCombat"] = Content.Load<Texture2D>("Enemies\\reaperCombat");
+            textureDictionary["warriorCombatOutline"] = Content.Load<Texture2D>("Enemies\\Outline\\reaperCombatOutline");
             
             fontDictionary["defaultFont"] = Content.Load<SpriteFont>("font");
         }
