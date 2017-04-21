@@ -15,7 +15,7 @@ namespace Grupp_31_SystemUtveckling
         Tile[,] tileArray;
         List<string> strings = new List<string>();
         Game1 game;
-        string fileName;
+        //string fileName;
         Entity entity;
         Texture2D texPH;
         Vector2 posPH;
@@ -45,7 +45,7 @@ namespace Grupp_31_SystemUtveckling
                 {
                     if (strings[j][i] == 'w')
                     {
-                        Texture2D tileTexture = Archive.textureDictionary["tile"];
+                        Texture2D tileTexture = Archive.textureDictionary["grass"];
                         tileArray[i, j] = new Tile(tileTexture, new Vector2(tileTexture.Width * i, tileTexture.Height * j), false);
                     }
 
@@ -61,7 +61,7 @@ namespace Grupp_31_SystemUtveckling
 
                     if (strings[j][i] == 'p')
                     {
-                        Texture2D tileTexture = Archive.textureDictionary["tile"];
+                        Texture2D tileTexture = Archive.textureDictionary["grass"];
                         player = new Player(Archive.textureDictionary["playerPlaceholder"], new Vector2(tileTexture.Width * i, tileTexture.Height * j));
                         player.team.Add(new Character(Archive.textureDictionary["warriorCombat"], Archive.textureDictionary["warriorCombatOutline"],
                             Vector2.Zero, true, "Warrior", 100, 4, 4, 6, 15, 10, 100, 5, 70));
@@ -73,7 +73,7 @@ namespace Grupp_31_SystemUtveckling
 
                     if (strings[j][i] == 'e')
                     {
-                        Texture2D tileTexture = Archive.textureDictionary["tile"];
+                        Texture2D tileTexture = Archive.textureDictionary["grass"];
                         enemy = new Enemy(Archive.textureDictionary["playerPlaceholder"], new Vector2(tileTexture.Width * i, tileTexture.Height * j));
                         enemy.team.Add(new Character(Archive.textureDictionary["owlbearCombat"], Archive.textureDictionary["owlbearCombatOutline"],
                             Vector2.Zero, false, "Owlbear", 100, 3, 5, 3, 12, 10, 100, 5, 80));

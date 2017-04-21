@@ -12,8 +12,7 @@ namespace Grupp_31_SystemUtveckling
     class Enemy : Entity
     {
         //Enemy ska röra sig i ett mönster. Man ska gå in i combat när Player går inom en viss radius från Enemy.
-
-        Game1 game;
+        
         Map map;
         Random rand;
 
@@ -23,7 +22,6 @@ namespace Grupp_31_SystemUtveckling
         {
             this.enemyRec = new Rectangle((int)position.X, (int)position.Y, texture.Width / 4, texture.Height);
             rand = new Random();
-            this.game = game;
         }
 
         public void SetMap(Map map)

@@ -65,10 +65,7 @@ namespace Grupp_31_SystemUtveckling
         protected override void Update(GameTime gameTime)
         {
             KeyMouseReader.Update();
-            if (KeyMouseReader.KeyPressed(Keys.Escape))
-            {
-                this.Exit();
-            }
+            
             if (KeyMouseReader.KeyPressed(Keys.F11))
             {
                 graphics.IsFullScreen = !graphics.IsFullScreen;
@@ -79,6 +76,11 @@ namespace Grupp_31_SystemUtveckling
             {
                 case (GameState.Menus):
                     startMenu.Update();
+
+                    if (KeyMouseReader.KeyPressed(Keys.Escape))
+                    {
+                        this.Exit();
+                    }
                     break;
 
                 case (GameState.World):
@@ -93,6 +95,11 @@ namespace Grupp_31_SystemUtveckling
                     {
                         currentGameState = GameState.Combat;
                     }
+
+                    if (KeyMouseReader.KeyPressed(Keys.Escape))
+                    {
+                        currentGameState = GameState.Menus;
+                    }
                     break;
 
                 case (GameState.Combat):
@@ -101,10 +108,20 @@ namespace Grupp_31_SystemUtveckling
                     {
                         currentGameState = GameState.World;
                     }
+
+                    if (KeyMouseReader.KeyPressed(Keys.Escape))
+                    {
+                        this.Exit();
+                    }
                     break;
 
                 case (GameState.WorldEditor):
                     mapEditor.Update();
+
+                    if (KeyMouseReader.KeyPressed(Keys.Escape))
+                    {
+                        currentGameState = GameState.Menus;
+                    }
                     break;
             }
 

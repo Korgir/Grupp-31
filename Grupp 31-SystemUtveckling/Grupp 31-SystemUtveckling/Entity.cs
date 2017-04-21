@@ -17,8 +17,7 @@ namespace Grupp_31_SystemUtveckling
         protected Vector2 direction;
         protected float speed = 100.0f;
         protected bool moving = false;
-
-        protected Rectangle spriteRectangle;
+        
         protected Rectangle objectRectangle;
 
         public List<Character> team;
@@ -27,8 +26,7 @@ namespace Grupp_31_SystemUtveckling
         {
             this.texture = texture;
             this.position = position;
-            //this.spriteRectangle = spriteRectangle;
-            //this.objectRectangle = objectRectangle;
+            this.objectRectangle = new Rectangle((int)position.X, (int)position.Y, 32, 32); //this.objectRectangle = objectRectangle;
 
             this.team = new List<Character>();
         }
