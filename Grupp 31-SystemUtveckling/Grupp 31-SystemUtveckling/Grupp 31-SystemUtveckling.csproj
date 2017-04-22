@@ -44,6 +44,7 @@
     <Compile Include="CombatRelated\Character.cs" />
     <Compile Include="CombatRelated\Combat.cs" />
     <Compile Include="CombatRelated\HealthBar.cs" />
+    <Compile Include="CombatRelated\Projectile.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="FileReader.cs" />

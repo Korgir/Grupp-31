@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,14 +11,20 @@ namespace Grupp_31_SystemUtveckling
     abstract class Spell
     {
         private int manaCost;
+        public bool playingAnimation;
 
         public Character Caster { get; private set; }
 
         public Spell(Character caster)
         {
             this.Caster = caster;
+            playingAnimation = true;
         }
 
         public abstract void CastSpell();
+
+        public abstract void Update(GameTime gameTime);
+
+        public abstract void Draw(SpriteBatch spriteBatch);
     }
 }

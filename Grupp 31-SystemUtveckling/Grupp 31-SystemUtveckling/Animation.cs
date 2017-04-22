@@ -22,28 +22,50 @@ namespace Grupp_31_SystemUtveckling
     class Animation
     {
         protected Texture2D texture;
+        protected Vector2 origin;
         protected int horizontalFrames;
         protected int verticalFrames;
         protected int currentHorizontalFrame;
         protected int currentVerticalFrame;
+        protected int frameWidth;
+        protected int frameHeight;
         protected float timePerFrameSeconds;
         protected float currentTimeSeconds;
+        protected bool playOnlyOnce;
+        public bool playing;
 
         protected string playingAnimation;
         Dictionary<string, AnimationLoop> animationLoops;
 
-        public Animation(Texture2D texture, int horizontalFrames, int verticalFrames, float timePerFrameSeconds)
+        public Animation(Texture2D texture, int horizontalFrames, int verticalFrames, 
+            float timePerFrameSeconds, bool useCentreOrigin, bool playOnlyOnce)
         {
             this.texture = texture;
             this.horizontalFrames = horizontalFrames;
             this.verticalFrames = verticalFrames;
             this.currentHorizontalFrame = 0;
             this.currentVerticalFrame = 0;
+            frameWidth = texture.Width / horizontalFrames;
+            frameHeight = texture.Height / verticalFrames;
+
             this.timePerFrameSeconds = timePerFrameSeconds;
             this.currentTimeSeconds = 0;
-            this.playingAnimation = "";
+            this.playingAnimation = "allFrames";
+            this.playOnlyOnce = playOnlyOnce;
+            this.playing = true;
+
+            if (useCentreOrigin)
+            {
+                origin = new Vector2(frameWidth / 2, frameHeight / 2);
+            }
+            else
+            {
+                origin = Vector2.Zero;
+            }
 
             animationLoops = new Dictionary<string, AnimationLoop>();
+            animationLoops.Add("allFrames", new AnimationLoop(new Point(0,0), 
+                new Point(horizontalFrames-1, verticalFrames-1)));
         }
 
         public void ChangeAnimationLoop(string name)
@@ -68,7 +90,7 @@ namespace Grupp_31_SystemUtveckling
 
         public void Update(GameTime gameTime)
         {
-            if (playingAnimation != null)
+            if (playingAnimation != null && playing)
             {
                 currentTimeSeconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (currentTimeSeconds >= timePerFrameSeconds)
@@ -91,8 +113,15 @@ namespace Grupp_31_SystemUtveckling
                     (currentHorizontalFrame > animationLoops[playingAnimation].endFrame.X && 
                     currentVerticalFrame == animationLoops[playingAnimation].endFrame.Y))
                 {
-                    currentHorizontalFrame = animationLoops[playingAnimation].startFrame.X;
-                    currentVerticalFrame = animationLoops[playingAnimation].startFrame.Y;
+                    if (playOnlyOnce)
+                    {
+                        playing = false;
+                    }
+                    else
+                    {
+                        currentHorizontalFrame = animationLoops[playingAnimation].startFrame.X;
+                        currentVerticalFrame = animationLoops[playingAnimation].startFrame.Y;
+                    }
                 }
             }
         }
@@ -101,10 +130,10 @@ namespace Grupp_31_SystemUtveckling
         {
             int frameWidth = texture.Width / horizontalFrames;
             int frameHeight = texture.Height / verticalFrames;
-            Vector2 origin = Vector2.Zero; //new Vector2(frameWidth / 2, frameHeight / 2);
-            Rectangle frame = new Rectangle(currentHorizontalFrame * frameWidth, 
+
+            Rectangle frame = new Rectangle(currentHorizontalFrame * frameWidth,
                 currentVerticalFrame * frameHeight, frameWidth, frameHeight);
-            spriteBatch.Draw(texture, position, frame, Color.White, 0.0f, 
+            spriteBatch.Draw(texture, position, frame, Color.White, 0.0f,
                 origin, 1.0f, SpriteEffects.None, 0);
         }
     }

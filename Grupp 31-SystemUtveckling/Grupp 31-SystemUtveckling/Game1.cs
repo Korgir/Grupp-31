@@ -104,7 +104,7 @@ namespace Grupp_31_SystemUtveckling
 
                 case (GameState.Combat):
                     combat.Update(gameTime);
-                    if (!combat.active)
+                    if (!combat.active && !combat.fadingOut)
                     {
                         currentGameState = GameState.World;
                     }

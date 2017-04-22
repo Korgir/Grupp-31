@@ -24,19 +24,23 @@ namespace Grupp_31_SystemUtveckling
             // Misc textures
             textureDictionary["button"] = Content.Load<Texture2D>("button");
             textureDictionary["combatScenary"] = Content.Load<Texture2D>("combatScenary");
+            textureDictionary["fireball"] = Content.Load<Texture2D>("fireball");
             textureDictionary["menuBackground"] = Content.Load<Texture2D>("menuBackground");
             textureDictionary["menuHeader"] = Content.Load<Texture2D>("menuHeader");
-            textureDictionary["owlbearCombat"] = Content.Load<Texture2D>("Enemies\\daggerShadowBeastCombat");
-            textureDictionary["owlbearCombatOutline"] = Content.Load<Texture2D>("Enemies\\Outline\\daggerShadowBeastCombatOutline");
             textureDictionary["playerPlaceholder"] = Content.Load<Texture2D>("CharacterSpriteSheet");
             textureDictionary["resourceBarFilling"] = Content.Load<Texture2D>("resourceBarFilling");
             textureDictionary["resourceBarFrame"] = Content.Load<Texture2D>("resourceBarFrame");
+            textureDictionary["slash"] = Content.Load<Texture2D>("slashAnimation");
             textureDictionary["tileDoor"] = Content.Load<Texture2D>("TileDoor");
             textureDictionary["uiCombat"] = Content.Load<Texture2D>("combatUITemplate"); 
             textureDictionary["uiWorld"] = Content.Load<Texture2D>("UIBasePlaceholder");
+            textureDictionary["whitePixel"] = Content.Load<Texture2D>("whitePixel");
+
+            // Combat characters
+            textureDictionary["owlbearCombat"] = Content.Load<Texture2D>("Enemies\\daggerShadowBeastCombat");
+            textureDictionary["owlbearCombatOutline"] = Content.Load<Texture2D>("Enemies\\Outline\\daggerShadowBeastCombatOutline");
             textureDictionary["warriorCombat"] = Content.Load<Texture2D>("Enemies\\reaperCombat");
             textureDictionary["warriorCombatOutline"] = Content.Load<Texture2D>("Enemies\\Outline\\reaperCombatOutline");
-            textureDictionary["whitePixel"] = Content.Load<Texture2D>("whitePixel");
 
             // Floor tiles
             textureDictionary["dungeonFloor1"] = Content.Load<Texture2D>("Tiles\\Floor\\floor1");

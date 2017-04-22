@@ -12,6 +12,7 @@ namespace Grupp_31_SystemUtveckling
     class Combat
     {
         public bool active;
+        public bool fadingOut;
         public Texture2D scenaryTexture;
         protected List<Character> allCharacters;
         protected List<Character> team1;
@@ -19,6 +20,7 @@ namespace Grupp_31_SystemUtveckling
         protected List<Character> initiativeOrder;
         protected int currentTurn;
         protected CombatState currentState;
+        protected float timeFadeOutSeconds, totalTimeFadeOutSeconds;
 
         protected List<Vector2> positionsTeam1;
         protected List<Vector2> positionsTeam2;
@@ -43,6 +45,9 @@ namespace Grupp_31_SystemUtveckling
             positionsTeam1 = new List<Vector2>();
             positionsTeam2 = new List<Vector2>();
 
+            timeFadeOutSeconds = 1.5f;
+            totalTimeFadeOutSeconds = 1.5f;
+            fadingOut = true;
             this.currentTurn = 0;
             this.currentState = CombatState.ChoseAction;
 
@@ -79,14 +84,34 @@ namespace Grupp_31_SystemUtveckling
                         ChoseActionState();
                         break;
                     case (CombatState.PlayActions):
-                        PlayActionState();
+                        PlayActionState(gameTime);
                         break;
                     case (CombatState.SelectUnit):
                         SelectUnitState();
                         break;
                 }
 
+                foreach (Character c in allCharacters)
+                {
+                    foreach (Spell s in c.spells)
+                    {
+                        s.Update(gameTime);
+                    }
+                }
+
                 active = IsCombatActive();
+            }
+            else
+            {
+                if (timeFadeOutSeconds > 0)
+                {
+                    fadingOut = true;
+                    timeFadeOutSeconds -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                }
+                else
+                {
+                    fadingOut = false;
+                }
             }
         }
 
@@ -141,7 +166,7 @@ namespace Grupp_31_SystemUtveckling
             }
         }
 
-        protected void PlayActionState()
+        protected void PlayActionState(GameTime gameTime)
         {
             if (currentTurn < initiativeOrder.Count)
             {
@@ -357,12 +382,22 @@ namespace Grupp_31_SystemUtveckling
             foreach (Character c in allCharacters)
             {
                 c.Draw(spriteBatch);
+                foreach (Spell s in c.spells)
+                {
+                    s.Draw(spriteBatch);
+                }
                 HealthBar.Draw(spriteBatch, c, Color.Green);
                 spriteBatch.DrawString(Archive.fontDictionary["defaultFont"], "[" + c.name + "] HP: " + c.health + "; Alive: " + c.alive, new Vector2(0, offsettingString), Color.Yellow);
                 offsettingString += 16;
             }
 
             spriteBatch.Draw(Archive.textureDictionary["uiCombat"], Vector2.Zero, Color.White);
+
+            if (fadingOut)
+            {
+                spriteBatch.Draw(Archive.textureDictionary["whitePixel"], new Rectangle(0, 0, 1920, 1080),
+                    new Color(Color.Black, 1 - (timeFadeOutSeconds / totalTimeFadeOutSeconds)));
+            }
         }
     }
 }

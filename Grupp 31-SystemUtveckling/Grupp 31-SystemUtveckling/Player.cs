@@ -17,7 +17,7 @@ namespace Grupp_31_SystemUtveckling
         public Player(Texture2D tex, Vector2 pos) : 
             base(tex, pos/*, new Rectangle(0, 0, tex.Width / 4, tex.Height), new Rectangle((int)pos.X, (int)pos.Y, tex.Width / 4, tex.Height)*/)
         {
-            this.animation = new Animation(tex, 3, 4, 0.25f);
+            this.animation = new Animation(tex, 3, 4, 0.25f, false, false);
             this.animation.AddAnimationLoop("walk_down", new Point(0, 0), new Point(2, 0));
             this.animation.AddAnimationLoop("walk_right", new Point(0, 1), new Point(2, 1));
             this.animation.AddAnimationLoop("walk_left", new Point(0, 2), new Point(2, 2));
