@@ -68,60 +68,6 @@
 /processorParam:TextureFormat=Color
 /build:combatUITemplate.png
 
-#begin Maps/map.txt
-/copy:Maps/map.txt
-
-#begin Maps/map1.txt
-/copy:Maps/map1.txt
-
-#begin Enemies/enemyCombatTest.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Enemies/enemyCombatTest.png
-
-#begin Enemies/playerCombatTest.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Enemies/playerCombatTest.png
-
-#begin Enemies/Outline/enemyCombatTestOutline.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Enemies/Outline/enemyCombatTestOutline.png
-
-#begin Enemies/Outline/playerCombatTestOutline.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Enemies/Outline/playerCombatTestOutline.png
-
 #begin button.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -529,4 +475,7 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:slashAnimation.png
+
+#begin Maps/MattesBana.txt
+/copy:Maps/MattesBana.txt
 

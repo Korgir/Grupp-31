@@ -32,7 +32,7 @@ namespace Grupp_31_SystemUtveckling
             tileArray = new Tile[46, 26];
             tileSize = 32;
             tileStartPosition = new Vector2(32, 944);
-            tileGridOffset = new Vector2(32, 32);
+            tileGridOffset = new Vector2(0, 0);
             buttonList = new List<Button>();
             buttonList.Add(new Button(new Rectangle(1512, 50, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Floor"));
             buttonList.Add(new Button(new Rectangle(1512, 100, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Wall"));
@@ -95,7 +95,8 @@ namespace Grupp_31_SystemUtveckling
                     for (int j = 0; j < tileArray.GetLength(1); j++)
                     {
                         //wall är enbart true atm måste fixas!
-                        sw.WriteLine("tile;" + tileArray[i, j].texture + ";" + tileArray[i, j].position.X + ";" + tileArray[i, j].position.Y + ";" + tileArray[i, j].Wall);
+                        var textureArchiveName = Archive.textureDictionary.FirstOrDefault(x => x.Value == tileArray[i, j].texture).Key;
+                        sw.WriteLine("tile;" + textureArchiveName + ";" + tileArray[i, j].position.X + ";" + tileArray[i, j].position.Y + ";" + tileArray[i, j].Wall);
                     }
                 }
             }
@@ -103,6 +104,8 @@ namespace Grupp_31_SystemUtveckling
 
         public void LoadMap(string path)
         {
+            Map loadedMap = FileReader.ReadMap(path);
+            tileArray = loadedMap.tiles;
         }
 
         public void Update()

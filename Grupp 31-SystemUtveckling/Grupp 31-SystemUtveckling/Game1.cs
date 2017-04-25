@@ -19,7 +19,7 @@ namespace Grupp_31_SystemUtveckling
         //List<Character> char2;// Safe to remove. Only for testing purpose
         Combat combat;
         List<string> strings = new List<string>();
-        FileReader fileReader;
+        //FileReader fileReader;
         Map map;
         MapEditor mapEditor;
         string fileName;
@@ -50,9 +50,9 @@ namespace Grupp_31_SystemUtveckling
             combat = new Combat(new List<Character>(), new List<Character>());
 
             mapEditor = new MapEditor();
-            fileReader = new FileReader(this);
-            fileName = "map";
-            map = fileReader.ReadMapFile(fileName);
+            //fileReader = new FileReader(this);
+            fileName = "Content\\Maps\\MattesBana.txt";
+            map = FileReader.ReadMap(fileName);
         }
 
         protected override void LoadContent()
@@ -88,10 +88,10 @@ namespace Grupp_31_SystemUtveckling
                     fileName = map.ZoneSwitch();
                     if (fileName != null)
                     {
-                        map = fileReader.ReadMapFile(fileName);                     
+                        map = FileReader.ReadMap(fileName);                     
                     }
 
-                    if (fileReader.EngageCombatBool(ref combat) == true)
+                    if (map.EngageCombatBool(ref combat) == true)
                     {
                         currentGameState = GameState.Combat;
                     }

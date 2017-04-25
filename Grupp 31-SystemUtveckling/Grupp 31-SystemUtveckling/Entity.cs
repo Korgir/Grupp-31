@@ -70,16 +70,16 @@ namespace Grupp_31_SystemUtveckling
             return false;
         }
 
-        public bool EngageCombat(Player player, Enemy enemy)
-        {
-            int distanceX = (int)(enemy.position.X - (int)player.position.X) / Archive.tileSize;
-            int distanceY = (int)(enemy.position.Y - (int)player.position.Y) / Archive.tileSize;
-            if (distanceX <= 2 && distanceX >= -2 && distanceY <= 2 && distanceY >= -2)
-            {
-                return true;
-            }
-            return false;
-        }
+        //public bool EngageCombat(Player player, Enemy enemy)
+        //{
+        //    int distanceX = (int)(enemy.position.X - (int)player.position.X) / Archive.tileSize;
+        //    int distanceY = (int)(enemy.position.Y - (int)player.position.Y) / Archive.tileSize;
+        //    if (distanceX <= 2 && distanceX >= -2 && distanceY <= 2 && distanceY >= -2)
+        //    {
+        //        return true;
+        //    }
+        //    return false;
+        //}
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {

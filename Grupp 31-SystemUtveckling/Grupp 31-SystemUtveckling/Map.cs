@@ -10,15 +10,15 @@ namespace Grupp_31_SystemUtveckling
 {
     class Map
     {
-        Player player;
-        Tile[,] tiles;
+        public Player player;
+        public Tile[,] tiles;
         int doorPosY;
         int doorPosX;
-        Enemy enemy;
+        public List<Enemy> enemyList;
 
         public Map()
         {
-
+            enemyList = new List<Enemy>();
         }
 
         public string ZoneSwitch()
@@ -31,17 +31,6 @@ namespace Grupp_31_SystemUtveckling
             }
 
             return null;
-        }
-
-        public void SetPlayer(Player player)
-        {
-            this.player = player;
-        }
-
-        public void SetEnemy(Enemy enemy)
-        {
-            this.enemy = enemy;
-
         }
 
         public void SetDoorPosY(int doorPosY)
@@ -64,10 +53,34 @@ namespace Grupp_31_SystemUtveckling
             player.Update(gameTime);
         }
 
+        public bool EngageCombatBool(ref Combat combat)
+        {
+            foreach (Enemy e in enemyList)
+            {
+                if (EngageCombat(player, e) && e.IsTeamAlive())
+                {
+                    combat = new Combat(player.team, e.team);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool EngageCombat(Player player, Enemy enemy)
+        {
+            int distanceX = (int)(enemy.position.X - (int)player.position.X) / Archive.tileSize;
+            int distanceY = (int)(enemy.position.Y - (int)player.position.Y) / Archive.tileSize;
+            if (distanceX <= 2 && distanceX >= -2 && distanceY <= 2 && distanceY >= -2)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public Tile GetTileAtPosition(Vector2 vec)
         {
-            int indexPositionX = (int)vec.X / Archive.tileSize;
-            int indexPositionY = (int)vec.Y / Archive.tileSize;
+            int indexPositionX = ((int)vec.X) / Archive.tileSize;
+            int indexPositionY = ((int)vec.Y) / Archive.tileSize;
 
             if (indexPositionX >= 0 && indexPositionX < tiles.GetLength(0))
             {
@@ -88,9 +101,12 @@ namespace Grupp_31_SystemUtveckling
             }
 
             player.Draw(spriteBatch);
-            enemy.Draw(spriteBatch);
+            foreach (Enemy e in enemyList)
+            {
+                e.Draw(spriteBatch);
+            }
 
-            spriteBatch.Draw(Archive.textureDictionary["uiWorld"], Vector2.Zero, Color.White);
+            spriteBatch.Draw(Archive.textureDictionary["uiWorld"], Vector2.Zero, Color.White); // Placeholder
         }
     }
 }
