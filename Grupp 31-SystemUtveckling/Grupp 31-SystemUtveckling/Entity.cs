@@ -17,16 +17,24 @@ namespace Grupp_31_SystemUtveckling
         protected Vector2 direction;
         protected float speed = 100.0f;
         protected bool moving = false;
-        
+
+        public Animation animation;
         protected Rectangle objectRectangle;
 
         public List<Character> team;
 
-        public Entity(Texture2D texture, Vector2 position/*, Rectangle spriteRectangle, Rectangle objectRectangle*/)
+        public Entity(Texture2D texture, Vector2 position)
         {
             this.texture = texture;
             this.position = position;
-            this.objectRectangle = new Rectangle((int)position.X, (int)position.Y, 32, 32); //this.objectRectangle = objectRectangle;
+            objectRectangle = new Rectangle((int)position.X, (int)position.Y, 32, 32);
+
+            animation = new Animation(texture, 3, 4, 0.25f, false, false);
+            animation.AddAnimationLoop("walk_down", new Point(0, 0), new Point(2, 0));
+            animation.AddAnimationLoop("walk_right", new Point(0, 1), new Point(2, 1));
+            animation.AddAnimationLoop("walk_left", new Point(0, 2), new Point(2, 2));
+            animation.AddAnimationLoop("walk_up", new Point(0, 3), new Point(2, 3));
+            animation.ChangeAnimationLoop("walk_down");
 
             this.team = new List<Character>();
         }
@@ -70,20 +78,9 @@ namespace Grupp_31_SystemUtveckling
             return false;
         }
 
-        //public bool EngageCombat(Player player, Enemy enemy)
-        //{
-        //    int distanceX = (int)(enemy.position.X - (int)player.position.X) / Archive.tileSize;
-        //    int distanceY = (int)(enemy.position.Y - (int)player.position.Y) / Archive.tileSize;
-        //    if (distanceX <= 2 && distanceX >= -2 && distanceY <= 2 && distanceY >= -2)
-        //    {
-        //        return true;
-        //    }
-        //    return false;
-        //}
-
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, Color.White);
+            animation.Draw(spriteBatch, position);
         }
     }
 }

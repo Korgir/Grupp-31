@@ -12,27 +12,34 @@ namespace Grupp_31_SystemUtveckling
 {
     class MapEditor
     {
-        Tile[,] tileArray;
-        int selectedTileType;
+        protected Tile[,] tileArray;
+        protected Entity[,] entityArray;
+        protected int selectedTileType;
 
-        List<Button> buttonList;
-        List<Tile> floorTiles;
-        List<Tile> wallTiles;
+        protected List<Button> buttonList;
+        protected List<Tile> floorTiles;
+        protected List<Tile> wallTiles;
+        protected List<Entity> entities;
 
-        int tileSize;
-        Vector2 tileStartPosition;
-        Vector2 tileGridOffset;
-        Texture2D selectedTexture;
+        protected int tileSize;
+        protected Vector2 tileStartPosition;
+        protected Vector2 tileGridOffset;
 
-        bool showGrid;
+        protected Texture2D selectedTexture;
+        protected Animation selectedAnimation;
+
+        protected bool showGrid;
 
         public MapEditor()
         {
             selectedTileType = 0;
             tileArray = new Tile[46, 26];
+            entityArray = new Entity[46, 26];
             tileSize = 32;
             tileStartPosition = new Vector2(32, 944);
             tileGridOffset = new Vector2(0, 0);
+
+            #region Buttons
             buttonList = new List<Button>();
             buttonList.Add(new Button(new Rectangle(1512, 50, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Floor"));
             buttonList.Add(new Button(new Rectangle(1512, 100, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Wall"));
@@ -41,8 +48,9 @@ namespace Grupp_31_SystemUtveckling
             buttonList.Add(new Button(new Rectangle(1662, 50, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Save map"));
             buttonList.Add(new Button(new Rectangle(1662, 100, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Load map"));
             buttonList.Add(new Button(new Rectangle(1512, 300, 256, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Toggle grid"));
+            #endregion
 
-
+            #region Floor Tiles
             floorTiles = new List<Tile>();
             AddFloorTile(Archive.textureDictionary["grass"]);
             AddFloorTile(Archive.textureDictionary["road"]);
@@ -53,6 +61,9 @@ namespace Grupp_31_SystemUtveckling
             AddFloorTile(Archive.textureDictionary["dungeonFloor4"]);
             AddFloorTile(Archive.textureDictionary["dungeonFloor5"]);
             AddFloorTile(Archive.textureDictionary["dungeonFloor6"]);
+            #endregion
+
+            #region Wall Tiles
             wallTiles = new List<Tile>();
             AddWallTile(Archive.textureDictionary["dungeonWall1"]);
             AddWallTile(Archive.textureDictionary["dungeonWall2"]);
@@ -61,6 +72,11 @@ namespace Grupp_31_SystemUtveckling
             AddWallTile(Archive.textureDictionary["dungeonWall5"]);
             AddWallTile(Archive.textureDictionary["dungeonWall6"]);
             selectedTexture = floorTiles[0].texture;
+            #endregion
+
+            entities = new List<Entity>();
+            AddEntity(Archive.textureDictionary["playerPlaceholder"]);
+            AddEntity(Archive.textureDictionary["goblinEntity"]);
 
             for (int i = 0; i < tileArray.GetLength(0); i++)
             {
@@ -85,44 +101,54 @@ namespace Grupp_31_SystemUtveckling
             wallTiles.Add(new Tile(tileTexture, position, false));
         }
 
-        public void SaveMap(string path)
+        public void AddEntity(Texture2D tileTexture)
         {
-            using (StreamWriter sw = File.CreateText(path))
-            {
-                for (int i = 0; i < tileArray.GetLength(0); i++)
-                {
-                    //antal element i andra dimensionen
-                    for (int j = 0; j < tileArray.GetLength(1); j++)
-                    {
-                        //wall är enbart true atm måste fixas!
-                        var textureArchiveName = Archive.textureDictionary.FirstOrDefault(x => x.Value == tileArray[i, j].texture).Key;
-                        sw.WriteLine("tile;" + textureArchiveName + ";" + tileArray[i, j].position.X + ";" + tileArray[i, j].position.Y + ";" + tileArray[i, j].Wall);
-                    }
-                }
-            }
+            Vector2 position = tileStartPosition + new Vector2(40, 0) * entities.Count();
+            entities.Add(new Entity(tileTexture, position));
         }
 
         public void LoadMap(string path)
         {
             Map loadedMap = FileReader.ReadMap(path);
             tileArray = loadedMap.tiles;
+            entityArray = new Entity[46,26];
+
+            foreach (Enemy e in loadedMap.enemyList)
+            {
+                int XValue = (int)(e.position.X / tileSize);
+                int YValue = (int)(e.position.Y / tileSize);
+                entityArray[XValue, YValue] = new Entity(e.animation.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y));
+            }
+
+            if (loadedMap.player != null)
+            {
+                int XValue = (int)(loadedMap.player.position.X / tileSize);
+                int YValue = (int)(loadedMap.player.position.Y / tileSize);
+                entityArray[XValue, YValue] = new Entity(loadedMap.player.animation.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y));
+            }
+            
         }
 
+        // Update() är för stor, pls fix
         public void Update()
         {
             if (buttonList[0].IsClicked())
             {
                 selectedTileType = 0;
                 selectedTexture = floorTiles[0].texture;
+                selectedAnimation = null;
             }
             if (buttonList[1].IsClicked())
             {
                 selectedTileType = 1;
                 selectedTexture = wallTiles[0].texture;
+                selectedAnimation = null;
             }
             if (buttonList[2].IsClicked())
             {
-                System.Windows.Forms.MessageBox.Show("Not implemented.");
+                selectedTileType = 2;
+                selectedTexture = null;
+                selectedAnimation = entities[0].animation;
             }
             if (buttonList[3].IsClicked())
             {
@@ -136,7 +162,7 @@ namespace Grupp_31_SystemUtveckling
                 fileDialog.Title = "Select a level";
                 if (fileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    SaveMap(fileDialog.FileName);
+                    FileReader.WriteMap(fileDialog.FileName, tileArray, entityArray);
                 }
             }
 
@@ -156,6 +182,13 @@ namespace Grupp_31_SystemUtveckling
                 showGrid = !showGrid;
             }
 
+            TilePicker();
+
+            PlaceTile();
+        }
+
+        protected void TilePicker()
+        {
             if (selectedTileType == 0)
             {
                 foreach (Tile t in floorTiles)
@@ -164,6 +197,7 @@ namespace Grupp_31_SystemUtveckling
                     if (KeyMouseReader.LeftClick() && tileHitbox.Contains(KeyMouseReader.mousePosition))
                     {
                         selectedTexture = t.texture;
+                        selectedAnimation = null;
                     }
                 }
             }
@@ -175,30 +209,63 @@ namespace Grupp_31_SystemUtveckling
                     if (KeyMouseReader.LeftClick() && tileHitbox.Contains(KeyMouseReader.mousePosition))
                     {
                         selectedTexture = t.texture;
+                        selectedAnimation = null;
                     }
                 }
             }
+            if (selectedTileType == 2)
+            {
+                foreach (Entity e in entities)
+                {
+                    Rectangle tileHitbox = new Rectangle((int)e.position.X, (int)e.position.Y, e.texture.Width, e.texture.Height);
+                    if (KeyMouseReader.LeftClick() && tileHitbox.Contains(KeyMouseReader.mousePosition))
+                    {
+                        selectedTexture = null;
+                        selectedAnimation = e.animation;
+                    }
+                }
+            }
+        }
+
+        protected void PlaceTile()
+        {
+            int XValue = (int)((KeyMouseReader.mousePosition.X - tileGridOffset.X) / tileSize);
+            int YValue = (int)((KeyMouseReader.mousePosition.Y - tileGridOffset.Y) / tileSize);
 
             if (KeyMouseReader.mouseState.LeftButton == ButtonState.Pressed)
             {
-                int XValue = (int)((KeyMouseReader.mousePosition.X - tileGridOffset.X) / tileSize);
-                int YValue = (int)((KeyMouseReader.mousePosition.Y - tileGridOffset.Y) / tileSize);
-
-                for (int i = 0; i < tileArray.GetLength(0); i++)
+                if (selectedTileType == 0 || selectedTileType == 1)
                 {
-                    for (int j = 0; j < tileArray.GetLength(1); j++)
+                    if ((XValue >= 0 && XValue < entityArray.GetLength(0)) &&
+                        (YValue >= 0 && YValue < entityArray.GetLength(1)))
                     {
-                        if (i == XValue && j == YValue)
+                        if (selectedTileType == 0)
                         {
-                            if (selectedTileType == 0)
-                            {
-                                tileArray[i, j] = new Tile(selectedTexture, new Vector2(i * tileSize + tileGridOffset.X, j * tileSize + tileGridOffset.Y), false);
-                            }
-                            if (selectedTileType == 1)
-                            {
-                                tileArray[i, j] = new Tile(selectedTexture, new Vector2(i * tileSize + tileGridOffset.X, j * tileSize + tileGridOffset.Y), true);
-                            }
+                            tileArray[XValue, YValue] = new Tile(selectedTexture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y), false);
                         }
+                        if (selectedTileType == 1)
+                        {
+                            tileArray[XValue, YValue] = new Tile(selectedTexture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y), true);
+                        }
+                    }
+                }
+                else if (selectedTileType == 2)
+                {
+                    if ((XValue >= 0 && XValue < entityArray.GetLength(0)) &&
+                        (YValue >= 0 && YValue < entityArray.GetLength(1)))
+                    {
+                        entityArray[XValue, YValue] = new Entity(selectedAnimation.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y));
+                    }
+                }
+            }
+            else if (KeyMouseReader.mouseState.RightButton == ButtonState.Pressed)
+            {
+                if (selectedTileType == 2)
+                {
+                    if ((XValue >= 0 && XValue < entityArray.GetLength(0)) &&
+                        (YValue >= 0 && YValue < entityArray.GetLength(1)))
+                    {
+                        entityArray[XValue, YValue] = null;
                     }
                 }
             }
@@ -206,10 +273,41 @@ namespace Grupp_31_SystemUtveckling
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            DrawButtons(spriteBatch);
+            DrawSelectedTileSet(spriteBatch);
+            foreach (Tile t in tileArray)
+            {
+                t.Draw(spriteBatch);
+            }
+            foreach (Entity e in entityArray)
+            {
+                if (e != null)
+                {
+                    e.Draw(spriteBatch);
+                }
+            }
+            DrawGrid(spriteBatch);
+            spriteBatch.DrawString(Archive.fontDictionary["defaultFont"], "Selected tile:", new Vector2(32, 864), Color.White);
+            if (selectedTexture != null)
+            {
+                spriteBatch.Draw(selectedTexture, new Vector2(32, 880), Color.White);
+            }
+            if (selectedAnimation != null)
+            {
+                selectedAnimation.Draw(spriteBatch, new Vector2(32, 880));
+            }
+        }
+
+        protected void DrawButtons(SpriteBatch spriteBatch)
+        {
             foreach (Button b in buttonList)
             {
                 b.Draw(spriteBatch);
             }
+        }
+
+        protected void DrawSelectedTileSet(SpriteBatch spriteBatch)
+        {
             if (selectedTileType == 0)
             {
                 foreach (Tile t in floorTiles)
@@ -224,16 +322,13 @@ namespace Grupp_31_SystemUtveckling
                     t.Draw(spriteBatch);
                 }
             }
-            for (int i = 0; i < tileArray.GetLength(0); i++)
+            if (selectedTileType == 2)
             {
-                for (int j = 0; j < tileArray.GetLength(1); j++)
+                foreach (Entity e in entities)
                 {
-                    tileArray[i, j].Draw(spriteBatch);
+                    e.Draw(spriteBatch);
                 }
             }
-            DrawGrid(spriteBatch);
-            spriteBatch.DrawString(Archive.fontDictionary["defaultFont"], "Selected tile:", new Vector2(32, 864), Color.White);
-            spriteBatch.Draw(selectedTexture, new Vector2(32, 880), Color.White);
         }
 
         protected void DrawGrid(SpriteBatch spriteBatch)
@@ -251,11 +346,6 @@ namespace Grupp_31_SystemUtveckling
                         new Rectangle((int)tileGridOffset.X, y * tileSize + (int)tileGridOffset.Y, tileArray.GetLength(0) * tileSize, 1), Color.Black);
                 }
             }
-        }
-
-        public void TileKeyBinds()
-        {
-
         }
     }
 }

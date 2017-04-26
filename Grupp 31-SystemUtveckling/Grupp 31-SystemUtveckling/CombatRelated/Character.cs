@@ -40,8 +40,8 @@ namespace Grupp_31_SystemUtveckling
             get { return this.position; }
             set
             {
-                this.position = value;
-                this.hitbox = new Rectangle((int)position.X - texture.Width / 2, 
+                position = value;
+                hitbox = new Rectangle((int)position.X - texture.Width / 2, 
                     (int)position.Y - texture.Height / 2, texture.Width, texture.Height);
             }
         }
@@ -55,34 +55,34 @@ namespace Grupp_31_SystemUtveckling
             this.texture = texture;
             this.textureOutline = textureOutline;
             this.position = position;
-            this.hitbox = new Rectangle((int)position.X - texture.Width / 2, (int)position.Y - texture.Height / 2, 
+            hitbox = new Rectangle((int)position.X - texture.Width / 2, (int)position.Y - texture.Height / 2, 
                 texture.Width, texture.Height);
 
-            this.alive = true;
+            alive = true;
             this.playerControlled = playerControlled;
 
             this.name = name;
             this.health = health;
-            this.maxHealth = health;
+            maxHealth = health;
             this.speed = speed;
             this.armor = armor;
             this.physicalDamageMin = physicalDamageMin;
             this.physicalDamageMax = physicalDamageMax;
             this.magicAmplification = magicAmplification;
             this.mana = mana;
-            this.maxMana = mana;
+            maxMana = mana;
             this.manaRegeneration = manaRegeneration;
             this.hitChance = hitChance;
 
-            this.action = -1;
-            this.spellToCast = -1;
+            action = -1;
+            spellToCast = -1;
 
             spells = new List<Spell>();
             spells.Add(new Spells.SpellStab(this, null, TargetSpell.TargetTeam.Enemy));
             spells.Add(new Spells.SpellFireball(this, null, TargetSpell.TargetTeam.Enemy));
 
-            this.drawOutline = false;
-            this.outlineColor = Color.White;
+            drawOutline = false;
+            outlineColor = Color.White;
         }
 
         public void OnNewTurn()

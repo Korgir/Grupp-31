@@ -21,7 +21,7 @@ namespace Grupp_31_SystemUtveckling
     }
     class Animation
     {
-        protected Texture2D texture;
+        public Texture2D texture;
         protected Vector2 origin;
         protected int horizontalFrames;
         protected int verticalFrames;

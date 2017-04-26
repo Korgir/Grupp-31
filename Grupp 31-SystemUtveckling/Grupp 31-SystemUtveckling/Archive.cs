@@ -27,7 +27,6 @@ namespace Grupp_31_SystemUtveckling
             textureDictionary["fireball"] = Content.Load<Texture2D>("fireball");
             textureDictionary["menuBackground"] = Content.Load<Texture2D>("menuBackground");
             textureDictionary["menuHeader"] = Content.Load<Texture2D>("menuHeader");
-            textureDictionary["playerPlaceholder"] = Content.Load<Texture2D>("CharacterSpriteSheet");
             textureDictionary["resourceBarFilling"] = Content.Load<Texture2D>("resourceBarFilling");
             textureDictionary["resourceBarFrame"] = Content.Load<Texture2D>("resourceBarFrame");
             textureDictionary["slash"] = Content.Load<Texture2D>("slashAnimation");
@@ -60,6 +59,10 @@ namespace Grupp_31_SystemUtveckling
             textureDictionary["dungeonWall4"] = Content.Load<Texture2D>("Tiles\\Wall\\wallSide4");
             textureDictionary["dungeonWall5"] = Content.Load<Texture2D>("Tiles\\Wall\\wallTop1");
             textureDictionary["dungeonWall6"] = Content.Load<Texture2D>("Tiles\\Wall\\wallTop2");
+
+            // Entities
+            textureDictionary["playerPlaceholder"] = Content.Load<Texture2D>("Entities\\CharacterSpriteSheet");
+            textureDictionary["goblinEntity"] = Content.Load<Texture2D>("Entities\\goblinWorld");
 
             // Fonts
             fontDictionary["defaultFont"] = Content.Load<SpriteFont>("font");

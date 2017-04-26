@@ -40,7 +40,6 @@
 #begin font.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:font.spritefont
 
@@ -127,18 +126,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UIBasePlaceholder.png
-
-#begin CharacterSpriteSheet.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:CharacterSpriteSheet.png
 
 #begin Enemies/Outline/daggerShadowBeastCombatOutline.png
 /importer:TextureImporter
@@ -476,6 +463,30 @@
 /processorParam:TextureFormat=Color
 /build:slashAnimation.png
 
-#begin Maps/MattesBana.txt
-/copy:Maps/MattesBana.txt
+#begin Entities/CharacterSpriteSheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Entities/CharacterSpriteSheet.png
+
+#begin Entities/goblinWorld.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Entities/goblinWorld.png
+
+#begin Maps/StartMap.txt
+/copy:Maps/StartMap.txt
 

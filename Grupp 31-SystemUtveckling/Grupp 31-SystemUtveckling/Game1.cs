@@ -15,11 +15,7 @@ namespace Grupp_31_SystemUtveckling
 
         public GameState currentGameState;
         StartMenu startMenu;
-        //List<Character> char1;// Safe to remove. Only for testing purpose
-        //List<Character> char2;// Safe to remove. Only for testing purpose
         Combat combat;
-        List<string> strings = new List<string>();
-        //FileReader fileReader;
         Map map;
         MapEditor mapEditor;
         string fileName;
@@ -50,8 +46,7 @@ namespace Grupp_31_SystemUtveckling
             combat = new Combat(new List<Character>(), new List<Character>());
 
             mapEditor = new MapEditor();
-            //fileReader = new FileReader(this);
-            fileName = "Content\\Maps\\MattesBana.txt";
+            fileName = "Content\\Maps\\StartMap.txt";
             map = FileReader.ReadMap(fileName);
         }
 

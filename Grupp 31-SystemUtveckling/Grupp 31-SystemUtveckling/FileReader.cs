@@ -10,135 +10,85 @@ using System.Threading.Tasks;
 
 namespace Grupp_31_SystemUtveckling
 {
-    class FileReader
+    static class FileReader
     {
-        Tile[,] tileArray;
-        List<string> strings = new List<string>();
-        Game1 game;
-        //string fileName;
-        Entity entity;
-        Texture2D texPH;
-        Vector2 posPH;
-        Player player;
-        Enemy enemy;
-
-        public FileReader(Game1 game)
-        {
-            this.game = game;
-            entity = new Entity(texPH, posPH);
-        }
-
-        //public Map ReadMapFile(string fileName)
-        //{
-        //    StreamReader streamReader = new StreamReader("Content\\Maps\\" + fileName + ".txt");            
-        //    Map map = new Map();
-        //    while (!streamReader.EndOfStream)
-        //    {
-        //        strings.Add(streamReader.ReadLine());
-        //    }
-        //    streamReader.Close();
-
-        //    tileArray = new Tile[strings[0].Length, strings.Count];
-        //    for (int i = 0; i < tileArray.GetLength(0); i++)
-        //    {
-        //        for (int j = 0; j < tileArray.GetLength(1); j++)
-        //        {
-        //            if (strings[j][i] == 'w')
-        //            {
-        //                Texture2D tileTexture = Archive.textureDictionary["grass"];
-        //                tileArray[i, j] = new Tile(tileTexture, new Vector2(tileTexture.Width * i, tileTexture.Height * j), false);
-        //            }
-
-        //            if (strings[j][i] == 'd')
-        //            {
-        //                Texture2D tileTexture = Archive.textureDictionary["tileDoor"];
-        //                tileArray[i, j] = new Tile(tileTexture, new Vector2(tileTexture.Width * i, tileTexture.Height * j), false);
-        //                int doorPosX = tileTexture.Width * i;
-        //                int doorPosY = tileTexture.Height * j;
-        //                map.SetDoorPostX(doorPosX);
-        //                map.SetDoorPosY(doorPosY);
-        //            }
-
-        //            if (strings[j][i] == 'p')
-        //            {
-        //                Texture2D tileTexture = Archive.textureDictionary["grass"];
-        //                player = new Player(Archive.textureDictionary["playerPlaceholder"], new Vector2(tileTexture.Width * i, tileTexture.Height * j));
-        //                player.team.Add(new Character(Archive.textureDictionary["warriorCombat"], Archive.textureDictionary["warriorCombatOutline"],
-        //                    Vector2.Zero, true, "Warrior", 100, 4, 4, 6, 15, 10, 100, 5, 70));
-        //                tileArray[i, j] = new Tile(tileTexture, new Vector2(tileTexture.Width * i, tileTexture.Height * j), true);
-        //                map.SetPlayer(player);
-        //                player.SetMap(map);
-
-        //            }
-
-        //            if (strings[j][i] == 'e')
-        //            {
-        //                Texture2D tileTexture = Archive.textureDictionary["grass"];
-        //                enemy = new Enemy(Archive.textureDictionary["playerPlaceholder"], new Vector2(tileTexture.Width * i, tileTexture.Height * j));
-        //                enemy.team.Add(new Character(Archive.textureDictionary["owlbearCombat"], Archive.textureDictionary["owlbearCombatOutline"],
-        //                    Vector2.Zero, false, "Owlbear", 100, 3, 5, 3, 12, 10, 100, 5, 80));
-        //                tileArray[i, j] = new Tile(tileTexture, new Vector2(tileTexture.Width * i, tileTexture.Height * j), false);
-        //                map.SetEnemy(enemy);
-        //                enemy.SetMap(map);
-        //            }
-        //        }
-        //    }
-
-        //    map.SetTiles(tileArray);
-        //    return map;
-        //}
-
         public static Map ReadMap(string mapname)
         {
-            StreamReader sr = new StreamReader(mapname);
+            List<string> strings = new List<string>();
+            StreamReader streamReader = new StreamReader(mapname);
             Map map = new Map();
-            Tile[,] tileArray = new Tile[46, 26];
+            Tile[,] mapGrid = new Tile[46, 26];
 
-            while (!sr.EndOfStream)
+            while (!streamReader.EndOfStream)
             {
-                string mapValue = sr.ReadLine();
+                string mapValue = streamReader.ReadLine();
                 string[] stringArray = mapValue.Split(';');
 
-                int xPos = Int32.Parse(stringArray[2]);
-                int yPos = Int32.Parse(stringArray[3]);
-                Texture2D Tex = Archive.textureDictionary[stringArray[1]];
-                bool canWalk = bool.Parse(stringArray[4]);
+                int xPosition = Int32.Parse(stringArray[2]);
+                int yPosition = Int32.Parse(stringArray[3]);
+                Texture2D texture = Archive.textureDictionary[stringArray[1]];
 
                 switch (stringArray[0])
                 {
                     case "tile":
-                        tileArray[xPos / 32, yPos / 32] = new Tile(Tex, new Vector2(xPos, yPos), canWalk);
+                        bool isWallTile = bool.Parse(stringArray[4]);
+                        mapGrid[xPosition / 32, yPosition / 32] = new Tile(texture, new Vector2(xPosition, yPosition), isWallTile);
                         break;
                     case "item":
 
                         break;
 
                     case "player":
-                        tileArray[xPos / 32, yPos / 32] = new Tile(Tex, new Vector2(xPos, yPos), canWalk);
-                        
-                        map.player = new Player(Archive.textureDictionary["playerPlaceholder"], new Vector2(xPos, yPos));
+                        map.player = new Player(texture, new Vector2(xPosition, yPosition));
                         map.player.team.Add(new Character(Archive.textureDictionary["warriorCombat"], Archive.textureDictionary["warriorCombatOutline"],
                             Vector2.Zero, true, "Warrior", 100, 4, 4, 6, 15, 10, 100, 5, 70));
-                        //map.SetPlayer(player);
-                        map.player.SetMap(map);
+                        map.player.map = map;
                         break;
 
                     case "enemy":
-                        tileArray[xPos / 32 - 1, yPos / 32 - 1] = new Tile(Tex, new Vector2(xPos, yPos), canWalk);
-                        Enemy enemy = new Enemy(Archive.textureDictionary["playerPlaceholder"], new Vector2(xPos, yPos));
+                        Enemy enemy = new Enemy(texture, new Vector2(xPosition, yPosition));
                         enemy.team.Add(new Character(Archive.textureDictionary["owlbearCombat"], Archive.textureDictionary["owlbearCombatOutline"],
                             Vector2.Zero, false, "Owlbear", 100, 3, 5, 3, 12, 10, 100, 5, 80));
-                        //map.SetPlayer(player);
                         map.enemyList.Add(enemy);
                         break;
                 }
-
             }
-            sr.Close();
-            map.SetTiles(tileArray);
+            streamReader.Close();
+            map.SetTiles(mapGrid);
             return map;
         }
 
-
+        public static void WriteMap(string mapname, Tile[,] tileArray, Entity[,] entityArray)
+        {
+            using (StreamWriter sw = File.CreateText(mapname))
+            {
+                for (int i = 0; i < tileArray.GetLength(0); i++)
+                {
+                    for (int j = 0; j < tileArray.GetLength(1); j++)
+                    {
+                        var textureArchiveName = Archive.textureDictionary.FirstOrDefault(x => x.Value == tileArray[i, j].texture).Key;
+                        sw.WriteLine("tile;" + textureArchiveName + ";" + tileArray[i, j].position.X + ";" + tileArray[i, j].position.Y + ";" + tileArray[i, j].Wall);
+                    }
+                }
+                for (int i = 0; i < entityArray.GetLength(0); i++)
+                {
+                    for (int j = 0; j < entityArray.GetLength(1); j++)
+                    {
+                        if (entityArray[i, j] != null)
+                        {
+                            var textureArchiveName = Archive.textureDictionary.FirstOrDefault(x => x.Value == entityArray[i, j].texture).Key;
+                            if (textureArchiveName == "playerPlaceholder")
+                            {
+                                sw.WriteLine("player;" + textureArchiveName + ";" + entityArray[i, j].position.X + ";" + entityArray[i, j].position.Y);
+                            }
+                            else
+                            {
+                                sw.WriteLine("enemy;" + textureArchiveName + ";" + entityArray[i, j].position.X + ";" + entityArray[i, j].position.Y);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

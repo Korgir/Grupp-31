@@ -12,8 +12,8 @@ namespace Grupp_31_SystemUtveckling
     {
         public Player player;
         public Tile[,] tiles;
-        int doorPosY;
-        int doorPosX;
+        protected int doorPosY;
+        protected int doorPosX;
         public List<Enemy> enemyList;
 
         public Map()
