@@ -47,8 +47,12 @@ namespace Grupp_31_SystemUtveckling
 
                     case "enemy":
                         Enemy enemy = new Enemy(texture, new Vector2(xPosition, yPosition));
-                        enemy.team.Add(new Character(Archive.textureDictionary["owlbearCombat"], Archive.textureDictionary["owlbearCombatOutline"],
-                            Vector2.Zero, false, "Owlbear", 100, 3, 5, 3, 12, 10, 100, 5, 80));
+                        // Add enemy team based on stringArray[4] value ex. (stringArray[4] == "goblins")
+                        for (int i = 0; i < 5; i++)
+                        {
+                            enemy.team.Add(new Character(Archive.textureDictionary["goblinCombat"], Archive.textureDictionary["goblinCombatOutline"],
+                            Vector2.Zero, false, "Goblin", 30, 3, 2, 3, 5, 10, 100, 5, 50));
+                        }
                         map.enemyList.Add(enemy);
                         break;
                 }

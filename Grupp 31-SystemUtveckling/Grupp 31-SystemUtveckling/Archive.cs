@@ -36,6 +36,8 @@ namespace Grupp_31_SystemUtveckling
             textureDictionary["whitePixel"] = Content.Load<Texture2D>("whitePixel");
 
             // Combat characters
+            textureDictionary["goblinCombat"] = Content.Load<Texture2D>("Enemies\\daggerGoblinCombat");
+            textureDictionary["goblinCombatOutline"] = Content.Load<Texture2D>("Enemies\\Outline\\daggerGoblinCombatOutline");
             textureDictionary["owlbearCombat"] = Content.Load<Texture2D>("Enemies\\daggerShadowBeastCombat");
             textureDictionary["owlbearCombatOutline"] = Content.Load<Texture2D>("Enemies\\Outline\\daggerShadowBeastCombatOutline");
             textureDictionary["warriorCombat"] = Content.Load<Texture2D>("Enemies\\reaperCombat");
