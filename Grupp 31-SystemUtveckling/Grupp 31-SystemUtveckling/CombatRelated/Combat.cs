@@ -166,6 +166,22 @@ namespace Grupp_31_SystemUtveckling
             }
         }
 
+        protected bool AnimationsPlaying()
+        {
+            foreach (Character c in allCharacters)
+            {
+                foreach (Spell s in c.spells)
+                {
+                    if (s.playingAnimation)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
         protected void PlayActionState(GameTime gameTime)
         {
             if (currentTurn < initiativeOrder.Count)
@@ -192,7 +208,10 @@ namespace Grupp_31_SystemUtveckling
                     actingCharacter.spells[actingCharacter.spellToCast].CastSpell();
                     actingCharacter.action = (int)ActionType.NoAction;
                 }
-                currentTurn++;
+                if (!AnimationsPlaying())
+                {
+                    currentTurn++;
+                }
             }
             else
             {
@@ -391,12 +410,35 @@ namespace Grupp_31_SystemUtveckling
                 offsettingString += 16;
             }
 
-            spriteBatch.Draw(Archive.textureDictionary["uiCombat"], Vector2.Zero, Color.White);
+            DrawUI(spriteBatch);
 
             if (fadingOut)
             {
                 spriteBatch.Draw(Archive.textureDictionary["whitePixel"], new Rectangle(0, 0, 1920, 1080),
                     new Color(Color.Black, 1 - (timeFadeOutSeconds / totalTimeFadeOutSeconds)));
+            }
+        }
+
+        protected void DrawUI(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(Archive.textureDictionary["uiCombat"], Vector2.Zero, Color.White);
+
+            if (currentState == CombatState.ChoseAction && initiativeOrder.Count() > 0 && currentTurn < initiativeOrder.Count())
+            {
+                Character actingCharacter = initiativeOrder[currentTurn];
+                Vector2 iconStartPosition = new Vector2(88, 880);
+                Vector2 iconStepPosition = new Vector2(160, 0);
+                for (int i = 0; i < 4; i++)
+                {
+                    if (i < actingCharacter.spells.Count())
+                    {
+                        spriteBatch.Draw(actingCharacter.spells[i].iconTexture, iconStartPosition + i * iconStepPosition, Color.White);
+                    }
+                    else
+                    {
+                        spriteBatch.Draw(Archive.textureDictionary["iconEmpty"], iconStartPosition + i * iconStepPosition, Color.White);
+                    }
+                }
             }
         }
     }

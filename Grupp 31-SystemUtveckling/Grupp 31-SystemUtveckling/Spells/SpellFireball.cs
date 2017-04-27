@@ -21,14 +21,16 @@ namespace Grupp_31_SystemUtveckling.Spells
         public SpellFireball(Character caster, Character target, TargetTeam targetTeam) 
             : base(caster, target, targetTeam)
         {
-            projectiles = new List<Projectile>();
+            iconTexture = Archive.textureDictionary["iconFireball"];
 
+            projectiles = new List<Projectile>();
             texture = Archive.textureDictionary["fireball"];
         }
 
         public override void CastSpell()
         {
             projectiles.Add(new Projectile(texture, Caster.Position, target.Position, speed));
+            playingAnimation = true;
         }
 
         public override void OnHit()

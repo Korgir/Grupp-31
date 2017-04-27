@@ -14,11 +14,11 @@ namespace Grupp_31_SystemUtveckling
         public Tile[,] tiles;
         protected int doorPosY;
         protected int doorPosX;
-        public List<Enemy> enemyList;
+        public List<Entity> entityList;
 
         public Map()
         {
-            enemyList = new List<Enemy>();
+            entityList = new List<Entity>();
         }
 
         public string ZoneSwitch()
@@ -48,19 +48,30 @@ namespace Grupp_31_SystemUtveckling
             this.tiles = tiles;
         }
 
-        public void Update(GameTime gameTime    )
+        public void Update(GameTime gameTime)
         {
             player.Update(gameTime);
+
+            foreach (Entity e in entityList)
+            {
+                if (e is FriendlyEntity npc)
+                {
+                    npc.dialog.Update();
+                }
+            }
         }
 
         public bool EngageCombatBool(ref Combat combat)
         {
-            foreach (Enemy e in enemyList)
+            foreach (Entity e in entityList)
             {
-                if (EngageCombat(player, e) && e.IsTeamAlive())
+                if (e is Enemy enemy)
                 {
-                    combat = new Combat(player.team, e.team);
-                    return true;
+                    if (EngageCombat(player, enemy) && e.IsTeamAlive())
+                    {
+                        combat = new Combat(player.team, e.team);
+                        return true;
+                    }
                 }
             }
             return false;
@@ -101,12 +112,23 @@ namespace Grupp_31_SystemUtveckling
             }
 
             player.Draw(spriteBatch);
-            foreach (Enemy e in enemyList)
+            foreach (Entity e in entityList)
             {
                 e.Draw(spriteBatch);
             }
 
             spriteBatch.Draw(Archive.textureDictionary["uiWorld"], Vector2.Zero, Color.White); // Placeholder
+
+            foreach (Entity e in entityList)
+            {
+                if (e is FriendlyEntity npc)
+                {
+                    if (npc.CanTalk(player))
+                    {
+                        npc.dialog.Draw(spriteBatch, new Vector2(703, 957));
+                    }
+                }
+            }
         }
     }
 }

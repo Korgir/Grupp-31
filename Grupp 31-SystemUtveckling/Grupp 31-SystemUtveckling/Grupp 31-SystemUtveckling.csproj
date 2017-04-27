@@ -45,9 +45,11 @@
     <Compile Include="CombatRelated\Combat.cs" />
     <Compile Include="CombatRelated\HealthBar.cs" />
     <Compile Include="CombatRelated\Projectile.cs" />
+    <Compile Include="Dialog.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="FileReader.cs" />
+    <Compile Include="FriendlyEntity.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="KeyMouseReader.cs" />

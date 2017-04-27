@@ -15,15 +15,18 @@ namespace Grupp_31_SystemUtveckling.Spells
         public SpellStab(Character caster, Character target, TargetTeam targetTeam) : base(caster, target, targetTeam)
         {
             animations = new List<Animation>();
+            iconTexture = Archive.textureDictionary["iconScythe"];
         }
 
         public override void CastSpell()
         {
             animations.Add(new Animation(Archive.textureDictionary["slash"], 4, 1, 0.05f, true, true));
+            playingAnimation = true;
         }
 
         public override void OnHit()
         {
+            playingAnimation = false;
             if (Archive.randomizer.Next(1, 100) < Caster.hitChance)
             {
                 // To Do - For each item equipped run item.OnAttack()

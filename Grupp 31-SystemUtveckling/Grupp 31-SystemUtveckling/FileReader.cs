@@ -53,7 +53,13 @@ namespace Grupp_31_SystemUtveckling
                             enemy.team.Add(new Character(Archive.textureDictionary["goblinCombat"], Archive.textureDictionary["goblinCombatOutline"],
                             Vector2.Zero, false, "Goblin", 30, 3, 2, 3, 5, 10, 100, 5, 50));
                         }
-                        map.enemyList.Add(enemy);
+                        map.entityList.Add(enemy);
+                        break;
+
+                    case "friendly":
+                        string questName = stringArray[4];
+                        FriendlyEntity friendly = new FriendlyEntity(texture, new Vector2(xPosition, yPosition), Archive.dialogDictionary[questName]);
+                        map.entityList.Add(friendly);
                         break;
                 }
             }
@@ -81,13 +87,18 @@ namespace Grupp_31_SystemUtveckling
                         if (entityArray[i, j] != null)
                         {
                             var textureArchiveName = Archive.textureDictionary.FirstOrDefault(x => x.Value == entityArray[i, j].texture).Key;
-                            if (textureArchiveName == "playerPlaceholder")
+                            if (entityArray[i,j] is Player)
                             {
                                 sw.WriteLine("player;" + textureArchiveName + ";" + entityArray[i, j].position.X + ";" + entityArray[i, j].position.Y);
                             }
-                            else
+                            else if (entityArray[i, j] is Enemy)
                             {
                                 sw.WriteLine("enemy;" + textureArchiveName + ";" + entityArray[i, j].position.X + ";" + entityArray[i, j].position.Y);
+                            }
+                            else if (entityArray[i, j] is FriendlyEntity npc)
+                            {
+                                var dialogName = Archive.dialogDictionary.FirstOrDefault(x => x.Value == npc.dialog).Key;
+                                sw.WriteLine("friendly;" + textureArchiveName + ";" + entityArray[i, j].position.X + ";" + entityArray[i, j].position.Y + ";" + dialogName);
                             }
                         }
                     }

@@ -1194,6 +1194,3 @@ tile;grass;1440;704;False
 tile;grass;1440;736;False
 tile;grass;1440;768;False
 tile;grass;1440;800;False
-enemy;goblinEntity;608;608
-player;playerPlaceholder;768;224
-friendly;playerPlaceholder;896;384;testDialog

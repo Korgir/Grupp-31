@@ -12,6 +12,7 @@ namespace Grupp_31_SystemUtveckling
     {
         public static Dictionary<string, Texture2D> textureDictionary = new Dictionary<string, Texture2D>();
         public static Dictionary<string, SpriteFont> fontDictionary = new Dictionary<string, SpriteFont>();
+        public static Dictionary<string, Dialog> dialogDictionary = new Dictionary<string, Dialog>();
         public static Random randomizer = new Random();
         public static int tileSize = 32;
 
@@ -43,6 +44,12 @@ namespace Grupp_31_SystemUtveckling
             textureDictionary["warriorCombat"] = Content.Load<Texture2D>("Enemies\\reaperCombat");
             textureDictionary["warriorCombatOutline"] = Content.Load<Texture2D>("Enemies\\Outline\\reaperCombatOutline");
 
+            // Icons
+            textureDictionary["iconEmpty"] = Content.Load<Texture2D>("Icons\\IconEmpty");
+            textureDictionary["iconFireball"] = Content.Load<Texture2D>("Icons\\IconFireball");
+            textureDictionary["iconPass"] = Content.Load<Texture2D>("Icons\\IconPass");
+            textureDictionary["iconScythe"] = Content.Load<Texture2D>("Icons\\IconScythe");
+
             // Floor tiles
             textureDictionary["dungeonFloor1"] = Content.Load<Texture2D>("Tiles\\Floor\\floor1");
             textureDictionary["dungeonFloor2"] = Content.Load<Texture2D>("Tiles\\Floor\\floor2");
@@ -61,6 +68,11 @@ namespace Grupp_31_SystemUtveckling
             textureDictionary["dungeonWall4"] = Content.Load<Texture2D>("Tiles\\Wall\\wallSide4");
             textureDictionary["dungeonWall5"] = Content.Load<Texture2D>("Tiles\\Wall\\wallTop1");
             textureDictionary["dungeonWall6"] = Content.Load<Texture2D>("Tiles\\Wall\\wallTop2");
+            textureDictionary["treeUpLeft"] = Content.Load<Texture2D>("Tiles\\Wall\\treeUpLeft");
+            textureDictionary["treeUpRight"] = Content.Load<Texture2D>("Tiles\\Wall\\treeUpRight");
+            textureDictionary["treeDownLeft"] = Content.Load<Texture2D>("Tiles\\Wall\\treeDownLeft");
+            textureDictionary["treeDownRight"] = Content.Load<Texture2D>("Tiles\\Wall\\treeDownRight");
+            textureDictionary["smallTree"] = Content.Load<Texture2D>("Tiles\\Wall\\smallTree");
 
             // Entities
             textureDictionary["playerPlaceholder"] = Content.Load<Texture2D>("Entities\\CharacterSpriteSheet");
@@ -68,6 +80,13 @@ namespace Grupp_31_SystemUtveckling
 
             // Fonts
             fontDictionary["defaultFont"] = Content.Load<SpriteFont>("font");
+            fontDictionary["dialogFont"] = Content.Load<SpriteFont>("font");
+
+            // Dialog
+            dialogDictionary["testDialog"] = new Dialog();
+            dialogDictionary["testDialog"].AddLine("Sup homie!");
+            dialogDictionary["testDialog"].AddLine("Kill this goblin.");
+            dialogDictionary["testDialog"].AddLine("plz");
         }
     }
 }

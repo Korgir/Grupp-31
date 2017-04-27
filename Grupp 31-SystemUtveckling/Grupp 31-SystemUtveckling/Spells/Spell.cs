@@ -10,6 +10,7 @@ namespace Grupp_31_SystemUtveckling
 {
     abstract class Spell
     {
+        public Texture2D iconTexture;
         private int manaCost;
         public bool playingAnimation;
 
@@ -18,7 +19,8 @@ namespace Grupp_31_SystemUtveckling
         public Spell(Character caster)
         {
             this.Caster = caster;
-            playingAnimation = true;
+            playingAnimation = false;
+            iconTexture = Archive.textureDictionary["iconEmpty"];
         }
 
         public abstract void CastSpell();
