@@ -54,8 +54,9 @@ namespace Grupp_31_SystemUtveckling
 
             foreach (Entity e in entityList)
             {
-                if (e is FriendlyEntity npc)
+                if (e is FriendlyEntity)
                 {
+                    FriendlyEntity npc = (FriendlyEntity)e;
                     npc.dialog.Update();
                 }
             }
@@ -65,8 +66,9 @@ namespace Grupp_31_SystemUtveckling
         {
             foreach (Entity e in entityList)
             {
-                if (e is Enemy enemy)
+                if (e is Enemy)
                 {
+                    Enemy enemy = (Enemy)e;
                     if (EngageCombat(player, enemy) && e.IsTeamAlive())
                     {
                         combat = new Combat(player.team, e.team);
@@ -121,8 +123,9 @@ namespace Grupp_31_SystemUtveckling
 
             foreach (Entity e in entityList)
             {
-                if (e is FriendlyEntity npc)
+                if (e is FriendlyEntity)
                 {
+                    FriendlyEntity npc = (FriendlyEntity)e;
                     if (npc.CanTalk(player))
                     {
                         npc.dialog.Draw(spriteBatch, new Vector2(703, 957));

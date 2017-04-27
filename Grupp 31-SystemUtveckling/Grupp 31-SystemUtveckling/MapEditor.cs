@@ -141,8 +141,9 @@ namespace Grupp_31_SystemUtveckling
                 {
                     entityArray[XValue, YValue] = new Enemy(e.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y));
                 }
-                else if (e is FriendlyEntity f)
+                else if (e is FriendlyEntity)
                 {
+                    FriendlyEntity f = (FriendlyEntity)e;
                     entityArray[XValue, YValue] = new FriendlyEntity(e.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y),
                         f.dialog);
                 }

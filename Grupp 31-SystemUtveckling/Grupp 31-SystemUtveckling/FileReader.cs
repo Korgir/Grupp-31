@@ -95,8 +95,9 @@ namespace Grupp_31_SystemUtveckling
                             {
                                 sw.WriteLine("enemy;" + textureArchiveName + ";" + entityArray[i, j].position.X + ";" + entityArray[i, j].position.Y);
                             }
-                            else if (entityArray[i, j] is FriendlyEntity npc)
+                            else if (entityArray[i, j] is FriendlyEntity)
                             {
+                                FriendlyEntity npc = (FriendlyEntity)entityArray[i, j];
                                 var dialogName = Archive.dialogDictionary.FirstOrDefault(x => x.Value == npc.dialog).Key;
                                 sw.WriteLine("friendly;" + textureArchiveName + ";" + entityArray[i, j].position.X + ";" + entityArray[i, j].position.Y + ";" + dialogName);
                             }

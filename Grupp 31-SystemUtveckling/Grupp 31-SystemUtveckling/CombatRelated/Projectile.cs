@@ -11,7 +11,7 @@ namespace Grupp_31_SystemUtveckling
     class Projectile
     {
         protected Texture2D texture;
-        protected Vector2 position;
+        public Vector2 position;
         protected Vector2 destination;
         public float speed;
         public bool haveReachedDestination;
