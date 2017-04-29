@@ -52,6 +52,7 @@
     <Compile Include="FriendlyEntity.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GameObject.cs" />
+    <Compile Include="Keybinds.cs" />
     <Compile Include="KeyMouseReader.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="MapEditor.cs" />

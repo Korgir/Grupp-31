@@ -12,45 +12,61 @@ namespace Grupp_31_SystemUtveckling
     public class ParticleEngine
     {
         private Random random;
-        public Vector2 EmitterLocation { get; set; }
+        public Vector2 emitterLocation;
         private List<Particle> particles;
-        private List<Texture2D> textures;
         private Particle templetParticle;
+        protected Color particleColor;
+        protected int intensity;
 
-        public ParticleEngine(Vector2 location, Particle templetParticle)
+        public enum ParticleType { Smoke }
+        protected ParticleType type;
+
+        public ParticleEngine(Vector2 location, ParticleType type, Color particleColor, int intensity)
         {
-            EmitterLocation = location;
+            emitterLocation = location;
             
             this.particles = new List<Particle>();
             random = new Random();
-            this.templetParticle = templetParticle;
+            this.type = type;
+            this.particleColor = particleColor;
+            this.intensity = intensity;
         }
-
        
         private Particle GenerateParticle()
         {
-            Texture2D texture = templetParticle.texture;
-            Vector2 position = EmitterLocation;
-            Vector2 velocity = templetParticle.velocity;
-            float angle = templetParticle.angle;
-            float angularVelocity = templetParticle.angularVelocity;
-            Color color = templetParticle.color;
-            float size = templetParticle.size;
-            int ttl = templetParticle.TTL;
-            return new Particle(texture, position, velocity, angle, angularVelocity, color, size, ttl);
+            Texture2D texture;
+            Vector2 velocity;
+            float angularVelocity;
+            float size;
+            float ttl;
+
+            if ( type == ParticleType.Smoke)
+            {
+                texture = Archive.textureDictionary["smokeParticle" + Archive.randomizer.Next(0, 5)];
+                velocity = new Vector2(Archive.randomizer.Next(-5, 5), Archive.randomizer.Next(-5, 5));
+                angularVelocity = (float)MathHelper.ToRadians(Archive.randomizer.Next(-5, 5));
+                size = (float)Archive.randomizer.Next(10, 30) / 100f;
+                ttl = 0.3f;
+                return new Particle(texture, emitterLocation, velocity, 0.0f, angularVelocity, particleColor, size, ttl);
+            }
+
+            return null;
         }
 
-        public void Update()
+        public void EmittParticles()
         {
-            int total = 10;
-            for (int i = 0; i < total; i++)
+            for (int i = 0; i < intensity; i++)
             {
                 particles.Add(GenerateParticle());
             }
+        }
+
+        public void Update(GameTime gameTime)
+        {
             for (int particle = 0; particle < particles.Count; particle++)
             {
-                particles[particle].Update();
-                if (particles[particle].TTL <= 0)
+                particles[particle].Update(gameTime);
+                if (particles[particle].timeToLiveSeconds <= 0)
                 {
                     particles.RemoveAt(particle);
                     particle--;

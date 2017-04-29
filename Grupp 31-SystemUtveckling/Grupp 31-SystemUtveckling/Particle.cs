@@ -11,16 +11,17 @@ namespace Grupp_31_SystemUtveckling
 {
     public class Particle
     {
-        public Texture2D texture { get; set; }
-        public Vector2 position { get; set; }
-        public Vector2 velocity { get; set; }
-        public float angle { get; set; }
-        public float angularVelocity { get; set; }
-        public Color color { get; set; }
-        public float size { get; set; }
-        public int TTL { get; set; }
+        public Texture2D texture;
+        public Vector2 position;
+        public Vector2 velocity;
+        public float angle;
+        public float angularVelocity;
+        public Color color;
+        public float size;
+        public float timeToLiveSeconds;
 
-        public Particle(Texture2D texture, Vector2 position, Vector2 velocity, float angle, float angularVelocity, Color color, float size, int ttl)
+        public Particle(Texture2D texture, Vector2 position, Vector2 velocity, float angle, 
+            float angularVelocity, Color color, float size, float timeToLiveSeconds)
         {
             this.texture = texture;
             this.position = position;
@@ -29,12 +30,12 @@ namespace Grupp_31_SystemUtveckling
             this.angularVelocity = angularVelocity;
             this.color = color;
             this.size = size;
-            this.TTL = ttl;
+            this.timeToLiveSeconds = timeToLiveSeconds;
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-            TTL--;
+            timeToLiveSeconds -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             position += velocity;
             angle += angularVelocity;
         }

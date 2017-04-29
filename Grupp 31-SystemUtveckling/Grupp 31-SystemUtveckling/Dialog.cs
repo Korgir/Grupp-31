@@ -31,7 +31,7 @@ namespace Grupp_31_SystemUtveckling
 
         public void Update()
         {
-            if (KeyMouseReader.KeyPressed(Keys.Space))
+            if (KeyMouseReader.KeyPressed(Keybinds.binds["talk"]))
             {
                 currentLine++;
                 if (currentLine >= dialogLines.Count())

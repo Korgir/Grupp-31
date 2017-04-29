@@ -37,25 +37,25 @@ namespace Grupp_31_SystemUtveckling
             if (!moving)
             {
                 Console.WriteLine("test");
-                if (KeyMouseReader.KeyDown(Keys.Left))
+                if (KeyMouseReader.KeyDown(Keybinds.binds["moveLeft"]))
                 {
                     animation.ChangeAnimationLoop("walk_left");
                     ChangeDirection(new Vector2(-1, 0));
                     rotation = MathHelper.ToRadians(-180);
                 }
-                if (KeyMouseReader.KeyDown(Keys.Right))
+                if (KeyMouseReader.KeyDown(Keybinds.binds["moveRight"]))
                 {
                     animation.ChangeAnimationLoop("walk_right");
                     ChangeDirection(new Vector2(1, 0));
                     rotation = MathHelper.ToRadians(0);
                 }
-                if (KeyMouseReader.KeyDown(Keys.Up))
+                if (KeyMouseReader.KeyDown(Keybinds.binds["moveUp"]))
                 {
                     animation.ChangeAnimationLoop("walk_up");
                     ChangeDirection(new Vector2(0, -1));
                     rotation = MathHelper.ToRadians(-90);
                 }
-                if (KeyMouseReader.KeyDown(Keys.Down))
+                if (KeyMouseReader.KeyDown(Keybinds.binds["moveDown"]))
                 {
                     animation.ChangeAnimationLoop("walk_down");
                     ChangeDirection(new Vector2(0, 1));

@@ -14,7 +14,7 @@ namespace Grupp_31_SystemUtveckling
         {
             Texture2D frame = Archive.textureDictionary["resourceBarFrame"];
             Texture2D filling = Archive.textureDictionary["resourceBarFilling"];
-            SpriteFont font = Archive.fontDictionary["defaultFont"];
+            //SpriteFont font = Archive.fontDictionary["defaultFont"];
 
             float percentageHealth = (float)character.health / (float)character.maxHealth;
             int offset = 10;
@@ -25,7 +25,7 @@ namespace Grupp_31_SystemUtveckling
             spriteBatch.Draw(filling, position, visibleHealth, color, 0.0f, new Vector2(filling.Width / 2, filling.Height / 2), 1.0f, SpriteEffects.None, 0);
 
             string healthText = character.health + " / " + character.maxHealth;
-            spriteBatch.DrawString(font, healthText, position, Color.Black, 0.0f, font.MeasureString(healthText)/2, 1.0f, SpriteEffects.None, 0);
+            //spriteBatch.DrawString(font, healthText, position, Color.Black, 0.0f, font.MeasureString(healthText)/2, 1.0f, SpriteEffects.None, 0);
         }
     }
 }

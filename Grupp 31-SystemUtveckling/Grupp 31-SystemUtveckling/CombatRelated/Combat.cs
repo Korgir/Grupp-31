@@ -27,6 +27,7 @@ namespace Grupp_31_SystemUtveckling
 
         protected Character selectingCharacter;
         protected Spell selectingSpell;
+        protected List<Button> buttons;
 
         public enum CombatState { ChoseAction, PlayActions, SelectUnit }
         public enum ActionType { NoAction = -1, PassTurn = 0, BasicAttack = 1,
@@ -45,6 +46,8 @@ namespace Grupp_31_SystemUtveckling
             positionsTeam1 = new List<Vector2>();
             positionsTeam2 = new List<Vector2>();
 
+            AddButtons();
+
             timeFadeOutSeconds = 1.5f;
             totalTimeFadeOutSeconds = 1.5f;
             fadingOut = true;
@@ -52,6 +55,40 @@ namespace Grupp_31_SystemUtveckling
             this.currentState = CombatState.ChoseAction;
 
             SetCharacterPositions();
+        }
+
+        protected void AddButtons()
+        {
+            buttons = new List<Button>();
+            for (int i = 0; i < 5; i++)
+            {
+                Point location = new Point(88 + i * 160, 880);
+                Point size = new Point(144, 144);
+                buttons.Add(new Button(new Rectangle(location, size), Archive.textureDictionary["iconEmpty"],
+                    Archive.fontDictionary["defaultFont"], "", Keys.A));
+            }
+
+            buttons[0].keyBind = Keybinds.binds["combatAction1"];
+            buttons[1].keyBind = Keybinds.binds["combatAction2"];
+            buttons[2].keyBind = Keybinds.binds["combatAction3"];
+            buttons[3].keyBind = Keybinds.binds["combatAction4"];
+            buttons[4].keyBind = Keybinds.binds["combatPass"];
+            buttons[4].texture = Archive.textureDictionary["iconPass"];
+        }
+
+        protected void UpdateButtonIcons(Character actor)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (i < actor.spells.Count())
+                {
+                    buttons[i].texture = actor.spells[i].iconTexture;
+                }
+                else
+                {
+                    buttons[i].texture = Archive.textureDictionary["iconEmpty"];
+                }
+            }
         }
 
         protected void SetCharacterPositions()
@@ -127,6 +164,7 @@ namespace Grupp_31_SystemUtveckling
                 }
                 else if (actingCharacter.playerControlled)
                 {
+                    UpdateButtonIcons(actingCharacter);
                     if (ChoseAction(actingCharacter))
                     {
                         if (actingCharacter.action == (int)ActionType.BasicAttack)
@@ -302,58 +340,44 @@ namespace Grupp_31_SystemUtveckling
             }
         }
 
+        protected bool TryCastSpell(Character actor, int spellIndex)
+        {
+            if (actor.spells.Count > spellIndex)
+            {
+                if (actor.mana >= actor.spells[spellIndex].manaCost)
+                {
+                    actor.action = (int)ActionType.CastSpell;
+                    actor.spellToCast = spellIndex;
+                    return true;
+                }
+            }
+            return false;
+        }
+
         protected bool ChoseAction(Character actor)
         {
-            if (KeyMouseReader.KeyPressed(Keys.D1))
+            if (buttons[0].IsClicked())
             {
                 actor.action = (int)ActionType.BasicAttack;
                 return true;
             }
-            if (KeyMouseReader.KeyPressed(Keys.D2))
-            {
-                if (actor.spells.Count >= 2)
-                {
-                    actor.action = (int)ActionType.CastSpell;
-                    actor.spellToCast = 1;
-                    return true;
-                }
-            }
-            if (KeyMouseReader.KeyPressed(Keys.D3))
-            {
-                if (actor.spells.Count >= 3)
-                {
-                    actor.action = (int)ActionType.CastSpell;
-                    actor.spellToCast = 2;
-                    return true;
-                }
-            }
-            if (KeyMouseReader.KeyPressed(Keys.D4))
-            {
-                if (actor.spells.Count >= 4)
-                {
-                    actor.action = (int)ActionType.CastSpell;
-                    actor.spellToCast = 3;
-                    return true;
-                }
-            }
-            if (KeyMouseReader.KeyPressed(Keys.D5))
-            {
-                if (actor.spells.Count >= 5)
-                {
-                    actor.action = (int)ActionType.CastSpell;
-                    actor.spellToCast = 4;
-                    return true;
-                }
-            }
-            //if (KeyMouseReader.KeyPressed(Keys.D6))
-            //{
-            //    actor.action = (int)ActionType.UseItem;
-            //    return true;
-            //}
-            if (KeyMouseReader.KeyPressed(Keys.D7))
+            else if (buttons[4].IsClicked())
             {
                 actor.action = (int)ActionType.PassTurn;
                 return true;
+            }
+            else
+            {
+                for (int i = 1; i <= 3; i++)
+                {
+                    if (buttons[i].IsClicked())
+                    {
+                        if (TryCastSpell(actor, i))
+                        {
+                            return true;
+                        }
+                    }
+                }
             }
 
             return false;
@@ -423,23 +447,43 @@ namespace Grupp_31_SystemUtveckling
         {
             spriteBatch.Draw(Archive.textureDictionary["uiCombat"], Vector2.Zero, Color.White);
 
-            if (currentState == CombatState.ChoseAction && initiativeOrder.Count() > 0 && currentTurn < initiativeOrder.Count())
+            foreach (Button b in buttons)
             {
-                Character actingCharacter = initiativeOrder[currentTurn];
-                Vector2 iconStartPosition = new Vector2(88, 880);
-                Vector2 iconStepPosition = new Vector2(160, 0);
-                for (int i = 0; i < 4; i++)
-                {
-                    if (i < actingCharacter.spells.Count())
-                    {
-                        spriteBatch.Draw(actingCharacter.spells[i].iconTexture, iconStartPosition + i * iconStepPosition, Color.White);
-                    }
-                    else
-                    {
-                        spriteBatch.Draw(Archive.textureDictionary["iconEmpty"], iconStartPosition + i * iconStepPosition, Color.White);
-                    }
-                }
+                b.Draw(spriteBatch);
             }
+
+            DrawStats(spriteBatch);
+        }
+
+        protected void DrawStats(SpriteBatch spriteBatch)
+        {
+            Character actor = team1[0];
+            Vector2 position = new Vector2(1030, 880);
+            spriteBatch.DrawString(Archive.fontDictionary["infoFont"],
+                "Health: " + actor.health + "/" + actor.maxHealth,
+                position, Color.Black);
+            position.Y += 36;
+            spriteBatch.DrawString(Archive.fontDictionary["infoFont"],
+                "Mana: " + actor.mana + "/" + actor.maxMana + "(+" + actor.manaRegeneration + ")",
+                position, Color.Black);
+            position.Y += 36;
+            spriteBatch.DrawString(Archive.fontDictionary["infoFont"],
+                "Armor: " + actor.armor,
+                position, Color.Black);
+            position.Y += 36;
+            spriteBatch.DrawString(Archive.fontDictionary["infoFont"],
+                "Speed: " + actor.speed,
+                position, Color.Black);
+
+            position = new Vector2(1460, 880);
+            spriteBatch.DrawString(Archive.fontDictionary["infoFont"],
+                "Damage: " + actor.physicalDamageMin + "-" + actor.physicalDamageMax +
+                "(" + ((actor.physicalDamageMax + actor.physicalDamageMin) / 2) + ")",
+                position, Color.Black);
+            position.Y += 36;
+            spriteBatch.DrawString(Archive.fontDictionary["infoFont"],
+                "Magic amp: " + actor.magicAmplification,
+                position, Color.Black);
         }
     }
 }

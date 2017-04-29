@@ -41,13 +41,13 @@ namespace Grupp_31_SystemUtveckling
 
             #region Buttons
             buttonList = new List<Button>();
-            buttonList.Add(new Button(new Rectangle(1512, 50, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Floor"));
-            buttonList.Add(new Button(new Rectangle(1512, 100, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Wall"));
-            buttonList.Add(new Button(new Rectangle(1512, 150, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Entity"));
-            buttonList.Add(new Button(new Rectangle(1512, 200, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Item"));
-            buttonList.Add(new Button(new Rectangle(1662, 50, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Save map"));
-            buttonList.Add(new Button(new Rectangle(1662, 100, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Load map"));
-            buttonList.Add(new Button(new Rectangle(1512, 300, 256, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Toggle grid"));
+            buttonList.Add(new Button(new Rectangle(1512, 50, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Floor", Keybinds.binds["editorFloor"]));
+            buttonList.Add(new Button(new Rectangle(1512, 100, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Wall", Keybinds.binds["editorWall"]));
+            buttonList.Add(new Button(new Rectangle(1512, 150, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Entity", Keybinds.binds["editorEntity"]));
+            buttonList.Add(new Button(new Rectangle(1512, 200, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Item", Keybinds.binds["editorItem"]));
+            buttonList.Add(new Button(new Rectangle(1662, 50, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Save map", Keybinds.binds["editorSaveMap"]));
+            buttonList.Add(new Button(new Rectangle(1662, 100, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Load map", Keybinds.binds["editorLoadMap"]));
+            buttonList.Add(new Button(new Rectangle(1512, 300, 256, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Toggle grid", Keybinds.binds["editorToggleGrid"]));
             #endregion
 
             #region Floor Tiles
@@ -61,6 +61,10 @@ namespace Grupp_31_SystemUtveckling
             AddFloorTile(Archive.textureDictionary["dungeonFloor4"]);
             AddFloorTile(Archive.textureDictionary["dungeonFloor5"]);
             AddFloorTile(Archive.textureDictionary["dungeonFloor6"]);
+            for (int i = 1; i <= 16; i++)
+            {
+                AddFloorTile(Archive.textureDictionary["grassRoad"+i]);
+            }
             #endregion
 
             #region Wall Tiles
@@ -71,11 +75,12 @@ namespace Grupp_31_SystemUtveckling
             AddWallTile(Archive.textureDictionary["dungeonWall4"]);
             AddWallTile(Archive.textureDictionary["dungeonWall5"]);
             AddWallTile(Archive.textureDictionary["dungeonWall6"]);
-            AddWallTile(Archive.textureDictionary["treeUpLeft"]);
-            AddWallTile(Archive.textureDictionary["treeUpRight"]);
-            AddWallTile(Archive.textureDictionary["treeDownLeft"]);
-            AddWallTile(Archive.textureDictionary["treeDownRight"]);
             AddWallTile(Archive.textureDictionary["smallTree"]);
+            AddWallTile(Archive.textureDictionary["water"]);
+            for (int i = 1; i <= 8; i++)
+            {
+                AddWallTile(Archive.textureDictionary["waterGrass" + i]);
+            }
             #endregion
 
             selectedTile = floorTiles[0];

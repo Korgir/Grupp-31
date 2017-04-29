@@ -37,7 +37,8 @@ namespace Grupp_31_SystemUtveckling
         {
             base.Initialize();
             Console.WriteLine("init");
-            
+            Keybinds.Initialize();
+
             currentGameState = GameState.Menus;
 
             startMenu = new StartMenu(Archive.textureDictionary["menuBackground"], Archive.textureDictionary["menuHeader"], 
@@ -61,7 +62,7 @@ namespace Grupp_31_SystemUtveckling
         {
             KeyMouseReader.Update();
             
-            if (KeyMouseReader.KeyPressed(Keys.F11))
+            if (KeyMouseReader.KeyPressed(Keybinds.binds["toggleFullscreen"]))
             {
                 graphics.IsFullScreen = !graphics.IsFullScreen;
                 graphics.ApplyChanges();
@@ -72,7 +73,7 @@ namespace Grupp_31_SystemUtveckling
                 case (GameState.Menus):
                     startMenu.Update();
 
-                    if (KeyMouseReader.KeyPressed(Keys.Escape))
+                    if (KeyMouseReader.KeyPressed(Keybinds.binds["back"]))
                     {
                         this.Exit();
                     }
@@ -104,7 +105,7 @@ namespace Grupp_31_SystemUtveckling
                         currentGameState = GameState.World;
                     }
 
-                    if (KeyMouseReader.KeyPressed(Keys.Escape))
+                    if (KeyMouseReader.KeyPressed(Keybinds.binds["back"]))
                     {
                         this.Exit();
                     }
@@ -113,7 +114,7 @@ namespace Grupp_31_SystemUtveckling
                 case (GameState.WorldEditor):
                     mapEditor.Update();
 
-                    if (KeyMouseReader.KeyPressed(Keys.Escape))
+                    if (KeyMouseReader.KeyPressed(Keybinds.binds["back"]))
                     {
                         currentGameState = GameState.Menus;
                     }

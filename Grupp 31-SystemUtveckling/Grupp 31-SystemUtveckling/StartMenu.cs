@@ -39,13 +39,13 @@ namespace Grupp_31_SystemUtveckling
             buttonList = new List<Button>();
 
             buttonList.Add(new Button(new Rectangle(graphicsDevice.Viewport.Width / 2 - (buttonWidth / 2), 450,
-                buttonWidth, buttonHeight), buttonTexture, font, "Play"));
+                buttonWidth, buttonHeight), buttonTexture, font, "Play", Keybinds.binds["start"]));
 
             buttonList.Add(new Button(new Rectangle(graphicsDevice.Viewport.Width / 2 - (buttonWidth / 2), 550,
-                buttonWidth, buttonHeight), buttonTexture, font, "Editor"));
+                buttonWidth, buttonHeight), buttonTexture, font, "Editor", Keybinds.binds["goToEditor"]));
 
             buttonList.Add(new Button(new Rectangle(graphicsDevice.Viewport.Width / 2 - (buttonWidth / 2), 650,
-                buttonWidth, buttonHeight), buttonTexture, font, "Quit"));
+                buttonWidth, buttonHeight), buttonTexture, font, "Quit", Keybinds.binds["back"]));
         }
 
         public void Update()

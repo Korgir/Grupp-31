@@ -50,7 +50,13 @@ namespace Grupp_31_SystemUtveckling
             textureDictionary["iconPass"] = Content.Load<Texture2D>("Icons\\IconPass");
             textureDictionary["iconScythe"] = Content.Load<Texture2D>("Icons\\IconScythe");
 
-            // Floor tiles
+            // Particles
+            for (int i = 0; i < 5; i++)
+            {
+                textureDictionary["smokeParticle" + i] = Content.Load<Texture2D>("Particles\\whitePuff" + i);
+            }
+
+            // Floor 
             textureDictionary["dungeonFloor1"] = Content.Load<Texture2D>("Tiles\\Floor\\floor1");
             textureDictionary["dungeonFloor2"] = Content.Load<Texture2D>("Tiles\\Floor\\floor2");
             textureDictionary["dungeonFloor3"] = Content.Load<Texture2D>("Tiles\\Floor\\floor3");
@@ -59,7 +65,12 @@ namespace Grupp_31_SystemUtveckling
             textureDictionary["dungeonFloor6"] = Content.Load<Texture2D>("Tiles\\Floor\\floor6");
             textureDictionary["grass"] = Content.Load<Texture2D>("Tiles\\Floor\\grass");
             textureDictionary["plank"] = Content.Load<Texture2D>("Tiles\\Floor\\plank");
-            textureDictionary["road"] = Content.Load<Texture2D>("Tiles\\Floor\\road");
+            textureDictionary["road"] = Content.Load<Texture2D>("Tiles\\Floor\\dirt");
+            for (int i = 1; i <= 16; i++)
+            {
+                textureDictionary["grassRoad" + i] = Content.Load<Texture2D>("Tiles\\Floor\\GrassDirt\\grassDirt" + i);
+            }
+
 
             // Wall tiles
             textureDictionary["dungeonWall1"] = Content.Load<Texture2D>("Tiles\\Wall\\wallSide1");
@@ -68,11 +79,12 @@ namespace Grupp_31_SystemUtveckling
             textureDictionary["dungeonWall4"] = Content.Load<Texture2D>("Tiles\\Wall\\wallSide4");
             textureDictionary["dungeonWall5"] = Content.Load<Texture2D>("Tiles\\Wall\\wallTop1");
             textureDictionary["dungeonWall6"] = Content.Load<Texture2D>("Tiles\\Wall\\wallTop2");
-            textureDictionary["treeUpLeft"] = Content.Load<Texture2D>("Tiles\\Wall\\treeUpLeft");
-            textureDictionary["treeUpRight"] = Content.Load<Texture2D>("Tiles\\Wall\\treeUpRight");
-            textureDictionary["treeDownLeft"] = Content.Load<Texture2D>("Tiles\\Wall\\treeDownLeft");
-            textureDictionary["treeDownRight"] = Content.Load<Texture2D>("Tiles\\Wall\\treeDownRight");
             textureDictionary["smallTree"] = Content.Load<Texture2D>("Tiles\\Wall\\smallTree");
+            textureDictionary["water"] = Content.Load<Texture2D>("Tiles\\Wall\\water");
+            for (int i = 1; i <= 8; i++)
+            {
+                textureDictionary["waterGrass" + i] = Content.Load<Texture2D>("Tiles\\Wall\\WaterGrass\\waterGrass" + i);
+            }
 
             // Entities
             textureDictionary["playerPlaceholder"] = Content.Load<Texture2D>("Entities\\CharacterSpriteSheet");
@@ -80,7 +92,8 @@ namespace Grupp_31_SystemUtveckling
 
             // Fonts
             fontDictionary["defaultFont"] = Content.Load<SpriteFont>("font");
-            fontDictionary["dialogFont"] = Content.Load<SpriteFont>("font");
+            fontDictionary["dialogFont"] = Content.Load<SpriteFont>("gameFont");
+            fontDictionary["infoFont"] = Content.Load<SpriteFont>("infoFont");
 
             // Dialog
             dialogDictionary["testDialog"] = new Dialog();
