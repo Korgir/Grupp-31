@@ -13,6 +13,7 @@ namespace Grupp_31_SystemUtveckling
         public Texture2D iconTexture;
         public int manaCost;
         public bool playingAnimation;
+        public List<DamageNumber> damageNumbers;
 
         public Character Caster { get; private set; }
 
@@ -22,12 +23,31 @@ namespace Grupp_31_SystemUtveckling
             manaCost = 0;
             playingAnimation = false;
             iconTexture = Archive.textureDictionary["iconEmpty"];
+            damageNumbers = new List<DamageNumber>();
         }
 
         public abstract void CastSpell();
 
-        public abstract void Update(GameTime gameTime);
+        public virtual void Update(GameTime gameTime)
+        {
+            for (int i = damageNumbers.Count()-1; i >= 0; i--)
+            {
+                damageNumbers[i].Update(gameTime);
+                if (damageNumbers[i].transparancy == 0)
+                {
+                    damageNumbers.RemoveAt(i);
+                }
+            }
+        }
 
         public abstract void Draw(SpriteBatch spriteBatch);
+
+        public virtual void DrawUI(SpriteBatch spriteBatch)
+        {
+            foreach (DamageNumber d in damageNumbers)
+            {
+                d.Draw(spriteBatch);
+            }
+        }
     }
 }

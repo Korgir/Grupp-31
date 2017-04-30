@@ -30,6 +30,7 @@ namespace Grupp_31_SystemUtveckling
         public int action;
         public int spellToCast;
         public List<Spell> spells;
+        public List<Buff> buffs;
         // To Do - Add List<Item> equippedItems when class is implemented
 
         public bool drawOutline;
@@ -78,8 +79,11 @@ namespace Grupp_31_SystemUtveckling
             spellToCast = -1;
 
             spells = new List<Spell>();
-            spells.Add(new Spells.SpellStab(this, null, TargetSpell.TargetTeam.Enemy));
-            spells.Add(new Spells.SpellFireball(this, null, TargetSpell.TargetTeam.Enemy));
+            spells.Add(new SpellStab(this, null, TargetSpell.TargetTeam.Enemy));
+            spells.Add(new SpellFireball(this, null, TargetSpell.TargetTeam.Enemy));
+            spells.Add(new SpellThrowGoblin(this, null, TargetSpell.TargetTeam.Enemy));
+
+            buffs = new List<Buff>();
 
             drawOutline = false;
             outlineColor = Color.White;
@@ -88,6 +92,19 @@ namespace Grupp_31_SystemUtveckling
         public void OnNewTurn()
         {
             RegenerateMana();
+            TickBuffs();
+        }
+
+        public void TickBuffs()
+        {
+            for (int i = buffs.Count()-1; i >= 0; i--)
+            {
+                buffs[i].OnTick();
+                if (buffs[i].removable)
+                {
+                    buffs.RemoveAt(i);
+                }
+            }
         }
 
         public bool RegenerateMana()

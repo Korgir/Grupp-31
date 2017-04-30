@@ -47,8 +47,16 @@ namespace Grupp_31_SystemUtveckling
             // Icons
             textureDictionary["iconEmpty"] = Content.Load<Texture2D>("Icons\\IconEmpty");
             textureDictionary["iconFireball"] = Content.Load<Texture2D>("Icons\\IconFireball");
+            textureDictionary["iconGoblin"] = Content.Load<Texture2D>("Icons\\IconGoblin");
             textureDictionary["iconPass"] = Content.Load<Texture2D>("Icons\\IconPass");
             textureDictionary["iconScythe"] = Content.Load<Texture2D>("Icons\\IconScythe");
+
+            // Status effects
+            textureDictionary["bleed"] = Content.Load<Texture2D>("StatusEffects\\bleed");
+            textureDictionary["magic"] = Content.Load<Texture2D>("StatusEffects\\magic");
+            textureDictionary["miss"] = Content.Load<Texture2D>("StatusEffects\\miss");
+            textureDictionary["physical"] = Content.Load<Texture2D>("StatusEffects\\physical");
+            textureDictionary["stun"] = Content.Load<Texture2D>("StatusEffects\\stun");
 
             // Particles
             for (int i = 0; i < 5; i++)
@@ -56,7 +64,7 @@ namespace Grupp_31_SystemUtveckling
                 textureDictionary["smokeParticle" + i] = Content.Load<Texture2D>("Particles\\whitePuff" + i);
             }
 
-            // Floor 
+            // Floor tiles
             textureDictionary["dungeonFloor1"] = Content.Load<Texture2D>("Tiles\\Floor\\floor1");
             textureDictionary["dungeonFloor2"] = Content.Load<Texture2D>("Tiles\\Floor\\floor2");
             textureDictionary["dungeonFloor3"] = Content.Load<Texture2D>("Tiles\\Floor\\floor3");
@@ -70,7 +78,6 @@ namespace Grupp_31_SystemUtveckling
             {
                 textureDictionary["grassRoad" + i] = Content.Load<Texture2D>("Tiles\\Floor\\GrassDirt\\grassDirt" + i);
             }
-
 
             // Wall tiles
             textureDictionary["dungeonWall1"] = Content.Load<Texture2D>("Tiles\\Wall\\wallSide1");

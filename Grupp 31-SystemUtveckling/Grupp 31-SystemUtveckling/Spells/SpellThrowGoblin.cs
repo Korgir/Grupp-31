@@ -8,32 +8,31 @@ using System.Threading.Tasks;
 
 namespace Grupp_31_SystemUtveckling
 {
-    class SpellFireball : TargetSpell
+    class SpellThrowGoblin : TargetSpell
     {
-        private int damageMin = 10;
-        private int damageMax = 15;
-        private int damagePerMagicAmplification = 2;
+        private int damageMin = 1;
+        private int damageMax = 2;
         private float speed = 5f;
 
         Texture2D texture;
         List<Projectile> projectiles;
         List<ParticleEngine> particles;
 
-        public SpellFireball(Character caster, Character target, TargetTeam targetTeam) 
+        public SpellThrowGoblin(Character caster, Character target, TargetTeam targetTeam)
             : base(caster, target, targetTeam)
         {
-            iconTexture = Archive.textureDictionary["iconFireball"];
+            iconTexture = Archive.textureDictionary["iconGoblin"];
 
             projectiles = new List<Projectile>();
             particles = new List<ParticleEngine>();
-            texture = Archive.textureDictionary["fireball"];
-            manaCost = 30;
+            texture = Archive.textureDictionary["goblinCombat"];
+            manaCost = 0;
         }
 
         public override void CastSpell()
         {
             projectiles.Add(new Projectile(texture, Caster.Position, target.Position, speed));
-            particles.Add(new ParticleEngine(Vector2.Zero, ParticleEngine.ParticleType.Smoke, Color.Red, 5));
+            particles.Add(new ParticleEngine(Vector2.Zero, ParticleEngine.ParticleType.Smoke, Color.Green, 3));
             playingAnimation = true;
         }
 
@@ -41,12 +40,13 @@ namespace Grupp_31_SystemUtveckling
         {
             playingAnimation = false;
 
-            int damage = Archive.randomizer.Next(damageMin, damageMax) 
-                + Caster.magicAmplification * damagePerMagicAmplification;
-            target.Damage(damage, Character.DamageType.Magical);
+            int damage = Archive.randomizer.Next(damageMin, damageMax);
+            target.Damage(damage, Character.DamageType.Physical);
 
             Vector2 position = projectiles[projectiles.Count() - 1].position;
-            damageNumbers.Add(new DamageNumber(Archive.textureDictionary["magic"], position, damage.ToString(), Color.Purple, 1.5f));
+            damageNumbers.Add(new DamageNumber(Archive.textureDictionary["physical"], position, damage.ToString(), Color.Orange, 1.5f));
+
+            target.buffs.Add(new DebuffStun(1, this, target));
         }
 
         public override void Update(GameTime gameTime)
@@ -56,8 +56,8 @@ namespace Grupp_31_SystemUtveckling
             {
                 p.Update(gameTime);
             }
-            
-            for (int i = projectiles.Count() -1; i >= 0; i--)
+
+            for (int i = projectiles.Count() - 1; i >= 0; i--)
             {
                 particles[i].emitterLocation = projectiles[i].position;
                 particles[i].EmittParticles();

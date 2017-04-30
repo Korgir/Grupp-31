@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Grupp_31_SystemUtveckling.Spells
+namespace Grupp_31_SystemUtveckling
 {
     class SpellStab : TargetSpell
     {
@@ -32,11 +32,21 @@ namespace Grupp_31_SystemUtveckling.Spells
                 // To Do - For each item equipped run item.OnAttack()
                 int damage = Archive.randomizer.Next(Caster.physicalDamageMin, Caster.physicalDamageMax);
                 target.Damage(damage, Character.DamageType.Physical);
+
+                damageNumbers.Add(new DamageNumber(Archive.textureDictionary["physical"], target.Position, damage.ToString(), Color.Orange, 1.5f));
+
+                target.buffs.Add(new DebuffBleed(3, this, target));
+            }
+            else
+            {
+                damageNumbers.Add(new DamageNumber(Archive.textureDictionary["miss"], target.Position, "Miss", Color.White, 1.5f));
             }
         }
 
         public override void Update(GameTime gameTime)
         {
+            base.Update(gameTime);
+
             for (int i = animations.Count() - 1; i >= 0; i--)
             {
                 if (!animations[i].playing)

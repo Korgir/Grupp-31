@@ -190,10 +190,13 @@ namespace Grupp_31_SystemUtveckling
                 }
                 else if (!actingCharacter.playerControlled)
                 {
-                    // AI decide action
-                    actingCharacter.action = (int)ActionType.BasicAttack;
-                    TargetSpell attackSpell = (TargetSpell)actingCharacter.spells[0];
-                    attackSpell.target = team1[0]; // Attack first character
+                    if (actingCharacter.action != (int)ActionType.PassTurn)
+                    {
+                        // AI decide action
+                        actingCharacter.action = (int)ActionType.BasicAttack;
+                        TargetSpell attackSpell = (TargetSpell)actingCharacter.spells[0];
+                        attackSpell.target = team1[0]; // Attack first character
+                    }
                     currentTurn++;
                 }
             }
@@ -255,6 +258,10 @@ namespace Grupp_31_SystemUtveckling
             {
                 currentState = CombatState.ChoseAction;
                 currentTurn = 0;
+                foreach (Character c in allCharacters)
+                {
+                    c.OnNewTurn();
+                }
             }
         }
 
@@ -346,6 +353,7 @@ namespace Grupp_31_SystemUtveckling
             {
                 if (actor.mana >= actor.spells[spellIndex].manaCost)
                 {
+                    actor.mana -= actor.spells[spellIndex].manaCost;
                     actor.action = (int)ActionType.CastSpell;
                     actor.spellToCast = spellIndex;
                     return true;
@@ -445,6 +453,14 @@ namespace Grupp_31_SystemUtveckling
 
         protected void DrawUI(SpriteBatch spriteBatch)
         {
+            foreach (Character c in allCharacters)
+            {
+                foreach (Spell s in c.spells)
+                {
+                    s.DrawUI(spriteBatch);
+                }
+            }
+
             spriteBatch.Draw(Archive.textureDictionary["uiCombat"], Vector2.Zero, Color.White);
 
             foreach (Button b in buttons)

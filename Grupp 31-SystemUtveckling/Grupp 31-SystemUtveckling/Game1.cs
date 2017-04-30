@@ -128,7 +128,7 @@ namespace Grupp_31_SystemUtveckling
         {
             GraphicsDevice.Clear(Color.Black);
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.Deferred);
             
             switch (currentGameState)
             {
