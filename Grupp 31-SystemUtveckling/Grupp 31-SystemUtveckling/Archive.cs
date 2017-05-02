@@ -35,6 +35,11 @@ namespace Grupp_31_SystemUtveckling
             textureDictionary["uiCombat"] = Content.Load<Texture2D>("combatUITemplate"); 
             textureDictionary["uiWorld"] = Content.Load<Texture2D>("UIBasePlaceholder");
             textureDictionary["whitePixel"] = Content.Load<Texture2D>("whitePixel");
+            textureDictionary["tabs"] = Content.Load<Texture2D>("tabs");
+
+            // Items
+            textureDictionary["steelSword"] = Content.Load<Texture2D>("Items\\SteelSword");
+            textureDictionary["redSword"] = Content.Load<Texture2D>("Items\\RedSword");
 
             // Combat characters
             textureDictionary["goblinCombat"] = Content.Load<Texture2D>("Enemies\\daggerGoblinCombat");

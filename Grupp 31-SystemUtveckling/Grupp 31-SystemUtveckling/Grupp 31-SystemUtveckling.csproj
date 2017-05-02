@@ -41,7 +41,14 @@
     <Compile Include="Animation.cs" />
     <Compile Include="Archive.cs" />
     <Compile Include="Button.cs" />
+    <Compile Include="CharacterTab.cs" />
     <Compile Include="CombatRelated\DamageNumber.cs" />
+    <Compile Include="InventorySlot.cs" />
+    <Compile Include="InventorySystem.cs" />
+    <Compile Include="InventoryTab.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="ItemDatabase.cs" />
+    <Compile Include="QuestTab.cs" />
     <Compile Include="Spells\Buffs\Buff.cs" />
     <Compile Include="CombatRelated\Character.cs" />
     <Compile Include="CombatRelated\Combat.cs" />
@@ -71,6 +78,7 @@
     <Compile Include="Spells\SpellThrowGoblin.cs" />
     <Compile Include="Spells\TargetSpell.cs" />
     <Compile Include="StartMenu.cs" />
+    <Compile Include="TabManager.cs" />
     <Compile Include="Tile.cs" />
   </ItemGroup>
   <ItemGroup>

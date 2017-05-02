@@ -24,6 +24,11 @@ namespace Grupp_31_SystemUtveckling
             binds["moveRight"] = Keys.D;
             binds["talk"] = Keys.Space;
 
+            binds["characterTab"] = Keys.D1;
+            binds["inventoryTab"] = Keys.D2;
+            binds["questTab"] = Keys.D3;
+            binds["mapTab"] = Keys.D4;
+
             binds["combatAction1"] = Keys.D1;
             binds["combatAction2"] = Keys.D2;
             binds["combatAction3"] = Keys.D3;

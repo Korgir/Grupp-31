@@ -41,7 +41,7 @@ namespace Grupp_31_SystemUtveckling
                     case "player":
                         map.player = new Player(texture, new Vector2(xPosition, yPosition));
                         map.player.team.Add(new Character(Archive.textureDictionary["warriorCombat"], Archive.textureDictionary["warriorCombatOutline"],
-                            Vector2.Zero, true, "Warrior", 100, 4, 4, 6, 15, 10, 100, 5, 70));
+                            Vector2.Zero, true, "Warrior", 100, 10, 5, 6, 15, 10, 100, 5, 70));
                         map.player.map = map;
                         break;
 

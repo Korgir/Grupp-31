@@ -9,16 +9,21 @@ namespace Grupp_31_SystemUtveckling
 {
     class DebuffBleed : Buff
     {
+        protected int minDamage;
+        protected int maxDamage;
+
         public DebuffBleed(int durationTurns, Spell spell, Character target)
             : base(true, durationTurns, spell, target)
         {
+            minDamage = Spell.Caster.physicalDamageMin / 5;
+            maxDamage = Spell.Caster.physicalDamageMax / 5;
         }
 
         public override void OnTick()
         {
             base.OnTick();
 
-            int damage = Archive.randomizer.Next(Spell.Caster.physicalDamageMin, Spell.Caster.physicalDamageMax) / 5;
+            int damage = Archive.randomizer.Next(minDamage, maxDamage);
             if (damage > 0)
             {
                 Target.Damage(damage, Character.DamageType.Physical);
