@@ -20,6 +20,7 @@ namespace Grupp_31_SystemUtveckling
         protected List<Tile> floorTiles;
         protected List<Tile> wallTiles;
         protected List<Entity> entities;
+        protected List<ItemEntity> items;
 
         protected int tileSize;
         protected Vector2 tileStartPosition;
@@ -85,10 +86,18 @@ namespace Grupp_31_SystemUtveckling
 
             selectedTile = floorTiles[0];
 
+            #region Enteties
             entities = new List<Entity>();
             AddPlayer(Archive.textureDictionary["playerPlaceholder"]);
             AddEnemy(Archive.textureDictionary["goblinEntity"]);
             AddFriendly(Archive.textureDictionary["playerPlaceholder"]);
+            #endregion
+
+            #region Items
+            items = new List<ItemEntity>();
+            AddItem(Archive.textureDictionary["sword"]);
+            AddItem(Archive.textureDictionary["water"]);
+            #endregion
 
             for (int i = 0; i < tileArray.GetLength(0); i++)
             {
@@ -116,7 +125,7 @@ namespace Grupp_31_SystemUtveckling
         public void AddPlayer(Texture2D tileTexture)
         {
             Vector2 position = tileStartPosition + new Vector2(40, 0) * entities.Count();
-            entities.Add(new Player(tileTexture, position));
+            entities.Add(new Player(tileTexture, position, new List<Item>()));
         }
 
         public void AddEnemy(Texture2D tileTexture)
@@ -129,6 +138,12 @@ namespace Grupp_31_SystemUtveckling
         {
             Vector2 position = tileStartPosition + new Vector2(40, 0) * entities.Count();
             entities.Add(new FriendlyEntity(tileTexture, position, Archive.dialogDictionary["testDialog"]));
+        }
+
+        public void AddItem(Texture2D tileTexture)
+        {
+            Vector2 position = tileStartPosition + new Vector2(40, 0) * items.Count();
+            items.Add(new ItemEntity(tileTexture, position, ItemDatabase.items["steelSword"]));
         }
 
         public void LoadMap(string path)
@@ -152,6 +167,12 @@ namespace Grupp_31_SystemUtveckling
                     entityArray[XValue, YValue] = new FriendlyEntity(e.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y),
                         f.dialog);
                 }
+                else if (e is ItemEntity)
+                {
+                    ItemEntity i = (ItemEntity)e;
+                    entityArray[XValue, YValue] = new ItemEntity(e.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y),
+                        i.containedItem);
+                }
             }
 
             if (loadedMap.player != null)
@@ -160,10 +181,8 @@ namespace Grupp_31_SystemUtveckling
                 int YValue = (int)(loadedMap.player.position.Y / tileSize);
                 entityArray[XValue, YValue] = new Entity(loadedMap.player.animation.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y));
             }
-            
         }
 
-        // Update() är för stor, pls fix
         public void Update()
         {
             if (buttonList[0].IsClicked())
@@ -186,7 +205,9 @@ namespace Grupp_31_SystemUtveckling
             }
             if (buttonList[3].IsClicked())
             {
-                System.Windows.Forms.MessageBox.Show("Not implemented.");
+                selectedTileType = 3;
+                selectedTile = null;
+                selectedEntity = items[0];
             }
             if (buttonList[4].IsClicked())
             {
@@ -259,6 +280,18 @@ namespace Grupp_31_SystemUtveckling
                     }
                 }
             }
+            if (selectedTileType == 3)
+            {
+                foreach (Entity i in items)
+                {
+                    Rectangle tileHitbox = new Rectangle((int)i.position.X, (int)i.position.Y, i.texture.Width, i.texture.Height);
+                    if (KeyMouseReader.LeftClick() && tileHitbox.Contains(KeyMouseReader.mousePosition))
+                    {
+                        selectedTile = null;
+                        selectedEntity = i;
+                    }
+                }
+            }
         }
 
         protected void PlaceTile()
@@ -283,14 +316,14 @@ namespace Grupp_31_SystemUtveckling
                         }
                     }
                 }
-                else if (selectedTileType == 2)
+                else if (selectedTileType == 2 || selectedTileType == 3)
                 {
                     if ((XValue >= 0 && XValue < entityArray.GetLength(0)) &&
                         (YValue >= 0 && YValue < entityArray.GetLength(1)))
                     {
                         if (selectedEntity is Player)
                         {
-                            entityArray[XValue, YValue] = new Player(selectedEntity.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y));
+                            entityArray[XValue, YValue] = new Player(selectedEntity.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y), new List<Item>());
                         }
                         else if (selectedEntity is Enemy)
                         {
@@ -301,12 +334,17 @@ namespace Grupp_31_SystemUtveckling
                             entityArray[XValue, YValue] = new FriendlyEntity(selectedEntity.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y),
                                 Archive.dialogDictionary["testDialog"]);
                         }
+                        else if (selectedEntity is ItemEntity)
+                        {
+                            entityArray[XValue, YValue] = new ItemEntity(selectedEntity.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y),
+                                ItemDatabase.items["steelSword"]);
+                        }
                     }
                 }
             }
             else if (KeyMouseReader.mouseState.RightButton == ButtonState.Pressed)
             {
-                if (selectedTileType == 2)
+                if (selectedTileType == 2 || selectedTileType == 3)
                 {
                     if ((XValue >= 0 && XValue < entityArray.GetLength(0)) &&
                         (YValue >= 0 && YValue < entityArray.GetLength(1)))
@@ -340,7 +378,14 @@ namespace Grupp_31_SystemUtveckling
             }
             if (selectedEntity != null)
             {
-                selectedEntity.animation.Draw(spriteBatch, new Vector2(32, 880));
+                if (selectedEntity is ItemEntity)
+                {
+                    spriteBatch.Draw(selectedEntity.texture, new Vector2(32, 880), Color.White);
+                }
+                else
+                {
+                    selectedEntity.animation.Draw(spriteBatch, new Vector2(32, 880));
+                }
             }
         }
 
@@ -373,6 +418,13 @@ namespace Grupp_31_SystemUtveckling
                 foreach (Entity e in entities)
                 {
                     e.Draw(spriteBatch);
+                }
+            }
+            if (selectedTileType == 3)
+            {
+                foreach (Entity i in items)
+                {
+                    i.Draw(spriteBatch);
                 }
             }
         }

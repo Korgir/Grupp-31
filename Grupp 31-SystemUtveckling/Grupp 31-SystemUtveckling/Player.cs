@@ -12,10 +12,12 @@ namespace Grupp_31_SystemUtveckling
     class Player : Entity
     {
         public Map map;
+        public List<Item> inventory;
 
-        public Player(Texture2D texture, Vector2 position) : 
+        public Player(Texture2D texture, Vector2 position, List<Item> inventory) : 
             base(texture, position)
         {
+            this.inventory = inventory;
         }
         
         private void ChangeDirection(Vector2 direction)
@@ -30,6 +32,21 @@ namespace Grupp_31_SystemUtveckling
                     moving = true;
                 }
             }
+        }
+
+        public bool PickUpItem(ItemEntity itemEntity)
+        {
+            int distanceX = (int)(itemEntity.position.X - (int)position.X) / Archive.tileSize;
+            int distanceY = (int)(itemEntity.position.Y - (int)position.Y) / Archive.tileSize;
+            if (distanceX == 0 && distanceY == 0)
+            {
+                if (map.tabManager.inventoryTab.inventorySystem.AddItem(itemEntity.containedItem))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public void Update(GameTime gameTime)

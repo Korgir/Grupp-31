@@ -1194,6 +1194,7 @@ tile;grass;1440;704;False
 tile;grass;1440;736;False
 tile;grass;1440;768;False
 tile;grass;1440;800;False
+item;sword;512;384;steelSword
 enemy;goblinEntity;608;608
 player;playerPlaceholder;736;192
 friendly;playerPlaceholder;896;384;testDialog

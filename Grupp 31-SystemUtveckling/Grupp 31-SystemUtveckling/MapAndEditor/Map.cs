@@ -15,10 +15,12 @@ namespace Grupp_31_SystemUtveckling
         protected int doorPosY;
         protected int doorPosX;
         public List<Entity> entityList;
+        public TabManager tabManager;
 
         public Map()
         {
             entityList = new List<Entity>();
+            tabManager = new TabManager();
         }
 
         public string ZoneSwitch()
@@ -50,6 +52,7 @@ namespace Grupp_31_SystemUtveckling
 
         public void Update(GameTime gameTime)
         {
+            tabManager.Update(gameTime);
             player.Update(gameTime);
 
             foreach (Entity e in entityList)
@@ -57,7 +60,26 @@ namespace Grupp_31_SystemUtveckling
                 if (e is FriendlyEntity)
                 {
                     FriendlyEntity npc = (FriendlyEntity)e;
-                    npc.dialog.Update();
+                    if (npc.CanTalk(player))
+                    {
+                        npc.dialog.Update();
+                    }
+                    else
+                    {
+                        npc.dialog.StopTalking();
+                    }
+                }
+            }
+
+            for (int i = entityList.Count() -1; i >= 0; i--)
+            {
+                if (entityList[i] is ItemEntity)
+                {
+                    ItemEntity itemEntity = (ItemEntity)entityList[i];
+                    if (player.PickUpItem(itemEntity))
+                    {
+                        entityList.RemoveAt(i);
+                    }
                 }
             }
         }
@@ -120,6 +142,7 @@ namespace Grupp_31_SystemUtveckling
             }
 
             spriteBatch.Draw(Archive.textureDictionary["uiWorld"], Vector2.Zero, Color.White); // Placeholder
+            tabManager.Draw(spriteBatch);
 
             foreach (Entity e in entityList)
             {

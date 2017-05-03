@@ -38,8 +38,11 @@ namespace Grupp_31_SystemUtveckling
             textureDictionary["tabs"] = Content.Load<Texture2D>("tabs");
 
             // Items
-            textureDictionary["steelSword"] = Content.Load<Texture2D>("Items\\SteelSword");
-            textureDictionary["redSword"] = Content.Load<Texture2D>("Items\\RedSword");
+            textureDictionary["steelSwordInventory"] = Content.Load<Texture2D>("Items\\SteelSword");
+            textureDictionary["redSwordInventory"] = Content.Load<Texture2D>("Items\\RedSword");
+
+            // Items world
+            textureDictionary["sword"] = Content.Load<Texture2D>("Items\\World\\sword");
 
             // Combat characters
             textureDictionary["goblinCombat"] = Content.Load<Texture2D>("Enemies\\daggerGoblinCombat");
@@ -112,6 +115,7 @@ namespace Grupp_31_SystemUtveckling
             dialogDictionary["testDialog"].AddLine("Sup homie!");
             dialogDictionary["testDialog"].AddLine("Kill this goblin.");
             dialogDictionary["testDialog"].AddLine("plz");
+            dialogDictionary["testDialog"].AddLine("");
         }
     }
 }

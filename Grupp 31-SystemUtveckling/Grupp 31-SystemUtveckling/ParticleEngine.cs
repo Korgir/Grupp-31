@@ -14,7 +14,6 @@ namespace Grupp_31_SystemUtveckling
         private Random random;
         public Vector2 emitterLocation;
         private List<Particle> particles;
-        private Particle templetParticle;
         protected Color particleColor;
         protected int intensity;
 

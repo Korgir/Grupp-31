@@ -31,7 +31,7 @@ namespace Grupp_31_SystemUtveckling
 
         public void Update()
         {
-            if (KeyMouseReader.KeyPressed(Keybinds.binds["talk"]))
+            if (KeyMouseReader.KeyPressed(Keybinds.binds["talk"]) && !finished)
             {
                 currentLine++;
                 if (currentLine >= dialogLines.Count())
@@ -50,8 +50,11 @@ namespace Grupp_31_SystemUtveckling
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
-            spriteBatch.DrawString(font, dialogLines[currentLine], position, Color.White, 0.0f,
-                font.MeasureString(dialogLines[currentLine]) / 2, 1.0f, SpriteEffects.None, 0);
+            if (!finished)
+            {
+                spriteBatch.DrawString(font, dialogLines[currentLine], position, Color.White, 0.0f,
+                    font.MeasureString(dialogLines[currentLine]) / 2, 1.0f, SpriteEffects.None, 0);
+            }
         }
     }
 }

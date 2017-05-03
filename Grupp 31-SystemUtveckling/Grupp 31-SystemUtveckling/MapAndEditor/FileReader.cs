@@ -26,20 +26,24 @@ namespace Grupp_31_SystemUtveckling
 
                 int xPosition = Int32.Parse(stringArray[2]);
                 int yPosition = Int32.Parse(stringArray[3]);
+                Vector2 position = new Vector2(Int32.Parse(stringArray[2]), Int32.Parse(stringArray[3]));
                 Texture2D texture = Archive.textureDictionary[stringArray[1]];
 
                 switch (stringArray[0])
                 {
                     case "tile":
                         bool isWallTile = bool.Parse(stringArray[4]);
-                        mapGrid[xPosition / 32, yPosition / 32] = new Tile(texture, new Vector2(xPosition, yPosition), isWallTile);
+                        mapGrid[xPosition / 32, yPosition / 32] = new Tile(texture, position, isWallTile);
                         break;
-                    case "item":
 
+                    case "item":
+                        string itemName = stringArray[4];
+                        ItemEntity item = new ItemEntity(texture, position, ItemDatabase.items[itemName]);
+                        map.entityList.Add(item);
                         break;
 
                     case "player":
-                        map.player = new Player(texture, new Vector2(xPosition, yPosition));
+                        map.player = new Player(texture, new Vector2(xPosition, yPosition), new List<Item>());
                         map.player.team.Add(new Character(Archive.textureDictionary["warriorCombat"], Archive.textureDictionary["warriorCombatOutline"],
                             Vector2.Zero, true, "Warrior", 100, 10, 5, 6, 15, 10, 100, 5, 70));
                         map.player.map = map;
@@ -100,6 +104,12 @@ namespace Grupp_31_SystemUtveckling
                                 FriendlyEntity npc = (FriendlyEntity)entityArray[i, j];
                                 var dialogName = Archive.dialogDictionary.FirstOrDefault(x => x.Value == npc.dialog).Key;
                                 sw.WriteLine("friendly;" + textureArchiveName + ";" + entityArray[i, j].position.X + ";" + entityArray[i, j].position.Y + ";" + dialogName);
+                            }
+                            else if (entityArray[i, j] is ItemEntity)
+                            {
+                                ItemEntity item = (ItemEntity)entityArray[i, j];
+                                var itemName = ItemDatabase.items.FirstOrDefault(x => x.Value == item.containedItem).Key;
+                                sw.WriteLine("item;" + textureArchiveName + ";" + entityArray[i, j].position.X + ";" + entityArray[i, j].position.Y + ";" + itemName);
                             }
                         }
                     }

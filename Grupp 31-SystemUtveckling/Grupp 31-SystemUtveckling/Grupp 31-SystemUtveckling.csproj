@@ -41,14 +41,16 @@
     <Compile Include="Animation.cs" />
     <Compile Include="Archive.cs" />
     <Compile Include="Button.cs" />
-    <Compile Include="CharacterTab.cs" />
+    <Compile Include="Inventory\CharacterSystem.cs" />
+    <Compile Include="ItemEntity.cs" />
+    <Compile Include="TabSystem\CharacterTab.cs" />
     <Compile Include="CombatRelated\DamageNumber.cs" />
-    <Compile Include="InventorySlot.cs" />
-    <Compile Include="InventorySystem.cs" />
-    <Compile Include="InventoryTab.cs" />
-    <Compile Include="Item.cs" />
-    <Compile Include="ItemDatabase.cs" />
-    <Compile Include="QuestTab.cs" />
+    <Compile Include="Inventory\InventorySlot.cs" />
+    <Compile Include="Inventory\InventorySystem.cs" />
+    <Compile Include="TabSystem\InventoryTab.cs" />
+    <Compile Include="Inventory\Item.cs" />
+    <Compile Include="Inventory\ItemDatabase.cs" />
+    <Compile Include="TabSystem\QuestTab.cs" />
     <Compile Include="Spells\Buffs\Buff.cs" />
     <Compile Include="CombatRelated\Character.cs" />
     <Compile Include="CombatRelated\Combat.cs" />
@@ -57,14 +59,14 @@
     <Compile Include="Dialog.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="Entity.cs" />
-    <Compile Include="FileReader.cs" />
+    <Compile Include="MapAndEditor\FileReader.cs" />
     <Compile Include="FriendlyEntity.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="Keybinds.cs" />
     <Compile Include="KeyMouseReader.cs" />
-    <Compile Include="Map.cs" />
-    <Compile Include="MapEditor.cs" />
+    <Compile Include="MapAndEditor\Map.cs" />
+    <Compile Include="MapAndEditor\MapEditor.cs" />
     <Compile Include="Particle.cs" />
     <Compile Include="ParticleEngine.cs" />
     <Compile Include="Player.cs" />
@@ -78,8 +80,8 @@
     <Compile Include="Spells\SpellThrowGoblin.cs" />
     <Compile Include="Spells\TargetSpell.cs" />
     <Compile Include="StartMenu.cs" />
-    <Compile Include="TabManager.cs" />
-    <Compile Include="Tile.cs" />
+    <Compile Include="TabSystem\TabManager.cs" />
+    <Compile Include="MapAndEditor\Tile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -98,6 +100,7 @@
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

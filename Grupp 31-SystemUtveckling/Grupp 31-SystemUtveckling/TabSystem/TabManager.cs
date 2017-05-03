@@ -13,9 +13,9 @@ namespace Grupp_31_SystemUtveckling
         Button characterButton;
         Button inventoryButton;
         Button questLogButton;
-        CharacterTab charTab;
-        InventoryTab invTab;
-        QuestTab qlogTab;
+        public CharacterTab characterTab;
+        public InventoryTab inventoryTab;
+        QuestTab questTab;
 
 
         enum TabState { CharacterTab, InventoryTab, QuestLogTab };
@@ -24,9 +24,9 @@ namespace Grupp_31_SystemUtveckling
         public TabManager()
         {
             Vector2 position = new Vector2(1472, 0);
-            charTab = new CharacterTab(position);
-            invTab = new InventoryTab(position);
-            qlogTab = new QuestTab(position);
+            characterTab = new CharacterTab(position);
+            inventoryTab = new InventoryTab(position, characterTab);
+            questTab = new QuestTab(position);
             tabState = TabState.CharacterTab;
             characterButton = new Button(new Rectangle((int)position.X + 32, (int)position.Y + 896, 96, 128), Archive.textureDictionary["whitePixel"], Archive.fontDictionary["defaultFont"], "", Keybinds.binds["characterTab"]);
             inventoryButton = new Button(new Rectangle((int)position.X + 128, (int)position.Y + 896, 96, 128), Archive.textureDictionary["whitePixel"], Archive.fontDictionary["defaultFont"], "", Keybinds.binds["inventoryTab"]);
@@ -38,7 +38,7 @@ namespace Grupp_31_SystemUtveckling
             switch (tabState)
             {
                 case (TabState.CharacterTab):
-                    charTab.Update(gameTime);
+                    characterTab.Update(gameTime);
                     if (inventoryButton.IsClicked())
                     {
                         tabState = TabState.InventoryTab;
@@ -49,7 +49,7 @@ namespace Grupp_31_SystemUtveckling
                     }
                     break;
                 case (TabState.InventoryTab):
-                    invTab.Update(gameTime);
+                    inventoryTab.Update(gameTime);
                     if (questLogButton.IsClicked())
                     {
                         tabState = TabState.QuestLogTab;
@@ -60,7 +60,7 @@ namespace Grupp_31_SystemUtveckling
                     }
                     break;
                 case (TabState.QuestLogTab):
-                    qlogTab.Update(gameTime);
+                    questTab.Update(gameTime);
                     if (inventoryButton.IsClicked())
                     {
                         tabState = TabState.InventoryTab;
@@ -77,13 +77,13 @@ namespace Grupp_31_SystemUtveckling
             switch (tabState)
             {
                 case (TabState.CharacterTab):
-                    charTab.Draw(spriteBatch);
+                    characterTab.Draw(spriteBatch);
                     break;
                 case (TabState.InventoryTab):
-                    invTab.Draw(spriteBatch);
+                    inventoryTab.Draw(spriteBatch);
                     break;
                 case (TabState.QuestLogTab):
-                    qlogTab.Draw(spriteBatch);
+                    questTab.Draw(spriteBatch);
                     break;
             }
         }

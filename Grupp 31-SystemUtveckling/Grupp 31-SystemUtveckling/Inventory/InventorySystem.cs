@@ -20,10 +20,12 @@ namespace Grupp_31_SystemUtveckling
         int yNumberOfSlots;
         int totalInventorySlots;
         protected Vector2 position;
+        CharacterTab characterTab;
 
-        public InventorySystem(Vector2 position)
+        public InventorySystem(Vector2 position, CharacterTab characterTab)
         {
             this.position = position;
+            this.characterTab = characterTab;
             xNumberOfSlots = 6;
             yNumberOfSlots = 11;
             totalInventorySlots = xNumberOfSlots * yNumberOfSlots;
@@ -31,11 +33,11 @@ namespace Grupp_31_SystemUtveckling
             inventory = new List<Item>();
             itemInHand = null;
             ItemInHand = false;
-            CreateTestInventory();
-            CreateTestItem();
+            CreateInventorySlots();
             inPlayerHand = new InventorySlot(-1, -1, -1, -1);
         }
-        void CreateTestInventory()
+
+        protected void CreateInventorySlots()
         {
             for (int i = 0; i < xNumberOfSlots; i++)
             {
@@ -45,50 +47,30 @@ namespace Grupp_31_SystemUtveckling
                 }
             }
         }
-        void CreateTestItem()
+
+        public bool AddItem(Item item)
         {
-            Item redItem = (ItemDatabase.items[0]);
-            bool breakOut = false;
             for (int i = 0; i < xNumberOfSlots; i++)
             {
                 for (int j = 0; j < yNumberOfSlots; j++)
                 {
                     if (invSlot[i, j].InventoryFull == false)
                     {
-                        invSlot[i, j].Item = redItem;
+                        invSlot[i, j].Item = item;
                         invSlot[i, j].InventoryFull = true;
-                        breakOut = true;
-                        break;
+                        return true;
                     }
                 }
-                if (breakOut == true) break;
             }
 
+            return false;
         }
+
         public void Update()
         {
-            if (KeyMouseReader.KeyPressed(Keys.Space))
-            {
-                Item redItem = (ItemDatabase.items[1]); ;
-                bool breakOut = false;
-                for (int i = 0; i < xNumberOfSlots; i++)
-                {
-                    for (int j = 0; j < yNumberOfSlots; j++)
-                    {
-                        if (invSlot[i, j].InventoryFull == false)
-                        {
-                            invSlot[i, j].Item = redItem;
-                            invSlot[i, j].InventoryFull = true;
-                            breakOut = true;
-                            break;
-                        }
-                    }
-                    if (breakOut == true) break;
-                }
-            }
             if (KeyMouseReader.LeftClick())
             {
-                if (ItemInHand != true)
+                if (!ItemInHand)
                 {
                     for (int i = 0; i < xNumberOfSlots; i++)
                     {
@@ -125,6 +107,24 @@ namespace Grupp_31_SystemUtveckling
                                 }
                                 if (invSlot[i, j].Item == null) invSlot[i, j].InventoryFull = false;
                                 else invSlot[i, j].InventoryFull = true;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (KeyMouseReader.RightClick())
+            {
+                for (int i = 0; i < xNumberOfSlots; i++)
+                {
+                    for (int j = 0; j < yNumberOfSlots; j++)
+                    {
+                        if (new Rectangle(invSlot[i, j].GraphicLocationX, invSlot[i, j].GraphicLocationY, 64, 64).Contains(KeyMouseReader.mouseState.Position))
+                        {
+                            if (invSlot[i, j].Item == null) break;
+                            if (characterTab.characterSystem.TryEquip(invSlot[i, j].Item))
+                            {
+                                invSlot[i, j].Item = null;
                             }
                         }
                     }

@@ -17,7 +17,6 @@ namespace Grupp_31_SystemUtveckling
         StartMenu startMenu;
         Combat combat;
         Map map;
-        TabManager tabManager;
         MapEditor mapEditor;
         string fileName;
 
@@ -45,7 +44,6 @@ namespace Grupp_31_SystemUtveckling
             startMenu = new StartMenu(Archive.textureDictionary["menuBackground"], Archive.textureDictionary["menuHeader"], 
                 Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], this, GraphicsDevice);
             
-            tabManager = new TabManager();
             combat = new Combat(new List<Character>(), new List<Character>());
 
             mapEditor = new MapEditor();
@@ -83,7 +81,6 @@ namespace Grupp_31_SystemUtveckling
                     break;
 
                 case (GameState.World):
-                    tabManager.Update(gameTime);
                     map.Update(gameTime);
                     fileName = map.ZoneSwitch();
                     if (fileName != null)
@@ -142,7 +139,6 @@ namespace Grupp_31_SystemUtveckling
 
                 case (GameState.World):
                     map.Draw(spriteBatch);
-                    tabManager.Draw(spriteBatch);
                     break;
 
                 case (GameState.Combat):

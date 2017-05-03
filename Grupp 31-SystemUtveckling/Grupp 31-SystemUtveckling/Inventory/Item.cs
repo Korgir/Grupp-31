@@ -15,8 +15,8 @@ namespace Grupp_31_SystemUtveckling
         private int powerMax;
         private int powerMin;
         private int attackSpeed;
-        private ItemType itemType;
-        public enum ItemType { Weapon, Helmet, BodyArmor, PantsArmor, Gloves, Ring, Amulet, Boots, DualWeapon, QuestItem, Consumables}
+        public ItemType itemType;
+        public enum ItemType { MainHand = 7, Head = 0, Chest = 1, Legs = 2, Hands = 6, Finger = 5, Neck = 4, Feet = 3, OffHand = 8, Quest = 10, Consumables = 11}
 
 
         public Item(Texture2D itemTexture, string itemName, int itemID, ItemType type, int powerMax, int powerMin, int attackSpeed)
