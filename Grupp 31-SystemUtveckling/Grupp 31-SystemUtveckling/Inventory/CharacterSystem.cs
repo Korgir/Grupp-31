@@ -12,10 +12,12 @@ namespace Grupp_31_SystemUtveckling
     {
         InventorySlot[] equipmentSlots;
         Vector2 position;
+        TabManager tabManager;
 
-        public CharacterSystem(Vector2 position)
+        public CharacterSystem(Vector2 position, TabManager tabManager)
         {
             this.position = position;
+            this.tabManager = tabManager;
             equipmentSlots = new InventorySlot[9];
             equipmentSlots[0] = new InventorySlot(0, 0, (int)position.X + 191, (int)position.Y + 384); // Head
             equipmentSlots[1] = new InventorySlot(0, 0, (int)position.X + 191, (int)position.Y + 480); // Chest
@@ -35,10 +37,30 @@ namespace Grupp_31_SystemUtveckling
                 if (!equipmentSlots[(int)item.itemType].InventoryFull)
                 {
                     equipmentSlots[(int)item.itemType].Item = item;
+                    equipmentSlots[(int)item.itemType].InventoryFull = true;
                     return true;
                 }
             }
             return false;
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            if (KeyMouseReader.RightClick())
+            {
+                for (int i = 0; i < equipmentSlots.Count(); i++)
+                {
+                    if (new Rectangle(equipmentSlots[i].GraphicLocationX, equipmentSlots[i].GraphicLocationY, 64, 64).Contains(KeyMouseReader.mouseState.Position))
+                    {
+                        if (equipmentSlots[i].Item == null) break;
+                        if (tabManager.inventoryTab.inventorySystem.AddItem(equipmentSlots[i].Item))
+                        {
+                            equipmentSlots[i].Item = null;
+                            equipmentSlots[i].InventoryFull = false;
+                        }
+                    }
+                }
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)

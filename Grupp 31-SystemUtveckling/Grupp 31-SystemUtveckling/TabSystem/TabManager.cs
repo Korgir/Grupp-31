@@ -24,8 +24,8 @@ namespace Grupp_31_SystemUtveckling
         public TabManager()
         {
             Vector2 position = new Vector2(1472, 0);
-            characterTab = new CharacterTab(position);
-            inventoryTab = new InventoryTab(position, characterTab);
+            characterTab = new CharacterTab(position, this);
+            inventoryTab = new InventoryTab(position, this);
             questTab = new QuestTab(position);
             tabState = TabState.CharacterTab;
             characterButton = new Button(new Rectangle((int)position.X + 32, (int)position.Y + 896, 96, 128), Archive.textureDictionary["whitePixel"], Archive.fontDictionary["defaultFont"], "", Keybinds.binds["characterTab"]);

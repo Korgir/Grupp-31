@@ -14,11 +14,11 @@ namespace Grupp_31_SystemUtveckling
         Rectangle sourceRectangle;
         public InventorySystem inventorySystem;
 
-        public InventoryTab(Vector2 position, CharacterTab characterTab)
+        public InventoryTab(Vector2 position, TabManager tabManager)
         {
             destinationRectangle = new Rectangle((int)position.X, (int)position.Y, 448, 1080);
             sourceRectangle = new Rectangle(896, 0, 448, 1080);
-            inventorySystem = new InventorySystem(position, characterTab);
+            inventorySystem = new InventorySystem(position, tabManager);
 
         }
         public void Update(GameTime gameTime)

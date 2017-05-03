@@ -20,12 +20,12 @@ namespace Grupp_31_SystemUtveckling
         int yNumberOfSlots;
         int totalInventorySlots;
         protected Vector2 position;
-        CharacterTab characterTab;
+        TabManager tabManager;
 
-        public InventorySystem(Vector2 position, CharacterTab characterTab)
+        public InventorySystem(Vector2 position, TabManager tabManager)
         {
             this.position = position;
-            this.characterTab = characterTab;
+            this.tabManager = tabManager;
             xNumberOfSlots = 6;
             yNumberOfSlots = 11;
             totalInventorySlots = xNumberOfSlots * yNumberOfSlots;
@@ -122,9 +122,10 @@ namespace Grupp_31_SystemUtveckling
                         if (new Rectangle(invSlot[i, j].GraphicLocationX, invSlot[i, j].GraphicLocationY, 64, 64).Contains(KeyMouseReader.mouseState.Position))
                         {
                             if (invSlot[i, j].Item == null) break;
-                            if (characterTab.characterSystem.TryEquip(invSlot[i, j].Item))
+                            if (tabManager.characterTab.characterSystem.TryEquip(invSlot[i, j].Item))
                             {
                                 invSlot[i, j].Item = null;
+                                invSlot[i, j].InventoryFull = false;
                             }
                         }
                     }

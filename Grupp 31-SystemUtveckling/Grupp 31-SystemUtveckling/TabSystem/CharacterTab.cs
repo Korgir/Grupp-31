@@ -14,15 +14,15 @@ namespace Grupp_31_SystemUtveckling
         Rectangle sourceRectangle;
         public CharacterSystem characterSystem;
 
-        public CharacterTab(Vector2 position)
+        public CharacterTab(Vector2 position, TabManager tabManager)
         {
             destinationRectangle = new Rectangle((int)position.X, (int)position.Y, 448, 1080);
             sourceRectangle = new Rectangle(448, 0, 448, 1080);
-            characterSystem = new CharacterSystem(position);
+            characterSystem = new CharacterSystem(position, tabManager);
         }
         public void Update(GameTime gameTime)
         {
-
+            characterSystem.Update(gameTime);
         }
         public void Draw(SpriteBatch spriteBatch)
         {

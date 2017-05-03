@@ -180,7 +180,7 @@ namespace Grupp_31_SystemUtveckling
             {
                 int XValue = (int)(loadedMap.player.position.X / tileSize);
                 int YValue = (int)(loadedMap.player.position.Y / tileSize);
-                entityArray[XValue, YValue] = new Entity(loadedMap.player.animation.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y));
+                entityArray[XValue, YValue] = new Player(loadedMap.player.animation.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y), new List<Item>());
             }
         }
 
