@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.VisualBasic;
 
 namespace Grupp_31_SystemUtveckling
 {
@@ -327,17 +328,30 @@ namespace Grupp_31_SystemUtveckling
                         }
                         else if (selectedEntity is Enemy)
                         {
-                            entityArray[XValue, YValue] = new Enemy(selectedEntity.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y));
+                            string indexName = Interaction.InputBox("Input index name of ENEMY_TEAM ex. goblin5.", "Data text", "");
+                            if (indexName != "")
+                            {
+                                entityArray[XValue, YValue] = new Enemy(selectedEntity.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y));
+                                entityArray[XValue, YValue].team = CombatTeamDatabase.teamDictionary[indexName];
+                            }
                         }
                         else if (selectedEntity is FriendlyEntity)
                         {
-                            entityArray[XValue, YValue] = new FriendlyEntity(selectedEntity.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y),
-                                Archive.dialogDictionary["testDialog"]);
+                            string indexName = Interaction.InputBox("Input index name of DIALOG ex. testDialog.", "Data text", "");
+                            if (indexName != "")
+                            {
+                                entityArray[XValue, YValue] = new FriendlyEntity(selectedEntity.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y),
+                                    Archive.dialogDictionary[indexName]);
+                            }
                         }
                         else if (selectedEntity is ItemEntity)
                         {
-                            entityArray[XValue, YValue] = new ItemEntity(selectedEntity.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y),
-                                ItemDatabase.items["steelSword"]);
+                            string indexName = Interaction.InputBox("Input index name of ITEM ex. steelSword.", "Data text", "");
+                            if (indexName != "")
+                            {
+                                entityArray[XValue, YValue] = new ItemEntity(selectedEntity.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y),
+                                ItemDatabase.items[indexName]);
+                            }
                         }
                     }
                 }

@@ -55,7 +55,8 @@ namespace Grupp_31_SystemUtveckling
         {
             Console.WriteLine("load");
             Archive.Initialize(Content);
-            ItemDatabase.LoadItemDatabase();
+            ItemDatabase.Initialize();
+            CombatTeamDatabase.Initialize();
             spriteBatch = new SpriteBatch(GraphicsDevice);
         }
         

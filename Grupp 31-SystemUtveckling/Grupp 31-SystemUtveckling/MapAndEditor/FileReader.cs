@@ -50,13 +50,9 @@ namespace Grupp_31_SystemUtveckling
                         break;
 
                     case "enemy":
+                        string teamName = stringArray[4];
                         Enemy enemy = new Enemy(texture, new Vector2(xPosition, yPosition));
-                        // Add enemy team based on stringArray[4] value ex. (stringArray[4] == "goblins")
-                        for (int i = 0; i < 5; i++)
-                        {
-                            enemy.team.Add(new Character(Archive.textureDictionary["goblinCombat"], Archive.textureDictionary["goblinCombatOutline"],
-                            Vector2.Zero, false, "Goblin", 30, 3, 2, 3, 5, 10, 100, 5, 50));
-                        }
+                        enemy.team = CombatTeamDatabase.teamDictionary[teamName];
                         map.entityList.Add(enemy);
                         break;
 
@@ -97,7 +93,9 @@ namespace Grupp_31_SystemUtveckling
                             }
                             else if (entityArray[i, j] is Enemy)
                             {
-                                sw.WriteLine("enemy;" + textureArchiveName + ";" + entityArray[i, j].position.X + ";" + entityArray[i, j].position.Y);
+                                Enemy enemy = (Enemy)entityArray[i, j];
+                                var teamName = CombatTeamDatabase.teamDictionary.FirstOrDefault(x => x.Value == enemy.team).Key;
+                                sw.WriteLine("enemy;" + textureArchiveName + ";" + entityArray[i, j].position.X + ";" + entityArray[i, j].position.Y + ";" + teamName);
                             }
                             else if (entityArray[i, j] is FriendlyEntity)
                             {
