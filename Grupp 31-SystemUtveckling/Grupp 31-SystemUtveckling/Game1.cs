@@ -49,7 +49,6 @@ namespace Grupp_31_SystemUtveckling
             combat = new Combat(new List<Character>(), new List<Character>());
 
             mapEditor = new MapEditor();
-            fileName = "Content\\Maps\\StartMap.txt";
             map = FileReader.ReadMap(fileName);
         }
 
