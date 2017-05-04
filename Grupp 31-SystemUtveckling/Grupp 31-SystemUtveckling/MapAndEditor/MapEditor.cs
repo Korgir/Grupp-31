@@ -22,6 +22,7 @@ namespace Grupp_31_SystemUtveckling
         protected List<Tile> wallTiles;
         protected List<Entity> entities;
         protected List<ItemEntity> items;
+        protected List<PortalEntity> portals;
 
         protected int tileSize;
         protected Vector2 tileStartPosition;
@@ -29,6 +30,7 @@ namespace Grupp_31_SystemUtveckling
 
         protected Tile selectedTile;
         protected Entity selectedEntity;
+        protected string selectedPortalLocation;
 
         protected bool showGrid;
 
@@ -47,9 +49,10 @@ namespace Grupp_31_SystemUtveckling
             buttonList.Add(new Button(new Rectangle(1512, 100, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Wall", Keybinds.binds["editorWall"]));
             buttonList.Add(new Button(new Rectangle(1512, 150, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Entity", Keybinds.binds["editorEntity"]));
             buttonList.Add(new Button(new Rectangle(1512, 200, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Item", Keybinds.binds["editorItem"]));
+            buttonList.Add(new Button(new Rectangle(1512, 250, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Portal", Keybinds.binds["editorPortal"]));
             buttonList.Add(new Button(new Rectangle(1662, 50, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Save map", Keybinds.binds["editorSaveMap"]));
             buttonList.Add(new Button(new Rectangle(1662, 100, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Load map", Keybinds.binds["editorLoadMap"]));
-            buttonList.Add(new Button(new Rectangle(1512, 300, 256, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Toggle grid", Keybinds.binds["editorToggleGrid"]));
+            buttonList.Add(new Button(new Rectangle(1512, 350, 256, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Toggle grid", Keybinds.binds["editorToggleGrid"]));
             #endregion
 
             #region Floor Tiles
@@ -100,6 +103,14 @@ namespace Grupp_31_SystemUtveckling
             AddItem(Archive.textureDictionary["water"]);
             #endregion
 
+            #region Portals
+            portals = new List<PortalEntity>();
+            AddPortal(Archive.textureDictionary["arrowDown"]);
+            AddPortal(Archive.textureDictionary["arrowUp"]);
+            AddPortal(Archive.textureDictionary["arrowLeft"]);
+            AddPortal(Archive.textureDictionary["arrowRight"]);
+            #endregion
+
             for (int i = 0; i < tileArray.GetLength(0); i++)
             {
                 for (int j = 0; j < tileArray.GetLength(1); j++)
@@ -147,6 +158,12 @@ namespace Grupp_31_SystemUtveckling
             items.Add(new ItemEntity(tileTexture, position, ItemDatabase.items["steelSword"]));
         }
 
+        public void AddPortal(Texture2D tileTexture)
+        {
+            Vector2 position = tileStartPosition + new Vector2(40, 0) * portals.Count();
+            portals.Add(new PortalEntity(tileTexture, position, "StartZone", Vector2.Zero));
+        }
+
         public void LoadMap(string path)
         {
             Map loadedMap = FileReader.ReadMap(path);
@@ -173,6 +190,12 @@ namespace Grupp_31_SystemUtveckling
                     ItemEntity i = (ItemEntity)e;
                     entityArray[XValue, YValue] = new ItemEntity(e.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y),
                         i.containedItem);
+                }
+                else if (e is PortalEntity)
+                {
+                    PortalEntity i = (PortalEntity)e;
+                    entityArray[XValue, YValue] = new PortalEntity(e.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y),
+                        i.zoneName, i.spawnPosition);
                 }
             }
 
@@ -212,6 +235,16 @@ namespace Grupp_31_SystemUtveckling
             }
             if (buttonList[4].IsClicked())
             {
+                selectedPortalLocation = Interaction.InputBox("Input index name of MAP ex. StartMap.", "Data text", "");
+                if (selectedPortalLocation != "")
+                {
+                    selectedTileType = 4;
+                    selectedTile = null;
+                    selectedEntity = portals[0];
+                }
+            }
+            if (buttonList[5].IsClicked())
+            {
                 System.Windows.Forms.SaveFileDialog fileDialog = new System.Windows.Forms.SaveFileDialog();
                 fileDialog.Filter = "Text Files|*.txt";
                 fileDialog.RestoreDirectory = true;
@@ -222,7 +255,7 @@ namespace Grupp_31_SystemUtveckling
                 }
             }
 
-            if (buttonList[5].IsClicked())
+            if (buttonList[6].IsClicked())
             {
                 System.Windows.Forms.OpenFileDialog fileDialog = new System.Windows.Forms.OpenFileDialog();
                 fileDialog.Filter = "Text Files|*.txt";
@@ -233,7 +266,7 @@ namespace Grupp_31_SystemUtveckling
                 }
             }
 
-            if (buttonList[6].IsClicked())
+            if (buttonList[7].IsClicked())
             {
                 showGrid = !showGrid;
             }
@@ -293,6 +326,18 @@ namespace Grupp_31_SystemUtveckling
                     }
                 }
             }
+            if (selectedTileType == 4)
+            {
+                foreach (PortalEntity p in portals)
+                {
+                    Rectangle tileHitbox = new Rectangle((int)p.position.X, (int)p.position.Y, p.texture.Width, p.texture.Height);
+                    if (KeyMouseReader.LeftClick() && tileHitbox.Contains(KeyMouseReader.mousePosition))
+                    {
+                        selectedTile = null;
+                        selectedEntity = p;
+                    }
+                }
+            }
         }
 
         protected void PlaceTile()
@@ -317,7 +362,7 @@ namespace Grupp_31_SystemUtveckling
                         }
                     }
                 }
-                else if (selectedTileType == 2 || selectedTileType == 3)
+                else if (selectedTileType == 2 || selectedTileType == 3 || selectedTileType == 4)
                 {
                     if ((XValue >= 0 && XValue < entityArray.GetLength(0)) &&
                         (YValue >= 0 && YValue < entityArray.GetLength(1)))
@@ -353,12 +398,48 @@ namespace Grupp_31_SystemUtveckling
                                 ItemDatabase.items[indexName]);
                             }
                         }
+                        else if (selectedEntity is PortalEntity)
+                        {
+                            if (XValue == 0)
+                            {
+                                entityArray[XValue, YValue] = new PortalEntity(selectedEntity.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y),
+                                selectedPortalLocation, new Vector2((entityArray.GetLength(0) - 2) * tileSize, YValue * tileSize));
+                            }
+                            else if (XValue == (entityArray.GetLength(0) - 1))
+                            {
+                                entityArray[XValue, YValue] = new PortalEntity(selectedEntity.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y),
+                                selectedPortalLocation, new Vector2(tileSize, YValue * tileSize));
+                            }
+                            else if (YValue == 0)
+                            {
+                                entityArray[XValue, YValue] = new PortalEntity(selectedEntity.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y),
+                                selectedPortalLocation, new Vector2(XValue * tileSize, (entityArray.GetLength(1) - 2) * tileSize));
+                            }
+                            else if (YValue == (entityArray.GetLength(1) - 1))
+                            {
+                                entityArray[XValue, YValue] = new PortalEntity(selectedEntity.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y),
+                                selectedPortalLocation, new Vector2(XValue * tileSize, tileSize));
+                            }
+                            else
+                            {
+                                int xCoordinate = Int32.Parse(Interaction.InputBox("Input coordinate X", "Data text", "0"));
+                                if (xCoordinate >= 0)
+                                {
+                                    int yCoordinate = Int32.Parse(Interaction.InputBox("Input coordinate Y", "Data text", "0"));
+                                    if (yCoordinate >= 0)
+                                    {
+                                        entityArray[XValue, YValue] = new PortalEntity(selectedEntity.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y),
+                                        selectedPortalLocation, new Vector2((float)xCoordinate * tileSize, (float)yCoordinate * tileSize));
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
             else if (KeyMouseReader.mouseState.RightButton == ButtonState.Pressed)
             {
-                if (selectedTileType == 2 || selectedTileType == 3)
+                if (selectedTileType == 2 || selectedTileType == 3 || selectedTileType == 4)
                 {
                     if ((XValue >= 0 && XValue < entityArray.GetLength(0)) &&
                         (YValue >= 0 && YValue < entityArray.GetLength(1)))
@@ -392,7 +473,7 @@ namespace Grupp_31_SystemUtveckling
             }
             if (selectedEntity != null)
             {
-                if (selectedEntity is ItemEntity)
+                if (selectedEntity is ItemEntity || selectedEntity is PortalEntity)
                 {
                     spriteBatch.Draw(selectedEntity.texture, new Vector2(32, 880), Color.White);
                 }
@@ -439,6 +520,13 @@ namespace Grupp_31_SystemUtveckling
                 foreach (Entity i in items)
                 {
                     i.Draw(spriteBatch);
+                }
+            }
+            if (selectedTileType == 4)
+            {
+                foreach (PortalEntity p in portals)
+                {
+                    p.Draw(spriteBatch);
                 }
             }
         }

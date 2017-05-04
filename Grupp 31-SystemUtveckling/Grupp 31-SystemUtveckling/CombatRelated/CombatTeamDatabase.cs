@@ -17,7 +17,7 @@ namespace Grupp_31_SystemUtveckling
             for (int i = 0; i < 5; i++)
             {
                 teamDictionary["goblin5"].Add(new Character(Archive.textureDictionary["goblinCombat"], Archive.textureDictionary["goblinCombatOutline"],
-                Vector2.Zero, false, "Goblin", 30, 3, 2, 3, 5, 10, 100, 5, 50));
+                Vector2.Zero, false, "Goblin", 6, 3, 2, 3, 5, 10, 100, 5, 50));
             }
         }
     }

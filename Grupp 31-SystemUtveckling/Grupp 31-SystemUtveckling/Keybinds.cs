@@ -39,6 +39,7 @@ namespace Grupp_31_SystemUtveckling
             binds["editorWall"] = Keys.D2;
             binds["editorEntity"] = Keys.D3;
             binds["editorItem"] = Keys.D4;
+            binds["editorPortal"] = Keys.D5;
             binds["editorSaveMap"] = Keys.F1;
             binds["editorLoadMap"] = Keys.F2;
             binds["editorToggleGrid"] = Keys.G;

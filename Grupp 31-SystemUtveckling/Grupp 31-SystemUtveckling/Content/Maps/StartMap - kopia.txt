@@ -408,7 +408,7 @@ tile;plank;480;512;False
 tile;plank;480;544;False
 tile;plank;480;576;False
 tile;plank;480;608;False
-tile;grass;480;640;False
+tile;dungeonWall4;480;640;True
 tile;grass;480;672;False
 tile;grass;480;704;False
 tile;grass;480;736;False
@@ -1196,7 +1196,5 @@ tile;grass;1440;768;False
 tile;grass;1440;800;False
 item;sword;512;384;steelSword
 enemy;goblinEntity;608;608;goblin5
-portal;arrowDown;608;800;Content \Maps\emptyMap.txt;608;32
-portal;arrowDown;640;800;Content \Maps\emptyMap.txt;640;32
 player;playerPlaceholder;736;192
 friendly;playerPlaceholder;896;384;testDialog

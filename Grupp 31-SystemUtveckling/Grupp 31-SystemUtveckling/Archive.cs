@@ -36,6 +36,10 @@ namespace Grupp_31_SystemUtveckling
             textureDictionary["uiWorld"] = Content.Load<Texture2D>("UIBasePlaceholder");
             textureDictionary["whitePixel"] = Content.Load<Texture2D>("whitePixel");
             textureDictionary["tabs"] = Content.Load<Texture2D>("tabs");
+            textureDictionary["arrowDown"] = Content.Load<Texture2D>("arrowDown");
+            textureDictionary["arrowLeft"] = Content.Load<Texture2D>("arrowLeft");
+            textureDictionary["arrowRight"] = Content.Load<Texture2D>("arrowRight");
+            textureDictionary["arrowUp"] = Content.Load<Texture2D>("arrowUp");
 
             // Items
             textureDictionary["steelSwordInventory"] = Content.Load<Texture2D>("Items\\SteelSword");

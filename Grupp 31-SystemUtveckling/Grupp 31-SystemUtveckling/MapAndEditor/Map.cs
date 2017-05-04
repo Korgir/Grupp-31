@@ -12,8 +12,6 @@ namespace Grupp_31_SystemUtveckling
     {
         public Player player;
         public Tile[,] tiles;
-        protected int doorPosY;
-        protected int doorPosX;
         public List<Entity> entityList;
         public TabManager tabManager;
 
@@ -23,26 +21,21 @@ namespace Grupp_31_SystemUtveckling
             tabManager = new TabManager();
         }
 
-        public string ZoneSwitch()
+        public PortalEntity ZoneSwitch()
         {
-             if (doorPosX == player.position.X && doorPosY == player.position.Y)
+            foreach (Entity e in entityList)
             {
-                string fileName = ("map1");
-                //Console.WriteLine("zone switch");
-                return fileName;
+                if (e is PortalEntity)
+                {
+                    PortalEntity portal = (PortalEntity)e;
+                    if (portal.position == player.position)
+                    {
+                        return portal;
+                    }
+                }
             }
 
             return null;
-        }
-
-        public void SetDoorPosY(int doorPosY)
-        {
-            this.doorPosY = doorPosY;
-        }
-
-        public void SetDoorPostX(int doorPosX)
-        {
-            this.doorPosX = doorPosX;
         }
 
         public void SetTiles(Tile[,] tiles)
@@ -141,7 +134,7 @@ namespace Grupp_31_SystemUtveckling
                 e.Draw(spriteBatch);
             }
 
-            spriteBatch.Draw(Archive.textureDictionary["uiWorld"], Vector2.Zero, Color.White); // Placeholder
+            spriteBatch.Draw(Archive.textureDictionary["uiWorld"], Vector2.Zero, Color.White);
             tabManager.Draw(spriteBatch);
 
             foreach (Entity e in entityList)

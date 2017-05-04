@@ -61,6 +61,14 @@ namespace Grupp_31_SystemUtveckling
                         FriendlyEntity friendly = new FriendlyEntity(texture, new Vector2(xPosition, yPosition), Archive.dialogDictionary[questName]);
                         map.entityList.Add(friendly);
                         break;
+
+                    case "portal":
+                        string zoneName = stringArray[4];
+                        int spawnX = Int32.Parse(stringArray[5]);
+                        int spawnY = Int32.Parse(stringArray[6]);
+                        PortalEntity portal = new PortalEntity(texture, new Vector2(xPosition, yPosition), zoneName, new Vector2(spawnX, spawnY));
+                        map.entityList.Add(portal);
+                        break;
                 }
             }
             streamReader.Close();
@@ -108,6 +116,12 @@ namespace Grupp_31_SystemUtveckling
                                 ItemEntity item = (ItemEntity)entityArray[i, j];
                                 var itemName = ItemDatabase.items.FirstOrDefault(x => x.Value == item.containedItem).Key;
                                 sw.WriteLine("item;" + textureArchiveName + ";" + entityArray[i, j].position.X + ";" + entityArray[i, j].position.Y + ";" + itemName);
+                            }
+                            else if (entityArray[i, j] is PortalEntity)
+                            {
+                                PortalEntity portal = (PortalEntity)entityArray[i, j];
+                                sw.WriteLine("portal;" + textureArchiveName + ";" + entityArray[i, j].position.X + ";" + entityArray[i, j].position.Y + ";" +
+                                    portal.zoneName + ";" + portal.spawnPosition.X + ";" + portal.spawnPosition.Y);
                             }
                         }
                     }

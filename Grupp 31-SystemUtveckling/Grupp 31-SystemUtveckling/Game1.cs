@@ -83,10 +83,17 @@ namespace Grupp_31_SystemUtveckling
 
                 case (GameState.World):
                     map.Update(gameTime);
-                    fileName = map.ZoneSwitch();
-                    if (fileName != null)
+                    PortalEntity temporaryPortal = map.ZoneSwitch();
+                    if (temporaryPortal != null)
                     {
-                        map = FileReader.ReadMap(fileName);                     
+                        fileName = temporaryPortal.zoneName;
+                        Player tempPlayer = map.player;
+                        TabManager tab = map.tabManager;
+                        map = FileReader.ReadMap(fileName);
+                        map.player = tempPlayer;
+                        map.player.position = temporaryPortal.spawnPosition;
+                        map.player.map = map;
+                        map.tabManager = tab;
                     }
 
                     if (map.EngageCombatBool(ref combat) == true)
