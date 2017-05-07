@@ -44,7 +44,7 @@ namespace Grupp_31_SystemUtveckling
 
                     case "player":
                         map.player = new Player(texture, new Vector2(xPosition, yPosition), new List<Item>());
-                        map.player.team.Add(new Character(Archive.textureDictionary["warriorCombat"], Archive.textureDictionary["warriorCombatOutline"],
+                        map.player.team.characters.Add(new Character(Archive.textureDictionary["warriorCombat"], Archive.textureDictionary["warriorCombatOutline"],
                             Vector2.Zero, true, "Warrior", 100, 10, 5, 6, 15, 10, 100, 5, 70));
                         map.player.map = map;
                         break;
@@ -52,7 +52,7 @@ namespace Grupp_31_SystemUtveckling
                     case "enemy":
                         string teamName = stringArray[4];
                         Enemy enemy = new Enemy(texture, new Vector2(xPosition, yPosition));
-                        enemy.team = CombatTeamDatabase.teamDictionary[teamName];
+                        enemy.team = CombatTeamDatabase.GetTeam(teamName);
                         map.entityList.Add(enemy);
                         break;
 
@@ -102,7 +102,7 @@ namespace Grupp_31_SystemUtveckling
                             else if (entityArray[i, j] is Enemy)
                             {
                                 Enemy enemy = (Enemy)entityArray[i, j];
-                                var teamName = CombatTeamDatabase.teamDictionary.FirstOrDefault(x => x.Value == enemy.team).Key;
+                                var teamName = CombatTeamDatabase.teamDictionary.FirstOrDefault(x => x.Value.ID == enemy.team.ID).Key;
                                 sw.WriteLine("enemy;" + textureArchiveName + ";" + entityArray[i, j].position.X + ";" + entityArray[i, j].position.Y + ";" + teamName);
                             }
                             else if (entityArray[i, j] is FriendlyEntity)

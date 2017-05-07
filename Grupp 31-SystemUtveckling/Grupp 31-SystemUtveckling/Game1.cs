@@ -22,7 +22,6 @@ namespace Grupp_31_SystemUtveckling
 
         public Game1()
         {
-            Console.WriteLine("con");
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
@@ -36,7 +35,6 @@ namespace Grupp_31_SystemUtveckling
         protected override void Initialize()
         {
             base.Initialize();
-            Console.WriteLine("init");
             Keybinds.Initialize();
 
             currentGameState = GameState.Menus;
@@ -53,7 +51,6 @@ namespace Grupp_31_SystemUtveckling
 
         protected override void LoadContent()
         {
-            Console.WriteLine("load");
             Archive.Initialize(Content);
             ItemDatabase.Initialize();
             CombatTeamDatabase.Initialize();

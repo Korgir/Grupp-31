@@ -21,7 +21,7 @@ namespace Grupp_31_SystemUtveckling
         public Animation animation;
         protected Rectangle objectRectangle;
 
-        public List<Character> team;
+        public Team team;
 
         public Entity(Texture2D texture, Vector2 position)
         {
@@ -36,7 +36,7 @@ namespace Grupp_31_SystemUtveckling
             animation.AddAnimationLoop("walk_up", new Point(0, 3), new Point(2, 3));
             animation.ChangeAnimationLoop("walk_down");
 
-            this.team = new List<Character>();
+            this.team = new Team(-1);
         }
 
         public void Move(GameTime gameTime)
@@ -63,8 +63,8 @@ namespace Grupp_31_SystemUtveckling
 
         public bool IsTeamAlive()
         {
-            int aliveCharactersCount = team.Count;
-            foreach (Character c in team)
+            int aliveCharactersCount = team.characters.Count;
+            foreach (Character c in team.characters)
             {
                 if (!c.alive)
                 {

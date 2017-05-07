@@ -16,12 +16,12 @@ namespace Grupp_31_SystemUtveckling
         public CharacterTab characterTab;
         public InventoryTab inventoryTab;
         QuestTab questTab;
-
+        public Map map;
 
         enum TabState { CharacterTab, InventoryTab, QuestLogTab };
         TabState tabState;
 
-        public TabManager()
+        public TabManager(Map map)
         {
             Vector2 position = new Vector2(1472, 0);
             characterTab = new CharacterTab(position, this);
@@ -31,7 +31,7 @@ namespace Grupp_31_SystemUtveckling
             characterButton = new Button(new Rectangle((int)position.X + 32, (int)position.Y + 896, 96, 128), Archive.textureDictionary["whitePixel"], Archive.fontDictionary["defaultFont"], "", Keybinds.binds["characterTab"]);
             inventoryButton = new Button(new Rectangle((int)position.X + 128, (int)position.Y + 896, 96, 128), Archive.textureDictionary["whitePixel"], Archive.fontDictionary["defaultFont"], "", Keybinds.binds["inventoryTab"]);
             questLogButton =  new Button(new Rectangle((int)position.X + 224, (int)position.Y + 896, 96, 128), Archive.textureDictionary["whitePixel"], Archive.fontDictionary["defaultFont"], "", Keybinds.binds["questTab"]);
-            
+            this.map = map;
         }
         public void Update(GameTime gameTime)
         {

@@ -18,7 +18,7 @@ namespace Grupp_31_SystemUtveckling
         public Map()
         {
             entityList = new List<Entity>();
-            tabManager = new TabManager();
+            tabManager = new TabManager(this);
         }
 
         public PortalEntity ZoneSwitch()
@@ -86,7 +86,7 @@ namespace Grupp_31_SystemUtveckling
                     Enemy enemy = (Enemy)e;
                     if (EngageCombat(player, enemy) && e.IsTeamAlive())
                     {
-                        combat = new Combat(player.team, e.team);
+                        combat = new Combat(player.team.characters, e.team.characters);
                         return true;
                     }
                 }

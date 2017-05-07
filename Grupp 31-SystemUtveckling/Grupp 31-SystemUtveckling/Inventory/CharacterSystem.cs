@@ -38,6 +38,7 @@ namespace Grupp_31_SystemUtveckling
                 {
                     equipmentSlots[(int)item.itemType].Item = item;
                     equipmentSlots[(int)item.itemType].InventoryFull = true;
+                    tabManager.map.player.team.characters[0].EquipItem(item);
                     return true;
                 }
             }
@@ -55,6 +56,7 @@ namespace Grupp_31_SystemUtveckling
                         if (equipmentSlots[i].Item == null) break;
                         if (tabManager.inventoryTab.inventorySystem.AddItem(equipmentSlots[i].Item))
                         {
+                            tabManager.map.player.team.characters[0].UnequipItem(equipmentSlots[i].Item);
                             equipmentSlots[i].Item = null;
                             equipmentSlots[i].InventoryFull = false;
                         }
@@ -70,7 +72,7 @@ namespace Grupp_31_SystemUtveckling
                 if (equipmentSlots[i].Item != null)
                 {
                     InventorySlot e = equipmentSlots[i];
-                    spriteBatch.Draw(e.Item.ItemTexture, new Vector2(e.GraphicLocationX, e.GraphicLocationY), Color.White);
+                    spriteBatch.Draw(e.Item.itemTexture, new Vector2(e.GraphicLocationX, e.GraphicLocationY), Color.White);
                 }
             }
         }

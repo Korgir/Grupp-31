@@ -42,7 +42,7 @@ namespace Grupp_31_SystemUtveckling
             playingAnimation = false;
 
             int damage = Archive.randomizer.Next(damageMin, damageMax) 
-                + Caster.magicAmplification * damagePerMagicAmplification;
+                + Caster.MagicAmplification * damagePerMagicAmplification;
             target.Damage(damage, Character.DamageType.Magical);
 
             Vector2 position = projectiles[projectiles.Count() - 1].position;

@@ -30,7 +30,7 @@ namespace Grupp_31_SystemUtveckling
             if (Archive.randomizer.Next(1, 100) < Caster.hitChance)
             {
                 // To Do - For each item equipped run item.OnAttack()
-                int damage = Archive.randomizer.Next(Caster.physicalDamageMin, Caster.physicalDamageMax);
+                int damage = Archive.randomizer.Next(Caster.PhysicalDamageMin, Caster.PhysicalDamageMax);
                 target.Damage(damage, Character.DamageType.Physical);
 
                 damageNumbers.Add(new DamageNumber(Archive.textureDictionary["physical"], target.Position, damage.ToString(), Color.Orange, 1.5f));

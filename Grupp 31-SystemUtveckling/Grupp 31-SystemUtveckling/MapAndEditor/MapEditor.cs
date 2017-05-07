@@ -178,6 +178,7 @@ namespace Grupp_31_SystemUtveckling
                 if (e is Enemy)
                 {
                     entityArray[XValue, YValue] = new Enemy(e.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y));
+                    entityArray[XValue, YValue].team.ID = e.team.ID;
                 }
                 else if (e is FriendlyEntity)
                 {
@@ -378,7 +379,7 @@ namespace Grupp_31_SystemUtveckling
                             if (indexName != "")
                             {
                                 entityArray[XValue, YValue] = new Enemy(selectedEntity.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y));
-                                entityArray[XValue, YValue].team = CombatTeamDatabase.teamDictionary[indexName];
+                                entityArray[XValue, YValue].team = CombatTeamDatabase.GetTeam(indexName);
                             }
                         }
                         else if (selectedEntity is FriendlyEntity)

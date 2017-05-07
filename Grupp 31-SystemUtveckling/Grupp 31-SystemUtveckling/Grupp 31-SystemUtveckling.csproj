@@ -42,6 +42,7 @@
     <Compile Include="Archive.cs" />
     <Compile Include="Button.cs" />
     <Compile Include="CombatRelated\CombatTeamDatabase.cs" />
+    <Compile Include="CombatRelated\Team.cs" />
     <Compile Include="Entities\PortalEntity.cs" />
     <Compile Include="Inventory\CharacterSystem.cs" />
     <Compile Include="Entities\ItemEntity.cs" />

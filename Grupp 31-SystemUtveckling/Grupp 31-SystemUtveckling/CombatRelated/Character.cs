@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Grupp_31_SystemUtveckling
 {
-    class Character
+    public class Character
     {
         public Texture2D texture;
         public Texture2D textureOutline;
@@ -17,24 +17,62 @@ namespace Grupp_31_SystemUtveckling
 
         public bool alive;
         public bool playerControlled;
-
         public string name;
+
         public int health, maxHealth;
-        public int speed;
-        public int armor;
-        public int physicalDamageMin, physicalDamageMax;
-        public int magicAmplification;
+        public int speed, temporarySpeed;
+        public int armor, temporaryArmor;
+        public int physicalDamageMin, physicalDamageMax,
+            temporaryPhysicalDamageMin, temporaryPhysicalDamageMax;
+        public int magicAmplification, temporaryMagicAmplification;
         public int mana, maxMana;
-        public int manaRegeneration;
-        public int hitChance;
+        public int manaRegeneration, temporaryManaRegeneration;
+        public int hitChance, temporaryHitChance;
+
         public int action;
         public int spellToCast;
         public List<Spell> spells;
         public List<Buff> buffs;
-        // To Do - Add List<Item> equippedItems when class is implemented
+        protected List<Item> equippedItems;
 
         public bool drawOutline;
         public Color outlineColor;
+
+        public int Speed
+        {
+            get { return (speed + temporarySpeed); }
+            private set { }
+        }
+        public int Armor
+        {
+            get { return (armor + temporaryArmor); }
+            private set { }
+        }
+        public int PhysicalDamageMin
+        {
+            get { return (physicalDamageMin + temporaryPhysicalDamageMin); }
+            private set { }
+        }
+        public int PhysicalDamageMax
+        {
+            get { return (physicalDamageMax + temporaryPhysicalDamageMax); }
+            private set { }
+        }
+        public int MagicAmplification
+        {
+            get { return (magicAmplification + temporaryMagicAmplification); }
+            private set { }
+        }
+        public int ManaRegeneration
+        {
+            get { return (manaRegeneration + temporaryManaRegeneration); }
+            private set { }
+        }
+        public int HitChance
+        {
+            get { return (hitChance + temporaryHitChance); }
+            private set { }
+        }
 
         public Vector2 Position
         {
@@ -75,6 +113,14 @@ namespace Grupp_31_SystemUtveckling
             this.manaRegeneration = manaRegeneration;
             this.hitChance = hitChance;
 
+            temporaryArmor = 0;
+            temporaryHitChance = 0;
+            temporaryMagicAmplification = 0;
+            temporaryManaRegeneration = 0;
+            temporaryPhysicalDamageMax = 0;
+            temporaryPhysicalDamageMin = 0;
+            temporarySpeed = 0;
+
             action = -1;
             spellToCast = -1;
 
@@ -84,9 +130,30 @@ namespace Grupp_31_SystemUtveckling
             spells.Add(new SpellThrowGoblin(this, null, TargetSpell.TargetTeam.Enemy));
 
             buffs = new List<Buff>();
+            equippedItems = new List<Item>();
 
             drawOutline = false;
             outlineColor = Color.White;
+        }
+
+        public virtual Character Clone()
+        {
+            Character clone = new Character(texture, textureOutline, position, playerControlled, 
+                name, health, speed, armor, physicalDamageMin, physicalDamageMax, magicAmplification, 
+                mana, manaRegeneration, hitChance);
+            return clone;
+        }
+
+        public void EquipItem(Item item)
+        {
+            item.OnEquip(this);
+            equippedItems.Add(item);
+        }
+
+        public void UnequipItem(Item item)
+        {
+            item.OnUnequip(this);
+            equippedItems.Remove(item);
         }
 
         public void OnNewTurn()
@@ -136,8 +203,7 @@ namespace Grupp_31_SystemUtveckling
             {
                 return false;
             }
-
-            Console.WriteLine(name + " takes " + totalDamage + " points of damage."); // Text Combat
+            
             health -= totalDamage;
             if (health <= 0)
             {
@@ -153,7 +219,6 @@ namespace Grupp_31_SystemUtveckling
 
         public bool Kill()
         {
-            Console.WriteLine(name + " has died."); // Text Combat
             if (!alive)
             {
                 return false;

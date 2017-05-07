@@ -484,11 +484,11 @@ namespace Grupp_31_SystemUtveckling
                 position, Color.Black);
             position.Y += 36;
             spriteBatch.DrawString(Archive.fontDictionary["infoFont"],
-                "Armor: " + actor.armor,
+                "Armor: " + (actor.armor),
                 position, Color.Black);
             position.Y += 36;
             spriteBatch.DrawString(Archive.fontDictionary["infoFont"],
-                "Speed: " + actor.speed,
+                "Speed: " + (actor.speed),
                 position, Color.Black);
 
             position = new Vector2(1460, 880);

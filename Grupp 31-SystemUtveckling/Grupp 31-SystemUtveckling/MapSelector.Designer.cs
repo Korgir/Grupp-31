@@ -108,6 +108,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(445, 192);
+            this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_ok);
@@ -116,7 +117,9 @@
             this.Controls.Add(this.rb_1);
             this.Controls.Add(this.cb_map);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(463, 239);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(463, 239);
             this.Name = "MapSelector";
             this.ShowIcon = false;
             this.Text = "MapSelector";

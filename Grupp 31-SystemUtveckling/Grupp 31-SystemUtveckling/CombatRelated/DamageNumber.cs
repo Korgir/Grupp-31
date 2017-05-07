@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Grupp_31_SystemUtveckling
 {
-    class DamageNumber
+    public class DamageNumber
     {
         protected SpriteFont font;
         protected Texture2D texture;

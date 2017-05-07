@@ -140,14 +140,14 @@ namespace Grupp_31_SystemUtveckling
                 {
                     if (invSlot[x, y].Item != null)
                     {
-                        spriteBatch.Draw(invSlot[x, y].Item.ItemTexture, new Rectangle(invSlot[x, y].GraphicLocationX, invSlot[x, y].GraphicLocationY, 64, 64), Color.White);
+                        spriteBatch.Draw(invSlot[x, y].Item.itemTexture, new Rectangle(invSlot[x, y].GraphicLocationX, invSlot[x, y].GraphicLocationY, 64, 64), Color.White);
                     }
 
                 }
             }
             if (ItemInHand == true)
             {
-                spriteBatch.Draw(inPlayerHand.Item.ItemTexture, new Rectangle(KeyMouseReader.mouseState.Position.X - 32, KeyMouseReader.mouseState.Position.Y - 32, 64, 64), Color.White);
+                spriteBatch.Draw(inPlayerHand.Item.itemTexture, new Rectangle(KeyMouseReader.mouseState.Position.X - 32, KeyMouseReader.mouseState.Position.Y - 32, 64, 64), Color.White);
             }
         }
     }

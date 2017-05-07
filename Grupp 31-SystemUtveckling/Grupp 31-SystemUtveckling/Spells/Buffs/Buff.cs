@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Grupp_31_SystemUtveckling
 {
-    abstract class Buff
+    public abstract class Buff
     {
         public bool debuff;
         public int durationTurns;

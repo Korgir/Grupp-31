@@ -1130,3 +1130,6 @@
 #begin Maps/emptyMap.txt
 /copy:Maps/emptyMap.txt
 
+#begin Maps/Level2.txt
+/copy:Maps/Level2.txt
+

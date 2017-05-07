@@ -9,7 +9,7 @@ namespace Grupp_31_SystemUtveckling
 {
     public class Item
     {
-        private Texture2D itemTexture;
+        public Texture2D itemTexture;
         private string itemName;
         private int itemID;
         private int powerMax;
@@ -29,35 +29,19 @@ namespace Grupp_31_SystemUtveckling
             this.attackSpeed = attackSpeed;
             this.itemType = type;
         }
-        public Texture2D ItemTexture
+
+        public void OnEquip(Character actor)
         {
-            set { itemTexture = value; }
-            get { return itemTexture; }
+            actor.speed += attackSpeed;
+            actor.physicalDamageMin += powerMin;
+            actor.physicalDamageMax += powerMax;
         }
-        public string ItemName
+
+        public void OnUnequip(Character actor)
         {
-            set { itemName = value; }
-            get { return itemName; }
-        }
-        public int ItemID
-        {
-            set { itemID = value; }
-            get { return itemID; }
-        }
-        public int PowerMax
-        {
-            set { powerMax = value; }
-            get { return powerMax; }
-        }
-        public int PowerMin
-        {
-            set { powerMin = value; }
-            get { return powerMin; }
-        }
-        public int AttackSpeed
-        {
-            set { attackSpeed = value; }
-            get { return attackSpeed; }
+            actor.speed -= attackSpeed;
+            actor.physicalDamageMin -= powerMin;
+            actor.physicalDamageMax -= powerMax;
         }
     }
 }

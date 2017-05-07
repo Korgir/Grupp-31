@@ -12,12 +12,10 @@ namespace Grupp_31_SystemUtveckling
     class Player : Entity
     {
         public Map map;
-        public List<Item> inventory;
 
         public Player(Texture2D texture, Vector2 position, List<Item> inventory) : 
             base(texture, position)
         {
-            this.inventory = inventory;
         }
         
         private void ChangeDirection(Vector2 direction)
@@ -53,7 +51,6 @@ namespace Grupp_31_SystemUtveckling
         {
             if (!moving)
             {
-                Console.WriteLine("test");
                 if (KeyMouseReader.KeyDown(Keybinds.binds["moveLeft"]))
                 {
                     animation.ChangeAnimationLoop("walk_left");

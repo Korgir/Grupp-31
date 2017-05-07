@@ -15,8 +15,8 @@ namespace Grupp_31_SystemUtveckling
         public DebuffBleed(int durationTurns, Spell spell, Character target)
             : base(true, durationTurns, spell, target)
         {
-            minDamage = Spell.Caster.physicalDamageMin / 5;
-            maxDamage = Spell.Caster.physicalDamageMax / 5;
+            minDamage = Spell.Caster.PhysicalDamageMin / 5;
+            maxDamage = Spell.Caster.PhysicalDamageMax / 5;
         }
 
         public override void OnTick()

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Grupp_31_SystemUtveckling
 {
-    abstract class Spell
+    public abstract class Spell
     {
         public Texture2D iconTexture;
         public int manaCost;
