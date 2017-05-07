@@ -235,7 +235,8 @@ namespace Grupp_31_SystemUtveckling
             }
             if (buttonList[4].IsClicked())
             {
-                selectedPortalLocation = Interaction.InputBox("Input index name of MAP ex. StartMap.", "Data text", "");
+                //selectedPortalLocation = Interaction.InputBox("Input index name of MAP ex. StartMap.", "Data text", "");
+                selectedPortalLocation = Prompt.ShowMapSelector();
                 if (selectedPortalLocation != "")
                 {
                     selectedTileType = 4;
@@ -422,12 +423,15 @@ namespace Grupp_31_SystemUtveckling
                             }
                             else
                             {
-                                int xCoordinate = Int32.Parse(Interaction.InputBox("Input coordinate X", "Data text", "0"));
-                                if (xCoordinate >= 0)
+                                string tempString = Interaction.InputBox("Input coordinate X", "Data text", "0");
+                                if (tempString != "")
                                 {
-                                    int yCoordinate = Int32.Parse(Interaction.InputBox("Input coordinate Y", "Data text", "0"));
-                                    if (yCoordinate >= 0)
+                                    int xCoordinate = Int32.Parse(tempString);
+                                    tempString = "";
+                                    tempString = Interaction.InputBox("Input coordinate Y", "Data text", "0");
+                                    if (tempString != "")
                                     {
+                                        int yCoordinate = Int32.Parse(tempString);
                                         entityArray[XValue, YValue] = new PortalEntity(selectedEntity.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y),
                                         selectedPortalLocation, new Vector2((float)xCoordinate * tileSize, (float)yCoordinate * tileSize));
                                     }

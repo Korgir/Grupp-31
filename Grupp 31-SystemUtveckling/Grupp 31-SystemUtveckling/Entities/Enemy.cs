@@ -11,19 +11,16 @@ namespace Grupp_31_SystemUtveckling
 {
     class Enemy : Entity
     {
-        protected Rectangle enemyRec;
+        protected Rectangle enemyRectangle;
 
         public Enemy(Texture2D texture, Vector2 position) : base(texture, position)
         {
-            this.enemyRec = new Rectangle((int)position.X, (int)position.Y, texture.Width / 4, texture.Height);
+            this.enemyRectangle = new Rectangle((int)position.X, (int)position.Y, texture.Width / 4, texture.Height);
         }
 
         public void Update(GameTime gameTime)
         {
-            enemyRec = new Rectangle((int)position.X, (int)position.Y, texture.Width / 4, texture.Height);
-
-            //int randX = rand.Next(1, 4);
-            //int randY = rand.Next(1, 4);
+            enemyRectangle = new Rectangle((int)position.X, (int)position.Y, texture.Width / 4, texture.Height);
         }
     }
 }
