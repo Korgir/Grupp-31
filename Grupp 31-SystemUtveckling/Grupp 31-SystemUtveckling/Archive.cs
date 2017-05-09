@@ -113,6 +113,8 @@ namespace Grupp_31_SystemUtveckling
             fontDictionary["defaultFont"] = Content.Load<SpriteFont>("font");
             fontDictionary["dialogFont"] = Content.Load<SpriteFont>("gameFont");
             fontDictionary["infoFont"] = Content.Load<SpriteFont>("infoFont");
+            fontDictionary["objectiveDescription"] = Content.Load<SpriteFont>("objectiveFont");
+            fontDictionary["questTitle"] = Content.Load<SpriteFont>("questFont");
 
             // Dialog
             dialogDictionary["testDialog"] = new Dialog();
@@ -120,6 +122,8 @@ namespace Grupp_31_SystemUtveckling
             dialogDictionary["testDialog"].AddLine("Kill this goblin.");
             dialogDictionary["testDialog"].AddLine("plz");
             dialogDictionary["testDialog"].AddLine("");
+            dialogDictionary["testDialog"].givingQuest = new Quest(1, "Goblin slayer");
+            dialogDictionary["testDialog"].givingQuest.objectives.Add(new KillObjective(3, "Kill goblin teams.", 1));
         }
     }
 }

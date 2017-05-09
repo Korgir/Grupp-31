@@ -13,11 +13,14 @@ namespace Grupp_31_SystemUtveckling
         Rectangle destinationRectangle;
         Rectangle sourceRectangle;
 
+        public QuestSystem questSystem;
+
         public QuestTab(Vector2 position)
         {
             destinationRectangle = new Rectangle((int)position.X, (int)position.Y, 448, 1080);
             sourceRectangle = new Rectangle(0, 0, 448, 1080);
 
+            questSystem = new QuestSystem(new Vector2(1580, 300));
         }
         public void Update(GameTime gameTime)
         {
@@ -26,6 +29,7 @@ namespace Grupp_31_SystemUtveckling
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Archive.textureDictionary["tabs"], destinationRectangle, sourceRectangle, Color.White);
+            questSystem.Draw(spriteBatch);
         }
     }
 }

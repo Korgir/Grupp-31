@@ -1133,3 +1133,17 @@
 #begin Maps/Level2.txt
 /copy:Maps/Level2.txt
 
+#begin objectiveFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:objectiveFont.spritefont
+
+#begin questFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:questFont.spritefont
+

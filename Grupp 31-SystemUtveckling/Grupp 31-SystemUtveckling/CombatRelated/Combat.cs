@@ -33,7 +33,10 @@ namespace Grupp_31_SystemUtveckling
         public enum ActionType { NoAction = -1, PassTurn = 0, BasicAttack = 1,
             CastSpell = 2, UseItem = 3 }
 
-        public Combat(List<Character> team1, List<Character> team2)
+        public int enemyID;
+        public int winnerTeam;
+
+        public Combat(List<Character> team1, List<Character> team2, int enemyID)
         {
             active = true;
             this.scenaryTexture = Archive.textureDictionary["combatScenary"];
@@ -53,6 +56,9 @@ namespace Grupp_31_SystemUtveckling
             fadingOut = true;
             this.currentTurn = 0;
             this.currentState = CombatState.ChoseAction;
+
+            winnerTeam = -1;
+            this.enemyID = enemyID;
 
             SetCharacterPositions();
         }
@@ -277,6 +283,7 @@ namespace Grupp_31_SystemUtveckling
             }
             if (survivorsTeam1 == 0)
             {
+                winnerTeam = 2;
                 return false;
             }
 
@@ -290,6 +297,7 @@ namespace Grupp_31_SystemUtveckling
             }
             if (survivorsTeam2 == 0)
             {
+                winnerTeam = 1;
                 return false;
             }
 

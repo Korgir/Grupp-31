@@ -65,6 +65,10 @@
     <Compile Include="TabSystem\InventoryTab.cs" />
     <Compile Include="Inventory\Item.cs" />
     <Compile Include="Inventory\ItemDatabase.cs" />
+    <Compile Include="TabSystem\KillObjective.cs" />
+    <Compile Include="TabSystem\Objective.cs" />
+    <Compile Include="TabSystem\Quest.cs" />
+    <Compile Include="TabSystem\QuestSystem.cs" />
     <Compile Include="TabSystem\QuestTab.cs" />
     <Compile Include="Spells\Buffs\Buff.cs" />
     <Compile Include="CombatRelated\Character.cs" />

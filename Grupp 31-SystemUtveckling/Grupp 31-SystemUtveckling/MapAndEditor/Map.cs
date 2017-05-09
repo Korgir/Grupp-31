@@ -55,7 +55,7 @@ namespace Grupp_31_SystemUtveckling
                     FriendlyEntity npc = (FriendlyEntity)e;
                     if (npc.CanTalk(player))
                     {
-                        npc.dialog.Update();
+                        npc.dialog.Update(this);
                     }
                     else
                     {
@@ -86,7 +86,7 @@ namespace Grupp_31_SystemUtveckling
                     Enemy enemy = (Enemy)e;
                     if (EngageCombat(player, enemy) && e.IsTeamAlive())
                     {
-                        combat = new Combat(player.team.characters, e.team.characters);
+                        combat = new Combat(player.team.characters, e.team.characters, e.team.ID);
                         return true;
                     }
                 }

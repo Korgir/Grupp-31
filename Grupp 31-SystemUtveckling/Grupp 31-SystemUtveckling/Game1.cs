@@ -42,7 +42,7 @@ namespace Grupp_31_SystemUtveckling
             startMenu = new StartMenu(Archive.textureDictionary["menuBackground"], Archive.textureDictionary["menuHeader"], 
                 Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], this, GraphicsDevice);
             
-            combat = new Combat(new List<Character>(), new List<Character>());
+            combat = new Combat(new List<Character>(), new List<Character>(), -1);
 
             mapEditor = new MapEditor();
             fileName = "Content\\Maps\\StartMap.txt";
@@ -109,6 +109,17 @@ namespace Grupp_31_SystemUtveckling
                     if (!combat.active && !combat.fadingOut)
                     {
                         currentGameState = GameState.World;
+                        foreach (Quest q in map.tabManager.questTab.questSystem.quests)
+                        {
+                            foreach (Objective o in q.objectives)
+                            {
+                                if (o is KillObjective)
+                                {
+                                    KillObjective oKill = (KillObjective)o;
+                                    oKill.CheckTeam(combat.enemyID);
+                                }
+                            }
+                        }
                     }
 
                     if (KeyMouseReader.KeyPressed(Keybinds.binds["back"]))

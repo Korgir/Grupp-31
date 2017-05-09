@@ -15,6 +15,7 @@ namespace Grupp_31_SystemUtveckling
         List<string> dialogLines;
         int currentLine;
         bool finished;
+        public Quest givingQuest;
 
         public Dialog()
         {
@@ -22,6 +23,7 @@ namespace Grupp_31_SystemUtveckling
             dialogLines = new List<string>();
             currentLine = 0;
             finished = false;
+            givingQuest = null;
         }
 
         public void AddLine(string text)
@@ -29,7 +31,7 @@ namespace Grupp_31_SystemUtveckling
             dialogLines.Add(text);
         }
 
-        public void Update()
+        public void Update(Map map)
         {
             if (KeyMouseReader.KeyPressed(Keybinds.binds["talk"]) && !finished)
             {
@@ -38,6 +40,10 @@ namespace Grupp_31_SystemUtveckling
                 {
                     currentLine = 0;
                     finished = true;
+                    if (givingQuest != null)
+                    {
+                        map.tabManager.questTab.questSystem.AddQuest(givingQuest);
+                    }
                 }
             }
         }

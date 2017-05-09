@@ -15,7 +15,7 @@ namespace Grupp_31_SystemUtveckling
         Button questLogButton;
         public CharacterTab characterTab;
         public InventoryTab inventoryTab;
-        QuestTab questTab;
+        public QuestTab questTab;
         public Map map;
 
         enum TabState { CharacterTab, InventoryTab, QuestLogTab };
