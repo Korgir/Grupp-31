@@ -30,6 +30,17 @@ namespace Grupp_31_SystemUtveckling
             private set { }
         }
 
+        public float Height
+        {
+            get
+            {
+                float value = Archive.fontDictionary["questTitle"].MeasureString("I").Y;
+                value += Archive.fontDictionary["objectiveDescription"].MeasureString("I").Y * objectives.Count();
+                return value;
+            }
+            private set { }
+        }
+
         public Quest(int ID, string title)
         {
             this.ID = ID;

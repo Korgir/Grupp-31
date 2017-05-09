@@ -1203,6 +1203,7 @@ portal;arrowUp;576;0;Content\Maps\StartMap.txt;576;768
 portal;arrowUp;608;0;Content\Maps\StartMap.txt;608;768
 portal;arrowUp;640;0;Content\Maps\StartMap.txt;640;768
 portal;arrowUp;672;0;Content\Maps\StartMap.txt;672;768
+item;sword;672;224;questTest
 portal;arrowUp;704;0;Content\Maps\StartMap.txt;704;768
 portal;arrowUp;736;0;Content\Maps\StartMap.txt;736;768
 portal;arrowUp;768;0;Content\Maps\StartMap.txt;768;768

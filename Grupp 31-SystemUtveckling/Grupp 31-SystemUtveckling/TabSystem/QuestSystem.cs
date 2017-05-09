@@ -32,9 +32,11 @@ namespace Grupp_31_SystemUtveckling
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            Vector2 tempPosition = position;
             foreach (Quest q in quests)
             {
-                q.Draw(spriteBatch, position);
+                q.Draw(spriteBatch, tempPosition);
+                tempPosition.Y += q.Height;
             }
         }
     }

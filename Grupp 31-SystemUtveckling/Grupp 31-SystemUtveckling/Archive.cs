@@ -44,6 +44,7 @@ namespace Grupp_31_SystemUtveckling
             // Items
             textureDictionary["steelSwordInventory"] = Content.Load<Texture2D>("Items\\SteelSword");
             textureDictionary["redSwordInventory"] = Content.Load<Texture2D>("Items\\RedSword");
+            textureDictionary["keyInventory"] = Content.Load<Texture2D>("Items\\questItem");
 
             // Items world
             textureDictionary["sword"] = Content.Load<Texture2D>("Items\\World\\sword");
@@ -124,6 +125,17 @@ namespace Grupp_31_SystemUtveckling
             dialogDictionary["testDialog"].AddLine("");
             dialogDictionary["testDialog"].givingQuest = new Quest(1, "Goblin slayer");
             dialogDictionary["testDialog"].givingQuest.objectives.Add(new KillObjective(3, "Kill goblin teams.", 1));
+
+            dialogDictionary["testQuestDialog"] = new Dialog();
+            dialogDictionary["testQuestDialog"].AddLine("qwerqwerqwer");
+            dialogDictionary["testQuestDialog"].AddLine("Hello.");
+            dialogDictionary["testQuestDialog"].AddLine("Didn't see you there.");
+            dialogDictionary["testQuestDialog"].AddLine("Can you help me?");
+            dialogDictionary["testQuestDialog"].AddLine("You have no choice actually");
+            dialogDictionary["testQuestDialog"].AddLine("Find my super generic quest item");
+            dialogDictionary["testQuestDialog"].AddLine("You get stuff when that is implemented");
+            dialogDictionary["testQuestDialog"].givingQuest = new Quest(2, "Find the quest item");
+            dialogDictionary["testQuestDialog"].givingQuest.objectives.Add(new ItemObjective(1, "Quest item found.", 999));
         }
     }
 }

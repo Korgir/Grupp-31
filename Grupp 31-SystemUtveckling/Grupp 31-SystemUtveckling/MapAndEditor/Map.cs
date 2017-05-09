@@ -72,6 +72,17 @@ namespace Grupp_31_SystemUtveckling
                     if (player.PickUpItem(itemEntity))
                     {
                         entityList.RemoveAt(i);
+                        foreach (Quest q in tabManager.questTab.questSystem.quests)
+                        {
+                            foreach (Objective o in q.objectives)
+                            {
+                                if (o is ItemObjective)
+                                {
+                                    ItemObjective oItem = (ItemObjective)o;
+                                    oItem.CompareItem(itemEntity.containedItem.ID);
+                                }
+                            }
+                        }
                     }
                 }
             }

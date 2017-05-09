@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace Grupp_31_SystemUtveckling
 {
-    class KillObjective : Objective
+    class ItemObjective : Objective
     {
-        public int teamID;
+        public int itemID;
 
-        public KillObjective(int goal, string description, int teamID)
+        public ItemObjective(int goal, string description, int itemID)
             : base(goal, description)
         {
-            this.teamID = teamID;
+            this.itemID = itemID;
         }
 
-        public void CompareTeam(int teamID)
+        public void CompareItem(int itemID)
         {
-            if (this.teamID == teamID)
+            if (this.itemID == itemID)
             {
                 progress++;
             }

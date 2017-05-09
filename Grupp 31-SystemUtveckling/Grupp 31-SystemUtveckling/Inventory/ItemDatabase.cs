@@ -14,6 +14,7 @@ namespace Grupp_31_SystemUtveckling
         {
             items["redSword"] = new Item(Archive.textureDictionary["redSwordInventory"], "RedSword", 0, Item.ItemType.MainHand, 10, 6, 1);
             items["steelSword"] = new Item(Archive.textureDictionary["steelSwordInventory"], "SteelSword", 1, Item.ItemType.MainHand, 110, 70, 1);
+            items["questTest"] = new Item(Archive.textureDictionary["keyInventory"], "QuestItem", 999, Item.ItemType.Quest, 0, 0, 0);
         }
     }
 }

@@ -116,7 +116,7 @@ namespace Grupp_31_SystemUtveckling
                                 if (o is KillObjective)
                                 {
                                     KillObjective oKill = (KillObjective)o;
-                                    oKill.CheckTeam(combat.enemyID);
+                                    oKill.CompareTeam(combat.enemyID);
                                 }
                             }
                         }

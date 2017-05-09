@@ -11,19 +11,19 @@ namespace Grupp_31_SystemUtveckling
     {
         public Texture2D itemTexture;
         private string itemName;
-        private int itemID;
         private int powerMax;
         private int powerMin;
         private int attackSpeed;
         public ItemType itemType;
         public enum ItemType { MainHand = 7, Head = 0, Chest = 1, Legs = 2, Hands = 6, Finger = 5, Neck = 4, Feet = 3, OffHand = 8, Quest = 10, Consumables = 11}
 
+        public int ID;
 
         public Item(Texture2D itemTexture, string itemName, int itemID, ItemType type, int powerMax, int powerMin, int attackSpeed)
         {
             this.itemTexture = itemTexture;
             this.itemName = itemName;
-            this.itemID = itemID;
+            this.ID = itemID;
             this.powerMax = powerMax;
             this.powerMin = powerMin;
             this.attackSpeed = attackSpeed;
