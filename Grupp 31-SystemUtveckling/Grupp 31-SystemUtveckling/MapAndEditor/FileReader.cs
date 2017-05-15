@@ -58,7 +58,7 @@ namespace Grupp_31_SystemUtveckling
 
                     case "friendly":
                         string questName = stringArray[4];
-                        FriendlyEntity friendly = new FriendlyEntity(texture, new Vector2(xPosition, yPosition), Archive.dialogDictionary[questName]);
+                        FriendlyEntity friendly = new FriendlyEntity(texture, new Vector2(xPosition, yPosition), DialogDictionary.dialogDictionary[questName]);
                         map.entityList.Add(friendly);
                         break;
 
@@ -108,7 +108,7 @@ namespace Grupp_31_SystemUtveckling
                             else if (entityArray[i, j] is FriendlyEntity)
                             {
                                 FriendlyEntity npc = (FriendlyEntity)entityArray[i, j];
-                                var dialogName = Archive.dialogDictionary.FirstOrDefault(x => x.Value == npc.dialog).Key;
+                                var dialogName = DialogDictionary.dialogDictionary.FirstOrDefault(x => x.Value == npc.dialog).Key;
                                 sw.WriteLine("friendly;" + textureArchiveName + ";" + entityArray[i, j].position.X + ";" + entityArray[i, j].position.Y + ";" + dialogName);
                             }
                             else if (entityArray[i, j] is ItemEntity)

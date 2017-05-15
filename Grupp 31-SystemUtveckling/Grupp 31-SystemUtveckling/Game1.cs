@@ -53,6 +53,7 @@ namespace Grupp_31_SystemUtveckling
         {
             Archive.Initialize(Content);
             ItemDatabase.Initialize();
+            DialogDictionary.Initialize();
             CombatTeamDatabase.Initialize();
             spriteBatch = new SpriteBatch(GraphicsDevice);
         }

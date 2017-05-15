@@ -30,6 +30,39 @@ namespace Grupp_31_SystemUtveckling
             return true;
         }
 
+        public bool RemoveQuest(Quest quest)
+        {
+            foreach (Quest q in quests)
+            {
+                if (q.ID == quest.ID)
+                {
+                    quests.Remove(q);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool TurnInQuest(Quest quest)
+        {
+            foreach (Quest q in quests)
+            {
+                if (q.ID == quest.ID && q.Completed)
+                    return true;
+            }
+            return false;
+        }
+
+        public bool HaveQuest(Quest quest)
+        {
+            foreach (Quest q in quests)
+            {
+                if (q.ID == quest.ID)
+                    return true;
+            }
+            return false;
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             Vector2 tempPosition = position;

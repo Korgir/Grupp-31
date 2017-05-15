@@ -12,6 +12,7 @@ namespace Grupp_31_SystemUtveckling
     {
         protected string title;
         public List<Objective> objectives;
+        public Item reward;
 
         public int ID;
 
@@ -41,10 +42,11 @@ namespace Grupp_31_SystemUtveckling
             private set { }
         }
 
-        public Quest(int ID, string title)
+        public Quest(int ID, string title, Item reward)
         {
             this.ID = ID;
             this.title = title;
+            this.reward = reward;
             
             objectives = new List<Objective>();
         }

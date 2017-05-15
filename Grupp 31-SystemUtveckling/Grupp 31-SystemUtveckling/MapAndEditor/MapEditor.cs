@@ -93,8 +93,14 @@ namespace Grupp_31_SystemUtveckling
             #region Enteties
             entities = new List<Entity>();
             AddPlayer(Archive.textureDictionary["playerPlaceholder"]);
-            AddEnemy(Archive.textureDictionary["goblinEntity"]);
-            AddFriendly(Archive.textureDictionary["playerPlaceholder"]);
+            for (int i = 1; i <= 2; i++)
+            {
+                AddEnemy(Archive.textureDictionary["hostile" + i]);
+            }
+            for (int i = 1; i <= 4; i++)
+            {
+                AddFriendly(Archive.textureDictionary["npc" + i]);
+            }
             #endregion
 
             #region Items
@@ -149,7 +155,7 @@ namespace Grupp_31_SystemUtveckling
         public void AddFriendly(Texture2D tileTexture)
         {
             Vector2 position = tileStartPosition + new Vector2(40, 0) * entities.Count();
-            entities.Add(new FriendlyEntity(tileTexture, position, Archive.dialogDictionary["testDialog"]));
+            entities.Add(new FriendlyEntity(tileTexture, position, DialogDictionary.dialogDictionary["testDialog"]));
         }
 
         public void AddItem(Texture2D tileTexture)
@@ -388,7 +394,7 @@ namespace Grupp_31_SystemUtveckling
                             if (indexName != "")
                             {
                                 entityArray[XValue, YValue] = new FriendlyEntity(selectedEntity.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y),
-                                    Archive.dialogDictionary[indexName]);
+                                    DialogDictionary.dialogDictionary[indexName]);
                             }
                         }
                         else if (selectedEntity is ItemEntity)

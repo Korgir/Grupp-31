@@ -1195,7 +1195,7 @@ tile;grass;1440;736;False
 tile;smallTree;1440;768;True
 tile;smallTree;1440;800;True
 portal;arrowUp;448;0;Content\Maps\StartMap.txt;448;768
-enemy;goblinEntity;448;224;goblin5
+enemy;hostile1;448;224;goblin5
 portal;arrowUp;480;0;Content\Maps\StartMap.txt;480;768
 portal;arrowUp;512;0;Content\Maps\StartMap.txt;512;768
 portal;arrowUp;544;0;Content\Maps\StartMap.txt;544;768
@@ -1208,12 +1208,12 @@ portal;arrowUp;704;0;Content\Maps\StartMap.txt;704;768
 portal;arrowUp;736;0;Content\Maps\StartMap.txt;736;768
 portal;arrowUp;768;0;Content\Maps\StartMap.txt;768;768
 portal;arrowUp;800;0;Content\Maps\StartMap.txt;800;768
-enemy;goblinEntity;800;384;goblin5
+enemy;hostile1;800;384;goblin5
 portal;arrowUp;832;0;Content\Maps\StartMap.txt;832;768
 portal;arrowUp;864;0;Content\Maps\StartMap.txt;864;768
 portal;arrowUp;896;0;Content\Maps\StartMap.txt;896;768
 portal;arrowUp;928;0;Content\Maps\StartMap.txt;928;768
-enemy;goblinEntity;928;160;goblin5
+enemy;hostile1;928;160;goblin5
 portal;arrowUp;960;0;Content\Maps\StartMap.txt;960;768
 portal;arrowUp;992;0;Content\Maps\StartMap.txt;992;768
 portal;arrowUp;1024;0;Content\Maps\StartMap.txt;1024;768

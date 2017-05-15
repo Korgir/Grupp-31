@@ -59,8 +59,8 @@ namespace Grupp_31_SystemUtveckling
 
             for (int i = projectiles.Count() - 1; i >= 0; i--)
             {
-                particles[i].emitterLocation = projectiles[i].position;
-                particles[i].EmittParticles();
+                particles[i].emiterLocation = projectiles[i].position;
+                particles[i].EmitParticles();
                 projectiles[i].Update(gameTime);
                 projectiles[i].speed *= 1 + 5 * (float)gameTime.ElapsedGameTime.TotalSeconds;
 

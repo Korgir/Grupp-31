@@ -12,7 +12,7 @@ namespace Grupp_31_SystemUtveckling
     public class ParticleEngine
     {
         private Random random;
-        public Vector2 emitterLocation;
+        public Vector2 emiterLocation;
         private List<Particle> particles;
         protected Color particleColor;
         protected int intensity;
@@ -22,7 +22,7 @@ namespace Grupp_31_SystemUtveckling
 
         public ParticleEngine(Vector2 location, ParticleType type, Color particleColor, int intensity)
         {
-            emitterLocation = location;
+            emiterLocation = location;
             
             this.particles = new List<Particle>();
             random = new Random();
@@ -46,13 +46,13 @@ namespace Grupp_31_SystemUtveckling
                 angularVelocity = (float)MathHelper.ToRadians(Archive.randomizer.Next(-5, 5));
                 size = (float)Archive.randomizer.Next(10, 30) / 100f;
                 ttl = 0.3f;
-                return new Particle(texture, emitterLocation, velocity, 0.0f, angularVelocity, particleColor, size, ttl);
+                return new Particle(texture, emiterLocation, velocity, 0.0f, angularVelocity, particleColor, size, ttl);
             }
 
             return null;
         }
 
-        public void EmittParticles()
+        public void EmitParticles()
         {
             for (int i = 0; i < intensity; i++)
             {

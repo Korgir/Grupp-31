@@ -39,7 +39,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Animation.cs" />
-    <Compile Include="Archive.cs" />
+    <Compile Include="Archives\Archive.cs" />
+    <Compile Include="Archives\DialogDictionary.cs" />
     <Compile Include="Button.cs" />
     <Compile Include="CombatRelated\CombatTeamDatabase.cs" />
     <Compile Include="CombatRelated\Team.cs" />
@@ -64,7 +65,7 @@
     <Compile Include="Inventory\InventorySystem.cs" />
     <Compile Include="TabSystem\InventoryTab.cs" />
     <Compile Include="Inventory\Item.cs" />
-    <Compile Include="Inventory\ItemDatabase.cs" />
+    <Compile Include="Archives\ItemDatabase.cs" />
     <Compile Include="TabSystem\ItemObjective.cs" />
     <Compile Include="TabSystem\KillObjective.cs" />
     <Compile Include="TabSystem\Objective.cs" />

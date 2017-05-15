@@ -12,7 +12,6 @@ namespace Grupp_31_SystemUtveckling
     {
         public static Dictionary<string, Texture2D> textureDictionary = new Dictionary<string, Texture2D>();
         public static Dictionary<string, SpriteFont> fontDictionary = new Dictionary<string, SpriteFont>();
-        public static Dictionary<string, Dialog> dialogDictionary = new Dictionary<string, Dialog>();
         public static Random randomizer = new Random();
         public static int tileSize = 32;
 
@@ -24,7 +23,7 @@ namespace Grupp_31_SystemUtveckling
 
             // Misc textures
             textureDictionary["button"] = Content.Load<Texture2D>("button");
-            textureDictionary["combatScenary"] = Content.Load<Texture2D>("combatScenary");
+            textureDictionary["combatScenary"] = Content.Load<Texture2D>("ForestBattleBackground");
             textureDictionary["fireball"] = Content.Load<Texture2D>("fireball");
             textureDictionary["menuBackground"] = Content.Load<Texture2D>("menuBackground");
             textureDictionary["menuHeader"] = Content.Load<Texture2D>("menuHeader");
@@ -108,7 +107,14 @@ namespace Grupp_31_SystemUtveckling
 
             // Entities
             textureDictionary["playerPlaceholder"] = Content.Load<Texture2D>("Entities\\CharacterSpriteSheet");
-            textureDictionary["goblinEntity"] = Content.Load<Texture2D>("Entities\\goblinWorld");
+            for (int i = 1; i <= 2; i++)
+            {
+                textureDictionary["hostile" + i] = Content.Load<Texture2D>("Entities\\hostile" + i);
+            }
+            for (int i = 1; i <= 4; i++)
+            {
+                textureDictionary["npc" + i] = Content.Load<Texture2D>("Entities\\npc" + i);
+            }
 
             // Fonts
             fontDictionary["defaultFont"] = Content.Load<SpriteFont>("font");
@@ -116,26 +122,6 @@ namespace Grupp_31_SystemUtveckling
             fontDictionary["infoFont"] = Content.Load<SpriteFont>("infoFont");
             fontDictionary["objectiveDescription"] = Content.Load<SpriteFont>("objectiveFont");
             fontDictionary["questTitle"] = Content.Load<SpriteFont>("questFont");
-
-            // Dialog
-            dialogDictionary["testDialog"] = new Dialog();
-            dialogDictionary["testDialog"].AddLine("Sup homie!");
-            dialogDictionary["testDialog"].AddLine("Kill this goblin.");
-            dialogDictionary["testDialog"].AddLine("plz");
-            dialogDictionary["testDialog"].AddLine("");
-            dialogDictionary["testDialog"].givingQuest = new Quest(1, "Goblin slayer");
-            dialogDictionary["testDialog"].givingQuest.objectives.Add(new KillObjective(3, "Kill goblin teams.", 1));
-
-            dialogDictionary["testQuestDialog"] = new Dialog();
-            dialogDictionary["testQuestDialog"].AddLine("qwerqwerqwer");
-            dialogDictionary["testQuestDialog"].AddLine("Hello.");
-            dialogDictionary["testQuestDialog"].AddLine("Didn't see you there.");
-            dialogDictionary["testQuestDialog"].AddLine("Can you help me?");
-            dialogDictionary["testQuestDialog"].AddLine("You have no choice actually");
-            dialogDictionary["testQuestDialog"].AddLine("Find my super generic quest item");
-            dialogDictionary["testQuestDialog"].AddLine("You get stuff when that is implemented");
-            dialogDictionary["testQuestDialog"].givingQuest = new Quest(2, "Find the quest item");
-            dialogDictionary["testQuestDialog"].givingQuest.objectives.Add(new ItemObjective(1, "Quest item found.", 999));
         }
     }
 }
