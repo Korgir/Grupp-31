@@ -242,7 +242,6 @@ namespace Grupp_31_SystemUtveckling
             }
             if (buttonList[4].IsClicked())
             {
-                //selectedPortalLocation = Interaction.InputBox("Input index name of MAP ex. StartMap.", "Data text", "");
                 selectedPortalLocation = Prompt.ShowMapSelector();
                 if (selectedPortalLocation != "")
                 {
@@ -381,7 +380,7 @@ namespace Grupp_31_SystemUtveckling
                         }
                         else if (selectedEntity is Enemy)
                         {
-                            string indexName = Interaction.InputBox("Input index name of ENEMY_TEAM ex. goblin5.", "Data text", "");
+                            string indexName = Prompt.ShowEnemySelector();
                             if (indexName != "")
                             {
                                 entityArray[XValue, YValue] = new Enemy(selectedEntity.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y));
@@ -390,7 +389,7 @@ namespace Grupp_31_SystemUtveckling
                         }
                         else if (selectedEntity is FriendlyEntity)
                         {
-                            string indexName = Interaction.InputBox("Input index name of DIALOG ex. testDialog.", "Data text", "");
+                            string indexName = Prompt.ShowDialogSelector();
                             if (indexName != "")
                             {
                                 entityArray[XValue, YValue] = new FriendlyEntity(selectedEntity.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y),
@@ -399,7 +398,7 @@ namespace Grupp_31_SystemUtveckling
                         }
                         else if (selectedEntity is ItemEntity)
                         {
-                            string indexName = Interaction.InputBox("Input index name of ITEM ex. steelSword.", "Data text", "");
+                            string indexName = Prompt.ShowItemSelector();
                             if (indexName != "")
                             {
                                 entityArray[XValue, YValue] = new ItemEntity(selectedEntity.texture, new Vector2(XValue * tileSize + tileGridOffset.X, YValue * tileSize + tileGridOffset.Y),

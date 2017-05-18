@@ -42,18 +42,36 @@
     <Compile Include="Archives\Archive.cs" />
     <Compile Include="Archives\DialogDictionary.cs" />
     <Compile Include="Button.cs" />
-    <Compile Include="CombatRelated\CombatTeamDatabase.cs" />
+    <Compile Include="Archives\CombatTeamDatabase.cs" />
     <Compile Include="CombatRelated\Team.cs" />
     <Compile Include="Entities\PortalEntity.cs" />
     <Compile Include="Inventory\CharacterSystem.cs" />
     <Compile Include="Entities\ItemEntity.cs" />
-    <Compile Include="MapSelector.cs">
+    <Compile Include="SelectorPrompts\ItemSelector.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MapSelector.Designer.cs">
+    <Compile Include="SelectorPrompts\ItemSelector.Designer.cs">
+      <DependentUpon>ItemSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectorPrompts\EnemySelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectorPrompts\EnemySelector.Designer.cs">
+      <DependentUpon>EnemySelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectorPrompts\DialogSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectorPrompts\DialogSelector.Designer.cs">
+      <DependentUpon>DialogSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectorPrompts\MapSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectorPrompts\MapSelector.Designer.cs">
       <DependentUpon>MapSelector.cs</DependentUpon>
     </Compile>
-    <Compile Include="Prompt.cs" />
+    <Compile Include="SelectorPrompts\Prompt.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -141,7 +159,16 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MapSelector.resx">
+    <EmbeddedResource Include="SelectorPrompts\ItemSelector.resx">
+      <DependentUpon>ItemSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectorPrompts\EnemySelector.resx">
+      <DependentUpon>EnemySelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectorPrompts\DialogSelector.resx">
+      <DependentUpon>DialogSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectorPrompts\MapSelector.resx">
       <DependentUpon>MapSelector.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>

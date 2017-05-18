@@ -30,7 +30,6 @@ namespace Grupp_31_SystemUtveckling
             textureDictionary["resourceBarFilling"] = Content.Load<Texture2D>("resourceBarFilling");
             textureDictionary["resourceBarFrame"] = Content.Load<Texture2D>("resourceBarFrame");
             textureDictionary["slash"] = Content.Load<Texture2D>("slashAnimation");
-            textureDictionary["tileDoor"] = Content.Load<Texture2D>("TileDoor");
             textureDictionary["uiCombat"] = Content.Load<Texture2D>("combatUITemplate"); 
             textureDictionary["uiWorld"] = Content.Load<Texture2D>("UIBasePlaceholder");
             textureDictionary["whitePixel"] = Content.Load<Texture2D>("whitePixel");

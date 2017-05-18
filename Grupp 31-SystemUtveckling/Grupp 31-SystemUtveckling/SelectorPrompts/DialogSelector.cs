@@ -11,32 +11,31 @@ using System.Windows.Forms;
 
 namespace Grupp_31_SystemUtveckling
 {
-    public partial class MapSelector : Form
+    public partial class DialogSelector : Form
     {
         public string value;
-        public MapSelector()
+        public DialogSelector()
         {
             InitializeComponent();
             value = "";
 
-            foreach (string file in Directory.EnumerateFiles("Content\\Maps", "*.txt"))
+            foreach (KeyValuePair<string, Dialog> dialog in DialogDictionary.dialogDictionary)
             {
-                cb_map.Items.Add(file);
+                cb_map.Items.Add(dialog.Key);
             }
         }
 
         private void btn_ok_Click(object sender, EventArgs e)
         {
-            if (rb_1.Checked)
+            try
             {
                 value = cb_map.SelectedItem.ToString();
-                this.Close();
             }
-            else if (rb_2.Checked)
+            catch
             {
-                value = tb_map.Text;
-                this.Close();
+                Console.WriteLine("Non, string value instead of string.");
             }
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
