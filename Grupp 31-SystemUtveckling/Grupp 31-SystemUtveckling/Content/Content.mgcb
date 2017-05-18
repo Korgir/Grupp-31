@@ -40,7 +40,6 @@
 #begin font.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:font.spritefont
 
@@ -440,9 +439,6 @@
 /processorParam:TextureFormat=Color
 /build:Entities/CharacterSpriteSheet.png
 
-#begin Maps/StartMap.txt
-/copy:Maps/StartMap.txt
-
 #begin Enemies/daggerGoblinCombat.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -590,14 +586,12 @@
 #begin gameFont.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:gameFont.spritefont
 
 #begin infoFont.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:infoFont.spritefont
 
@@ -916,7 +910,6 @@
 #begin damageFont.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:damageFont.spritefont
 
@@ -1088,20 +1081,15 @@
 /processorParam:TextureFormat=Color
 /build:arrowUp.png
 
-#begin Maps/Level2.txt
-/copy:Maps/Level2.txt
-
 #begin objectiveFont.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:objectiveFont.spritefont
 
 #begin questFont.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:questFont.spritefont
 
@@ -1200,4 +1188,10 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Entities/hostile2.png
+
+#begin Maps/x1y4_Hub.txt
+/copy:Maps/x1y4_Hub.txt
+
+#begin Maps/x1y5_StartMap.txt
+/copy:Maps/x1y5_StartMap.txt
 
