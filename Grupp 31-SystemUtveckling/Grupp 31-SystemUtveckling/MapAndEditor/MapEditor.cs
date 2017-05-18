@@ -466,7 +466,7 @@ namespace Grupp_31_SystemUtveckling
             DrawSelectedTileSet(spriteBatch);
             foreach (Tile t in tileArray)
             {
-                t.Draw(spriteBatch);
+                    t.Draw(spriteBatch);
             }
             foreach (Entity e in entityArray)
             {
