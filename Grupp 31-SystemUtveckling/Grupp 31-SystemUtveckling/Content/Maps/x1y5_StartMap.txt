@@ -1,3 +1,4 @@
+zone;forest
 tile;smallTree;0;0;True
 tile;smallTree;0;32;True
 tile;smallTree;0;64;True

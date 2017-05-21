@@ -59,6 +59,7 @@ namespace Grupp_31_SystemUtveckling
                             tabManager.map.player.team.characters[0].UnequipItem(equipmentSlots[i].Item);
                             equipmentSlots[i].Item = null;
                             equipmentSlots[i].InventoryFull = false;
+                            Archive.soundEffectDictionary["equip"].Play();
                         }
                     }
                 }

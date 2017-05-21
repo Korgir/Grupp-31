@@ -65,6 +65,12 @@
     <Compile Include="SelectorPrompts\DialogSelector.Designer.cs">
       <DependentUpon>DialogSelector.cs</DependentUpon>
     </Compile>
+    <Compile Include="SelectorPrompts\ZoneSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectorPrompts\ZoneSelector.Designer.cs">
+      <DependentUpon>ZoneSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="SelectorPrompts\MapSelector.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SelectorPrompts\DialogSelector.resx">
       <DependentUpon>DialogSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectorPrompts\ZoneSelector.resx">
+      <DependentUpon>ZoneSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectorPrompts\MapSelector.resx">
       <DependentUpon>MapSelector.cs</DependentUpon>

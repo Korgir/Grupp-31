@@ -34,6 +34,8 @@ namespace Grupp_31_SystemUtveckling
             projectiles.Add(new Projectile(texture, Caster.Position, target.Position, speed));
             particles.Add(new ParticleEngine(Vector2.Zero, ParticleEngine.ParticleType.Smoke, Color.Green, 3));
             playingAnimation = true;
+
+            Archive.soundEffectDictionary["throwCast"].Play();
         }
 
         public override void OnHit()
@@ -47,6 +49,8 @@ namespace Grupp_31_SystemUtveckling
             damageNumbers.Add(new DamageNumber(Archive.textureDictionary["physical"], position, damage.ToString(), Color.Orange, 1.5f));
 
             target.buffs.Add(new DebuffStun(1, this, target));
+
+            Archive.soundEffectDictionary["throwHit"].Play();
         }
 
         public override void Update(GameTime gameTime)

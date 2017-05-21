@@ -11,23 +11,35 @@ namespace Grupp_31_SystemUtveckling
     class SpellStab : TargetSpell
     {
         List<Animation> animations;
+        private bool hit;
 
         public SpellStab(Character caster, Character target, TargetTeam targetTeam) : base(caster, target, targetTeam)
         {
             animations = new List<Animation>();
             iconTexture = Archive.textureDictionary["iconScythe"];
+            hit = false;
         }
 
         public override void CastSpell()
         {
             animations.Add(new Animation(Archive.textureDictionary["slash"], 4, 1, 0.05f, true, true));
             playingAnimation = true;
+            Archive.soundEffectDictionary["swordHit"].Play();
+            if (Archive.randomizer.Next(1, 100) < Caster.hitChance)
+            {
+                hit = true;
+                Archive.soundEffectDictionary["swordHit"].Play();
+            }
+            else
+            {
+                Archive.soundEffectDictionary["swordMiss"].Play();
+            }
         }
 
         public override void OnHit()
         {
             playingAnimation = false;
-            if (Archive.randomizer.Next(1, 100) < Caster.hitChance)
+            if (hit)
             {
                 // To Do - For each item equipped run item.OnAttack()
                 int damage = Archive.randomizer.Next(Caster.PhysicalDamageMin, Caster.PhysicalDamageMax);
@@ -36,6 +48,7 @@ namespace Grupp_31_SystemUtveckling
                 damageNumbers.Add(new DamageNumber(Archive.textureDictionary["physical"], target.Position, damage.ToString(), Color.Orange, 1.5f));
 
                 target.buffs.Add(new DebuffBleed(3, this, target));
+                hit = false;
             }
             else
             {

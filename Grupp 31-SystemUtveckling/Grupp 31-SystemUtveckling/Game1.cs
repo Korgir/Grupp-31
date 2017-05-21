@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -45,8 +46,11 @@ namespace Grupp_31_SystemUtveckling
             combat = new Combat(new List<Character>(), new List<Character>(), -1);
 
             mapEditor = new MapEditor();
-            fileName = "Content\\Maps\\StartMap.txt";
+            fileName = "Content\\Maps\\x1y5_StartMap.txt";
             map = FileReader.ReadMap(fileName);
+
+            MediaPlayer.Stop();
+            MediaPlayer.IsRepeating = true;
         }
 
         protected override void LoadContent()
@@ -81,6 +85,8 @@ namespace Grupp_31_SystemUtveckling
 
                 case (GameState.World):
                     map.Update(gameTime);
+
+                    string previousZoneName = map.zoneName;
                     PortalEntity temporaryPortal = map.ZoneSwitch();
                     if (temporaryPortal != null)
                     {
@@ -92,6 +98,11 @@ namespace Grupp_31_SystemUtveckling
                         map.player.position = temporaryPortal.spawnPosition;
                         map.player.map = map;
                         map.tabManager = tab;
+
+                        if (map.zoneName != previousZoneName)
+                        {
+                            MediaPlayer.Play(Archive.songDictionary[map.zoneName]);
+                        }
                     }
 
                     if (map.EngageCombatBool(ref combat) == true)
@@ -102,6 +113,7 @@ namespace Grupp_31_SystemUtveckling
                     if (KeyMouseReader.KeyPressed(Keys.Escape))
                     {
                         currentGameState = GameState.Menus;
+                        MediaPlayer.Stop();
                     }
                     break;
 
@@ -109,6 +121,7 @@ namespace Grupp_31_SystemUtveckling
                     combat.Update(gameTime);
                     if (!combat.active && !combat.fadingOut)
                     {
+                        MediaPlayer.Play(Archive.songDictionary[map.zoneName]);
                         currentGameState = GameState.World;
                         foreach (Quest q in map.tabManager.questTab.questSystem.quests)
                         {

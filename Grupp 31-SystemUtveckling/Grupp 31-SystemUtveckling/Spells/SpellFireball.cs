@@ -35,6 +35,7 @@ namespace Grupp_31_SystemUtveckling
             projectiles.Add(new Projectile(texture, Caster.Position, target.Position, speed));
             particles.Add(new ParticleEngine(Vector2.Zero, ParticleEngine.ParticleType.Smoke, Color.Red, 5));
             playingAnimation = true;
+            Archive.soundEffectDictionary["fireballCast"].Play();
         }
 
         public override void OnHit()
@@ -47,6 +48,7 @@ namespace Grupp_31_SystemUtveckling
 
             Vector2 position = projectiles[projectiles.Count() - 1].position;
             damageNumbers.Add(new DamageNumber(Archive.textureDictionary["magic"], position, damage.ToString(), Color.Purple, 1.5f));
+            Archive.soundEffectDictionary["fireballHit"].Play();
         }
 
         public override void Update(GameTime gameTime)

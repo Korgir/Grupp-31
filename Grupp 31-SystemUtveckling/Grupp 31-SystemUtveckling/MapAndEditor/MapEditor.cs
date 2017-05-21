@@ -27,6 +27,7 @@ namespace Grupp_31_SystemUtveckling
         protected int tileSize;
         protected Vector2 tileStartPosition;
         protected Vector2 tileGridOffset;
+        protected string zoneName;
 
         protected Tile selectedTile;
         protected Entity selectedEntity;
@@ -53,6 +54,7 @@ namespace Grupp_31_SystemUtveckling
             buttonList.Add(new Button(new Rectangle(1662, 50, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Save map", Keybinds.binds["editorSaveMap"]));
             buttonList.Add(new Button(new Rectangle(1662, 100, 100, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Load map", Keybinds.binds["editorLoadMap"]));
             buttonList.Add(new Button(new Rectangle(1512, 350, 256, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Toggle grid", Keybinds.binds["editorToggleGrid"]));
+            buttonList.Add(new Button(new Rectangle(1512, 400, 256, 50), Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], "Name zone", Keybinds.binds["nameZone"]));
             #endregion
 
             #region Floor Tiles
@@ -258,7 +260,7 @@ namespace Grupp_31_SystemUtveckling
                 fileDialog.Title = "Select a level";
                 if (fileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    FileReader.WriteMap(fileDialog.FileName, tileArray, entityArray);
+                    FileReader.WriteMap(fileDialog.FileName, tileArray, entityArray, zoneName);
                 }
             }
 
@@ -276,6 +278,11 @@ namespace Grupp_31_SystemUtveckling
             if (buttonList[7].IsClicked())
             {
                 showGrid = !showGrid;
+            }
+
+            if (buttonList[8].IsClicked())
+            {
+                zoneName = Prompt.ShowZoneSelector();
             }
 
             TilePicker();

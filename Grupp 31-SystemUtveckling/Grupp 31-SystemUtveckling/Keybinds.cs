@@ -43,6 +43,7 @@ namespace Grupp_31_SystemUtveckling
             binds["editorSaveMap"] = Keys.F1;
             binds["editorLoadMap"] = Keys.F2;
             binds["editorToggleGrid"] = Keys.G;
+            binds["nameZone"] = Keys.N;
         }
     }
 }

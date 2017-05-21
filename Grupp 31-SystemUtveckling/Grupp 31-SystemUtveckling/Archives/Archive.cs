@@ -1,5 +1,7 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +14,8 @@ namespace Grupp_31_SystemUtveckling
     {
         public static Dictionary<string, Texture2D> textureDictionary = new Dictionary<string, Texture2D>();
         public static Dictionary<string, SpriteFont> fontDictionary = new Dictionary<string, SpriteFont>();
+        public static Dictionary<string, Song> songDictionary = new Dictionary<string, Song>();
+        public static Dictionary<string, SoundEffect> soundEffectDictionary = new Dictionary<string, SoundEffect>();
         public static Random randomizer = new Random();
         public static int tileSize = 32;
 
@@ -121,6 +125,22 @@ namespace Grupp_31_SystemUtveckling
             fontDictionary["infoFont"] = Content.Load<SpriteFont>("infoFont");
             fontDictionary["objectiveDescription"] = Content.Load<SpriteFont>("objectiveFont");
             fontDictionary["questTitle"] = Content.Load<SpriteFont>("questFont");
+
+            // Songs
+            songDictionary["hidden"] = Content.Load<Song>("Music\\Bulywug_beatdown");
+            songDictionary["dungeon"] = Content.Load<Song>("Music\\Into_the_dungeon_we_go");
+            songDictionary["forest"] = Content.Load<Song>("Music\\Malice_and_forest");
+            songDictionary["combat"] = Content.Load<Song>("Music\\Send_nudes");
+
+            // Sound Effects
+            soundEffectDictionary["equip"] = Content.Load<SoundEffect>("SoundEffects\\equip");
+            soundEffectDictionary["fireballCast"] = Content.Load<SoundEffect>("SoundEffects\\fireball_cast");
+            soundEffectDictionary["fireballHit"] = Content.Load<SoundEffect>("SoundEffects\\fireball_hit");
+            soundEffectDictionary["pickUp"] = Content.Load<SoundEffect>("SoundEffects\\pick_up");
+            soundEffectDictionary["swordHit"] = Content.Load<SoundEffect>("SoundEffects\\sword_hit");
+            soundEffectDictionary["swordMiss"] = Content.Load<SoundEffect>("SoundEffects\\sword_miss");
+            soundEffectDictionary["throwCast"] = Content.Load<SoundEffect>("SoundEffects\\throw_cast");
+            soundEffectDictionary["throwHit"] = Content.Load<SoundEffect>("SoundEffects\\throw_hit");
         }
     }
 }

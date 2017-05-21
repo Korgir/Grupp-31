@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,6 +54,7 @@ namespace Grupp_31_SystemUtveckling
             if (buttonList[0].IsClicked())
             {
                 game.currentGameState = Game1.GameState.World;
+                MediaPlayer.Play(Archive.songDictionary["forest"]);
             }
             if (buttonList[1].IsClicked())
             {

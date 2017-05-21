@@ -126,6 +126,7 @@ namespace Grupp_31_SystemUtveckling
                             {
                                 invSlot[i, j].Item = null;
                                 invSlot[i, j].InventoryFull = false;
+                                Archive.soundEffectDictionary["equip"].Play();
                             }
                         }
                     }

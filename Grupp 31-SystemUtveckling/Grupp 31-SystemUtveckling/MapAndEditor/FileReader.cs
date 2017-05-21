@@ -24,51 +24,58 @@ namespace Grupp_31_SystemUtveckling
                 string mapValue = streamReader.ReadLine();
                 string[] stringArray = mapValue.Split(';');
 
-                int xPosition = Int32.Parse(stringArray[2]);
-                int yPosition = Int32.Parse(stringArray[3]);
-                Vector2 position = new Vector2(Int32.Parse(stringArray[2]), Int32.Parse(stringArray[3]));
-                Texture2D texture = Archive.textureDictionary[stringArray[1]];
-
-                switch (stringArray[0])
+                if (stringArray[0] != "zone")
                 {
-                    case "tile":
-                        bool isWallTile = bool.Parse(stringArray[4]);
-                        mapGrid[xPosition / 32, yPosition / 32] = new Tile(texture, position, isWallTile);
-                        break;
+                    int xPosition = Int32.Parse(stringArray[2]);
+                    int yPosition = Int32.Parse(stringArray[3]);
+                    Vector2 position = new Vector2(Int32.Parse(stringArray[2]), Int32.Parse(stringArray[3]));
+                    Texture2D texture = Archive.textureDictionary[stringArray[1]];
 
-                    case "item":
-                        string itemName = stringArray[4];
-                        ItemEntity item = new ItemEntity(texture, position, ItemDatabase.items[itemName]);
-                        map.entityList.Add(item);
-                        break;
+                    switch (stringArray[0])
+                    {
+                        case "tile":
+                            bool isWallTile = bool.Parse(stringArray[4]);
+                            mapGrid[xPosition / 32, yPosition / 32] = new Tile(texture, position, isWallTile);
+                            break;
 
-                    case "player":
-                        map.player = new Player(texture, new Vector2(xPosition, yPosition), new List<Item>());
-                        map.player.team.characters.Add(new Character(Archive.textureDictionary["warriorCombat"], Archive.textureDictionary["warriorCombatOutline"],
-                            Vector2.Zero, true, "Warrior", 100, 10, 5, 6, 15, 10, 100, 5, 70));
-                        map.player.map = map;
-                        break;
+                        case "item":
+                            string itemName = stringArray[4];
+                            ItemEntity item = new ItemEntity(texture, position, ItemDatabase.items[itemName]);
+                            map.entityList.Add(item);
+                            break;
 
-                    case "enemy":
-                        string teamName = stringArray[4];
-                        Enemy enemy = new Enemy(texture, new Vector2(xPosition, yPosition));
-                        enemy.team = CombatTeamDatabase.GetTeam(teamName);
-                        map.entityList.Add(enemy);
-                        break;
+                        case "player":
+                            map.player = new Player(texture, new Vector2(xPosition, yPosition), new List<Item>());
+                            map.player.team.characters.Add(new Character(Archive.textureDictionary["warriorCombat"], Archive.textureDictionary["warriorCombatOutline"],
+                                Vector2.Zero, true, "Warrior", 100, 10, 5, 6, 15, 10, 100, 5, 70));
+                            map.player.map = map;
+                            break;
 
-                    case "friendly":
-                        string questName = stringArray[4];
-                        FriendlyEntity friendly = new FriendlyEntity(texture, new Vector2(xPosition, yPosition), DialogDictionary.dialogDictionary[questName]);
-                        map.entityList.Add(friendly);
-                        break;
+                        case "enemy":
+                            string teamName = stringArray[4];
+                            Enemy enemy = new Enemy(texture, new Vector2(xPosition, yPosition));
+                            enemy.team = CombatTeamDatabase.GetTeam(teamName);
+                            map.entityList.Add(enemy);
+                            break;
 
-                    case "portal":
-                        string zoneName = stringArray[4];
-                        int spawnX = Int32.Parse(stringArray[5]);
-                        int spawnY = Int32.Parse(stringArray[6]);
-                        PortalEntity portal = new PortalEntity(texture, new Vector2(xPosition, yPosition), zoneName, new Vector2(spawnX, spawnY));
-                        map.entityList.Add(portal);
-                        break;
+                        case "friendly":
+                            string questName = stringArray[4];
+                            FriendlyEntity friendly = new FriendlyEntity(texture, new Vector2(xPosition, yPosition), DialogDictionary.dialogDictionary[questName]);
+                            map.entityList.Add(friendly);
+                            break;
+
+                        case "portal":
+                            string zoneName = stringArray[4];
+                            int spawnX = Int32.Parse(stringArray[5]);
+                            int spawnY = Int32.Parse(stringArray[6]);
+                            PortalEntity portal = new PortalEntity(texture, new Vector2(xPosition, yPosition), zoneName, new Vector2(spawnX, spawnY));
+                            map.entityList.Add(portal);
+                            break;
+                    }
+                }
+                else
+                {
+                    map.zoneName = stringArray[1];
                 }
             }
             streamReader.Close();
@@ -76,10 +83,11 @@ namespace Grupp_31_SystemUtveckling
             return map;
         }
 
-        public static void WriteMap(string mapname, Tile[,] tileArray, Entity[,] entityArray)
+        public static void WriteMap(string mapname, Tile[,] tileArray, Entity[,] entityArray, string zoneName)
         {
             using (StreamWriter sw = File.CreateText(mapname))
             {
+                sw.WriteLine("zone;" + zoneName);
                 for (int i = 0; i < tileArray.GetLength(0); i++)
                 {
                     for (int j = 0; j < tileArray.GetLength(1); j++)

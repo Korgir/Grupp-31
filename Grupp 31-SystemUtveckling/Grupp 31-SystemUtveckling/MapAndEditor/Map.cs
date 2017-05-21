@@ -14,6 +14,7 @@ namespace Grupp_31_SystemUtveckling
         public Tile[,] tiles;
         public List<Entity> entityList;
         public TabManager tabManager;
+        public string zoneName;
 
         public Map()
         {
@@ -71,6 +72,7 @@ namespace Grupp_31_SystemUtveckling
                     ItemEntity itemEntity = (ItemEntity)entityList[i];
                     if (player.PickUpItem(itemEntity))
                     {
+                        Archive.soundEffectDictionary["pickUp"].Play();
                         entityList.RemoveAt(i);
                         foreach (Quest q in tabManager.questTab.questSystem.quests)
                         {

@@ -35,5 +35,12 @@ namespace Grupp_31_SystemUtveckling
             prompt.ShowDialog();
             return prompt.value;
         }
+
+        public static string ShowZoneSelector()
+        {
+            ZoneSelector prompt = new ZoneSelector();
+            prompt.ShowDialog();
+            return prompt.value;
+        }
     }
 }
