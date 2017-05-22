@@ -63,6 +63,14 @@ namespace Grupp_31_SystemUtveckling
 
             SetCharacterPositions();
 
+            foreach (Character c in allCharacters)
+            {
+                foreach (Spell s in c.spells)
+                {
+                    s.damageNumbers.Clear();
+                }
+            }
+
             MediaPlayer.Play(Archive.songDictionary["combat"]);
         }
 
