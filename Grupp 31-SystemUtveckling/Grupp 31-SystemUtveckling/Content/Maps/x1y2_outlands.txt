@@ -1,4 +1,4 @@
-zone;
+zone;forest
 tile;dungeonWall5;0;0;True
 tile;dungeonWall4;0;32;True
 tile;grass;0;64;False
