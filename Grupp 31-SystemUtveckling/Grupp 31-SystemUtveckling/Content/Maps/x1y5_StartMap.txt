@@ -1197,7 +1197,6 @@ tile;grass;1440;768;False
 tile;grass;1440;800;False
 portal;arrowDown;448;800;Content\Maps\x1y4_Hub.txt;448;32
 portal;arrowDown;480;800;Content\Maps\x1y4_Hub.txt;480;32
-item;sword;512;384;steelSword
 portal;arrowDown;512;800;Content\Maps\x1y4_Hub.txt;512;32
 portal;arrowDown;544;800;Content\Maps\x1y4_Hub.txt;544;32
 portal;arrowDown;576;800;Content\Maps\x1y4_Hub.txt;576;32
