@@ -51,7 +51,7 @@ namespace Grupp_31_SystemUtveckling
             // Items world
             textureDictionary["sword"] = Content.Load<Texture2D>("Items\\World\\sword");
 
-            // Combat charactersa
+            // Combat characters
             textureDictionary["goblinCombat"] = Content.Load<Texture2D>("Enemies\\daggerGoblinCombat");
             textureDictionary["goblinCombatOutline"] = Content.Load<Texture2D>("Enemies\\Outline\\daggerGoblinCombatOutline");
             textureDictionary["owlbearCombat"] = Content.Load<Texture2D>("Enemies\\daggerShadowBeastCombat");
