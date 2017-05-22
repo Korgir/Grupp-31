@@ -1200,7 +1200,6 @@ enemy;hostile1;672;640;goblin5
 portal;arrowUp;1184;0;Content\Maps\x5y4_dungeon1.txt;1184;768
 portal;arrowUp;1216;0;Content\Maps\x5y4_dungeon1.txt;1216;768
 enemy;hostile1;1216;160;goblin5
-item;sword;1280;576;redSword
 enemy;hostile1;1376;576;goblin5
 portal;arrowRight;1440;544;Content\Maps\x6y3_dungeon3.txt;32;544
 portal;arrowRight;1440;576;Content\Maps\x6y3_dungeon3.txt;32;576
