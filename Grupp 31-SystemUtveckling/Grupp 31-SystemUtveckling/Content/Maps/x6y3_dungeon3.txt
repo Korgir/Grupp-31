@@ -1,4 +1,4 @@
-zone;
+zone;dungeon
 tile;dungeonWall1;0;0;True
 tile;dungeonWall1;0;32;True
 tile;dungeonWall1;0;64;True

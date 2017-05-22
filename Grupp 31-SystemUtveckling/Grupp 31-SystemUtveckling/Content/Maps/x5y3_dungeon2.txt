@@ -1,4 +1,4 @@
-zone;
+zone;dungeon
 tile;dungeonWall1;0;0;True
 tile;dungeonWall1;0;32;True
 tile;dungeonWall1;0;64;True
@@ -402,7 +402,7 @@ tile;dungeonWall3;480;288;True
 tile;plank;480;320;False
 tile;dungeonWall1;480;352;True
 tile;dungeonWall1;480;384;True
-tile;plank;480;416;False
+tile;grass;480;416;False
 tile;plank;480;448;False
 tile;plank;480;480;False
 tile;plank;480;512;False

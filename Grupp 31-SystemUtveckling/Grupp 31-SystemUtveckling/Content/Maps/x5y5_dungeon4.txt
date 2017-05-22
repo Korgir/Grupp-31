@@ -1,4 +1,4 @@
-zone;
+zone;dungeon
 tile;dungeonWall1;0;0;True
 tile;dungeonWall1;0;32;True
 tile;dungeonWall1;0;64;True
@@ -220,7 +220,7 @@ tile;plank;256;288;False
 tile;water;256;320;True
 tile;plank;256;352;False
 tile;water;256;384;True
-tile;water;256;416;True
+tile;grass;256;416;False
 tile;water;256;448;True
 tile;plank;256;480;False
 tile;water;256;512;True
@@ -297,7 +297,7 @@ tile;water;352;256;True
 tile;water;352;288;True
 tile;water;352;320;True
 tile;plank;352;352;False
-tile;water;352;384;True
+tile;grass;352;384;False
 tile;water;352;416;True
 tile;water;352;448;True
 tile;plank;352;480;False
@@ -643,8 +643,8 @@ tile;plank;768;512;False
 tile;plank;768;544;False
 tile;plank;768;576;False
 tile;plank;768;608;False
-tile;plank;768;640;False
-tile;smallTree;768;672;True
+tile;grass;768;640;False
+tile;grass;768;672;False
 tile;plank;768;704;False
 tile;plank;768;736;False
 tile;plank;768;768;False
