@@ -1,4 +1,4 @@
-zone;forest
+zone;
 tile;grass;0;0;False
 tile;grass;0;32;False
 tile;grass;0;64;False
@@ -1198,6 +1198,9 @@ tile;grass;1440;800;False
 portal;arrowLeft;0;224;Content\Maps\x1y1_Plains.txt;1408;224
 portal;arrowLeft;0;256;Content\Maps\x1y1_Plains.txt;1408;256
 portal;arrowLeft;0;288;Content\Maps\x1y1_Plains.txt;1408;288
-portal;arrowRight;1440;544;Content\Maps\x2y2_Ruiner.txt;32;544
-portal;arrowRight;1440;576;Content\Maps\x2y2_Ruiner.txt;32;576
-portal;arrowRight;1440;608;Content\Maps\x2y2_Ruiner.txt;32;608
+portal;arrowUp;608;0;Content\Maps\x2y2_Ruiner.txt;608;768
+portal;arrowUp;640;0;Content\Maps\x2y2_Ruiner.txt;640;768
+portal;arrowUp;672;0;Content\Maps\x2y2_Ruiner.txt;672;768
+portal;arrowRight;1440;544;Content\Maps\x3y1_Plains.txt;32;544
+portal;arrowRight;1440;576;Content\Maps\x3y1_Plains.txt;32;576
+portal;arrowRight;1440;608;Content\Maps\x3y1_Plains.txt;32;608
