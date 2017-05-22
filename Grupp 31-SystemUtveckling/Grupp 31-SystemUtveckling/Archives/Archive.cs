@@ -52,6 +52,14 @@ namespace Grupp_31_SystemUtveckling
             textureDictionary["sword"] = Content.Load<Texture2D>("Items\\World\\sword");
 
             // Combat characters
+            textureDictionary["demonDaggers"] = Content.Load<Texture2D>("Enemies\\daggerShadowBeastCombat");
+            textureDictionary["demonDaggersOutline"] = Content.Load<Texture2D>("Enemies\\Outline\\daggerShadowBeastCombatOutline");
+            textureDictionary["demonSpear"] = Content.Load<Texture2D>("Enemies\\spearShadowBeastCombat");
+            textureDictionary["demonSpearOutline"] = Content.Load<Texture2D>("Enemies\\Outline\\spearShadowBeastCombatOutline");
+            textureDictionary["demonMage"] = Content.Load<Texture2D>("Enemies\\thunderShadowBeastCombat");
+            textureDictionary["demonMageOutline"] = Content.Load<Texture2D>("Enemies\\Outline\\thunderShadowBeastCombatOutline");
+            textureDictionary["demonWarlock"] = Content.Load<Texture2D>("Enemies\\warlockShadowBeastCombat");
+            textureDictionary["demonWarlockOutline"] = Content.Load<Texture2D>("Enemies\\Outline\\warlockShadowBeastCombatOutline");
             textureDictionary["goblinCombat"] = Content.Load<Texture2D>("Enemies\\daggerGoblinCombat");
             textureDictionary["goblinCombatOutline"] = Content.Load<Texture2D>("Enemies\\Outline\\daggerGoblinCombatOutline");
             textureDictionary["owlbearCombat"] = Content.Load<Texture2D>("Enemies\\daggerShadowBeastCombat");
