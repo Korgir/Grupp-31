@@ -1,4 +1,4 @@
-zone;forest
+zone;hidden
 tile;grass;0;0;False
 tile;grass;0;32;False
 tile;grass;0;64;False
