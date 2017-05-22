@@ -157,13 +157,13 @@ namespace Grupp_31_SystemUtveckling
         public void AddFriendly(Texture2D tileTexture)
         {
             Vector2 position = tileStartPosition + new Vector2(40, 0) * entities.Count();
-            entities.Add(new FriendlyEntity(tileTexture, position, DialogDictionary.dialogDictionary["testDialog"]));
+            entities.Add(new FriendlyEntity(tileTexture, position, DialogDictionary.dialogDictionary["goblinSlayer"]));
         }
 
         public void AddItem(Texture2D tileTexture)
         {
             Vector2 position = tileStartPosition + new Vector2(40, 0) * items.Count();
-            items.Add(new ItemEntity(tileTexture, position, ItemDatabase.items["steelSword"]));
+            items.Add(new ItemEntity(tileTexture, position, ItemDatabase.items["weaponT1"]));
         }
 
         public void AddPortal(Texture2D tileTexture)
@@ -177,6 +177,7 @@ namespace Grupp_31_SystemUtveckling
             Map loadedMap = FileReader.ReadMap(path);
             tileArray = loadedMap.tiles;
             entityArray = new Entity[46,26];
+            zoneName = loadedMap.zoneName;
 
             foreach (Entity e in loadedMap.entityList)
             {

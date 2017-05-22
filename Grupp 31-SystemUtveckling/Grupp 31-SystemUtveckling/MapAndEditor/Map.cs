@@ -157,7 +157,7 @@ namespace Grupp_31_SystemUtveckling
                     FriendlyEntity npc = (FriendlyEntity)e;
                     if (npc.CanTalk(player))
                     {
-                        npc.dialog.Draw(spriteBatch, new Vector2(703, 957));
+                        npc.dialog.Draw(spriteBatch, new Vector2(740, 957));
                     }
                 }
             }

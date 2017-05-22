@@ -1197,7 +1197,6 @@ tile;grass;1440;768;False
 tile;grass;1440;800;False
 portal;arrowDown;448;800;Content\Maps\x1y4_Hub.txt;448;32
 portal;arrowDown;480;800;Content\Maps\x1y4_Hub.txt;480;32
-item;sword;512;384;steelSword
 portal;arrowDown;512;800;Content\Maps\x1y4_Hub.txt;512;32
 portal;arrowDown;544;800;Content\Maps\x1y4_Hub.txt;544;32
 portal;arrowDown;576;800;Content\Maps\x1y4_Hub.txt;576;32
@@ -1212,7 +1211,7 @@ portal;arrowDown;768;800;Content\Maps\x1y4_Hub.txt;768;32
 portal;arrowDown;800;800;Content\Maps\x1y4_Hub.txt;800;32
 portal;arrowDown;832;800;Content\Maps\x1y4_Hub.txt;832;32
 portal;arrowDown;864;800;Content\Maps\x1y4_Hub.txt;864;32
-friendly;npc2;896;384;testDialog
+friendly;npc2;896;384;goblinSlayer
 portal;arrowDown;896;800;Content\Maps\x1y4_Hub.txt;896;32
 portal;arrowDown;928;800;Content\Maps\x1y4_Hub.txt;928;32
 portal;arrowDown;960;800;Content\Maps\x1y4_Hub.txt;960;32

@@ -13,36 +13,64 @@ namespace Grupp_31_SystemUtveckling
 
         public static void Initialize()
         {
-            // Goblin Slayer dialog
-            dialogDictionary["testDialog"] = new Dialog();
-            dialogDictionary["testDialog"].givingQuest = new Quest(1, "Goblin slayer", ItemDatabase.items["redSword"]);
-            dialogDictionary["testDialog"].givingQuest.objectives.Add(new KillObjective(3, "Kill goblin teams.", 1));
+            // -------------------
+            // Goblin slayer
+            // -------------------
+            dialogDictionary["goblinSlayer"] = new Dialog();
+            dialogDictionary["goblinSlayer"].givingQuest = new Quest(1, "Goblin slayer", null);
+            dialogDictionary["goblinSlayer"].givingQuest.objectives.Add(new KillObjective(50, "Kill goblin teams.", 1));
             // Pick up
-            dialogDictionary["testDialog"].AddLinePickupQuest("Sup homie!");
-            dialogDictionary["testDialog"].AddLinePickupQuest("Kill this goblin.");
-            dialogDictionary["testDialog"].AddLinePickupQuest("plz, u get reward.");
+            dialogDictionary["goblinSlayer"].AddLinePickupQuest("We have been at wars with the goblins");
+            dialogDictionary["goblinSlayer"].AddLinePickupQuest("For 20 years!");
+            dialogDictionary["goblinSlayer"].AddLinePickupQuest("And now they are raiding our city.");
+            dialogDictionary["goblinSlayer"].AddLinePickupQuest("Get rid of em.");
             // In Progress
-            dialogDictionary["testDialog"].AddLineQuestInProgress("Fucking goblins.");
-            dialogDictionary["testDialog"].AddLineQuestInProgress("#NotRacist");
+            dialogDictionary["goblinSlayer"].AddLineQuestInProgress("Go on, we are still at war.");
             // Handing In
-            dialogDictionary["testDialog"].AddLineHandingInQuest("Ey!");
-            dialogDictionary["testDialog"].AddLineHandingInQuest("You killed them");
-            dialogDictionary["testDialog"].AddLineHandingInQuest("here");
-            dialogDictionary["testDialog"].AddLineHandingInQuest("have this.");
+            dialogDictionary["goblinSlayer"].AddLineHandingInQuest("What took you so long?");
+            dialogDictionary["goblinSlayer"].AddLineHandingInQuest("Have this.");
+            dialogDictionary["goblinSlayer"].AddLineHandingInQuest("<You have received Goblin Mail>");
 
-            // Find the key dialog
-            dialogDictionary["testQuestDialog"] = new Dialog();
-            dialogDictionary["testQuestDialog"].givingQuest = new Quest(2, "Find the quest item", null);
-            dialogDictionary["testQuestDialog"].givingQuest.objectives.Add(new ItemObjective(1, "Quest item found.", 999));
+            // -------------------
+            // Furniture chopping
+            // -------------------
+            dialogDictionary["furnitureChopping"] = new Dialog();
+            dialogDictionary["furnitureChopping"].givingQuest = new Quest(2, "Furniture chopping", null);
+            dialogDictionary["furnitureChopping"].givingQuest.objectives.Add(new ItemObjective(15, "Find the lost furniture", 999));
             // Pick up
-            dialogDictionary["testQuestDialog"].AddLinePickupQuest("Hello.");
-            dialogDictionary["testQuestDialog"].AddLinePickupQuest("Find my quest item.");
-            dialogDictionary["testQuestDialog"].AddLinePickupQuest("It's a key.");
+            dialogDictionary["furnitureChopping"].AddLinePickupQuest("The goblins have stolen all our furniture.");
+            dialogDictionary["furnitureChopping"].AddLinePickupQuest("Find them for me.");
+            dialogDictionary["furnitureChopping"].AddLinePickupQuest("You will be rewarded with something special.");
+            dialogDictionary["furnitureChopping"].AddLinePickupQuest("Get rid of em.");
             // In Progress
-            dialogDictionary["testQuestDialog"].AddLineQuestInProgress("Have you found it?");
+            dialogDictionary["furnitureChopping"].AddLineQuestInProgress("Have you found them yet?");
+            dialogDictionary["furnitureChopping"].AddLineQuestInProgress("My house is so empty.");
             // Handing In
-            dialogDictionary["testQuestDialog"].AddLineHandingInQuest("Thanks");
+            dialogDictionary["furnitureChopping"].AddLineHandingInQuest("Thank you!");
+            dialogDictionary["furnitureChopping"].AddLineHandingInQuest("Now for your special reward.");
+            dialogDictionary["furnitureChopping"].AddLineHandingInQuest("<You have received Meatballs>");
 
+            // -------------------
+            // Demon slayer
+            // -------------------
+            dialogDictionary["demonSlayer"] = new Dialog();
+            dialogDictionary["demonSlayer"].givingQuest = new Quest(3, "Demon slayer", null);
+            dialogDictionary["demonSlayer"].givingQuest.objectives.Add(new KillObjective(1, "Kill Oogaezal & Sidmoch", 2));
+            dialogDictionary["demonSlayer"].givingQuest.objectives.Add(new KillObjective(1, "Kill Eeziulur & Scierocho", 3));
+            // Pick up
+            dialogDictionary["demonSlayer"].AddLinePickupQuest("Hello stranger.");
+            dialogDictionary["demonSlayer"].AddLinePickupQuest("My name is Uwuwewewe ");
+            dialogDictionary["demonSlayer"].AddLinePickupQuest("I'm the keeper of this dungeon.");
+            dialogDictionary["demonSlayer"].AddLinePickupQuest("Unfortunately it has been invaded"); 
+            dialogDictionary["demonSlayer"].AddLinePickupQuest("by some nasty demons.");
+            dialogDictionary["demonSlayer"].AddLinePickupQuest("Please slay them for me");
+            dialogDictionary["demonSlayer"].AddLinePickupQuest("so I can get my dungeon back.");
+            // In Progress
+            dialogDictionary["demonSlayer"].AddLineQuestInProgress("Go into the dungeon and slay the demons.");
+            // Handing In
+            dialogDictionary["demonSlayer"].AddLineHandingInQuest("Thank you stranger.");
+            dialogDictionary["demonSlayer"].AddLineHandingInQuest("Have this as a token for my gratitude.");
+            dialogDictionary["demonSlayer"].AddLineHandingInQuest("<You have received Eeziulur's Head>");
         }
     }
 }
