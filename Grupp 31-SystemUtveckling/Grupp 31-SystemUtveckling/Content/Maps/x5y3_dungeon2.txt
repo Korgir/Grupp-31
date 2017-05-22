@@ -1195,3 +1195,7 @@ tile;dungeonWall1;1440;704;True
 tile;dungeonWall1;1440;736;True
 tile;dungeonWall1;1440;768;True
 tile;dungeonWall1;1440;800;True
+portal;arrowUp;1184;0;Content\Maps\x5y4_dungeon1.txt;1184;768
+portal;arrowUp;1216;0;Content\Maps\x5y4_dungeon1.txt;1216;768
+portal;arrowRight;1440;544;Content\Maps\x6y3_dungeon3.txt;32;544
+portal;arrowRight;1440;576;Content\Maps\x6y3_dungeon3.txt;32;576
