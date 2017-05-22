@@ -455,7 +455,7 @@ tile;grass;544;320;False
 tile;grassRoad15;544;352;False
 tile;road;544;384;False
 tile;road;544;416;False
-tile;grass;544;448;False
+tile;grassRoad7;544;448;False
 tile;grass;544;480;False
 tile;grass;544;512;False
 tile;grass;544;544;False
@@ -481,7 +481,7 @@ tile;grassRoad13;576;320;False
 tile;grassRoad16;576;352;False
 tile;road;576;384;False
 tile;road;576;416;False
-tile;grassRoad13;576;448;False
+tile;grassRoad11;576;448;False
 tile;grassRoad13;576;480;False
 tile;grassRoad13;576;512;False
 tile;grassRoad13;576;544;False

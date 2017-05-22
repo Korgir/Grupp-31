@@ -1,3 +1,4 @@
+zone;forest
 tile;grass;0;0;False
 tile;smallTree;0;32;True
 tile;grass;0;64;False
@@ -1194,5 +1195,11 @@ tile;smallTree;1440;704;True
 tile;smallTree;1440;736;True
 tile;grass;1440;768;False
 tile;grass;1440;800;False
+portal;arrowUp;288;0;Content\Maps\x3y3_skog3.txt;288;768
 enemy;hostile1;288;448;goblin5
+portal;arrowUp;320;0;Content\Maps\x3y3_skog3.txt;320;768
+portal;arrowUp;352;0;Content\Maps\x3y3_skog3.txt;352;768
+portal;arrowDown;704;800;Content\Maps\x3y1_Plains.txt;704;32
+portal;arrowDown;736;800;Content\Maps\x3y1_Plains.txt;736;32
+portal;arrowDown;768;800;Content\Maps\x3y1_Plains.txt;768;32
 enemy;hostile1;1088;96;goblin5
