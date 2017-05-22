@@ -437,10 +437,6 @@ namespace Grupp_31_SystemUtveckling
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(scenaryTexture, Vector2.Zero, Color.White);
-            int offsettingString = 80; // Remove later only test
-            spriteBatch.DrawString(Archive.fontDictionary["defaultFont"], "Press 1 for normal attack and 2 for fireball attack.", new Vector2(0, 64), Color.Purple);
-            spriteBatch.DrawString(Archive.fontDictionary["defaultFont"], "Active: " + active +  "; State: " + currentState, new Vector2(0, offsettingString), Color.Red);
-            offsettingString += 16;
             foreach (Character c in allCharacters)
             {
                 c.Draw(spriteBatch);
@@ -449,8 +445,6 @@ namespace Grupp_31_SystemUtveckling
                     s.Draw(spriteBatch);
                 }
                 HealthBar.Draw(spriteBatch, c, Color.Green);
-                spriteBatch.DrawString(Archive.fontDictionary["defaultFont"], "[" + c.name + "] HP: " + c.health + "; Alive: " + c.alive, new Vector2(0, offsettingString), Color.Yellow);
-                offsettingString += 16;
             }
 
             DrawUI(spriteBatch);

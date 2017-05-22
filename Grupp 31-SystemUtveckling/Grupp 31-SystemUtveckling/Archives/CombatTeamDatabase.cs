@@ -27,7 +27,7 @@ namespace Grupp_31_SystemUtveckling
             teamDictionary["demon1"].characters.Add(new Character(Archive.textureDictionary["demonSpear"], Archive.textureDictionary["demonSpearOutline"],
                 Vector2.Zero, false, "Oogaezal", 800, 30, 20, 15, 20, 4, 100, 5, 80));
 
-            teamDictionary["demon2"] = new Team(2);
+            teamDictionary["demon2"] = new Team(3);
             teamDictionary["demon2"].characters.Add(new Character(Archive.textureDictionary["demonMage"], Archive.textureDictionary["demonMageOutline"],
                 Vector2.Zero, false, "Scierocho", 500, 30, 20, 20, 30, 4, 100, 5, 80));
             teamDictionary["demon2"].characters.Add(new Character(Archive.textureDictionary["demonWarlock"], Archive.textureDictionary["demonWarlockOutline"],

@@ -163,7 +163,7 @@ namespace Grupp_31_SystemUtveckling
         public void AddItem(Texture2D tileTexture)
         {
             Vector2 position = tileStartPosition + new Vector2(40, 0) * items.Count();
-            items.Add(new ItemEntity(tileTexture, position, ItemDatabase.items["steelSword"]));
+            items.Add(new ItemEntity(tileTexture, position, ItemDatabase.items["weaponT1"]));
         }
 
         public void AddPortal(Texture2D tileTexture)

@@ -48,6 +48,31 @@ namespace Grupp_31_SystemUtveckling
             textureDictionary["redSwordInventory"] = Content.Load<Texture2D>("Items\\RedSword");
             textureDictionary["keyInventory"] = Content.Load<Texture2D>("Items\\questItem");
 
+            textureDictionary["brownWeapon"] = Content.Load<Texture2D>("Items\\brownWeapon");
+            textureDictionary["blueArmor"] = Content.Load<Texture2D>("Items\\blueArmor");
+            textureDictionary["blueBoots"] = Content.Load<Texture2D>("Items\\blueBoots");
+            textureDictionary["blueGloves"] = Content.Load<Texture2D>("Items\\blueGloves");
+            textureDictionary["blueHelm"] = Content.Load<Texture2D>("Items\\blueHelm");
+            textureDictionary["blueLegs"] = Content.Load<Texture2D>("Items\\blueLegs");
+            textureDictionary["grayArmor"] = Content.Load<Texture2D>("Items\\grayArmor");
+            textureDictionary["grayBoots"] = Content.Load<Texture2D>("Items\\grayBoots");
+            textureDictionary["grayGloves"] = Content.Load<Texture2D>("Items\\grayGloves");
+            textureDictionary["grayHelm"] = Content.Load<Texture2D>("Items\\grayHelm");
+            textureDictionary["grayLegs"] = Content.Load<Texture2D>("Items\\grayLegs");
+            textureDictionary["grayWeapon"] = Content.Load<Texture2D>("Items\\grayWeapon");
+            textureDictionary["greenArmor"] = Content.Load<Texture2D>("Items\\greenArmor");
+            textureDictionary["greenBoots"] = Content.Load<Texture2D>("Items\\greenBoots");
+            textureDictionary["greenGloves"] = Content.Load<Texture2D>("Items\\greenGloves");
+            textureDictionary["greenHelm"] = Content.Load<Texture2D>("Items\\greenHelm");
+            textureDictionary["greenLegs"] = Content.Load<Texture2D>("Items\\greenLegs");
+            textureDictionary["greenWeapon"] = Content.Load<Texture2D>("Items\\greenWeapon");
+            textureDictionary["redArmor"] = Content.Load<Texture2D>("Items\\redArmor");
+            textureDictionary["redBoots"] = Content.Load<Texture2D>("Items\\redBoots");
+            textureDictionary["redGloves"] = Content.Load<Texture2D>("Items\\redGloves");
+            textureDictionary["redHelm"] = Content.Load<Texture2D>("Items\\redHelm");
+            textureDictionary["redLegs"] = Content.Load<Texture2D>("Items\\redLegs");
+            textureDictionary["redWeapon"] = Content.Load<Texture2D>("Items\\redWeapon");
+
             // Items world
             textureDictionary["sword"] = Content.Load<Texture2D>("Items\\World\\sword");
 

@@ -36,7 +36,7 @@ namespace Grupp_31_SystemUtveckling
             // -------------------
             dialogDictionary["furnitureChopping"] = new Dialog();
             dialogDictionary["furnitureChopping"].givingQuest = new Quest(2, "Furniture chopping", null);
-            dialogDictionary["furnitureChopping"].givingQuest.objectives.Add(new KillObjective(15, "Find the lost furniture", 1));
+            dialogDictionary["furnitureChopping"].givingQuest.objectives.Add(new ItemObjective(15, "Find the lost furniture", 999));
             // Pick up
             dialogDictionary["furnitureChopping"].AddLinePickupQuest("The goblins have stolen all our furniture.");
             dialogDictionary["furnitureChopping"].AddLinePickupQuest("Find them for me.");
@@ -55,8 +55,8 @@ namespace Grupp_31_SystemUtveckling
             // -------------------
             dialogDictionary["demonSlayer"] = new Dialog();
             dialogDictionary["demonSlayer"].givingQuest = new Quest(3, "Demon slayer", null);
-            dialogDictionary["demonSlayer"].givingQuest.objectives.Add(new KillObjective(1, "Kill Oogaezal & Sidmoch", 1));
-            dialogDictionary["demonSlayer"].givingQuest.objectives.Add(new KillObjective(1, "Kill Eeziulur & Scierocho", 1));
+            dialogDictionary["demonSlayer"].givingQuest.objectives.Add(new KillObjective(1, "Kill Oogaezal & Sidmoch", 2));
+            dialogDictionary["demonSlayer"].givingQuest.objectives.Add(new KillObjective(1, "Kill Eeziulur & Scierocho", 3));
             // Pick up
             dialogDictionary["demonSlayer"].AddLinePickupQuest("Hello stranger.");
             dialogDictionary["demonSlayer"].AddLinePickupQuest("My name is Uwuwewewe ");
