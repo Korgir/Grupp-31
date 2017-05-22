@@ -1199,9 +1199,9 @@ portal;arrowLeft;0;544;Content\Maps\x2y1_Plains.txt;1408;544
 portal;arrowLeft;0;576;Content\Maps\x2y1_Plains.txt;1408;576
 portal;arrowLeft;0;608;Content\Maps\x2y1_Plains.txt;1408;608
 enemy;hostile1;96;544;goblin5
-portal;arrowUp;704;0;;704;768
-portal;arrowUp;736;0;;736;768
+portal;arrowUp;704;0;Content\Maps\x3y2_skog4.txt;704;768
+portal;arrowUp;736;0;Content\Maps\x3y2_skog4.txt;736;768
 enemy;hostile1;736;128;goblin5
-portal;arrowUp;768;0;;768;768
+portal;arrowUp;768;0;Content\Maps\x3y2_skog4.txt;768;768
 enemy;hostile1;1184;480;goblin5
 enemy;hostile1;1248;672;goblin5
