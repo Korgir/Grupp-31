@@ -41,7 +41,7 @@ namespace Grupp_31_SystemUtveckling
             currentGameState = GameState.Menus;
 
             startMenu = new StartMenu(Archive.textureDictionary["menuBackground"], Archive.textureDictionary["menuHeader"], 
-                Archive.textureDictionary["button"], Archive.fontDictionary["defaultFont"], this, GraphicsDevice);
+                Archive.textureDictionary["button"], Archive.fontDictionary["buttonFont"], this, GraphicsDevice);
             
             combat = new Combat(new List<Character>(), new List<Character>(), -1);
 
@@ -133,6 +133,11 @@ namespace Grupp_31_SystemUtveckling
                                     oKill.CompareTeam(combat.enemyID);
                                 }
                             }
+                        }
+
+                        if (combat.winnerTeam == 2)
+                        {
+                            Initialize();
                         }
                     }
 

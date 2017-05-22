@@ -153,6 +153,7 @@ namespace Grupp_31_SystemUtveckling
             }
 
             // Fonts
+            fontDictionary["buttonFont"] = Content.Load<SpriteFont>("buttonFont");
             fontDictionary["defaultFont"] = Content.Load<SpriteFont>("font");
             fontDictionary["dialogFont"] = Content.Load<SpriteFont>("gameFont");
             fontDictionary["infoFont"] = Content.Load<SpriteFont>("infoFont");
