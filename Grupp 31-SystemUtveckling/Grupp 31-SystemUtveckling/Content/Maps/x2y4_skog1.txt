@@ -1198,6 +1198,7 @@ tile;water;1440;800;True
 portal;arrowLeft;0;384;Content\Maps\x1y4_Hub.txt;1408;384
 portal;arrowLeft;0;416;Content\Maps\x1y4_Hub.txt;1408;416
 enemy;hostile1;224;352;goblin5
-enemy;hostile1;1440;288;goblin5
+item;sword;704;256;furniture
+enemy;hostile1;1280;288;goblin5
 portal;arrowRight;1440;320;Content\Maps\x3y4_skog2.txt;32;320
 portal;arrowRight;1440;352;Content\Maps\x3y4_skog2.txt;32;352

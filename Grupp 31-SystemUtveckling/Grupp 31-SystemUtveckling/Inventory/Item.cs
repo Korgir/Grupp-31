@@ -17,7 +17,6 @@ namespace Grupp_31_SystemUtveckling
         private int maxHealth;
         private int speed;
         private int armor;
-        //public int physicalDamageMin, physicalDamageMax,
         private int magicAmplification;
         private int maxMana;
         private int manaRegeneration;
@@ -51,16 +50,36 @@ namespace Grupp_31_SystemUtveckling
 
         public void OnEquip(Character actor)
         {
-            actor.speed += speed;
-            actor.physicalDamageMin += physicalDamageMin;
-            actor.physicalDamageMax += physicalDamageMax;
+            float hpPercent = (float)actor.health / (float)actor.maxHealth;
+
+            actor.maxHealth += this.maxHealth;
+            actor.speed += this.speed;
+            actor.armor += this.armor;
+            actor.physicalDamageMin += this.physicalDamageMin;
+            actor.physicalDamageMax += this.physicalDamageMax;
+            actor.magicAmplification += this.magicAmplification;
+            actor.maxMana += this.maxMana;
+            actor.manaRegeneration += this.manaRegeneration;
+            actor.hitChance += this.hitChance;
+
+            actor.health = (int)((float)actor.maxHealth * hpPercent);
         }
 
         public void OnUnequip(Character actor)
         {
-            actor.speed -= speed;
-            actor.physicalDamageMin -= physicalDamageMin;
-            actor.physicalDamageMax -= physicalDamageMax;
+            float hpPercent = (float)actor.health / (float)actor.maxHealth;
+
+            actor.maxHealth -= this.maxHealth;
+            actor.speed -= this.speed;
+            actor.armor -= this.armor;
+            actor.physicalDamageMin -= this.physicalDamageMin;
+            actor.physicalDamageMax -= this.physicalDamageMax;
+            actor.magicAmplification -= this.magicAmplification;
+            actor.maxMana -= this.maxMana;
+            actor.manaRegeneration -= this.manaRegeneration;
+            actor.hitChance -= this.hitChance;
+
+            actor.health = (int)((float)actor.maxHealth * hpPercent);
         }
     }
 }

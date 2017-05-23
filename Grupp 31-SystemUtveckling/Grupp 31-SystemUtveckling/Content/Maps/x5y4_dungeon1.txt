@@ -1197,10 +1197,12 @@ tile;dungeonWall6;1440;768;True
 tile;dungeonWall6;1440;800;True
 portal;arrowLeft;0;352;Content\Maps\x4y4_dungeonIngång.txt;1408;352
 portal;arrowLeft;0;384;Content\Maps\x4y4_dungeonIngång.txt;1408;384
+item;sword;32;32;furniture
 enemy;hostile1;288;352;goblin5
 portal;arrowUp;672;0;Content\Maps\x5y5_dungeon4.txt;672;768
 portal;arrowUp;704;0;Content\Maps\x5y5_dungeon4.txt;704;768
 enemy;hostile1;704;96;goblin5
 enemy;hostile1;832;704;goblin5
+item;sword;896;192;legsT2
 portal;arrowDown;1184;800;Content\Maps\x5y3_dungeon2.txt;1184;32
 portal;arrowDown;1216;800;Content\Maps\x5y3_dungeon2.txt;1216;32

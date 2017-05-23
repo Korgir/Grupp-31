@@ -875,7 +875,7 @@ tile;dungeonWall5;1056;448;True
 tile;dungeonWall1;1056;480;True
 tile;smallTree;1056;512;True
 tile;grass;1056;544;False
-tile;waterGrass2;1056;576;True
+tile;waterGrass1;1056;576;True
 tile;waterGrass6;1056;608;True
 tile;grass;1056;640;False
 tile;grassRoad15;1056;672;False
@@ -1195,11 +1195,14 @@ tile;dungeonWall5;1440;704;True
 tile;dungeonWall5;1440;736;True
 tile;dungeonWall5;1440;768;True
 tile;dungeonWall1;1440;800;True
+item;sword;96;672;furniture
 enemy;hostile1;480;416;goblin5
 enemy;hostile1;672;640;goblin5
 portal;arrowUp;1184;0;Content\Maps\x5y4_dungeon1.txt;1184;768
 portal;arrowUp;1216;0;Content\Maps\x5y4_dungeon1.txt;1216;768
 enemy;hostile1;1216;160;goblin5
-enemy;hostile1;1376;576;goblin5
+item;sword;1248;576;weaponT4
+enemy;hostile1;1376;416;goblin5
+enemy;hostile1;1376;736;goblin5
 portal;arrowRight;1440;544;Content\Maps\x6y3_dungeon3.txt;32;544
 portal;arrowRight;1440;576;Content\Maps\x6y3_dungeon3.txt;32;576

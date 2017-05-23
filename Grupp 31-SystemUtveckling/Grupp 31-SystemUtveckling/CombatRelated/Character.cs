@@ -217,6 +217,23 @@ namespace Grupp_31_SystemUtveckling
             return false;
         }
 
+        public bool Heal(int value)
+        {
+            if (health <= 0 || !alive)
+            {
+                return false;
+            }
+
+            health += value;
+
+
+            if (health > maxHealth)
+            {
+                health = maxHealth;
+            }
+            return true;
+        }
+
         public bool Kill()
         {
             if (!alive)

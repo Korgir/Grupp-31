@@ -1195,10 +1195,13 @@ tile;dungeonWall5;1440;704;True
 tile;dungeonWall5;1440;736;True
 tile;dungeonWall5;1440;768;True
 tile;dungeonWall1;1440;800;True
+item;sword;64;64;furniture
 enemy;hostile1;384;320;goblin5
 enemy;hostile1;608;288;goblin5
 portal;arrowDown;672;800;Content\Maps\x5y4_dungeon1.txt;672;32
 portal;arrowDown;704;800;Content\Maps\x5y4_dungeon1.txt;704;32
+item;sword;1024;480;helmT2
 enemy;hostile1;1184;384;goblin5
+item;sword;1408;480;bootsT2
 portal;arrowRight;1440;384;Content\Maps\x6y5_dungeon5.txt;32;384
 portal;arrowRight;1440;416;Content\Maps\x6y5_dungeon5.txt;32;416

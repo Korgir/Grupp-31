@@ -139,6 +139,10 @@ namespace Grupp_31_SystemUtveckling
                         {
                             Initialize();
                         }
+                        else
+                        {
+                            map.player.team.characters[0].Heal((int)(map.player.team.characters[0].maxHealth * 0.2f));
+                        }
                     }
 
                     if (KeyMouseReader.KeyPressed(Keybinds.binds["back"]))

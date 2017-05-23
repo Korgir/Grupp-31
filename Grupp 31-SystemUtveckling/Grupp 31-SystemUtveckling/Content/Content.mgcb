@@ -1616,3 +1616,6 @@
 /processorParam:TextureFormat=Compressed
 /build:buttonFont.spritefont
 
+#begin Maps/x4y4_dungeonIngång.txt
+/copy:Maps/x4y4_dungeonIngång.txt
+

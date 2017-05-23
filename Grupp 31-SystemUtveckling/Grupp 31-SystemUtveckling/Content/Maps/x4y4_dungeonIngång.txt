@@ -1198,7 +1198,9 @@ tile;grassRoad7;1440;800;False
 portal;arrowLeft;0;480;Content\Maps\x3y4_skog2.txt;1408;480
 portal;arrowLeft;0;512;Content\Maps\x3y4_skog2.txt;1408;512
 portal;arrowLeft;0;544;Content\Maps\x3y4_skog2.txt;1408;544
-enemy;hostile1;96;448;goblin5
+enemy;hostile1;192;448;goblin5
+friendly;npc1;640;288;demonSlayer
 enemy;hostile1;1024;352;goblin5
+item;sword;1312;800;furniture
 portal;arrowRight;1440;352;Content\Maps\x5y4_dungeon1.txt;32;352
 portal;arrowRight;1440;384;Content\Maps\x5y4_dungeon1.txt;32;384

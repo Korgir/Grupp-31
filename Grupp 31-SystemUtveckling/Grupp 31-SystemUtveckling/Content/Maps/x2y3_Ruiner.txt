@@ -1197,10 +1197,15 @@ tile;smallTree;1440;768;True
 tile;smallTree;1440;800;True
 portal;arrowDown;512;800;Content\Maps\x2y2_Ruiner.txt;512;32
 portal;arrowDown;544;800;Content\Maps\x2y2_Ruiner.txt;544;32
+enemy;hostile1;576;512;goblin5
 portal;arrowDown;576;800;Content\Maps\x2y2_Ruiner.txt;576;32
+item;sword;608;128;armorT2
 portal;arrowDown;608;800;Content\Maps\x2y2_Ruiner.txt;608;32
+enemy;hostile1;640;384;goblin5
 portal;arrowDown;640;800;Content\Maps\x2y2_Ruiner.txt;640;32
+item;sword;672;128;furniture
 portal;arrowDown;672;800;Content\Maps\x2y2_Ruiner.txt;672;32
 portal;arrowDown;704;800;Content\Maps\x2y2_Ruiner.txt;704;32
+enemy;hostile1;736;512;goblin5
 portal;arrowDown;736;800;Content\Maps\x2y2_Ruiner.txt;736;32
 portal;arrowDown;768;800;Content\Maps\x2y2_Ruiner.txt;768;32

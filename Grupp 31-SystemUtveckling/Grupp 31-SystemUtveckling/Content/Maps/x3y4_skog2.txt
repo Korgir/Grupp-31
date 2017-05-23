@@ -1199,8 +1199,10 @@ portal;arrowLeft;0;320;Content\Maps\x2y4_skog1.txt;1408;320
 portal;arrowLeft;0;352;Content\Maps\x2y4_skog1.txt;1408;352
 enemy;hostile1;224;320;goblin5
 portal;arrowDown;672;800;Content\Maps\x3y3_skog3.txt;672;32
+enemy;hostile1;704;672;goblin5
 portal;arrowDown;704;800;Content\Maps\x3y3_skog3.txt;704;32
-enemy;hostile1;736;768;goblin5
+item;sword;1120;704;furniture
+item;sword;1280;224;weaponT2
 portal;arrowRight;1440;480;Content\Maps\x4y4_dungeonIngång.txt;32;480
 portal;arrowRight;1440;512;Content\Maps\x4y4_dungeonIngång.txt;32;512
 portal;arrowRight;1440;544;Content\Maps\x4y4_dungeonIngång.txt;32;544

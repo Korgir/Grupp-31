@@ -23,15 +23,15 @@ namespace Grupp_31_SystemUtveckling
 
             teamDictionary["demon1"] = new Team(2);
             teamDictionary["demon1"].characters.Add(new Character(Archive.textureDictionary["demonDaggers"], Archive.textureDictionary["demonDaggersOutline"],
-                Vector2.Zero, false, "Sidmoch", 500, 30, 20, 20, 30, 4, 100, 5, 80));
+                Vector2.Zero, false, "Sidmoch", 500, 100, 8, 5, 10, 4, 100, 5, 80));
             teamDictionary["demon1"].characters.Add(new Character(Archive.textureDictionary["demonSpear"], Archive.textureDictionary["demonSpearOutline"],
-                Vector2.Zero, false, "Oogaezal", 800, 30, 20, 15, 20, 4, 100, 5, 80));
+                Vector2.Zero, false, "Oogaezal", 800, 30, 10, 3, 5, 4, 100, 5, 80));
 
             teamDictionary["demon2"] = new Team(3);
             teamDictionary["demon2"].characters.Add(new Character(Archive.textureDictionary["demonMage"], Archive.textureDictionary["demonMageOutline"],
-                Vector2.Zero, false, "Scierocho", 500, 30, 20, 20, 30, 4, 100, 5, 80));
+                Vector2.Zero, false, "Scierocho", 500, 30, 4, 3, 25, 4, 100, 5, 80));
             teamDictionary["demon2"].characters.Add(new Character(Archive.textureDictionary["demonWarlock"], Archive.textureDictionary["demonWarlockOutline"],
-                Vector2.Zero, false, "Eeziulur", 800, 30, 20, 15, 20, 4, 100, 5, 80));
+                Vector2.Zero, false, "Eeziulur", 1200, 20, 2, 3, 10, 4, 100, 5, 90));
         }
 
         public static Team GetTeam(string teamName)
