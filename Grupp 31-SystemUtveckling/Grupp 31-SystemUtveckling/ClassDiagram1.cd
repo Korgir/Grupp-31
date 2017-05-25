@@ -1,102 +1,423 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Grupp_31_SystemUtveckling.Archive" Collapsed="true">
-    <Position X="10" Y="2.25" Width="1.5" />
+    <Position X="0.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAAAAAAAAAAAQAAAAAAAAAAAAAAAAABAABAAAAAAAA=</HashCode>
-      <FileName>Archive.cs</FileName>
+      <HashCode>CAAAAAAAAQAAAQAAAAAABAAAAAAAAAABAABAAAAAAAA=</HashCode>
+      <FileName>Archives\Archive.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Grupp_31_SystemUtveckling.Character" Collapsed="true">
-    <Position X="2.25" Y="2.5" Width="1.5" />
+    <Position X="2.5" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CQAABgCIAEAAAgQAAAAAIAAABAUEBwAAAAAAIBAAADg=</HashCode>
-      <FileName>Character.cs</FileName>
+      <HashCode>jQABDoWIAEEAAgSgKABAIABBBAUGJwAQEBCAMBAEADg=</HashCode>
+      <FileName>CombatRelated\Character.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Grupp_31_SystemUtveckling.Combat" Collapsed="true">
-    <Position X="4" Y="2.5" Width="1.5" />
+    <Position X="2.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AARAAAAIAAAAAggAKAAEAAAAAAAAAAIAoAgAAAAABAA=</HashCode>
-      <FileName>Combat.cs</FileName>
+      <HashCode>AQRAEAIpAAgAAghAKQAERAAAACCAKAMEoAgAIAAgBAA=</HashCode>
+      <FileName>CombatRelated\Combat.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Grupp_31_SystemUtveckling.Entity" Collapsed="true">
-    <Position X="2.25" Y="0.5" Width="1.5" />
+    <Position X="4.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAgAAAAAAAAIgKAAADAIAgAAAAAAyAAAAAABAAAAAA=</HashCode>
-      <FileName>Entity.cs</FileName>
+      <HashCode>AAAgAAAQAoAAIgAAAADAIIAAAAAQAwAAAAAABAAAAAA=</HashCode>
+      <FileName>Entities\Entity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Grupp_31_SystemUtveckling.FileReader" Collapsed="true">
-    <Position X="4" Y="1.25" Width="1.5" />
+    <Position X="0.5" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAgIAAAAIAEAAAAAAAAA=</HashCode>
-      <FileName>FileReader.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAABA=</HashCode>
+      <FileName>MapAndEditor\FileReader.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Grupp_31_SystemUtveckling.Game1" Collapsed="true">
-    <Position X="10" Y="0.5" Width="1.5" />
+    <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAEEAAAAABAwAAAIIAAAAEAAIAAAgAAEAAACAAAAQ=</HashCode>
+      <HashCode>AAQAEEAAAAAAAwAAAAAAEAAEAAEAAAgAAEAAACAAAAQ=</HashCode>
       <FileName>Game1.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Grupp_31_SystemUtveckling.GameObject" Collapsed="true">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Position X="4.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAAAAIAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>GameObject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Grupp_31_SystemUtveckling.Map" Collapsed="true">
-    <Position X="4" Y="0.5" Width="1.5" />
+    <Position X="2.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAACAEAAAAgAAAIAAAAAAAgAABgARAABAAAAAQAA=</HashCode>
-      <FileName>Map.cs</FileName>
+      <HashCode>EIRAAAAAAIAAAgAAAAAAAIAAAgAABgARAAAAAAAAAAA=</HashCode>
+      <FileName>MapAndEditor\Map.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Grupp_31_SystemUtveckling.Player" Collapsed="true">
-    <Position X="2.25" Y="1.5" Width="1.5" />
+    <Position X="6.25" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAEAAAAAAAAAAAAAAAAAEAAAAAACAAAAAAAAAAAAA=</HashCode>
-      <FileName>Player.cs</FileName>
+      <HashCode>AAQAEAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAACAAAAA=</HashCode>
+      <FileName>Entities\Player.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Grupp_31_SystemUtveckling.Program" Collapsed="true">
-    <Position X="10" Y="1.5" Width="1.5" />
+    <Position X="0.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Grupp_31_SystemUtveckling.Spell" Collapsed="true">
-    <Position X="2.25" Y="4.25" Width="1.5" />
+    <Position X="8.25" Y="8" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAEAAAAACAAAAAAAAAAA=</HashCode>
-      <FileName>Spell.cs</FileName>
+      <HashCode>AAQAAAACAAAAAgBAAYIAAAAAAEAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Spell.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Grupp_31_SystemUtveckling.TargetSpell" Collapsed="true">
-    <Position X="2.25" Y="3.25" Width="1.5" />
+    <Position X="8.25" Y="7" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAAAABAAAAAAAAAAAA=</HashCode>
-      <FileName>TargetSpell.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAACAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\TargetSpell.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Grupp_31_SystemUtveckling.Tile" Collapsed="true">
-    <Position X="0.5" Y="1.5" Width="1.5" />
+    <Position X="4.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAA=</HashCode>
-      <FileName>Tile.cs</FileName>
+      <FileName>MapAndEditor\Tile.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="KeyMouseReader" Collapsed="true">
-    <Position X="10" Y="3" Width="1.5" />
+    <Position X="0.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BBYCAAAAAAAAgAEAAAAAAAACEAAAAAAAAAAOAABAAAA=</HashCode>
       <FileName>KeyMouseReader.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Grupp_31_SystemUtveckling.Animation" Collapsed="true">
+    <Position X="2.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DAQABAAAAAAAAgAAEIwAAAAAMAAAQgAiAAAAAAoAAIA=</HashCode>
+      <FileName>Animation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.CombatTeamDatabase" Collapsed="true">
+    <Position X="0.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAQAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Archives\CombatTeamDatabase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.DialogDictionary" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Archives\DialogDictionary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.ItemDatabase" Collapsed="true">
+    <Position X="0.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Archives\ItemDatabase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.Button" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAIAAAAICAAAAgAAAAAAAAAAAAAAAgAIAAAAAAAAAAA=</HashCode>
+      <FileName>Button.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.DamageNumber" Collapsed="true">
+    <Position X="2.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAQAAAgAAAAAAIIAAAAAAAgCIAAQAAAAAAAA=</HashCode>
+      <FileName>CombatRelated\DamageNumber.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.HealthBar" Collapsed="true">
+    <Position X="4.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CombatRelated\HealthBar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.Projectile" Collapsed="true">
+    <Position X="6" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAIAAAAAAAAwAAACAABAAAAAA=</HashCode>
+      <FileName>CombatRelated\Projectile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.Team" Collapsed="true">
+    <Position X="2.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CombatRelated\Team.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.Dialog" Collapsed="true">
+    <Position X="2.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAgEBAAgAABAEAAAAgAAEAAAAAAABAIA=</HashCode>
+      <FileName>Dialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.Enemy" Collapsed="true">
+    <Position X="4.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Enemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.FriendlyEntity" Collapsed="true">
+    <Position X="8" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAgAAAABAA=</HashCode>
+      <FileName>Entities\FriendlyEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.ItemEntity" Collapsed="true">
+    <Position X="9.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\ItemEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.PortalEntity" Collapsed="true">
+    <Position X="11.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAIAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\PortalEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.CharacterSystem" Collapsed="true">
+    <Position X="2" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAIAAAAgAAAAAAIIAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Inventory\CharacterSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.InventorySlot" Collapsed="true">
+    <Position X="3.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAwAAAAAAAAAAUAAAAFQAAAABgAAAAAIAAAQCA=</HashCode>
+      <FileName>Inventory\InventorySlot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.InventorySystem" Collapsed="true">
+    <Position X="2" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAAAAAAEAAAgAAAABEIIACgAAAAgQCAAAAAAAAAIA=</HashCode>
+      <FileName>Inventory\InventorySystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.Item" Collapsed="true">
+    <Position X="5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAgAIBAAAgBYAAAAAAAAAAAEABQAAAAACIBIAAAA=</HashCode>
+      <FileName>Inventory\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.Keybinds" Collapsed="true">
+    <Position X="0.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Keybinds.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.MapEditor" Collapsed="true">
+    <Position X="2.25" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQCQEIQgWAAIgCAAAyAKAEBgAkAASCAgAgAAEBAAAE=</HashCode>
+      <FileName>MapAndEditor\MapEditor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.Particle" Collapsed="true">
+    <Position X="7.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAQAAAgAAAIAAIAAAAAAAAwCAAAQAAABAAAA=</HashCode>
+      <FileName>Particle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.ParticleEngine" Collapsed="true">
+    <Position X="9.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEABAAAAAAAgAAAAgAAAAAQAABCAAAAAQAAAAAABA=</HashCode>
+      <FileName>ParticleEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.DialogSelector" Collapsed="true">
+    <Position X="7.25" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAQBAAAACAABACAAAIACAAAEAAAAAAgAA=</HashCode>
+      <FileName>SelectorPrompts\DialogSelector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.EnemySelector" Collapsed="true">
+    <Position X="7.25" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAQBAAAACAABACAAAIACAAAEAAAAAAgAA=</HashCode>
+      <FileName>SelectorPrompts\EnemySelector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.ItemSelector" Collapsed="true">
+    <Position X="7.25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAQBAAAACAABACAAAIACAAAEAAAAAAgAA=</HashCode>
+      <FileName>SelectorPrompts\ItemSelector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.MapSelector" Collapsed="true">
+    <Position X="7.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAMAAAAAACBAQBAAAACAABACAAAIACAAAEAAAAAAgAA=</HashCode>
+      <FileName>SelectorPrompts\MapSelector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.Prompt" Collapsed="true">
+    <Position X="7.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgBAAAAAAAAAQAAAAIAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>SelectorPrompts\Prompt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.ZoneSelector" Collapsed="true">
+    <Position X="2.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACBAQBAAAACAABACAAAIACAAAEAAAAAAAAA=</HashCode>
+      <FileName>SelectorPrompts\ZoneSelector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.Buff" Collapsed="true">
+    <Position X="4.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAACACAAAIAACIAAAAAAAABAAAA=</HashCode>
+      <FileName>Spells\Buffs\Buff.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.DebuffBleed" Collapsed="true">
+    <Position X="4.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAIAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Buffs\DebuffBleed.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.DebuffStun" Collapsed="true">
+    <Position X="6.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\Buffs\DebuffStun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.SpellFireball" Collapsed="true">
+    <Position X="8.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAgAAAAgABAAAAEAAAwBAAABAAAIAAAA=</HashCode>
+      <FileName>Spells\SpellFireball.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.SpellStab" Collapsed="true">
+    <Position X="10" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAEAAEABAAAAAAAAAAAA=</HashCode>
+      <FileName>Spells\SpellStab.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.SpellThrowGoblin" Collapsed="true">
+    <Position X="11.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAgAAAAgAAAAAAEAAAwBAAABAAAIAAAA=</HashCode>
+      <FileName>Spells\SpellThrowGoblin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.StartMenu" Collapsed="true">
+    <Position X="0.5" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAZCAAAAAAAAAgAAAAAgAAAAAAAAABAIgAAAhAAAAgA=</HashCode>
+      <FileName>StartMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.CharacterTab" Collapsed="true">
+    <Position X="0.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAQAAAAAAAAAAAAAAAAAQAAAAAAQA=</HashCode>
+      <FileName>TabSystem\CharacterTab.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.InventoryTab" Collapsed="true">
+    <Position X="0.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAQAAAAAAAAAEAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>TabSystem\InventoryTab.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.ItemObjective" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>TabSystem\ItemObjective.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.KillObjective" Collapsed="true">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>TabSystem\KillObjective.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.Objective" Collapsed="true">
+    <Position X="6.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAgAgIAIAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>TabSystem\Objective.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.Quest" Collapsed="true">
+    <Position X="8.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAARAAAggIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TabSystem\Quest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.QuestSystem" Collapsed="true">
+    <Position X="2" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAiAAAAAIJAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>TabSystem\QuestSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.QuestTab" Collapsed="true">
+    <Position X="0.5" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAgAAAAAAgAAQAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>TabSystem\QuestTab.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.TabManager" Collapsed="true">
+    <Position X="0.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQAEAAAAAAAAgAAAYAAAAAAAAAQAAAAAAAAAAKAIAA=</HashCode>
+      <FileName>TabSystem\TabManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grupp_31_SystemUtveckling.Properties.Settings" Collapsed="true">
+    <Position X="0.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Grupp_31_SystemUtveckling.AnimationLoop" Collapsed="true">
+    <Position X="4" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Animation.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
